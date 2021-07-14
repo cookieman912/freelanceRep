@@ -8,7 +8,7 @@
         <router-link to="/">Home</router-link>
         <router-link to="/explore">Explore</router-link>
         <router-link to="/becomeSeller">Become a seller</router-link>
-        <router-link to="/login">Sign In</router-link>
+       <button @click="toggleLogin">Sign In</button> 
         <router-link to="/login">
           <span class="header-join">Join</span>
         </router-link>
@@ -23,11 +23,20 @@
   </header>
 </template>
 <script>
+import {eventBusService} from '../services/event-bus.service.js'
 export default {
+  
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
     },
   },
+  methods:{
+    toggleLogin(){
+    eventBusService.$emit('toggle-login')
+    }
+  }
 };
+
+
 </script>
