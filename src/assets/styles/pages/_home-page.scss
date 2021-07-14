@@ -1,0 +1,14 @@
+.home {
+    & header {
+        & h1 {
+            color: pink;
+            font-size: 40px;
+        }
+    }
+}
+
+.home-top {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
