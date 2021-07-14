@@ -1,4 +1,8 @@
+//basics
 @import './basics/base';
 @import './setup/_variables';
+//pages
 @import './pages/home-page';
+//components
 @import './cmps/app-header';
+@import './cmps/log-in-modal';
