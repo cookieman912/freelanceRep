@@ -1,6 +1,5 @@
 {
-    "user": [
-        {
+    "user": [{
             "_id": "u101",
             "fullname": "User 1",
             "profileImg": "/img/img1.jpg",
@@ -10,55 +9,50 @@
             "seller": {
                 "specialty": "graphic design",
                 "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
-                "gigs": [
-                    {
-                        "_id": "g101",
-                        "title": "logo",
-                        "imgUrls": [
-                            "img1.jpg"
-                        ],
-                        "pride": 100,
-                        "deliveryDays": 4,
-                        "description": "some description for the logo gig",
-                        "tags": [
-                            "graphic",
-                            "website"
-                        ],
-                        "reviews": [
-                            {
-                                "id": "r101",
-                                "txt": "wowowowowo",
-                                "rate": 5
-                            },
-                            {
-                                "id": "r102",
-                                "txt": "the best logo ever",
-                                "rate": 5,
-                                "by": {
-                                    "fullname": "puki puki"
-                                }
+                "gigs": [{
+                    "_id": "g101",
+                    "title": "logo",
+                    "imgUrls": [
+                        "img1.jpg"
+                    ],
+                    "price": 100,
+                    "deliveryDays": 4,
+                    "description": "some description for the logo gig",
+                    "tags": [
+                        "graphic",
+                        "website"
+                    ],
+                    "reviews": [{
+                            "id": "r101",
+                            "txt": "wowowowowo",
+                            "rate": 5
+                        },
+                        {
+                            "id": "r102",
+                            "txt": "the best logo ever",
+                            "rate": 5,
+                            "by": {
+                                "fullname": "puki puki"
                             }
-                        ]
-                    }
-                ],
-                "orders": [
-                    {
-                        "_id": "o101",
-                        "createdAt": 1626258635874,
-                        "buyer": "muki muki",
-                        "price": 20,
-                        "seller": {
-                            "_id": "u101",
-                            "name": "shuki shuki",
-                            "imgUrl": ""
-                        },
-                        "gig": {
-                            "_id": "g103",
-                            "name": "logo"
-                        },
-                        "status": "pending"
-                    }
-                ]
+                        }
+                    ]
+                }],
+                "orders": [{
+                    "_id": "o101",
+                    "createdAt": 1626258635874,
+                    "buyer": "muki muki",
+                    "price": 20,
+                    "seller": {
+                        "_id": "u101",
+                        "name": "shuki shuki",
+                        "imgUrl": ""
+                    },
+                    "gig": {
+                        "_id": "g103",
+                        "name": "logo"
+                    },
+                    "status": "pending"
+                }]
             }
         },
         {
