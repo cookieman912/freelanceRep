@@ -1,6 +1,6 @@
-import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
-import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
+import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
+import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service.js'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const SCORE_FOR_REVIEW = 10
 var gWatchedUser = null;

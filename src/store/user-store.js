@@ -1,4 +1,4 @@
-import { userService } from '../services/user.service'
+import { userService } from '../services/user.service.js'
 import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
 
 // var localLoggedinUser = null;
@@ -18,11 +18,11 @@ export const userStore = {
     mutations: {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
-            state.loggedinUser = (user)? {...user} : null;
+            state.loggedinUser = (user) ? { ...user } : null;
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
-        },       
+        },
         setUsers(state, { users }) {
             state.users = users;
         },
@@ -73,12 +73,12 @@ export const userStore = {
                 console.log('userStore: Error in loadUsers', err)
                 throw err
             }
-        },        
+        },
         async loadAndWatchUser({ commit }, { userId }) {
             try {
                 const user = await userService.getById(userId);
                 commit({ type: 'setWatchedUser', user })
-                socketService.emit(SOCKET_EMIT_USER_WATCH, userId) 
+                socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
                 socketService.off(SOCKET_EVENT_USER_UPDATED)
                 socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
                     commit({ type: 'setWatchedUser', user })

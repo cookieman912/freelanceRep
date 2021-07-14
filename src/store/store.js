@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { userStore } from './user.store.js'
-import { reviewStore } from './review.store.js'
+import { userStore } from './user-store.js'
+import { reviewStore } from './review-store.js'
 
 Vue.use(Vuex)
 
