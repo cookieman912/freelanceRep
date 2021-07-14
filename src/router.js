@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from './pages/home-page.vue'
-import chat from './pages/chat.vue'
-import reviewApp from './pages/review-app.vue'
+import explorePage from './pages/explore.vue'
+import becomeSeller from './pages/become-seller.vue'
 import loginSignup from './pages/login-signup.vue'
 import userDetails from './pages/user-details.vue'
+// import chat from './pages/chat.vue'
 
 Vue.use(Router)
 
@@ -18,14 +19,14 @@ export const router = new Router({
       component: home
     },
     {
-      path: '/review',
-      name: 'review',
-      component: reviewApp
+      path: '/explore',
+      name: 'explore',
+      component: explorePage
     },
     {
-      path: '/chat',
-      name: 'chat',
-      component: chat
+      path: '/becomeSeller',
+      name: 'becomeSeller',
+      component: becomeSeller
     },
     {
       path: '/login',
