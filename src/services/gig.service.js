@@ -12,25 +12,26 @@ export const gigService = {
     getEmptyReview,
 }
 
-const defaultGigs = [{
-    _id: "g101",
-    title: "logo",
-    imgUrls: [
-        "img1.jpg"
-    ],
-    pride: 100,
-    deliveryDays: 4,
-    description: "some description for the logo gig",
-    tags: [
-        "graphic",
-        "website"
-    ],
-    seller: {
-        _id: "u101",
-        fullname: "Yori Yorovich",
-        imgUrl: "img.jpg"
-    },
-    reviews: [{
+const defaultGigs = [
+    {
+        _id: "g101",
+        title: "logo",
+        imgUrls: [
+            "img1.jpg"
+        ],
+        price: 100,
+        deliveryDays: 4,
+        description: "some description for the logo gig",
+        tags: [
+            "graphic",
+            "website"
+        ],
+        seller: {
+            _id: "u101",
+            fullname: "Yori Yorovich",
+            imgUrl: "img.jpg"
+        },
+        reviews: [{
             id: 'r101',
             txt: 'wowowowowo',
             rate: 5
@@ -43,32 +44,29 @@ const defaultGigs = [{
                 fullname: "puki puki"
             }
         }
-    ]
-}]
+        ]
+    }
+]
 
 
 
 function query() {
 
     // return httpService.get('gig', filterBy)
-
     return storageService.query(GIG_KEY)
         .then(gigs => {
-            if (gigs && gigs.length !== 0) {
-
-                console.log('in conditon')
-                return gigs;
-            } else {
+            if (!gigs.length) {
+                console.log('check')
                 storageService.postMany(GIG_KEY, defaultGigs)
                 return defaultGigs
             }
+            return gigs;
         })
-
 }
 
 function getById(gigId) {
     console.log(gigId)
-        // return httpService.get(`gig/${gigId}`)
+    // return httpService.get(`gig/${gigId}`)
     return storageService.get(GIG_KEY, gigId)
         .then(gig => {
             console.log(gig);
@@ -89,12 +87,12 @@ function save(gig) {
     if (gig._id) {
         return storageService.put(GIG_KEY, gig)
             .then(gig => { return gig })
-            // return httpService.put(`gig`, gig)
+        // return httpService.put(`gig`, gig)
     } else {
 
         return storageService.post(GIG_KEY, gig)
             .then(gig => { return gig })
-            // return httpService.post(`gig`, gig)
+        // return httpService.post(`gig`, gig)
     }
 }
 

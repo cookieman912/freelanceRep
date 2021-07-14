@@ -1,0 +1,25 @@
+.gigs-list {
+    margin: 1rem auto;
+    width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+
+    & .gig-preview {
+        border: 1.5px solid $fbc;
+        padding: 0.25rem;
+        border-radius: 5px;
+
+        & p,section {
+            padding-inline-start: 1rem;
+            margin: 0;
+        }
+        
+        & span {
+            padding-inline-end: 1rem;
+            display: inline-block;
+            // transform: rotate(180deg);
+            height: 15px;
+        }
+    }
+}

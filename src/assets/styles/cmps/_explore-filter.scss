@@ -1,0 +1,29 @@
+.explore-filter {
+    margin: 1rem auto;
+    width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+
+    & .explore-choose {
+        border: 1.5px solid $fbc;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        padding: 0.25rem;
+        border-radius: 5px;
+
+        & p {
+            padding-inline-start: 1rem;
+            margin: 0;
+            display: inline-block;
+        }
+        
+        & span {
+            padding-inline-start: 1rem;
+            display: inline-block;
+            transform: rotate(180deg);
+            height: 15px;
+        }
+    }
+}

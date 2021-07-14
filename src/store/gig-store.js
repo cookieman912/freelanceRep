@@ -6,7 +6,7 @@ export const gigStore = {
         gigs: []
     },
     getters: {
-        gigs(state) { return state.gigs },
+        gigsToShow(state) { return state.gigs },
     },
     mutations: {
         setGigs(state, { gigs }) {
@@ -24,8 +24,7 @@ export const gigStore = {
             try {
                 gig = await gigService.add(gig)
                 context.commit({ type: 'addGig', gig })
-                    // context.dispatch({type: 'increaseScore'})
-
+                // context.dispatch({type: 'increaseScore'})
                 return gig;
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)
@@ -48,7 +47,7 @@ export const gigStore = {
                 await gigService.remove(gigId);
                 context.commit({ type: 'removeGig', gigId })
             } catch (err) {
-                console.log('gigStore: Error in removegig', err)
+                console.log('gigStore: Error in removeGig', err)
                 throw err
             }
         },
