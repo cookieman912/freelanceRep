@@ -1,10 +1,9 @@
 import { storageService } from './async-storage.service.js'
-// import { utilService } from './util-service.js'
 // import { httpService } from './http-service.js'
 // import axios from 'axios'
 
 
-const GIGKEY = "gigsDB"
+const GIG_KEY = "gigsDB"
 export const gigService = {
     query,
     getById,
@@ -53,14 +52,14 @@ function query() {
 
     // return httpService.get('gig', filterBy)
 
-    return storageService.query(GIGKEY)
+    return storageService.query(GIG_KEY)
         .then(gigs => {
             if (gigs && gigs.length !== 0) {
 
                 console.log('in conditon')
                 return gigs;
             } else {
-                storageService.postMany(GIGKEY, defaultGigs)
+                storageService.postMany(GIG_KEY, defaultGigs)
                 return defaultGigs
             }
         })
@@ -70,7 +69,7 @@ function query() {
 function getById(gigId) {
     console.log(gigId)
         // return httpService.get(`gig/${gigId}`)
-    return storageService.get(GIGKEY, gigId)
+    return storageService.get(GIG_KEY, gigId)
         .then(gig => {
             console.log(gig);
             return gig
@@ -79,7 +78,7 @@ function getById(gigId) {
 
 function remove(gigId) {
     // return httpService.delete(`gig/${gigId}`)
-    return storageService.remove(GIGKEY, gigId)
+    return storageService.remove(GIG_KEY, gigId)
         .then(gigs => { console.log(gigs) })
 }
 
@@ -88,12 +87,12 @@ function save(gig) {
     // console.log(toy);
     console.log(gig);
     if (gig._id) {
-        return storageService.put(GIGKEY, gig)
+        return storageService.put(GIG_KEY, gig)
             .then(gig => { return gig })
             // return httpService.put(`gig`, gig)
     } else {
 
-        return storageService.post(GIGKEY, gig)
+        return storageService.post(GIG_KEY, gig)
             .then(gig => { return gig })
             // return httpService.post(`gig`, gig)
     }
