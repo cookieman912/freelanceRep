@@ -1,7 +1,6 @@
 .app-header {
     width: 100%;
     border-bottom: 1px solid #e4e5e7;
-
     & .nav-header {
         display: flex;
         align-items: center;
@@ -9,37 +8,45 @@
         height: 5.0625rem;
         width: 87.5rem;
         margin: auto;
-
-        & .logo > a{
+        & .logo>a {
             text-decoration: none;
             color: $flc;
             font-size: 2rem;
         }
-        & .logo > a span {
+        & .logo>a span {
             color: $fgc;
             font-size: 3rem;
         }
-
-        & .navigation > a {
+        & .navigation>a {
             text-decoration: none;
             padding-inline-start: 1.5rem;
             color: $ftc;
             font-weight: 600;
             transition: 0.35s ease;
         }
-        & .navigation > a:hover {
+        & .navigation>a:hover {
             color: $fgc;
         }
-        & .navigation > a .header-join {
+        & .navigation>a .header-join {
             border: 1.5px solid $fgc;
             border-radius: 5px;
             padding: 0.25rem 1.5rem;
             transition: 0.35s ease;
         }
-        & .navigation > a .header-join:hover{
+        & .navigation>a .header-join:hover {
             color: white;
             background-color: #02a75a;
         }
+        & .navigation>button {
+            background-color: white;
+            border: none;
+            padding-inline-start: 1.5rem;
+            color: $ftc;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        & .navigation>button:hover {
+            cursor: pointer;
+        }
     }
 }
-
