@@ -1,4 +1,4 @@
-.log-in {
+.signup {
     background-color: rgba(0, 0, 0, .65);
     width: 100%;
     height: 1000px;
@@ -8,7 +8,7 @@
     align-content: center;
     align-items: center;
     justify-content: center;
-    .login-container {
+    .signup-container {
         color: #626466;
         width: 400px;
         height: 400px;
@@ -41,6 +41,19 @@
                 border: 1px solid #c5c6c9;
                 width: 90%;
                 font-size: 1.2em;
+            }
+        }
+        p {
+            color: #B5B6BA;
+            margin-left: 5%;
+            margin-right: 5%;
+            font-size: 0.9em;
+            .tos {
+                color: #4A73E8
+            }
+            .tos:hover {
+                text-decoration: underline;
+                cursor: pointer;
             }
         }
         button {
