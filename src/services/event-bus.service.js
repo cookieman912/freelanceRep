@@ -10,6 +10,9 @@ export function showMsg(txt, type = 'success') {
 }
 
 export function toggleLogin(num, type = 'toggle') {
-    console.log('in functon')
     eventBusService.$emit('toggle-login', { num, type });
+}
+
+export function toggleSignup(num, type = 'toggle') {
+    eventBusService.$emit('toggle-signup', { num, type });
 }
