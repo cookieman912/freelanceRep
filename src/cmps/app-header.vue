@@ -9,9 +9,10 @@
         <router-link to="/explore">Explore</router-link>
         <router-link to="/becomeSeller">Become a seller</router-link>
        <button @click="toggleLogin">Sign In</button> 
-        <router-link to="/login">
+        <button @click="toggleSignup">
           <span class="header-join">Join</span>
-        </router-link>
+        </button>
+       
       </div>
     </nav>
     <section class="loggedin-user" v-if="loggedInUser">
@@ -34,6 +35,9 @@ export default {
   methods:{
     toggleLogin(){
     eventBusService.$emit('toggle-login')
+    },
+      toggleSignup(){
+    eventBusService.$emit('toggle-signup')
     }
   }
 };

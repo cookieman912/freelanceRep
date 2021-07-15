@@ -10,7 +10,7 @@
       </form>
 
       <!-- router link the the near future -->
-      <p>not a member yet? <button @click="toggleLogin()"> <router-link to="/login"> join now! </router-link></button></p> 
+      <p>not a member yet? <button @click="signupClicked()"> join now! </button></p> 
       </section>
   </section>
 </template>
@@ -45,6 +45,11 @@ created(){
     if(event.target.classList.value==='log-in')
     this.toggleLogin()
 
+    },
+
+    signupClicked(){
+      this.toggleLogin();
+      eventBusService.$emit('toggle-signup')
     }
   }
 

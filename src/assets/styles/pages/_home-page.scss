@@ -23,7 +23,7 @@
         & h1 span {
             font-size: 48px;
             line-height: 56px;
-            color: $white2;
+            color: $white;
             width: 617px;
         }
     }
@@ -48,7 +48,7 @@
             margin: 0;
             border-radius: 0 4px 4px 0;
             background-color: $fgc;
-            color: $white1;
+            color: $white;
             font-weight: 700;
             width: 103px;
             height: 48px;
@@ -58,7 +58,7 @@
         font-size: 14px;
         line-height: 27px;
         font-weight: 600;
-        color: $white1;
+        color: $white;
         padding-top: 24px;
         width: 650px;
         display: flex;
@@ -68,9 +68,9 @@
             background-color: transparent;
             line-height: 24px;
             font-weight: 600;
-            color: #fff;
+            color: $white;
             padding: 1px 12px 0;
-            border: 1px solid #fff;
+            border: 1px solid $white;
             border-radius: 40px;
         }
     }
@@ -82,4 +82,24 @@
         font-size: 32px;
         margin-top: 110px;
     }
+    & .home-page-category-gallery {
+        display: flex;
+    }
+    & .home-page-category-image-wrapper {
+        position: inherit;
+        height: 345px;
+        width: 100%;
+        border-radius: 4px;
+        & img {
+            max-width: 240px;
+            object-fit: cover;
+            height: 345px;
+        }
+    }
+}
+
+.home-page-category-text-container {
+    position: absolute;
+    color: $white;
+    padding: 16px;
 }
