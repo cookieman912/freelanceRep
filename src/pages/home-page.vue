@@ -41,25 +41,25 @@ export default {
     return {
         demoCategories:[
             {
-                id:1,
+                id:"1",
             catName:'logo',
             txt:'Build your brand',
             title:'Logo Design',
             url:'https://graphicsfamily.com/wp-content/uploads/2020/05/Elegant-CA-letter-logo-4.jpg'
         },{
-            id:2,
+            id:"2",
             catName:'mobile',
             txt:'Build your mobile site',
             title:'Mobile Builders',
             url:'https://www.ionos.co.uk/digitalguide/fileadmin/DigitalGuide/Teaser/test-driven-development-t.jpg'
         },{
-            id:3,
+            id:"3",
             catName:'fullstack',
             txt:'learn web development',
             title:'Fullstack Course',
             url:'https://www.onlc.com/blog/wp-content/uploads/2017/12/ONLC-2017-4-637x350.png'
         },{
-            id:4,
+            id:"4",
             catName:'podcast',
             txt:'Podcast your ideas',
             title:'Podcast Experts',
