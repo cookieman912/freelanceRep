@@ -27,13 +27,13 @@
         & .navigation>a:hover {
             color: $fgc;
         }
-        & .navigation>a .header-join {
+        & .navigation>button .header-join {
             border: 1.5px solid $fgc;
             border-radius: 5px;
             padding: 0.25rem 1.5rem;
             transition: 0.35s ease;
         }
-        & .navigation>a .header-join:hover {
+        & .navigation>button .header-join:hover {
             color: white;
             background-color: #02a75a;
         }
@@ -47,6 +47,8 @@
         }
         & .navigation>button:hover {
             cursor: pointer;
+            color: $fgc;
+            transition: 0.35s ease;
         }
     }
 }

@@ -4,16 +4,13 @@
     height: 1000px;
     position: fixed;
     z-index: 1;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    .login-container {
+    .sign-container {
         color: #626466;
         width: 400px;
         height: 400px;
         background-color: white;
         position: fixed;
+        margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -52,7 +49,6 @@
             }
             button:hover {
                 text-decoration: underline;
-                cursor: pointer;
             }
         }
     }
