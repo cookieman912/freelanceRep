@@ -29,6 +29,36 @@
         </div>
         <div class="home-page-bottom-container layout">
             <h1>Popular professional services</h1>
+            <ul class="home-page-category-gallery">
+                <li class="home-page-category-image-wrapper">
+                    <div class="home-page-category-text-container">
+                        <h4>Build your brand</h4>
+                        <h2>Logo Design</h2>
+                    </div>
+                    <img src="https://images.assetsdelivery.com/compings_v2/viewpixeldesign/viewpixeldesign1610/viewpixeldesign161000109.jpg">
+                </li>
+                <li class="home-page-category-image-wrapper">
+                    <div class="home-page-category-text-container">
+                        <h4>Build your Mobile site</h4>
+                        <h2>Mobile development</h2>
+                    </div>
+                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/114649703/original/cf6338a7959c81e98d1b82ae15fef6105aa281fa/design-unique-and-elegant-logo-for-your-company.jpg">
+                </li>
+                <li class="home-page-category-image-wrapper">
+                    <div class="home-page-category-text-container">
+                        <h4>Learn Web development</h4>
+                        <h2>Fullstack course</h2>
+                    </div>
+                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/114649703/original/cf6338a7959c81e98d1b82ae15fef6105aa281fa/design-unique-and-elegant-logo-for-your-company.jpg">
+                </li>
+                <li class="home-page-category-image-wrapper">
+                    <div class="home-page-category-text-container">
+                        <h4>podcast your ideas</h4>
+                        <h2>Audio equipment</h2>
+                    </div>
+                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/114649703/original/cf6338a7959c81e98d1b82ae15fef6105aa281fa/design-unique-and-elegant-logo-for-your-company.jpg">
+                </li>
+            </ul>
         </div>
     </div>
 </template>
