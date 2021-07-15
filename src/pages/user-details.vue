@@ -1,36 +1,32 @@
 <template>
-  <section v-if="user">
-    <h1>User Details - {{ user.fullname }}</h1>
-    <h3>{{ user.username }} score: {{ user.score }}</h3>
-    <ul>
-      <li v-for="review in user.givenReviews" :key="review._id">
-        {{ review.txt }}
-        <router-link :to="`/user/${review.aboutUser._id}`">
-          About {{ review.aboutUser.fullname }}
-        </router-link>
-      </li>
-    </ul>
+<main class="user-details">
+  <section class="user-details-container" v-if="user">
+  
+<img class= "profile-pic" :src="require(`../assets/images/users/${imageName}`)" alt="profile pic">
 
-    <details>
-      <summary>Full JSON</summary>
-      <pre>{{ user }}</pre>
-    </details>
+    <h1>hello {{user.fullname }}</h1>
+    
+  
+   <form @submit.prevent="updateUser">
+     <h2>edit profile</h2>
+
+    <h4>fullname</h4>
+<input type="text" v-model="userToEdit.fullname" placeholder="name">
+
+    <h4>username</h4>
+<input type="text" v-model="userToEdit.username" placeholder="username">
+<button>update</button>
+
+   </form>
+   
   </section>
+  </main>
 </template>
 
 <script>
 // import {userService} from '../services/user.service';
 
 export default {
-  data() {
-    return {
-      // user: null
-    };
-  },
-  async created() {
-    // const user = await userService.getById(id);
-    // this.user = user
-  },
   watch: {
     userId: {
       handler() {
@@ -39,13 +35,37 @@ export default {
       immediate: true,
     },
   },
+
   computed: {
+    
     user() {
-      return this.$store.getters.watchedUser;
+      return this.$store.getters.loggedinUser
+    },
+    userToEdit(){
+         return JSON.parse(JSON.stringify(this.$store.getters.loggedinUser))
     },
     userId() {
       return this.$route.params.id;
     },
+       imageName(){
+  return this.$store.getters.loggedinUser.imageUrl.substring(23);
+},
+
+mounted(){
+ 
+},
   },
+
+  methods:{
+    async updateUser(){
+      let userToSend= this.userToEdit
+      try{await this.$store.dispatch({type:"updateUser",user:userToSend})
+      }
+      catch(err){
+        console.log('error!',err)
+        throw err
+      }
+    }
+  }
 };
 </script>

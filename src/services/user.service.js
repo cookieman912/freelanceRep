@@ -64,7 +64,9 @@ async function login(userCred) {
         // if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
-    userCred.score = 100;
+    console.log(userCred)
+    userCred.fullname = userCred.username;
+    userCred.imageUrl = '../assets/images/users/default.png'
     const user = await storageService.post('user', userCred)
         // const user = await httpService.post('auth/signup', userCred)
         // socketService.emit('set-user-socket', user._id);

@@ -8,7 +8,7 @@
         <router-link to="/">Home</router-link>
         <router-link to="/explore">Explore</router-link>
         <router-link to="/becomeSeller">Become a seller</router-link>
-        <span v-if="loggedInUser">{{loggedInUser.fullname}}</span>
+        <router-link :to ="'/user/'+loggedInUser._id" v-if="loggedInUser">{{loggedInUser.fullname}}</router-link>
      
        <button v-else @click="toggleLogin">Sign In</button> 
           <span v-if="loggedInUser" @click="signout">sign out</span>
@@ -18,12 +18,6 @@
        
       </div>
     </nav>
-    <!-- <section class="loggedin-user" v-if="loggedInUser">
-      <router-link :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
-      </router-link>
-      <span>{{ loggedInUser.score }}</span>
-    </section> -->
   </header>
 </template>
 <script>
@@ -44,6 +38,7 @@ export default {
     },
      async signout(){
         await this.$store.dispatch({ type: "logout" });
+        this.$router.push('/')
      }
   }
 };
