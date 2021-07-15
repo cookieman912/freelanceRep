@@ -17,7 +17,7 @@ const defaultGigs = [
         _id: "g101",
         title: "logo",
         imgUrls: [
-            "img1.jpg"
+            "../assets/images/gigs/design.jpg"
         ],
         price: 100,
         deliveryDays: 4,

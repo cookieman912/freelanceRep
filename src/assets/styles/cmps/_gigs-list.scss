@@ -6,9 +6,14 @@
     grid-gap: 1rem;
 
     & .gig-preview {
+        width: 310px;
         border: 1.5px solid $fbc;
         padding: 0.25rem;
         border-radius: 5px;
+
+        img {
+            width: 100%;
+        }
 
         & p,section {
             padding-inline-start: 1rem;

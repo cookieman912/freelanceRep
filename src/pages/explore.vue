@@ -1,5 +1,7 @@
 <template>
   <main class="explore">
+    <h2>Results for "logo"</h2>
+    <h2>Category name</h2>
     <filter-by />
     <gigs-list :gigs="getGigs" />
   </main>

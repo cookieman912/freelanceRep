@@ -1,5 +1,8 @@
 <template>
   <div class="gig-preview">
+    <img src="../assets/images/gigs/design.jpg" alt="" />
+    <!-- <img :src="require("@/assets/images/gigs/design.jpg")" /> -->
+    <!-- <p><span>img:</span> {{ gig.imgUrls }}</p> -->
     <p><span>name:</span> {{ gig.title }}</p>
     <p><span>price:</span> {{ gig.price }}</p>
     <p><span>type:</span> {{ gig.description }}</p>
@@ -15,5 +18,11 @@ export default {
   components: {
     gigTags,
   },
+  data() {
+    return {
+      img: null,
+    };
+  },
+  computed: {},
 };
 </script>
