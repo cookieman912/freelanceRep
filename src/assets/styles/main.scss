@@ -5,7 +5,11 @@
 //pages
 @import './pages/explore';
 @import './pages/home-page';
+@import './pages/user-details';
 //components
 @import './cmps/app-header';
 @import './cmps/log-in-modal';
-@import './cmps//signup-modal.scss'
+@import './cmps//signup-modal';
+@import './cmps/hp-search-bar';
+@import './cmps/hp-tag-buttons';
+@import './cmps/hp-category-gallery'

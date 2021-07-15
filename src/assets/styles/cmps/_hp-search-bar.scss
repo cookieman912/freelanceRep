@@ -1,0 +1,23 @@
+.hp-search-bar {
+    & input {
+        border: transparent;
+        height: 48px;
+        font-size: 16px;
+        padding-left: 44px;
+        margin-bottom: 0;
+        border-radius: 4px 0 0 4px;
+        width: 546px;
+        font-size: 16px;
+    }
+    & button {
+        border: transparent;
+        margin: 0;
+        border-radius: 0 4px 4px 0;
+        background-color: $fgc;
+        color: $white;
+        font-weight: 700;
+        width: 103px;
+        height: 48px;
+        padding-block-start: 3px;
+    }
+}
