@@ -1,34 +1,206 @@
-{
-    "_id": "g101",
-    "title": "logo",
-    "imgUrls": [
-        "img1.jpg"
-    ],
-    "pride": 100,
-    "deliveryDays": 4,
-    "description": "some description for the logo gig",
-    "tags": [
-        "graphic",
-        "website"
-    ],
-    "seller": {
-        "_id": "u101",
-        "fullname": "Yori Yorovich",
-        "imgUrl": "img.jpg"
-    },
-    "reviews": [
-        {
-            "id": "r101",
-            "txt": "wowowowowo",
-            "rate": 5
+[
+    {
+        "_id": "g101",
+        "title": "logo",
+        "imgUrls": [
+            "../src/assets/images/gigs/design.jpg"
+        ],
+        "price": 100,
+        "deliveryDays": 4,
+        "description": "some description for the logo gig",
+        "tags": [
+            "graphic",
+            "website"
+        ],
+        "seller": {
+            "_id": "u101",
+            "fullname": "Yori Yorovich",
+            "imgUrl": "img.jpg"
         },
-        {
-            "id": "r102",
-            "txt": "the best logo ever",
-            "rate": 5,
-            "by": {
-                "fullname": "puki puki"
+        "reviews": [
+            {
+                "id": "r101",
+                "txt": "wowowowowo",
+                "rate": 5
+            },
+            {
+                "id": "r102",
+                "txt": "the best logo ever",
+                "rate": 5,
+                "by": {
+                    "fullname": "puki puki"
+                }
             }
-        }
-    ]
-}
+        ]
+    },
+    {
+        "_id": "g102",
+        "title": "logo",
+        "imgUrls": [
+            "../src/assets/images/gigs/design.jpg"
+        ],
+        "price": 100,
+        "deliveryDays": 4,
+        "description": "some description for the logo gig",
+        "tags": [
+            "graphic",
+            "website"
+        ],
+        "seller": {
+            "_id": "u101",
+            "fullname": "Yori Yorovich",
+            "imgUrl": "img.jpg"
+        },
+        "reviews": [
+            {
+                "id": "r101",
+                "txt": "wowowowowo",
+                "rate": 5
+            },
+            {
+                "id": "r102",
+                "txt": "the best logo ever",
+                "rate": 5,
+                "by": {
+                    "fullname": "puki puki"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "g103",
+        "title": "logo",
+        "imgUrls": [
+            "../src/assets/images/gigs/design.jpg"
+        ],
+        "price": 100,
+        "deliveryDays": 4,
+        "description": "some description for the logo gig",
+        "tags": [
+            "graphic",
+            "website"
+        ],
+        "seller": {
+            "_id": "u101",
+            "fullname": "Yori Yorovich",
+            "imgUrl": "img.jpg"
+        },
+        "reviews": [
+            {
+                "id": "r101",
+                "txt": "wowowowowo",
+                "rate": 5
+            },
+            {
+                "id": "r102",
+                "txt": "the best logo ever",
+                "rate": 5,
+                "by": {
+                    "fullname": "puki puki"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "g104",
+        "title": "logo",
+        "imgUrls": [
+            "../src/assets/images/gigs/design.jpg"
+        ],
+        "price": 100,
+        "deliveryDays": 4,
+        "description": "some description for the logo gig",
+        "tags": [
+            "graphic",
+            "website"
+        ],
+        "seller": {
+            "_id": "u102",
+            "fullname": "Yori Yorovich",
+            "imgUrl": "img.jpg"
+        },
+        "reviews": [
+            {
+                "id": "r101",
+                "txt": "wowowowowo",
+                "rate": 5
+            },
+            {
+                "id": "r102",
+                "txt": "the best logo ever",
+                "rate": 5,
+                "by": {
+                    "fullname": "puki puki"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "g105",
+        "title": "logo",
+        "imgUrls": [
+            "../src/assets/images/gigs/design.jpg"
+        ],
+        "price": 100,
+        "deliveryDays": 4,
+        "description": "some description for the logo gig",
+        "tags": [
+            "graphic",
+            "website"
+        ],
+        "seller": {
+            "_id": "u102",
+            "fullname": "Yori Yorovich",
+            "imgUrl": "img.jpg"
+        },
+        "reviews": [
+            {
+                "id": "r101",
+                "txt": "wowowowowo",
+                "rate": 5
+            },
+            {
+                "id": "r102",
+                "txt": "the best logo ever",
+                "rate": 5,
+                "by": {
+                    "fullname": "puki puki"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "g106",
+        "title": "logo",
+        "imgUrls": [
+            "../src/assets/images/gigs/design.jpg"
+        ],
+        "price": 100,
+        "deliveryDays": 4,
+        "description": "some description for the logo gig",
+        "tags": [
+            "graphic",
+            "website"
+        ],
+        "seller": {
+            "_id": "u102",
+            "fullname": "Yori Yorovich",
+            "imgUrl": "img.jpg"
+        },
+        "reviews": [
+            {
+                "id": "r101",
+                "txt": "wowowowowo",
+                "rate": 5
+            },
+            {
+                "id": "r102",
+                "txt": "the best logo ever",
+                "rate": 5,
+                "by": {
+                    "fullname": "puki puki"
+                }
+            }
+        ]
+    }
+]

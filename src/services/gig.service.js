@@ -1,7 +1,7 @@
 import { storageService } from './async-storage.service.js'
 // import { httpService } from './http-service.js'
 // import axios from 'axios'
-
+const defaultGigs = require('../../data/gig.json')
 
 const GIG_KEY = "gigsDB"
 export const gigService = {
@@ -12,41 +12,41 @@ export const gigService = {
     getEmptyReview,
 }
 
-const defaultGigs = [
-    {
-        _id: "g101",
-        title: "logo",
-        imgUrls: [
-            "../assets/images/gigs/design.jpg"
-        ],
-        price: 100,
-        deliveryDays: 4,
-        description: "some description for the logo gig",
-        tags: [
-            "graphic",
-            "website"
-        ],
-        seller: {
-            _id: "u101",
-            fullname: "Yori Yorovich",
-            imgUrl: "img.jpg"
-        },
-        reviews: [{
-            id: 'r101',
-            txt: 'wowowowowo',
-            rate: 5
-        },
-        {
-            id: 'r102',
-            txt: "the best logo ever",
-            rate: 5,
-            by: {
-                fullname: "puki puki"
-            }
-        }
-        ]
-    }
-]
+// const defaultGigs = [
+//     {
+//         _id: "g101",
+//         title: "logo",
+//         imgUrls: [
+//             "../assets/images/gigs/design.jpg"
+//         ],
+//         price: 100,
+//         deliveryDays: 4,
+//         description: "some description for the logo gig",
+//         tags: [
+//             "graphic",
+//             "website"
+//         ],
+//         seller: {
+//             _id: "u101",
+//             fullname: "Yori Yorovich",
+//             imgUrl: "img.jpg"
+//         },
+//         reviews: [{
+//             id: 'r101',
+//             txt: 'wowowowowo',
+//             rate: 5
+//         },
+//         {
+//             id: 'r102',
+//             txt: "the best logo ever",
+//             rate: 5,
+//             by: {
+//                 fullname: "puki puki"
+//             }
+//         }
+//         ]
+//     }
+// ]
 
 
 

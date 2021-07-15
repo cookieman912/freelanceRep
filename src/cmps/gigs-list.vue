@@ -1,17 +1,6 @@
 <template>
   <section class="gigs-list">
     <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
-    <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
   </section>
 </template>
 
@@ -22,7 +11,9 @@ export default {
   components: {
     gigPreview,
   },
-  props: ["gigs"],
+  props: {
+    gigs: Array,
+  },
   data() {
     return {};
   },

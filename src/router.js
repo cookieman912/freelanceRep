@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from './pages/home-page.vue'
 import explorePage from './pages/explore.vue'
+import gigDetails from './pages/gig-details.vue'
 import becomeSeller from './pages/become-seller.vue'
 import loginSignup from './pages/login-signup.vue'
 // import userDetails from './pages/user-details.vue'
@@ -22,6 +23,11 @@ export const router = new Router({
       path: '/explore',
       name: 'explore',
       component: explorePage
+    },
+    {
+      path: '/explore/:gigId',
+      name: 'gig-details',
+      component: gigDetails
     },
     {
       path: '/becomeSeller',

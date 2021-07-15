@@ -31,13 +31,22 @@ function post(entityType, newEntity) {
         })
 }
 
+// function postMany(entityType, newEntities) {
+//     return query(entityType)
+//         .then(entities => {
+//             newEntities = newEntities.map(entity => ({ ...entity, _id: _makeId() }))
+//             entities.push(...newEntities)
+//             _save(entityType, entities)
+//             return newEntities
+//         })
+// }
+
 function postMany(entityType, newEntities) {
     return query(entityType)
         .then(entities => {
-            newEntities = newEntities.map(entity => ({ ...entity, _id: _makeId() }))
-            entities.push(...newEntities)
+            entities.push(...newEntities);
             _save(entityType, entities)
-            return newEntities
+            return entities;
         })
 }
 
