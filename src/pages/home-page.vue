@@ -31,33 +31,35 @@
             <h1>Popular professional services</h1>
             <ul class="home-page-category-gallery">
                 <li class="home-page-category-image-wrapper">
+                <button class="home-page-category-before-btn">&#60;</button>
                     <div class="home-page-category-text-container">
                         <h4>Build your brand</h4>
                         <h2>Logo Design</h2>
                     </div>
-                    <img src="https://images.assetsdelivery.com/compings_v2/viewpixeldesign/viewpixeldesign1610/viewpixeldesign161000109.jpg">
+                    <img src="https://graphicsfamily.com/wp-content/uploads/2020/05/Elegant-CA-letter-logo-4.jpg">
                 </li>
                 <li class="home-page-category-image-wrapper">
                     <div class="home-page-category-text-container">
                         <h4>Build your Mobile site</h4>
-                        <h2>Mobile development</h2>
+                        <h2>Mobile builders</h2>
                     </div>
-                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/114649703/original/cf6338a7959c81e98d1b82ae15fef6105aa281fa/design-unique-and-elegant-logo-for-your-company.jpg">
+                    <img src="https://www.ionos.co.uk/digitalguide/fileadmin/DigitalGuide/Teaser/test-driven-development-t.jpg">
                 </li>
                 <li class="home-page-category-image-wrapper">
                     <div class="home-page-category-text-container">
                         <h4>Learn Web development</h4>
                         <h2>Fullstack course</h2>
                     </div>
-                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/114649703/original/cf6338a7959c81e98d1b82ae15fef6105aa281fa/design-unique-and-elegant-logo-for-your-company.jpg">
+                    <img src="https://www.onlc.com/blog/wp-content/uploads/2017/12/ONLC-2017-4-637x350.png">
                 </li>
                 <li class="home-page-category-image-wrapper">
                     <div class="home-page-category-text-container">
                         <h4>podcast your ideas</h4>
-                        <h2>Audio equipment</h2>
+                        <h2>Podcast experts</h2>
                     </div>
-                    <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/114649703/original/cf6338a7959c81e98d1b82ae15fef6105aa281fa/design-unique-and-elegant-logo-for-your-company.jpg">
+                    <img src="https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg">
                 </li>
+                <button class="home-page-category-next-btn">&#62;</button>
             </ul>
         </div>
     </div>

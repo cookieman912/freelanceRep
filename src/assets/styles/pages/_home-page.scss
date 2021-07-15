@@ -32,11 +32,11 @@
         width: 650px;
     }
     & .home-page-search-bar-container {
+        margin-top: 20px;
         & .home-page-search-bar {
             border: transparent;
-            font-size: 16px;
             height: 48px;
-            margin-top: 20px;
+            font-size: 16px;
             padding-left: 44px;
             margin-bottom: 0;
             border-radius: 4px 0 0 4px;
@@ -52,6 +52,7 @@
             font-weight: 700;
             width: 103px;
             height: 48px;
+            padding-block-start: 3px;
         }
     }
     & .home-page-tag-buttons {
@@ -84,13 +85,46 @@
     }
     & .home-page-category-gallery {
         display: flex;
+        position: inherit;
+        list-style-type: none;
+        padding-inline-start: 0;
+        gap: 10px;
+        & .home-page-category-before-btn {
+            background-color: $white;
+            position: absolute;
+            z-index: 4;
+            top: 104%;
+            left: 0%;
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            border: 0;
+            font-size: 25px;
+            border-radius: 30px;
+            box-shadow: 0px 14px 29px -1px rgba(0, 0, 0, 0.23);
+        }
+        & .home-page-category-next-btn {
+            background-color: $white;
+            position: absolute;
+            z-index: 4;
+            top: 104%;
+            right: 0%;
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            border: 0;
+            font-size: 25px;
+            border-radius: 30px;
+            box-shadow: 0px 14px 29px -1px rgba(0, 0, 0, 0.23);
+        }
     }
     & .home-page-category-image-wrapper {
+        display: flex;
         position: inherit;
         height: 345px;
         width: 100%;
-        border-radius: 4px;
         & img {
+            border-radius: 4px;
             max-width: 240px;
             object-fit: cover;
             height: 345px;
@@ -102,4 +136,10 @@
     position: absolute;
     color: $white;
     padding: 16px;
+    & h4 {
+        font-size: 14px;
+    }
+    & h2 {
+        font-size: 24px;
+    }
 }

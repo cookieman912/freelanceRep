@@ -1,22 +1,21 @@
 modal<template>
-  <section @click="clickOutsideModal" class="log-in hidden" ref="signupModal">
-    <section class="login-container">
-      <header><h4>join Freelancer</h4></header>
+  <section @click="clickOutsideModal" class="signup hidden" ref="signupModal">
+    <section class="signup-container">
+      <header><h4>Join Freelancer</h4></header>
       <form>
-        <input type="text" placeholder="Choose a username" />
+        <input type="text" placeholder="Choose a Username" />
 
-        <input type="password" placeholder="Choose a password" />
+        <input type="password" placeholder="Choose a Password" />
         <button>join</button>
       </form>
       <p>
-        By joining, you agree to Fiverr’s<span> Terms of Service,</span> as well
+        By joining, you agree to Freelance’s<span class="tos"> Terms of Service,</span> as well
         as to receive occasional emails from us
       </p>
-      <!-- router link the the near future -->
       <footer>
         <p>
           Already a member?
-          <button @click="signinClicked()">
+          <button class="link-button" @click="signinClicked()">
            Sign in 
           </button>
         </p>
@@ -47,7 +46,7 @@ export default {
     },
     clickOutsideModal(event) {
       console.log(event.target.classList.value);
-      if (event.target.classList.value === "log-in") this.toggleSignUp();
+      if (event.target.classList.value === "signup") this.toggleSignUp();
     },
     signinClicked(){
   this.toggleSignUp();

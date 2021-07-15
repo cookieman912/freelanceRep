@@ -24,6 +24,13 @@
             font-weight: 600;
             transition: 0.35s ease;
         }
+        & .navigation>span {
+            text-decoration: none;
+            padding-inline-start: 1.5rem;
+            color: $ftc;
+            font-weight: 600;
+            transition: 0.35s ease;
+        }
         & .navigation>a:hover {
             color: $fgc;
         }
