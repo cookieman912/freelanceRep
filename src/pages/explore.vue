@@ -1,5 +1,5 @@
 <template>
-  <main class="axplore">
+  <main class="explore">
     <filter-by />
     <gigs-list :gigs="getGigs" />
   </main>
