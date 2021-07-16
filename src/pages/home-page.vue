@@ -25,11 +25,25 @@
     <div class="home-page-bottom-container main-layout">
         <h1>Popular professional services</h1>
         <hp-category-list :categories="getCategories" />
-        <div class="hp-top-rated-header">
+        <div class="hp-buttom-header-container">
             <h1>Top rated Gigs</h1>
             <span>
-                <button>See all</button>
+              <button @click.prevent="toExplorePage">See all</button>
             </span>
+        </div>
+        <gigs-list :gigs="getGigs" />
+        <div class="hp-buttom-header-container">
+          <h1>Discover Web development</h1>
+          <span>
+            <button @click.prevent="toExplorePage">See all</button>
+          </span>
+        </div>
+        <gigs-list :gigs="getGigs" />
+        <div class="hp-buttom-header-container">
+          <h1>Discover Business</h1>
+          <span>
+            <button @click.prevent="toExplorePage">See all</button>
+          </span>
         </div>
         <gigs-list :gigs="getGigs" />
     </div>
@@ -95,6 +109,11 @@ export default {
     },
     getGigs() {
       return this.$store.getters.gigsToShow;
+    },
+  },
+  methods: {
+    toExplorePage() {
+      this.$router.push("/explore");
     },
   },
   created() {
