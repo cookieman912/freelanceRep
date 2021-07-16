@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div v-if="getGigs" class="home-page">
     <div class="home-page-top-container">
       <div class="home-page-top layout">
         <main class="home-page-search">
@@ -27,6 +27,7 @@
     <div class="home-page-bottom-container layout">
       <h1>Popular professional services</h1>
       <hp-category-list :categories="getCategories" />
+      <gigs-list :gigs="getGigs" />
     </div>
   </div>
 </template>
@@ -34,12 +35,13 @@
 import hpSearchBar from "../cmps/hp-search-bar.vue";
 import hpTagButtons from "../cmps/hp-tag-buttons.vue";
 import hpCategoryList from "../cmps/hp-category-list.vue";
-
+import gigsList from "../cmps/gigs-list.vue";
 export default {
   components: {
     hpSearchBar,
     hpTagButtons,
     hpCategoryList,
+    gigsList,
   },
   data() {
     return {
@@ -72,6 +74,13 @@ export default {
           title: "Podcast Experts",
           url: "https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg",
         },
+        {
+          id: "5",
+          catName: "podcast",
+          txt: "Podcast your ideas",
+          title: "Podcast Experts",
+          url: "https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg",
+        },
       ],
     };
   },
@@ -80,9 +89,12 @@ export default {
     getCategories() {
       return this.demoCategories;
     },
+    getGigs() {
+      return this.$store.getters.gigsToShow;
+    },
   },
   created() {
-    console.log("this.$route", this.$route.path);
+    this.$store.dispatch({ type: "loadGigs" });
   },
   destroyed() {},
 };

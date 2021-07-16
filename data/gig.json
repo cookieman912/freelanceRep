@@ -1,5 +1,4 @@
-[
-    {
+[{
         "_id": "g101",
         "title": "logo",
         "imgUrls": [
@@ -17,8 +16,7 @@
             "fullname": "Yori Yorovich",
             "imgUrl": "img.jpg"
         },
-        "reviews": [
-            {
+        "reviews": [{
                 "id": "r101",
                 "txt": "wowowowowo",
                 "rate": 5
@@ -35,31 +33,31 @@
     },
     {
         "_id": "g102",
-        "title": "logo",
+        "title": "FullStack course",
         "imgUrls": [
             "../src/assets/images/gigs/design.jpg"
         ],
         "price": 100,
-        "deliveryDays": 4,
-        "description": "some description for the logo gig",
+        "deliveryDays": 3,
+        "description": "I will give you 20 videos of Fullstack course",
         "tags": [
-            "graphic",
-            "website"
+            "programming",
+            "website",
+            "internet"
         ],
         "seller": {
             "_id": "u101",
             "fullname": "Yori Yorovich",
             "imgUrl": "img.jpg"
         },
-        "reviews": [
-            {
+        "reviews": [{
                 "id": "r101",
-                "txt": "wowowowowo",
+                "txt": "Great course",
                 "rate": 5
             },
             {
                 "id": "r102",
-                "txt": "the best logo ever",
+                "txt": "The best course ever!",
                 "rate": 5,
                 "by": {
                     "fullname": "puki puki"
@@ -69,24 +67,23 @@
     },
     {
         "_id": "g103",
-        "title": "logo",
+        "title": "5 Podcasts",
         "imgUrls": [
             "../src/assets/images/gigs/design.jpg"
         ],
         "price": 100,
         "deliveryDays": 4,
-        "description": "some description for the logo gig",
+        "description": "I will do 5 full podcasts",
         "tags": [
-            "graphic",
-            "website"
+            "sound",
+            "internet"
         ],
         "seller": {
             "_id": "u101",
             "fullname": "Yori Yorovich",
             "imgUrl": "img.jpg"
         },
-        "reviews": [
-            {
+        "reviews": [{
                 "id": "r101",
                 "txt": "wowowowowo",
                 "rate": 5
@@ -103,31 +100,30 @@
     },
     {
         "_id": "g104",
-        "title": "logo",
+        "title": "business plan",
         "imgUrls": [
             "../src/assets/images/gigs/design.jpg"
         ],
         "price": 100,
         "deliveryDays": 4,
-        "description": "some description for the logo gig",
+        "description": "I will write a business plan for startups",
         "tags": [
-            "graphic",
-            "website"
+            "business",
+            "business plan"
         ],
         "seller": {
             "_id": "u102",
             "fullname": "Yori Yorovich",
             "imgUrl": "img.jpg"
         },
-        "reviews": [
-            {
+        "reviews": [{
                 "id": "r101",
-                "txt": "wowowowowo",
+                "txt": "I liked the detailed plan. Thank you!",
                 "rate": 5
             },
             {
                 "id": "r102",
-                "txt": "the best logo ever",
+                "txt": "Thanks, Boosted my business!",
                 "rate": 5,
                 "by": {
                     "fullname": "puki puki"
@@ -137,31 +133,30 @@
     },
     {
         "_id": "g105",
-        "title": "logo",
+        "title": "Cooking lesson",
         "imgUrls": [
             "../src/assets/images/gigs/design.jpg"
         ],
         "price": 100,
         "deliveryDays": 4,
-        "description": "some description for the logo gig",
+        "description": "I will give you 20 vegan video recipes for your blog or social media",
         "tags": [
-            "graphic",
-            "website"
+            "lifestyle",
+            "cooking", "vegan"
         ],
         "seller": {
             "_id": "u102",
             "fullname": "Yori Yorovich",
             "imgUrl": "img.jpg"
         },
-        "reviews": [
-            {
+        "reviews": [{
                 "id": "r101",
-                "txt": "wowowowowo",
+                "txt": "Great recipies",
                 "rate": 5
             },
             {
                 "id": "r102",
-                "txt": "the best logo ever",
+                "txt": "the best gig ever",
                 "rate": 5,
                 "by": {
                     "fullname": "puki puki"
@@ -171,31 +166,30 @@
     },
     {
         "_id": "g106",
-        "title": "logo",
+        "title": "traveling",
         "imgUrls": [
             "../src/assets/images/gigs/design.jpg"
         ],
         "price": 100,
         "deliveryDays": 4,
-        "description": "some description for the logo gig",
+        "description": "I will help you plan your amazing european vication",
         "tags": [
-            "graphic",
-            "website"
+            "vication",
+            "travel", "europe"
         ],
         "seller": {
             "_id": "u102",
             "fullname": "Yori Yorovich",
             "imgUrl": "img.jpg"
         },
-        "reviews": [
-            {
+        "reviews": [{
                 "id": "r101",
-                "txt": "wowowowowo",
+                "txt": "What a dream viacation",
                 "rate": 5
             },
             {
                 "id": "r102",
-                "txt": "the best logo ever",
+                "txt": "Was perfect to my budget",
                 "rate": 5,
                 "by": {
                     "fullname": "puki puki"

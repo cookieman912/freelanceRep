@@ -109,15 +109,12 @@ export const userStore = {
             }
 
         },
-        async increaseScore({ commit }) {
+        async becomeSeller({ commit }, { userToUpdate }) {
             try {
-                const score = await userService.increaseScore()
-                commit({ type: 'setUserScore', score })
-            } catch (err) {
-                console.log('userStore: Error in increaseScore', err)
-                throw err
-            }
+                console.log('in function');
 
+            } catch {}
         }
+
     }
 }
