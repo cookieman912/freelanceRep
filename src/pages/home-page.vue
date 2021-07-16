@@ -70,6 +70,13 @@ export default {
             title:'Podcast Experts',
             url:'https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg'
         },
+        {
+            id:"5",
+            catName:'podcast',
+            txt:'Podcast your ideas',
+            title:'Podcast Experts',
+            url:'https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg'
+        },
         ]
     };
   },
