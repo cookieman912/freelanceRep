@@ -2,11 +2,10 @@
     background-color: rgb(231, 23, 23);
 }
 
-.layout {
-    margin: 0 auto;
-    max-width: 1400px;
-}
-
+// .layout {
+//     margin: 0 auto;
+//     max-width: 1400px;
+// }
 .home-page-top {
     display: flex;
     justify-content: space-between;
@@ -43,5 +42,10 @@
         color: $flc;
         font-size: 32px;
         margin-top: 110px;
+    }
+    & .hp-top-rated-header {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
     }
 }

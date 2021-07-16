@@ -1,7 +1,6 @@
 <template>
     <section class="hp-category-preview">
         <li class="home-page-category-image-wrapper">
-            <button class="home-page-category-before-btn">&#60;</button>
             <div class="home-page-category-text-container">
                 <h4>{{cat.txt}}</h4>
                 <h2>{{cat.title}}</h2>

@@ -1,5 +1,6 @@
 //basics
 @import './basics/base';
+@import './basics/layout';
 // setup
 @import './setup/_variables';
 //pages
@@ -17,3 +18,4 @@
 @import './cmps/app-header-search';
 @import './cmps/gig-buying-box';
 @import './cmps/hp-category-list';
+@import './cmps/hp-category-preview';

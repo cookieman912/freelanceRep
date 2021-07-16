@@ -1,7 +1,7 @@
 <template>
   <div v-if="getGigs" class="home-page">
     <div class="home-page-top-container">
-      <div class="home-page-top layout">
+      <div class="home-page-top main-layout">
         <main class="home-page-search">
           <header class="header">
             <h1>
@@ -17,17 +17,21 @@
         </main>
         <div class="home-page-image-container">
           <picture>
-            <img
-              src="https://st.depositphotos.com/1008939/i/600/depositphotos_18807295-stock-photo-portrait-of-handsome-man.jpg"
-            />
+            <img src="https://st.depositphotos.com/1008939/i/600/depositphotos_18807295-stock-photo-portrait-of-handsome-man.jpg"/>
           </picture>
         </div>
       </div>
     </div>
-    <div class="home-page-bottom-container layout">
-      <h1>Popular professional services</h1>
-      <hp-category-list :categories="getCategories" />
-      <gigs-list :gigs="getGigs" />
+    <div class="home-page-bottom-container main-layout">
+        <h1>Popular professional services</h1>
+        <hp-category-list :categories="getCategories" />
+        <div class="hp-top-rated-header">
+            <h1>Top rated Gigs</h1>
+            <span>
+                <button>See all</button>
+            </span>
+        </div>
+        <gigs-list :gigs="getGigs" />
     </div>
   </div>
 </template>
@@ -76,10 +80,10 @@ export default {
         },
         {
           id: "5",
-          catName: "podcast",
-          txt: "Podcast your ideas",
-          title: "Podcast Experts",
-          url: "https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg",
+          catName: "Business",
+          txt: "Business Plan",
+          title: "Plan your Business",
+          url: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fforbesfinancecouncil%2Ffiles%2F2018%2F07%2Fpexels-photo-990818-3-1200x730.jpg",
         },
       ],
     };
