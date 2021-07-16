@@ -5,9 +5,10 @@
     width: 100%;
     & img {
         border-radius: 4px;
-        max-width: 237px;
+        max-width: 235px;
         object-fit: cover;
         height: 345px;
+        // margin-inline: 16px;
     }
 }
 

@@ -1,9 +1,10 @@
 .home-page-category-list {
     display: flex;
+    flex-wrap: wrap;
     position: inherit;
     list-style-type: none;
     padding-inline-start: 0;
-    gap: 38px;
+    gap: 16px;
     & .home-page-category-before-btn {
         background-color: $white;
         position: absolute;
