@@ -58,7 +58,7 @@ mounted(){
 
   methods:{
     async updateUser(){
-      let userToSend= this.userToEdit
+    const userToSend= this.userToEdit
       try{await this.$store.dispatch({type:"updateUser",user:userToSend})
       }
       catch(err){

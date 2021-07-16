@@ -9,33 +9,25 @@
             "seller": {
                 "specialty": "graphic design",
                 "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
+                "reviews": [{
+                        "id": "r101",
+                        "txt": "wowowowowo"
+                    },
+                    {
+                        "id": "r102",
+                        "txt": "the best logo ever",
+                        "by": {
+                            "fullname": "puki puki"
+                        }
+                    }
+                ],
                 "gigs": [{
                     "_id": "g101",
                     "title": "logo",
                     "imgUrls": [
                         "img1.jpg"
                     ],
-                    "price": 100,
-                    "deliveryDays": 4,
-                    "description": "some description for the logo gig",
-                    "tags": [
-                        "graphic",
-                        "website"
-                    ],
-                    "reviews": [{
-                            "id": "r101",
-                            "txt": "wowowowowo",
-                            "rate": 5
-                        },
-                        {
-                            "id": "r102",
-                            "txt": "the best logo ever",
-                            "rate": 5,
-                            "by": {
-                                "fullname": "puki puki"
-                            }
-                        }
-                    ]
+                    "description": "some description for the logo gig"
                 }],
                 "orders": [{
                     "_id": "o101",
