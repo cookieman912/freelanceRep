@@ -41,13 +41,12 @@ export default {
   methods: {
     async becomeSeller() {
 this.user.seller=this.sellerDetails
-console.log(this.user);
-
-    //   try {
+const userToSend=this.user;
+      try {
         
-    // //    await this.$store.dispatch({type:"becomeSeller",sellerDetails:detailsToSend});
+       await this.$store.dispatch({type:"becomeSeller",sellerDetails:detailsToSend});
        
-    //   } catch {}
+      } catch {}
     },
   },
 };
