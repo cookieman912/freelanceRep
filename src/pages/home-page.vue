@@ -1,5 +1,5 @@
 <template>
-    <div class="home-page">
+    <div v-if="getGigs" class="home-page">
         <div class="home-page-top-container">
             <div class="home-page-top layout">
                 <main class="home-page-search">
@@ -23,8 +23,7 @@
         <div class="home-page-bottom-container layout">
             <h1>Popular professional services</h1>
             <hp-category-list :categories="getCategories"/>
-            <pre>Top rated Gigs</pre>
-            <gigs-list :gigs="getGigs" />
+            <gigs-list :gigs="getGigs"/>
         </div>
     </div>
 </template>
@@ -77,7 +76,8 @@ export default {
             title:'Podcast Experts',
             url:'https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg'
         },
-        ]
+        ],
+    
     };
   },
   methods: {},
@@ -85,12 +85,13 @@ export default {
       getCategories(){
           return this.demoCategories;
       },
-      getGigs() {
+    getGigs() {
       return this.$store.getters.gigsToShow;
     },
-      
   },
-  created() {},
+  created() {
+    this.$store.dispatch({ type: "loadGigs" });
+  },
   destroyed() {},
 };
 </script>
