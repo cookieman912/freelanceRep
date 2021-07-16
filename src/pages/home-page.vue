@@ -23,6 +23,8 @@
         <div class="home-page-bottom-container layout">
             <h1>Popular professional services</h1>
             <hp-category-list :categories="getCategories"/>
+            <pre>Top rated Gigs</pre>
+            <gigs-list :gigs="getGigs" />
         </div>
     </div>
 </template>
@@ -30,12 +32,15 @@
 import hpSearchBar from "../cmps/hp-search-bar.vue";
 import hpTagButtons from "../cmps/hp-tag-buttons.vue";
 import hpCategoryList from "../cmps/hp-category-list.vue";
+import gigsList from "../cmps/gigs-list.vue";
+
 
 export default {
   components: {
     hpSearchBar,
     hpTagButtons,
-    hpCategoryList
+    hpCategoryList,
+    gigsList
   },
   data() {
     return {
@@ -72,7 +77,11 @@ export default {
   computed: {
       getCategories(){
           return this.demoCategories;
-      }
+      },
+      getGigs() {
+      return this.$store.getters.gigsToShow;
+    },
+      
   },
   created() {},
   destroyed() {},
