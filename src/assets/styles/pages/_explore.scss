@@ -3,6 +3,13 @@
 @import '../cmps/gig-tags';
 
 .explore {
+
+    h2 {
+        padding-top: 2rem;
+        padding-bottom: 0.75rem;
+    }
+
+    padding: 0 2rem;
     width: 1400px;
     margin: auto;
 }

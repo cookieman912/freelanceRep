@@ -5,8 +5,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 5.0625rem;
-        width: 87.5rem;
+        height: 5rem;
+        width: $main-layout;
+        padding: 0 2rem;
         margin: auto;
         & .logo>a {
             text-decoration: none;

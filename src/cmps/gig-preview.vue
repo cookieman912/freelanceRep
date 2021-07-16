@@ -28,7 +28,6 @@ export default {
   },
   computed: {
     imgUrl() {
-      console.log("this.gig.imgUrls[0]", this.gig.imgUrls[0].substring(26));
       return this.gig.imgUrls[0].substring(26);
     },
   },

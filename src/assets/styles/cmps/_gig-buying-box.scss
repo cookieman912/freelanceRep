@@ -1,0 +1,14 @@
+.gig-package {
+    margin: 1rem;
+        border: 1.5px solid $fbc;
+        padding: 2rem;
+
+        button {
+            width: 100%;
+            height: 2rem;
+            background-color: $fgc;
+            border: none;
+            color: $white;
+            border-radius: 5px;
+        }
+}

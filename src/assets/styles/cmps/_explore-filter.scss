@@ -1,9 +1,8 @@
 .explore-filter {
     margin: 1rem auto;
-    width: 1400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 2rem;
 
     & .explore-choose {
         border: 1.5px solid $fbc;

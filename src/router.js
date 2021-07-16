@@ -11,7 +11,6 @@ import userDetails from './pages/user-details.vue'
 Vue.use(Router)
 
 export const router = new Router({
-<<<<<<< HEAD
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -40,41 +39,10 @@ export const router = new Router({
       name: 'loginSignup',
       component: loginSignup
     },
-    // {
-    //   path: '/user/:id',
-    //   name: 'user-details',
-    //   component: userDetails
-    // }
+    {
+      path: '/user/:id',
+      name: 'user-details',
+      component: userDetails
+    }
   ]
 })
-=======
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: home
-        },
-        {
-            path: '/explore',
-            name: 'explore',
-            component: explorePage
-        },
-        {
-            path: '/becomeSeller',
-            name: 'becomeSeller',
-            component: becomeSeller
-        },
-        {
-            path: '/login',
-            name: 'loginSignup',
-            component: loginSignup
-        },
-        {
-            path: '/user/:id',
-            name: 'user-details',
-            component: userDetails
-        }
-    ]
-})
->>>>>>> 5c7501b5751540c390a79699922d370c2ac4c851

@@ -1,15 +1,12 @@
 .gigs-list {
-    margin: 1rem auto;
-    width: 1400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 2rem;
 
     & .gig-preview {
         width: 310px;
         border: 1.5px solid $fbc;
-        padding: 0.25rem;
-        border-radius: 5px;
+        // padding: 0.25rem;
 
         img {
             width: 100%;

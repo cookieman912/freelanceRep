@@ -9,7 +9,7 @@
 
 <script>
 import gigsList from "../cmps/gigs-list.vue";
-import filterBy from "../cmps/filter.vue";
+import filterBy from "../cmps/explore-filter.vue";
 export default {
   components: {
     gigsList,

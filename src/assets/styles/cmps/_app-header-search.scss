@@ -1,0 +1,35 @@
+.header-search {
+    position: relative;
+    color: $ftc;
+    color: blue;
+    
+    svg {
+        color: blue;
+        position: absolute;
+        top: 30%;
+        left: 3%;
+    }
+
+    & input.header-search-bar {
+        border: 1.5px solid $fbc;
+        height: 2.125rem;
+        padding-left: 44px;
+        border-radius: 4px 0 0 4px;
+        width: 20rem;
+        font-size: 1rem;
+    }
+    & input.header-search-bar:focus{
+        outline: 0;
+        border: 1.5px solid #c5c6c9;
+    }
+    & button {
+        border: transparent;
+        border-radius: 0 4px 4px 0;
+        background-color: $fgc;
+        color: $white;
+        font-weight: 700;
+        height: 2.125rem;
+        width: 5.0625rem;
+        padding-block-start: 3px;
+    }
+}
