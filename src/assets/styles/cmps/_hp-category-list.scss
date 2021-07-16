@@ -3,8 +3,8 @@
     flex-wrap: wrap;
     position: inherit;
     list-style-type: none;
-    padding-inline-start: 0;
-    gap: 16px;
+    justify-content: space-between;
+    margin: 0;
     & .home-page-category-before-btn {
         background-color: $white;
         position: absolute;
