@@ -1,0 +1,12 @@
+@mixin btn-white-trans {
+    background-color: transparent;
+    line-height: 24px;
+    font-weight: 600;
+    color: #fff;
+    padding: 1px 12px 0;
+    border: 1px solid #fff;
+    border-radius: 40px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}

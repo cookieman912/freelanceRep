@@ -3,6 +3,7 @@
 @import './basics/layout';
 // setup
 @import './setup/_variables';
+@import './setup//mixins';
 //pages
 @import './pages/explore';
 @import './pages/home-page';
