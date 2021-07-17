@@ -3,11 +3,11 @@
             "_id": "u101",
             "fullname": "User 1",
             "profileImg": "https://res.cloudinary.com/urigross/image/upload/v1626524482/hp-hero/breaking_bad_hwhrxl.jpg",
-            "username": "user1",
+            "username": "Zach",
             "password": "secret",
             "isAdmin": false,
             "seller": {
-                "specialty": "graphic design",
+                "specialty": "Bar owner",
                 "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
                 "reviews": [{
                         "id": "r101",
