@@ -33,6 +33,15 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
     },
+
+    isUserSeller() {
+      if (
+        this.$store.getters.loggedinUser.seller === null ||
+        !this.$store.getters.loggedinUser.seller
+      )
+        return false;
+      else return true;
+    },
     serachBar() {
       return this.$route.path !== "/";
     },

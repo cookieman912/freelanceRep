@@ -22,9 +22,9 @@ export const gigStore = {
     actions: {
         async addGig(context, { gig }) {
             try {
-                gig = await gigService.add(gig)
+                gig = await gigService.save(gig)
                 context.commit({ type: 'addGig', gig })
-                // context.dispatch({type: 'increaseScore'})
+                    // context.dispatch({type: 'increaseScore'})
                 return gig;
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)

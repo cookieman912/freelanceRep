@@ -1,0 +1,59 @@
+        .become-seller-container {
+            font-family: Nunito_Sans, times;
+            padding: 0px 16px 0px;
+            text-align: center;
+            color: #404145;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            max-width: $main-layout;
+            form {
+                width: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: auto;
+                select {
+                    border: none;
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+                button {
+                    width: 90%;
+                    padding: 8px 12px;
+                    background-color: $fgc;
+                    color: white;
+                    font-size: 1.2em;
+                    border: none;
+                    border-radius: 0.2em
+                }
+                button:hover {
+                    background-color: #19b16a;
+                    cursor: pointer;
+                }
+            }
+            form * {
+                margin-bottom: 20px;
+            }
+            .seller-details {
+                .toggle-button {
+                    width: 40px;
+                    padding: 8px 12px;
+                    background-color: $fgc;
+                    color: white;
+                    font-size: 1.2em;
+                    border: none;
+                    border-radius: 0.2em;
+                    margin-bottom: 10px;
+                }
+                .toggle-button:hover {
+                    background-color: #19b16a;
+                    cursor: pointer;
+                }
+                .gigs-list {
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+            }
+        }
