@@ -17,7 +17,7 @@
         </main>
         <div class="home-page-image-container">
           <picture>
-            <img src="https://st.depositphotos.com/1008939/i/600/depositphotos_18807295-stock-photo-portrait-of-handsome-man.jpg"/>
+            <img src="https://res.cloudinary.com/urigross/image/upload/v1626523758/hp-hero/leo_photo_tvqzuq.jpg" width="600px"/>
           </picture>
         </div>
       </div>
@@ -69,35 +69,35 @@ export default {
           catName: "logo",
           txt: "Build your brand",
           title: "Logo Design",
-          url: "https://graphicsfamily.com/wp-content/uploads/2020/05/Elegant-CA-letter-logo-4.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/Elegant-CA-letter-logo-4_kh7yqc.jpg",
         },
         {
           id: "2",
           catName: "mobile",
           txt: "Build your mobile site",
           title: "Mobile Builders",
-          url: "https://www.ionos.co.uk/digitalguide/fileadmin/DigitalGuide/Teaser/test-driven-development-t.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/test-driven-development-t_yr6mzs.jpg",
         },
         {
           id: "3",
           catName: "fullstack",
           txt: "learn web development",
           title: "Fullstack Course",
-          url: "https://www.onlc.com/blog/wp-content/uploads/2017/12/ONLC-2017-4-637x350.png",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/ONLC-2017-4-637x350_sgkf3v.png",
         },
         {
           id: "4",
           catName: "podcast",
           txt: "Podcast your ideas",
           title: "Podcast Experts",
-          url: "https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/podcast-DAWs_zczltb.jpg",
         },
         {
           id: "5",
           catName: "Business",
           txt: "Business Plan",
           title: "Plan your Business",
-          url: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fforbesfinancecouncil%2Ffiles%2F2018%2F07%2Fpexels-photo-990818-3-1200x730.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
         },
       ],
     };
