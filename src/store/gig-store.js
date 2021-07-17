@@ -15,7 +15,7 @@ export const gigStore = {
         addGig(state, { gigs }) {
             state.gigs.push(gigs)
         },
-        removGig(state, { gigId }) {
+        removeGig(state, { gigId }) {
             state.gigs = state.gigs.filter(gig => gig._id !== gigId)
         },
     },

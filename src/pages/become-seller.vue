@@ -95,6 +95,7 @@
 
 <script>
 import gigsListUser from "../cmps/gigs-list-user.vue";
+import {eventBusService} from "../services/event-bus.service"
 
 export default {
   data() {
@@ -155,6 +156,13 @@ export default {
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
+  },
+
+    created() {
+    eventBusService.$on("remove-gig", this.removeGig);
+  },
+  destroyed() {
+    eventBusService.$off("remove-gig", this.removeGig);
   },
 
   methods: {
@@ -223,8 +231,15 @@ export default {
       }
     
     },
-    removeGig(_id){
-      console.log('delete',_id)
+    async removeGig(_id){
+      try{
+        const idx=this.user.seller.gigs.findIndex(gig => gig._id===_id)
+        this.user.seller.gigs.splice(idx)
+        await this.$store.dispatch({type:"updateUser",user:this.user})
+      await this.$store.dispatch({type:'removeGig',gigId:_id})}
+      catch(err){
+        console.log(err)
+      }
     }
   },
 };
