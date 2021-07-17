@@ -3,10 +3,23 @@ import { gigService } from '../services/gig.service.js'
 
 export const gigStore = {
     state: {
-        gigs: []
+        gigs: [],
+        filterBy: {
+            txt: '',
+            price: 0,
+            category: '',
+        }
     },
     getters: {
-        gigsToShow(state) { return state.gigs },
+        gigs(state) { return state.gigs },
+        gigsToShow(state) {
+            // let gigsToShow = state.gigs.filter(gig => +gig.price >= state.filterBy.price)
+            //     .filter(gig => gig.category === state.filterBy.category || state.filterBy.category === '')
+            let gigsToShow = state.gigs
+            let regex = new RegExp(state.filterBy.txt, 'i')
+            console.log('regex', regex)
+            return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+        },
     },
     mutations: {
         setGigs(state, { gigs }) {
@@ -17,6 +30,10 @@ export const gigStore = {
         },
         removGig(state, { gigId }) {
             state.gigs = state.gigs.filter(gig => gig._id !== gigId)
+        },
+        setFilter(state, { filterBy }) {
+            state.filterBy = filterBy
+            console.log('state.filterBy', state.filterBy)
         },
     },
     actions: {
@@ -35,7 +52,6 @@ export const gigStore = {
             try {
                 const gigs = await gigService.query();
                 context.commit({ type: 'setGigs', gigs })
-
 
             } catch (err) {
                 console.log('gigStore: Error in loadGigs', err)

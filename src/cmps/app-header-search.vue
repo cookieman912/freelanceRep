@@ -14,7 +14,30 @@
       class="header-search-bar"
       placeholder='Try: "building Moblie app"'
       autocomplete="off"
+      v-model="filterBy.txt"
     />
-    <button>Search</button>
+    <router-link to="/explore">
+      <button @click="filter">Search</button>
+    </router-link>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      filterBy: {
+        txt: "",
+      },
+    };
+  },
+  methods: {
+    filter() {
+      this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
+    },
+  },
+};
+</script>
+
+
+

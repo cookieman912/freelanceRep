@@ -2,26 +2,5 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
-
-    & .gig-preview {
-        width: 310px;
-        border: 1.5px solid $fbc;
-        // padding: 0.25rem;
-
-        img {
-            width: 100%;
-        }
-
-        & p,section {
-            padding-inline-start: 1rem;
-            margin: 0;
-        }
-        
-        & span {
-            padding-inline-end: 1rem;
-            display: inline-block;
-            // transform: rotate(180deg);
-            height: 15px;
-        }
-    }
+    margin-bottom: 1rem;
 }

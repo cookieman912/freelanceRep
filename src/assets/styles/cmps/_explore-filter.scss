@@ -8,21 +8,12 @@
         border: 1.5px solid $fbc;
         display: flex;
         justify-content: space-between;
-        width: 90%;
         padding: 0.25rem;
         border-radius: 5px;
 
-        & p {
-            padding-inline-start: 1rem;
-            margin: 0;
-            display: inline-block;
-        }
-        
-        & span {
-            padding-inline-start: 1rem;
-            display: inline-block;
-            transform: rotate(180deg);
-            height: 15px;
+        input.el-input__inner {
+            background-color: blue;
+            border: 1.5px solid #c5c6c9 !important;
         }
     }
 }

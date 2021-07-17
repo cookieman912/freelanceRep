@@ -1,7 +1,25 @@
 .gig-package {
-    margin: 1rem;
-        border: 1.5px solid $fbc;
-        padding: 2rem;
+    margin-top: 2rem;
+    border: 1.5px solid $fbc;
+    padding: 2rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5rem;
+
+        ul,p{
+            margin: 0;
+        }
+        h4 {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.75rem;
+        }
+        h6,p {
+            padding-bottom: 0.75rem;
+        }
+        ul {
+            padding-bottom: 0.75rem;
+        }
 
         button {
             width: 100%;
@@ -10,5 +28,6 @@
             border: none;
             color: $white;
             border-radius: 5px;
+            cursor: pointer;
         }
 }

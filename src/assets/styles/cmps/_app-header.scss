@@ -10,6 +10,8 @@
         padding: 0 2rem;
         margin: auto;
         & .logo>a {
+            position: relative;
+            bottom: 0.35rem;
             text-decoration: none;
             color: $flc;
             font-size: 2rem;

@@ -50,10 +50,10 @@ export const gigService = {
 
 
 
-function query() {
+function query(filterBy) {
 
     // return httpService.get('gig', filterBy)
-    return storageService.query(GIG_KEY)
+    return storageService.query(GIG_KEY, filterBy)
         .then(gigs => {
             if (!gigs.length) {
                 console.log('check')

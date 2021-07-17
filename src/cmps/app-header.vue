@@ -2,9 +2,11 @@
   <header class="app-header">
     <nav class="nav-header">
       <div class="logo">
-        <router-link to="/">freelance<span>.</span></router-link>
+        <router-link to="/" @click.native="clearSearch"
+          >freelance<span>.</span></router-link
+        >
       </div>
-      <app-header-search v-if="serachBar" />
+      <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
         <router-link to="/">Home</router-link>
         <router-link to="/explore">Explore</router-link>
@@ -29,6 +31,13 @@ export default {
   components: {
     appHeaderSearch,
   },
+  data() {
+    return {
+      filterBy: {
+        txt: "",
+      },
+    };
+  },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
@@ -48,6 +57,27 @@ export default {
       await this.$store.dispatch({ type: "logout" });
       this.$router.push("/");
     },
+    async filter(filterBy) {
+      this.filterBy = filterBy;
+      try {
+        this.$store.commit({ type: "setFilter", filterBy });
+        console.log("filterBy", filterBy);
+      } catch (err) {
+        console.log("cannot load gigs", err);
+        throw err;
+      }
+    },
+    clearSearch() {
+      try {
+        this.filterBy = JSON.parse(JSON.stringify(this.filterBy));
+        this.filterBy.txt = "";
+        this.$store.commit({ type: "setFilter", filterBy: this.filterBy });
+      } catch (err) {
+        console.log("cannot load gigs", err);
+        throw err;
+      }
+    },
   },
+  destroyed() {},
 };
 </script>

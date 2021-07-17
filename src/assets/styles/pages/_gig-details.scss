@@ -1,13 +1,73 @@
 .gig-details-page {
     margin: 0 auto;
     width: $main-layout;
-    padding: 0 2rem;
+    padding: 2rem;
     display: grid;
-    grid-template-columns: 6fr 2fr;
-    grid-gap: 15%;
+    grid-template-columns: 6fr 3fr;
+    grid-gap: 10%;
 
-    img {
+    p {
+        margin: 0;
+    }
+    main .gig-details-small {
+        padding-bottom: 0.75rem;
+    }
+    main h2 {
+        padding-bottom: 0.75rem;
+    }
+
+    & .gig-details-seller-info {
+        margin: 0;
+        padding-bottom:  0.75rem;
+        display: flex;
+        align-items: center;
+        & .sellerPropileImg {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-inline-end: 1rem;
+        }
+    }
+    & .gig-details-description{
+        border-bottom: 1.5px solid $fbc;
+        & h2 {
+            padding-top: 0.75rem;
+        }
+        & p {
+            padding-bottom: 0.75rem;
+        }
+    }
+
+    .el-carousel__container{
+        width: 801.6px;
+        height:427px;
+    }
+    .el-carousel__item img {
         width: 100%;
     }
 
+    
+    .gig-details-about-seller {
+        & h2 {
+            padding-top: 0.75rem;
+        }
+        .gig-details-seller-info {
+            display: flex;
+        }
+        & .sellerPropileImg{
+            width: 6.875rem;
+            height: 6.875rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-inline-end: 1rem;
+        }
+    }
+    .gig-details-more-seller-info{
+        height: 27rem;
+        width: 50.1rem;
+        padding: 1.5rem;
+        border: 1.5px solid $fbc;
+        border-radius: 5px;
+    }
 }
