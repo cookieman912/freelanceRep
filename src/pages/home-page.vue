@@ -25,6 +25,7 @@
     </div>
     <div class="home-page-bottom-container main-layout">
         <h1>Popular professional services</h1>
+        <hp-category-list :categories="getCategories"/>
         <div class="hp-buttom-header-container">
             <h1>Top rated Gigs</h1>
             <span>

@@ -1,9 +1,11 @@
 <template>
     <section v-if="hero" class="hp-hero-image-list">
         <img :src="hero.imgUrl" width="600px">
-        <p>{{hero.fullname}}</p>
-        <p>{{hero.specialty}}</p>
-        <p>{{hero.rate}}</p>
+        <div class="hp-hero-details-container">
+            <p>{{hero.fullname}}</p>
+            <p>{{hero.specialty}}</p>
+            <p>{{hero.rate}}</p>
+        </div>
     </section>
 </template>
 <script>
