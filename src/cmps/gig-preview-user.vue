@@ -4,16 +4,15 @@
     <!-- <p><span>img:</span> {{ gig.imgUrls }}</p> -->
     <img :src="require(`../assets/images/gigs/${imgUrl}`)" />
     <p><span>name:</span> {{ gig.title }}</p>
-    <p><span>price:</span> {{ gig.price }}</p>
     <p><span>type:</span> {{ gig.description }}</p>
-    <p><span>Delivery days:</span> {{ gig.deliveryDays }}</p>
-    <gig-tags :tags="gig.tags" />
     <router-link :to="'/explore/' + gig._id">view</router-link>
+        <button @click="deleteClicked(gig._id)">delete</button>
   </div>
 </template>
 
 <script>
 import gigTags from "./gig-tags.vue";
+import {eventBusService} from "../services/event-bus.service"
 export default {
   props: {
     gig: Object,
@@ -32,7 +31,9 @@ export default {
     },
   },
   methods:{
-    
-  }
+    deleteClicked(_id){
+ eventBusService.$emit('remove-gig',_id)
+    }
+  },
 };
 </script>

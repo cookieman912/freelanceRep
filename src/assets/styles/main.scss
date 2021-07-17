@@ -5,12 +5,19 @@
 // setup
 @import './setup/_variables';
 @import './setup//mixins';
+//fonts
+// @import '../fonts/Nunito_Sans/NunitoSans-Regular.ttf';
+@font-face {
+    font-family: Nunito_Sans;
+    src: url(../fonts/Nunito_Sans/NunitoSans-Regular.ttf);
+}
+
 //pages
 @import './pages/explore';
 @import './pages/home-page';
 @import './pages/user-details';
 @import './pages/gig-details';
-@import './pages/becom-seller';
+@import './pages/become-seller';
 //components
 @import './cmps/app-header';
 @import './cmps/log-in-modal';
@@ -21,4 +28,4 @@
 @import './cmps/gig-buying-box';
 @import './cmps/hp-category-list';
 @import './cmps/hp-category-preview';
-@import './cmps/hp-hero-image-preview'
+@import './cmps/hp-hero-image-preview';
