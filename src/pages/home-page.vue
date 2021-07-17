@@ -1,7 +1,7 @@
 <template>
   <div v-if="getGigs" class="home-page">
-    <div class="home-page-top-container">
-      <div class="home-page-top layout">
+    <div class="home-page-top-container" v-bind:style="styleObject">
+      <div class="home-page-top main-layout">
         <main class="home-page-search">
           <header class="header">
             <h1>
@@ -16,18 +16,37 @@
           <hp-tag-buttons />
         </main>
         <div class="home-page-image-container">
-          <picture>
-            <img
-              src="https://st.depositphotos.com/1008939/i/600/depositphotos_18807295-stock-photo-portrait-of-handsome-man.jpg"
-            />
-          </picture>
+          <hp-hero-image-preview :hero="currHero"/>
+          <!-- <picture>
+            <img src="https://res.cloudinary.com/urigross/image/upload/v1626523758/hp-hero/leo_photo_tvqzuq.jpg" width="600px"/>
+          </picture> -->
         </div>
       </div>
     </div>
-    <div class="home-page-bottom-container layout">
-      <h1>Popular professional services</h1>
-      <hp-category-list :categories="getCategories" />
-      <gigs-list :gigs="getGigs" />
+    <div class="home-page-bottom-container main-layout">
+        <h1>Popular professional services</h1>
+        <hp-category-list :categories="getCategories"/>
+        <div class="hp-buttom-header-container">
+            <h1>Top rated Gigs</h1>
+            <span>
+              <button @click.prevent="toExplorePage">See all</button>
+            </span>
+        </div>
+        <gigs-list :gigs="getGigs" />
+        <div class="hp-buttom-header-container">
+          <h1>Discover Web development</h1>
+          <span>
+            <button @click.prevent="toExplorePage">See all</button>
+          </span>
+        </div>
+        <gigs-list :gigs="getGigs" />
+        <div class="hp-buttom-header-container">
+          <h1>Discover Business</h1>
+          <span>
+            <button @click.prevent="toExplorePage">See all</button>
+          </span>
+        </div>
+        <gigs-list :gigs="getGigs" />
     </div>
   </div>
 </template>
@@ -36,50 +55,105 @@ import hpSearchBar from "../cmps/hp-search-bar.vue";
 import hpTagButtons from "../cmps/hp-tag-buttons.vue";
 import hpCategoryList from "../cmps/hp-category-list.vue";
 import gigsList from "../cmps/gigs-list.vue";
+// import hpHeroImageList from "../cmps/hp-hero-image-list.vue";
+import hpHeroImagePreview from "../cmps/hp-hero-image-preview.vue"
 export default {
   components: {
     hpSearchBar,
     hpTagButtons,
     hpCategoryList,
     gigsList,
+    // hpHeroImageList,
+    hpHeroImagePreview
   },
   data() {
     return {
+      styleObject:{
+        backgroundColor: null
+      },
+      heroInterval:null,
+      currHero:null,
+      demoHeros:[{
+        id:'1',
+        fullname:'Keren Lazer',
+        rate: 5,
+        specialty:'Graphic designer',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626523420/hp-hero/hero-woman1_1596x1592_ytwxwk.jpg',
+        bgColor:'#494949',
+      },
+      {
+        id:'2',
+        fullname:'Haim Moshe',
+        rate: 5,
+        specialty:'Full Stack Developer',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626521987/hp-hero/depositphotos_18807295-stock-photo-portrait-of-handsome-man_wtcsv2.jpg',
+        bgColor:'#d1aa8b'
+
+      },
+      {
+        id:'3',
+        fullname:'Puki Ben David',
+        rate: 5,
+        specialty:'Strategic Planner',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626523758/hp-hero/leo_photo_tvqzuq.jpg',
+        bgColor:'#a57563'
+
+      },
+      {
+        id:'4',
+        fullname:'Avshalom Kor',
+        rate: 5,
+        specialty:'Podcaster',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626524482/hp-hero/breaking_bad_hwhrxl.jpg',
+        bgColor:'black'
+
+      },
+      {
+        id:'5',
+        fullname:'Steve Props',
+        rate: 5,
+        specialty:'Mobile Aplication Freelancer',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626533012/hp-hero/dvir-yahalom_o9hbr0.jpg',
+        bgColor:'#86535c'
+
+      }
+      ],
       demoCategories: [
         {
           id: "1",
           catName: "logo",
           txt: "Build your brand",
           title: "Logo Design",
-          url: "https://graphicsfamily.com/wp-content/uploads/2020/05/Elegant-CA-letter-logo-4.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/Elegant-CA-letter-logo-4_kh7yqc.jpg",
+          
         },
         {
           id: "2",
           catName: "mobile",
           txt: "Build your mobile site",
           title: "Mobile Builders",
-          url: "https://www.ionos.co.uk/digitalguide/fileadmin/DigitalGuide/Teaser/test-driven-development-t.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/test-driven-development-t_yr6mzs.jpg",
         },
         {
           id: "3",
           catName: "fullstack",
           txt: "learn web development",
           title: "Fullstack Course",
-          url: "https://www.onlc.com/blog/wp-content/uploads/2017/12/ONLC-2017-4-637x350.png",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/ONLC-2017-4-637x350_sgkf3v.png",
         },
         {
           id: "4",
           catName: "podcast",
           txt: "Podcast your ideas",
           title: "Podcast Experts",
-          url: "https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/podcast-DAWs_zczltb.jpg",
         },
         {
           id: "5",
-          catName: "podcast",
-          txt: "Podcast your ideas",
-          title: "Podcast Experts",
-          url: "https://pbblogassets.s3.amazonaws.com/uploads/2020/03/02153219/podcast-DAWs.jpg",
+          catName: "Business",
+          txt: "Business Plan",
+          title: "Plan your Business",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
         },
       ],
     };
@@ -92,10 +166,24 @@ export default {
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
+    
+  },
+  methods: {
+    toExplorePage() {
+      this.$router.push("/explore");
+    },
   },
   created() {
+    this.currHero = this.demoHeros[0];
+    this.styleObject.backgroundColor = this.demoHeros[0].bgColor;
     this.$store.dispatch({ type: "loadGigs" });
+    this.heroInterval= setInterval(() => {
+      this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+      this.styleObject.backgroundColor = this.currHero.bgColor;
+    }, 7000);
   },
-  destroyed() {},
+  destroyed() {
+    clearInterval(this.heroInterval);
+  },
 };
 </script>

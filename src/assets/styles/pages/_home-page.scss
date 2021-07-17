@@ -1,10 +1,5 @@
 .home-page-top-container {
-    background-color: rgb(231, 23, 23);
-}
-
-.layout {
-    margin: 0 auto;
-    max-width: 1400px;
+    //background-color: rgb(231, 23, 23);
 }
 
 .home-page-top {
@@ -43,5 +38,15 @@
         color: $flc;
         font-size: 32px;
         margin-top: 110px;
+    }
+    & .hp-buttom-header-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        button {
+            @include btnWhiteTrans($c: $flc, $bc: $flc);
+        }
     }
 }

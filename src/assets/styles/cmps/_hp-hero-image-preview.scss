@@ -1,0 +1,12 @@
+.hp-hero-image-list {
+    position: inherit;
+}
+
+.hp-hero-details-container {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    p {
+        color: white;
+    }
+}

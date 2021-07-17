@@ -1,13 +1,17 @@
 //basics
 @import './basics/base';
+@import './basics/layout';
+@import './basics/buttons';
 // setup
 @import './setup/_variables';
+@import './setup//mixins';
+
 //pages
 @import './pages/explore';
 @import './pages/home-page';
 @import './pages/user-details';
 @import './pages/gig-details';
-@import './pages/becom-seller';
+@import './pages/become-seller';
 //components
 @import './cmps/app-header';
 @import './cmps/log-in-modal';
@@ -18,3 +22,5 @@
 @import './cmps/gig-buying-box';
 @import './cmps/hp-category-list';
 @import './cmps/gig-preview';
+@import './cmps/hp-category-preview';
+@import './cmps/hp-hero-image-preview';

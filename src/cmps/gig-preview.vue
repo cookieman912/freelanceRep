@@ -74,5 +74,8 @@ export default {
       return this.gig.seller.imgUrl.substring(21);
     },
   },
+  methods:{
+    
+  }
 };
 </script>

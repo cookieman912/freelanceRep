@@ -66,7 +66,7 @@ function query(filterBy) {
 
 function getById(gigId) {
     console.log(gigId)
-    // return httpService.get(`gig/${gigId}`)
+        // return httpService.get(`gig/${gigId}`)
     return storageService.get(GIG_KEY, gigId)
         .then(gig => {
             console.log(gig);
@@ -83,16 +83,15 @@ function remove(gigId) {
 
 function save(gig) {
     // console.log(toy);
-    console.log(gig);
     if (gig._id) {
         return storageService.put(GIG_KEY, gig)
             .then(gig => { return gig })
-        // return httpService.put(`gig`, gig)
+            // return httpService.put(`gig`, gig)
     } else {
 
         return storageService.post(GIG_KEY, gig)
             .then(gig => { return gig })
-        // return httpService.post(`gig`, gig)
+            // return httpService.post(`gig`, gig)
     }
 }
 

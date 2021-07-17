@@ -13,7 +13,13 @@ export const userStore = {
     getters: {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
-        watchedUser({ watchedUser }) { return watchedUser }
+        watchedUser({ watchedUser }) { return watchedUser },
+        heroUsersToShow(state) {
+            var imageList = state.users.map(user => user.profileImg);
+            var imageList = state.users;
+
+            return imageList
+        },
     },
     mutations: {
         setLoggedinUser(state, { user }) {
@@ -24,6 +30,7 @@ export const userStore = {
             state.watchedUser = user;
         },
         setUsers(state, { users }) {
+            console.log('users', users);
             state.users = users;
         },
         removeUser(state, { userId }) {
@@ -76,6 +83,8 @@ export const userStore = {
                 throw err
             }
         },
+
+
         async loadAndWatchUser({ commit }, { userId }) {
             try {
                 const user = await userService.getById(userId);
@@ -111,9 +120,15 @@ export const userStore = {
         },
         async becomeSeller({ commit }, { userToUpdate }) {
             try {
-                console.log('in function');
+                console.log('in dispatch');
+                console.log(userToUpdate);
+                let user = await userService.update(userToUpdate);
+                commit({ type: 'setLoggedinUser', user })
 
-            } catch {}
+            } catch (err) {
+                console.log('userStore: Error in updateUser', err)
+                throw err
+            }
         }
 
     }

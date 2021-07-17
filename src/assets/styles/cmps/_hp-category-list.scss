@@ -1,9 +1,10 @@
 .home-page-category-list {
     display: flex;
+    flex-wrap: wrap;
     position: inherit;
     list-style-type: none;
-    padding-inline-start: 0;
-    gap: 40px;
+    justify-content: space-between;
+    margin: 0;
     & .home-page-category-before-btn {
         background-color: $white;
         position: absolute;
@@ -31,30 +32,5 @@
         font-size: 25px;
         border-radius: 30px;
         box-shadow: 0px 14px 29px -1px rgba(0, 0, 0, 0.23);
-    }
-}
-
-.home-page-category-image-wrapper {
-    display: flex;
-    position: inherit;
-    height: 345px;
-    width: 100%;
-    & img {
-        border-radius: 4px;
-        max-width: 240px;
-        object-fit: cover;
-        height: 345px;
-    }
-}
-
-.home-page-category-text-container {
-    position: absolute;
-    color: $white;
-    padding: 16px;
-    & h4 {
-        font-size: 14px;
-    }
-    & h2 {
-        font-size: 24px;
     }
 }
