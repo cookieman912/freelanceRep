@@ -8,7 +8,7 @@
       </div>
       <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
-        <router-link to="/">Home</router-link>
+        <router-link to="/" @click.native="clearSearch">Home</router-link>
         <router-link to="/explore">Explore</router-link>
         <router-link to="/becomeSeller">Become a seller</router-link>
         <router-link :to="'/user/' + loggedInUser._id" v-if="loggedInUser">{{
@@ -87,6 +87,8 @@ export default {
       }
     },
   },
-  destroyed() {},
+  destroyed() {
+    this.clearSearch();
+  },
 };
 </script>
