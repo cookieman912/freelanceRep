@@ -56,7 +56,7 @@ async function login(userCred) {
     const users = await storageService.query('user')
     const user = users.find(user => user.username === userCred.username)
     if (user) {
-        console.log('welcome!', user.username)
+
         return _saveLocalUser(user)
     } else throw 'wrong creds'
         // const user = await httpService.post('auth/login', userCred)

@@ -24,8 +24,9 @@ export const gigStore = {
         setGigs(state, { gigs }) {
             state.gigs = gigs;
         },
-        addGig(state, { gigs }) {
-            state.gigs.push(gigs)
+        addGig(state, { gig }) {
+
+            state.gigs.push(gig)
         },
         // addReview(state, { review }) {
         //     state.gigs.push(gigs)
@@ -42,7 +43,7 @@ export const gigStore = {
             try {
                 gig = await gigService.save(gig)
                 context.commit({ type: 'addGig', gig })
-                // context.dispatch({type: 'increaseScore'})
+                    // context.dispatch({type: 'increaseScore'})
                 return gig;
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)
