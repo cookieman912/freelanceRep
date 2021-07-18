@@ -7,7 +7,7 @@
     </router-link>
     <figure class="gig-preview-seller-info">
       <img
-        class="sellerPropileImg"
+        class="seller-propile-img"
         :src="require(`../assets/images/${sellerImgUrl}`)"
       />
       <p>{{ gig.seller.fullname }}</p>
@@ -15,7 +15,7 @@
     <div class="gig-preview-gig-info">
       <router-link :to="'/explore/' + gig._id">
         <p class="gig-preview-desc">
-          {{ gig.description }}
+          {{ gig.title }}
         </p>
       </router-link>
       <p class="el-icon-star-on">
@@ -24,7 +24,7 @@
     </div>
     <div class="gig-save-and-price">
       <svg
-        @click.stop="saveGig"
+        @click="saveGig"
         ref="heart"
         width="16"
         height="16"
@@ -36,7 +36,7 @@
         ></path>
       </svg>
       <router-link :to="'/explore/' + gig._id">
-        <p>price: {{ gig.price }}</p>
+        <p>price: ${{ gig.price }}</p>
       </router-link>
     </div>
   </div>
@@ -74,8 +74,5 @@ export default {
       return this.gig.seller.imgUrl.substring(21);
     },
   },
-  methods:{
-    
-  }
 };
 </script>

@@ -4,7 +4,7 @@
       <span>{{ gig.title }}</span> <span>${{ gig.price }}</span>
     </h4>
     <h6>{{ gig.description }}</h6>
-    <p class="el-icon-time">{{ gig.deliveryDays }} Days Deliviry</p>
+    <p class="el-icon-time">{{ gig.deliveryDays }} Days Delivery</p>
     <ul>
       <li>package include 1</li>
       <li>package include 2</li>

@@ -17,7 +17,6 @@ export const gigStore = {
             //     .filter(gig => gig.category === state.filterBy.category || state.filterBy.category === '')
             let gigsToShow = state.gigs
             let regex = new RegExp(state.filterBy.txt, 'i')
-            console.log('regex', regex)
             return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
         },
     },
@@ -33,7 +32,6 @@ export const gigStore = {
         },
         setFilter(state, { filterBy }) {
             state.filterBy = filterBy
-            console.log('state.filterBy', state.filterBy)
         },
     },
     actions: {
@@ -41,7 +39,7 @@ export const gigStore = {
             try {
                 gig = await gigService.save(gig)
                 context.commit({ type: 'addGig', gig })
-                    // context.dispatch({type: 'increaseScore'})
+                // context.dispatch({type: 'increaseScore'})
                 return gig;
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)

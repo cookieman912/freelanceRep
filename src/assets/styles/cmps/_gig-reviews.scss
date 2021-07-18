@@ -1,0 +1,38 @@
+.gig-review{
+    padding-top: 0.75rem;
+
+    & article {
+        display: flex;
+        padding-bottom: 0.75rem;
+
+        & .user-propile-img {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-inline-end: 1rem;
+        }
+
+        & .user-info-and-rate {
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        display: flex;
+        align-items: center;
+
+        
+        & p {
+            margin-inline-end: 1rem;
+        }
+        & .el-icon-star-on{
+            // padding:  0 0.75rem;
+            color: #ffbe5b!important;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+    }
+    .review-txt{
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    }
+}

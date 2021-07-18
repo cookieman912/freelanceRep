@@ -9,11 +9,18 @@
       <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
         <router-link to="/">Home</router-link>
-        <router-link to="/explore">Explore</router-link>
-        <router-link to="/becomeSeller">Become a seller</router-link>
-        <router-link :to="'/user/' + loggedInUser._id" v-if="loggedInUser">{{
-          loggedInUser.fullname
-        }}</router-link>
+        <router-link to="/explore" @click.native="clearSearch"
+          >Explore</router-link
+        >
+        <router-link to="/becomeSeller" @click.native="clearSearch"
+          >Become a seller</router-link
+        >
+        <router-link
+          :to="'/user/' + loggedInUser._id"
+          v-if="loggedInUser"
+          @click.native="clearSearch"
+          >{{ loggedInUser.fullname }}</router-link
+        >
 
         <button v-else @click="toggleLogin">Sign In</button>
         <span v-if="loggedInUser" @click="signout">sign out</span>
