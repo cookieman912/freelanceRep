@@ -28,10 +28,6 @@ function query(filterBy) {
 }
 
 function getById(gigId) {
-<<<<<<< HEAD
-    console.log(gigId)
-=======
->>>>>>> 32124635d32384882e65e480b8194d2bd46d5fbc
     // return httpService.get(`gig/${gigId}`)
     return storageService.get(GIG_KEY, gigId)
         .then(gig => {
