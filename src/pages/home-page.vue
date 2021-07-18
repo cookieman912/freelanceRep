@@ -5,7 +5,7 @@
         <main class="home-page-search">
           <header class="header">
             <h1>
-              <span>You need a <i>free lance</i> in a free world</span>
+              <span>You need a <i>freelance</i> in a free world</span>
             </h1>
           </header>
           <form class="home-page-search-container">
