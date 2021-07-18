@@ -19,7 +19,8 @@
         </p>
       </router-link>
       <p class="el-icon-star-on">
-        <span>{{ gig.reviews[0].rate }}</span>
+        <span v-if="gig.reviews[0]">{{ gig.reviews[0].rate }}</span>
+        <span v-else>n/a</span>
       </p>
     </div>
     <div class="gig-save-and-price">

@@ -1,4 +1,5 @@
 .hp-search-bar {
+    position: relative;
     & input {
         border: transparent;
         height: 48px;
@@ -9,8 +10,16 @@
         width: 546px;
         font-size: 16px;
     }
+    & svg {
+        opacity: 0.5;
+        color: blue;
+        position: absolute;
+        top: 35%;
+        left: 3%;
+    }
     & button {
         border: transparent;
+        transition: .15s ease-in-out;
         margin: 0;
         border-radius: 0 4px 4px 0;
         background-color: $fgc;
@@ -19,5 +28,8 @@
         width: 103px;
         height: 48px;
         padding-block-start: 3px;
+    }
+    & button:hover {
+        background-color: #1cb36c;
     }
 }

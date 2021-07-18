@@ -66,7 +66,7 @@ async function login(userCred) {
 async function signup(userCred) {
     console.log(userCred)
     userCred.fullname = userCred.username;
-    userCred.imageUrl = '../assets/images/users/default.png'
+    userCred.imgUrl = "../src/assets/images/users/default.png"
     const user = await storageService.post('user', userCred)
         // const user = await httpService.post('auth/signup', userCred)
         // socketService.emit('set-user-socket', user._id);

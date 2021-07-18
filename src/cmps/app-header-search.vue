@@ -12,7 +12,7 @@
     </svg>
     <input
       class="header-search-bar"
-      placeholder='Try: "building Moblie app"'
+      placeholder='Try: "building moblie app"'
       autocomplete="off"
       v-model="filterBy.txt"
     />

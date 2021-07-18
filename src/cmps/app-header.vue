@@ -8,19 +8,24 @@
       </div>
       <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
-        <router-link to="/">Home</router-link>
+        <router-link to="/" @click.native="clearSearch">Home</router-link>
         <router-link to="/explore" @click.native="clearSearch"
           >Explore</router-link
         >
-        <router-link to="/becomeSeller" @click.native="clearSearch"
-          >Become a seller</router-link
-        >
-        <router-link
-          :to="'/user/' + loggedInUser._id"
-          v-if="loggedInUser"
-          @click.native="clearSearch"
-          >{{ loggedInUser.fullname }}</router-link
-        >
+        <template v-if="loggedInUser" class="user-control">
+          <router-link
+            v-if="loggedInUser.seller"
+            to="/becomeSeller"
+            @click.native="clearSearch"
+            >To Dashboard</router-link
+          >
+          <router-link v-else to="/becomeSeller" @click.native="clearSearch"
+            >Become a seller</router-link
+          >
+        </template>
+        <router-link :to="'/user/' + loggedInUser._id" v-if="loggedInUser">{{
+          loggedInUser.fullname
+        }}</router-link>
 
         <button v-else @click="toggleLogin">Sign In</button>
         <span v-if="loggedInUser" @click="signout">sign out</span>
@@ -94,6 +99,8 @@ export default {
       }
     },
   },
-  destroyed() {},
+  destroyed() {
+    this.clearSearch();
+  },
 };
 </script>

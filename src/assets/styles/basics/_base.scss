@@ -1,21 +1,36 @@
-//fonts
-@font-face {
-    font-family: Nunito_Sans;
-    src: url(../fonts/Nunito_Sans/NunitoSans-Regular.ttf);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    font-family: Nunito_Sans;
-}
-
-body {
-    margin: 0;
-}
-
-h1,h2,h3,h4,h5,h6 {
-    margin: 0;
-}
+  //fonts
+  // @import '../fonts/Nunito_Sans/NunitoSans-Regular.ttf';
+  @font-face {
+      font-family: Nunito_Sans;
+      src: url(../fonts/Nunito_Sans/NunitoSans-Regular.ttf);
+  }
+  
+  * {
+      box-sizing: border-box;
+  }
+  
+  html,
+  button,
+  span {
+      font-family: Nunito_Sans;
+  }
+  
+  body {
+      margin: 0;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      margin: 0;
+  }
+  
+  button,
+  input,
+  textarea,
+  a {
+      cursor: pointer;
+  }

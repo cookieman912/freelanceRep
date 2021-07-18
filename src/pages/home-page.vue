@@ -17,9 +17,6 @@
         </main>
         <div class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
-          <!-- <picture>
-            <img src="https://res.cloudinary.com/urigross/image/upload/v1626523758/hp-hero/leo_photo_tvqzuq.jpg" width="600px"/>
-          </picture> -->
         </div>
       </div>
     </div>
@@ -55,7 +52,6 @@ import hpSearchBar from "../cmps/hp-search-bar.vue";
 import hpTagButtons from "../cmps/hp-tag-buttons.vue";
 import hpCategoryList from "../cmps/hp-category-list.vue";
 import gigsList from "../cmps/gigs-list.vue";
-// import hpHeroImageList from "../cmps/hp-hero-image-list.vue";
 import hpHeroImagePreview from "../cmps/hp-hero-image-preview.vue"
 export default {
   components: {
@@ -63,7 +59,6 @@ export default {
     hpTagButtons,
     hpCategoryList,
     gigsList,
-    // hpHeroImageList,
     hpHeroImagePreview
   },
   data() {
