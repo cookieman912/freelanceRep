@@ -10,7 +10,10 @@
       <div class="navigation">
         <router-link to="/">Home</router-link>
         <router-link to="/explore">Explore</router-link>
-        <router-link to="/becomeSeller">Become a seller</router-link>
+          <template v-if="loggedInUser" class="user-control">
+        <router-link v-if="loggedInUser.seller" to="/becomeSeller">To Dashboard</router-link>
+         <router-link v-else to="/becomeSeller">Become a seller</router-link>
+         </template>
         <router-link :to="'/user/' + loggedInUser._id" v-if="loggedInUser">{{
           loggedInUser.fullname
         }}</router-link>

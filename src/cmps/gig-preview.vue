@@ -19,12 +19,13 @@
         </p>
       </router-link>
       <p class="el-icon-star-on">
-        <span>{{ gig.reviews[0].rate }}</span>
+        <span v-if="gig.reviews[0]">{{ gig.reviews[0].rate }}</span>
+        <span v-else>n/a</span>
       </p>
     </div>
     <div class="gig-save-and-price">
       <svg
-        @click.stop="saveGig"
+        @click="saveGig"
         ref="heart"
         width="16"
         height="16"
@@ -74,8 +75,5 @@ export default {
       return this.gig.seller.imgUrl.substring(21);
     },
   },
-  methods:{
-    
-  }
 };
 </script>
