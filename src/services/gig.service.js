@@ -10,44 +10,8 @@ export const gigService = {
     remove,
     save,
     getEmptyReview,
+    // addReview
 }
-
-// const defaultGigs = [
-//     {
-//         _id: "g101",
-//         title: "logo",
-//         imgUrls: [
-//             "../assets/images/gigs/design.jpg"
-//         ],
-//         price: 100,
-//         deliveryDays: 4,
-//         description: "some description for the logo gig",
-//         tags: [
-//             "graphic",
-//             "website"
-//         ],
-//         seller: {
-//             _id: "u101",
-//             fullname: "Yori Yorovich",
-//             imgUrl: "img.jpg"
-//         },
-//         reviews: [{
-//             id: 'r101',
-//             txt: 'wowowowowo',
-//             rate: 5
-//         },
-//         {
-//             id: 'r102',
-//             txt: "the best logo ever",
-//             rate: 5,
-//             by: {
-//                 fullname: "puki puki"
-//             }
-//         }
-//         ]
-//     }
-// ]
-
 
 
 function query(filterBy) {
@@ -56,7 +20,6 @@ function query(filterBy) {
     return storageService.query(GIG_KEY, filterBy)
         .then(gigs => {
             if (!gigs.length) {
-                console.log('check')
                 storageService.postMany(GIG_KEY, defaultGigs)
                 return defaultGigs
             }
@@ -65,8 +28,7 @@ function query(filterBy) {
 }
 
 function getById(gigId) {
-    console.log(gigId)
-        // return httpService.get(`gig/${gigId}`)
+    // return httpService.get(`gig/${gigId}`)
     return storageService.get(GIG_KEY, gigId)
         .then(gig => {
             console.log(gig);
@@ -82,23 +44,34 @@ function remove(gigId) {
 
 
 function save(gig) {
-    // console.log(toy);
+
     if (gig._id) {
         return storageService.put(GIG_KEY, gig)
             .then(gig => { return gig })
-            // return httpService.put(`gig`, gig)
+        // return httpService.put(`gig`, gig)
     } else {
 
         return storageService.post(GIG_KEY, gig)
             .then(gig => { return gig })
-            // return httpService.post(`gig`, gig)
+        // return httpService.post(`gig`, gig)
     }
 }
+// function addReview(gigId, review) {
+
+//     getById(gigId).then((gig) => {
+//         gig.reviews.push(review)
+//     })
+//     return gig
+// }
 
 function getEmptyReview() {
     return {
         id: utilService.makeId(),
         txt: '',
-        at: Date.now()
+        at: Date.now(),
+        rate: null,
+        by: {
+            fullname: '',
+        }
     }
 }

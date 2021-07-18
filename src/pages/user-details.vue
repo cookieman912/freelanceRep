@@ -24,7 +24,6 @@
 </template>
 
 <script>
-// import {userService} from '../services/user.service';
 
 export default {
   watch: {
@@ -48,7 +47,7 @@ export default {
       return this.$route.params.id;
     },
        imageName(){
-  return this.$store.getters.loggedinUser.imageUrl.substring(23);
+  return this.$store.getters.loggedinUser.imgUrl.substring(27);
 },
 
 mounted(){

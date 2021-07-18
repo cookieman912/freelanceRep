@@ -30,7 +30,6 @@ export const userStore = {
             state.watchedUser = user;
         },
         setUsers(state, { users }) {
-            console.log('users', users);
             state.users = users;
         },
         removeUser(state, { userId }) {
@@ -48,13 +47,12 @@ export const userStore = {
                 commit({ type: 'setLoggedinUser', user })
                 return user;
             } catch (err) {
-                console.log('userStore: Error in login', err)
                 throw err
             }
         },
         async signup({ commit }, { userCred }) {
             try {
-                console.log(userCred)
+
                 const user = await userService.signup(userCred)
                 commit({ type: 'setLoggedinUser', user })
                 return user;
@@ -120,8 +118,6 @@ export const userStore = {
         },
         async becomeSeller({ commit }, { userToUpdate }) {
             try {
-                console.log('in dispatch');
-                console.log(userToUpdate);
                 let user = await userService.update(userToUpdate);
                 commit({ type: 'setLoggedinUser', user })
 

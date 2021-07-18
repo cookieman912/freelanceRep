@@ -73,7 +73,7 @@ export default {
       this.isHidden = !this.isHidden;
     },
     clickOutsideModal(event) {
-      console.log(event.target.classList.value);
+  
       if (event.target.classList.value === "signup") this.toggleSignUp();
     },
     signinClicked(){
