@@ -15,7 +15,7 @@
         <p class="review-txt">{{ review.txt }}</p>
       </div>
     </article>
-    <!-- <div class="add-review">
+    <div class="add-review">
       <form @submit.prevent="addReview">
         <input type="text" placeholder="Full Name" v-model="review.fullname" />
         <textarea
@@ -30,7 +30,7 @@
         </div>
         <button @submit.prevent="addReview">Send</button>
       </form>
-    </div> -->
+    </div>
   </section>
 </template>
 
