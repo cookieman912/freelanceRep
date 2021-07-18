@@ -2,7 +2,9 @@
   <section v-if="gig" class="gig-details-page">
     <main>
       <div class="gig-details-small">
-        <small>{{ gig.tags[0] }}</small>
+        <button class="category">
+          <small>{{ gig.tags[0] }}</small>
+        </button>
       </div>
       <h2>{{ gig.title }}</h2>
       <figure class="gig-details-seller-info">
@@ -57,7 +59,7 @@
         </figure>
       </div>
       <div class="gig-details-more-seller-info">more seller info</div>
-      <gig-reviews :reviews="gig.reviews" />
+      <gig-reviews :reviews="gig.reviews" :gigId="gig._id" />
       <router-link to="/explore/">Go back</router-link>
     </main>
     <aside class="gig-buying">

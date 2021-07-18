@@ -11,7 +11,9 @@
       <li>package include 3</li>
     </ul>
     <p></p>
-    <button>Hire</button>
+    <router-link :to="'/checkout/' + gig._id">
+      <button>Hire</button>
+    </router-link>
   </section>
 </template>
 

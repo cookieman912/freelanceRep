@@ -27,6 +27,9 @@ export const gigStore = {
         addGig(state, { gigs }) {
             state.gigs.push(gigs)
         },
+        // addReview(state, { review }) {
+        //     state.gigs.push(gigs)
+        // },
         removeGig(state, { gigId }) {
             state.gigs = state.gigs.filter(gig => gig._id !== gigId)
         },
@@ -46,6 +49,16 @@ export const gigStore = {
                 throw err
             }
         },
+        // async addReview(context, { review }, { gigId }) {
+        //     try {
+        //         await gigService.addReview(gigId, review)
+        //         // context.commit({ type: 'addReview', review })
+        //         // return gig;
+        //     } catch (err) {
+        //         console.log('gigStore: Error in addGig', err)
+        //         throw err
+        //     }
+        // },
         async loadGigs(context) {
             try {
                 const gigs = await gigService.query();

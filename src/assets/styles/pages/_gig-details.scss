@@ -1,13 +1,25 @@
 .gig-details-page {
     margin: 0 auto;
-    width: $main-layout;
+    max-width: 1304px;
     padding: 2rem;
-    display: grid;
-    grid-template-columns: 6fr 3fr;
-    grid-gap: 10%;
+    display: flex;
+    & button.category {
+        background-color: transparent;
+        border: none;
+        & small {
+            color: #4a73e8;
+        }
+    }
 
     p {
         margin: 0;
+    }
+    & main {
+        flex-basis: 57.42%;
+        margin-inline-end: 9.15%;
+    }
+    & .gig-buying{
+        flex-basis: 33.6%;
     }
     main .gig-details-small {
         padding-bottom: 0.75rem;
@@ -15,6 +27,9 @@
     main h2 {
         padding-bottom: 0.75rem;
     }
+    // .el-carousel__item{
+    //     position: relative;
+    // }
 
     & .gig-details-seller-info {
         margin: 0;
@@ -40,7 +55,7 @@
     }
 
     .el-carousel__container{
-        width: 801.6px;
+        //     width: 712px;
         height:427px;
     }
     .el-carousel__item img {
@@ -65,7 +80,7 @@
     }
     .gig-details-more-seller-info{
         height: 27rem;
-        width: 50.1rem;
+        // width: 50.1rem;
         padding: 1.5rem;
         border: 1.5px solid $fbc;
         border-radius: 5px;
