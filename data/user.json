@@ -1,59 +1,60 @@
 {
-    "user": [{
+    "user": [
+        {
             "_id": "u101",
-            "fullname": "User 1",
-            "profileImg": "https://res.cloudinary.com/urigross/image/upload/v1626524482/hp-hero/breaking_bad_hwhrxl.jpg",
-            "username": "Zach",
-            "password": "secret",
+            "fullname": "Yori Yorovich",
+            "profileImg": "../src/assets/images/users/yori.jpg",
+            "username": "yoriri",
+            "password": "123",
             "isAdmin": false,
             "seller": {
                 "specialty": "Bar owner",
                 "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
-                "reviews": [{
-                        "id": "r101",
-                        "txt": "wowowowowo"
-                    },
-                    {
-                        "id": "r102",
-                        "txt": "the best logo ever",
-                        "by": {
-                            "fullname": "puki puki"
-                        }
-                    }
+                "reviewsId": [
+                    "r101",
+                    "r102",
+                    "r103",
+                    "r104",
+                    "r105",
+                    "r106"
                 ],
-                "gigs": [{
-                    "_id": "g101",
-                    "title": "logo",
-                    "imgUrls": [
-                        "img1.jpg"
-                    ],
-                    "description": "some description for the logo gig"
-                }],
-                "orders": [{
-                    "_id": "o101",
-                    "createdAt": 1626258635874,
-                    "buyer": "muki muki",
-                    "price": 20,
-                    "seller": {
-                        "_id": "u101",
-                        "name": "shuki shuki",
-                        "imgUrl": ""
-                    },
-                    "gig": {
-                        "_id": "g103",
-                        "name": "logo"
-                    },
-                    "status": "pending"
-                }]
+                "gigsId": [
+                    "g101",
+                    "g102",
+                    "g103"
+                ],
+                "ordersId": [
+                    "o101"
+                ]
             }
         },
         {
             "_id": "u102",
-            "fullname": "User 2",
-            "imgUrl": "https://res.cloudinary.com/urigross/image/upload/v1626523420/hp-hero/hero-woman1_1596x1592_ytwxwk.jpg",
-            "username": "user2",
-            "password": "secret",
-            "isAdmin": false
+            "fullname": "Tamar Tamarovich",
+            "imgUrl": "../src/assets/images/users/tamar.jpg",
+            "username": "tamariri",
+            "password": "123",
+            "isAdmin": false,
+            "seller": {
+                "specialty": "graphic design",
+                "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
+                "reviewsId": [
+                    "r107",
+                    "r108",
+                    "r109",
+                    "r110",
+                    "r111",
+                    "r112"
+                ],
+                "gigsId": [
+                    "g104",
+                    "g105",
+                    "g106"
+                ],
+                "ordersId": [
+                    "o102"
+                ]
+            }
         }
     ]
 }
