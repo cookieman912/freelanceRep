@@ -13,7 +13,8 @@
         @include btnWhiteTrans;
     }
     button:hover {
-        color: $fgc;
-        border-color: $fgc;
+        color: $flc;
+        border-color: transparent;
+        background-color: $white;
     }
 }
