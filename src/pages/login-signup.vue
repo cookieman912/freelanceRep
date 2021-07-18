@@ -87,8 +87,9 @@ export default {
         await this.$store.dispatch({ type: "login", userCred: this.loginCred });
         this.$router.push('/')
       } catch(err) {
-          console.log(err)
+        
           this.msg = "Failed to login"
+          throw err
       }
     },
     doLogout() {
