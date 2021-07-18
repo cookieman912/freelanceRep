@@ -17,7 +17,6 @@ export default {
       return {
           
       }
-    return {};
   },
   methods: {},
   computed: {},

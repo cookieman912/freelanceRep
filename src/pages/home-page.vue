@@ -174,7 +174,6 @@ export default {
     this.$store.dispatch({ type: "loadGigs" });
     this.heroInterval= setInterval(() => {
      // this.$refs.imgContainer
-      this.show = false;
       this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
       this.styleObject.backgroundColor = this.currHero.bgColor;
     }, 7000);
