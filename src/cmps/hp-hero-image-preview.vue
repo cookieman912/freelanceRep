@@ -1,6 +1,6 @@
 <template>
     <section v-if="hero" class="hp-hero-image-list">
-        <img :src="hero.imgUrl" width="600px">
+        <img class="hero-image" :src="hero.imgUrl" width="600px">
         <div class="hp-hero-details-container">
             <p>{{hero.fullname}}</p>
             <p>{{hero.specialty}}</p>
