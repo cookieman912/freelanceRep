@@ -2,14 +2,13 @@
     position: relative;
     color: $ftc;
     color: blue;
-    
     svg {
+        opacity: 0.5;
         color: blue;
         position: absolute;
         top: 30%;
         left: 3%;
     }
-
     & input.header-search-bar {
         border: 1.5px solid $fbc;
         height: 2.125rem;
@@ -18,7 +17,7 @@
         width: 20rem;
         font-size: 1rem;
     }
-    & input.header-search-bar:focus{
+    & input.header-search-bar:focus {
         outline: 0;
         border: 1.5px solid #c5c6c9;
     }
