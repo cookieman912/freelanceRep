@@ -4,6 +4,8 @@
       <div class="seller-details">
         <h1>update your info!</h1>
         <form @submit.prevent="updateSeller">
+           <div class="form-content">
+          <div class="form-option">
           <h3>what is your specialty?</h3>
 
           <el-select v-model="user.seller.specialty">
@@ -13,40 +15,45 @@
             <el-option value="podcast expertise">podcast expertise</el-option>
             <el-option value="translation">translation</el-option>
           </el-select>
+          </div>
+           <div class="form-option">
           <h3>tell us about yourself!</h3>
 
           <el-input type="textarea"
+          :autosize="{ minRows: 1, maxRows: 8}"
             v-model="user.seller.sellerInfo"
-            cols="30"
-            rows="10"
+         
+            
           ></el-input>
-
-          <button>update</button>
+        
+         </div >
+             </div>
+           <button>update</button>
+           
         </form>
 
  <button class="toggle-button"  v-if="addGigActive" @click="toggleAddGig">-</button>
    <button class="toggle-button" v-else @click="toggleAddGig">+</button>
     
-
         <form @submit.prevent="addGig" v-if="addGigActive">
-          <input type="text" placeholder="title" v-model="gigToAdd.title" />
-          <input type="number" placeholder="price" v-model="gigToAdd.price" />
+          <div class="gig-inputs">
+          <el-input class="title-input" type="text" placeholder="title" v-model="gigToAdd.title" />
+          <el-input class="number-input" type="number" placeholder="price" v-model="gigToAdd.price" />
 
-          <input
+          <el-input  class="delivery-input"
             type="number"
             placeholder="delivery days"
             v-model="gigToAdd.deliveryDays"
           />
 
-          <el-input
+          <el-input  class="desc-input"
             type="textarea"
             autosize
             placeholder="description"
             v-model="gigToAdd.description"
           >
           </el-input>
-
-          <el-select v-model="gigToAdd.tags" multiple placeholder="Select">
+             <el-select class="tag-input" v-model="gigToAdd.tags" multiple placeholder="tags">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -55,6 +62,9 @@
             >
             </el-option>
           </el-select>
+          </div>
+
+       
           
           <button>add gig!</button>
         </form>
@@ -209,7 +219,7 @@ export default {
       //making gig ready for save
       this.gigToAdd.seller._id = this.user._id;
       this.gigToAdd.seller.fullname = this.user.fullname;
-      this.gigToAdd.seller.imageUrl = this.user.imageUrl;
+      this.gigToAdd.seller.imgUrl = this.user.imgUrl;
       this.gigToAdd.reviews = [];
       //linking user to gig
 
