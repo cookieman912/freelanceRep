@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     filter(){
-            this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
+            this.emitSearch()
+           // this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
             this.toExplorePage();
     },
 
@@ -38,6 +39,9 @@ export default {
     toExplorePage() {
       this.$router.push("/explore");
     },
+    emitSearch() {
+            this.$emit('search', search);
+        }
 
   },
 };

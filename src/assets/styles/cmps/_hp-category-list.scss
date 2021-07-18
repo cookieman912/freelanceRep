@@ -2,15 +2,15 @@
     display: flex;
     padding: 0;
     flex-wrap: wrap;
-    position: inherit;
+    position: relative;
     list-style-type: none;
     justify-content: space-between;
     & .home-page-category-before-btn {
         background-color: $white;
         position: absolute;
         z-index: 4;
-        top: 104%;
-        left: 0%;
+        top: 40%;
+        left: -1.8%;
         width: 48px;
         height: 48px;
         text-align: center;
@@ -23,8 +23,8 @@
         background-color: $white;
         position: absolute;
         z-index: 4;
-        top: 104%;
-        right: 0%;
+        top: 40%;
+        right: -1.8%;
         width: 48px;
         height: 48px;
         text-align: center;

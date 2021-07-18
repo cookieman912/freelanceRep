@@ -15,7 +15,7 @@
           </form>
           <hp-tag-buttons />
         </main>
-        <div class="home-page-image-container">
+        <div ref="imgContainer" class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
         </div>
       </div>
@@ -173,6 +173,8 @@ export default {
     this.styleObject.backgroundColor = this.demoHeros[0].bgColor;
     this.$store.dispatch({ type: "loadGigs" });
     this.heroInterval= setInterval(() => {
+     // this.$refs.imgContainer
+      this.show = false;
       this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
       this.styleObject.backgroundColor = this.currHero.bgColor;
     }, 7000);
