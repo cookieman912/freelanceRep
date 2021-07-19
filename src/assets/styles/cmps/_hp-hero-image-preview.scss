@@ -8,7 +8,7 @@
 }
 
 .hp-hero-image-list {
-    position: inherit;
+    position: relative;
     & img {
         margin-block-end: -5px;
     }
@@ -17,12 +17,29 @@
 .hp-hero-details-container {
     position: absolute;
     z-index: 1;
-    left: 0;
-    p {
-        color: white;
+    left: 60%;
+    top: 80%;
+    & .hp-image-preview-hero-text {
+        p,
+        span {
+            display: inline-block;
+            color: $white;
+            width: 400px;
+        }
     }
 }
 
-.hero-image {
-    // animation: fadeIn 3s;
-}
+// @keyframes fadeInFromNone {
+//     0% {
+//         display: none;
+//         opacity: 0;
+//     }
+//     1% {
+//         display: block;
+//         opacity: 0;
+//     }
+//     100% {
+//         display: block;
+//         opacity: 1;
+//     }
+// }

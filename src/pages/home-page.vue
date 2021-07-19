@@ -72,7 +72,7 @@ export default {
       demoHeros:[{
         id:'1',
         fullname:'Keren Lazer',
-        rate: 5,
+        rate: 4.5,
         specialty:'Graphic designer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634929/hp-hero/pngfind.com-business-woman-png-1612489_2_kn1y2b.png',
         bgColor:'#494949',
@@ -80,7 +80,7 @@ export default {
       {
         id:'2',
         fullname:'Haim Moshe',
-        rate: 5,
+        rate: 4.8,
         specialty:'Full Stack Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-5286073_2_rujldt.png',
         bgColor:'#d1aa8b'
@@ -89,7 +89,7 @@ export default {
       {
         id:'3',
         fullname:'Puki Ben David',
-        rate: 5,
+        rate: 4.7,
         specialty:'Strategic Planner',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-business-man-png-47159_2_ytflui.png',
         bgColor:'#a57563'
@@ -107,7 +107,7 @@ export default {
       {
         id:'5',
         fullname:'Jon Doe',
-        rate: 5,
+        rate: 4.6,
         specialty:'Mobile Aplication Freelancer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
         bgColor:'#86535c'
@@ -154,7 +154,11 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    onScroll(){
+      console.log('hii')
+    }
+  },
   computed: {
     getCategories() {
       return this.demoCategories;

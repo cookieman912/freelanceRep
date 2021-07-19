@@ -2,9 +2,10 @@
     <section v-if="hero" class="hp-hero-image-list">
         <img class="hero-image" :src="hero.imgUrl" width="600px">
         <div class="hp-hero-details-container">
-            <p>{{hero.fullname}}</p>
-            <p>{{hero.specialty}}</p>
-            <p>{{hero.rate}}</p>
+            <el-rate v-model="hero.rate" disabled text-color="#ff9900"></el-rate>
+            <div class="hp-image-preview-hero-text">
+            <p>{{hero.fullname}} , &nbsp;<b>{{hero.specialty}}</b></p>
+            </div>
         </div>
     </section>
 </template>

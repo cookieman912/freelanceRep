@@ -101,13 +101,19 @@ export default {
         throw err;
       }
     },
+        handleScroll (event) {
+      console.log('scrolling')
+    }
+
   },
   created(){
+    window.addEventListener('scroll', this.handleScroll);
     eventBusService.$on('bgColorChanged',(data)=>{
       this.styleObject.backgroundColor = data;
     });
   },
   destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
     this.clearSearch();
   },
 };
