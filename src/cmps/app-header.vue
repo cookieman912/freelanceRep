@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header">
+  <header class="app-header" v-bind:style="styleObject"> 
     <nav class="nav-header">
       <div class="logo">
         <router-link to="/" @click.native="clearSearch"
@@ -27,9 +27,9 @@
           loggedInUser.fullname
         }}</router-link>
 
-        <button v-else @click="toggleLogin">Sign In</button>
-        <span v-if="loggedInUser" @click="signout">sign out</span>
-        <button v-else @click="toggleSignup">
+        <button  class="header-signin" v-else @click="toggleLogin" v-bind:style="styleObject">Sign In</button>
+        <span class="header-signout" v-if="loggedInUser" @click="signout" v-bind:style="styleObject">sign out</span>
+        <button v-else @click="toggleSignup" v-bind:style="styleObject">
           <span class="header-join">Join</span>
         </button>
       </div>
@@ -45,6 +45,9 @@ export default {
   },
   data() {
     return {
+      styleObject:{
+        backgroundColor: null
+      },
       filterBy: {
         txt: "",
       },
@@ -98,6 +101,11 @@ export default {
         throw err;
       }
     },
+  },
+  created(){
+    eventBusService.$on('bgColorChanged',(data)=>{
+      this.styleObject.backgroundColor = data;
+    });
   },
   destroyed() {
     this.clearSearch();

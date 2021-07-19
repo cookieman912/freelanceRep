@@ -15,7 +15,7 @@
           </form>
           <hp-tag-buttons />
         </main>
-        <div ref="imgContainer" class="home-page-image-container">
+        <div class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
         </div>
       </div>
@@ -53,6 +53,7 @@ import hpTagButtons from "../cmps/hp-tag-buttons.vue";
 import hpCategoryList from "../cmps/hp-category-list.vue";
 import gigsList from "../cmps/gigs-list.vue";
 import hpHeroImagePreview from "../cmps/hp-hero-image-preview.vue"
+import { eventBusService } from "../services/event-bus.service.js";
 export default {
   components: {
     hpSearchBar,
@@ -73,7 +74,7 @@ export default {
         fullname:'Keren Lazer',
         rate: 5,
         specialty:'Graphic designer',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626523420/hp-hero/hero-woman1_1596x1592_ytwxwk.jpg',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634929/hp-hero/pngfind.com-business-woman-png-1612489_2_kn1y2b.png',
         bgColor:'#494949',
       },
       {
@@ -81,7 +82,7 @@ export default {
         fullname:'Haim Moshe',
         rate: 5,
         specialty:'Full Stack Developer',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626521987/hp-hero/depositphotos_18807295-stock-photo-portrait-of-handsome-man_wtcsv2.jpg',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-5286073_2_rujldt.png',
         bgColor:'#d1aa8b'
 
       },
@@ -90,25 +91,25 @@ export default {
         fullname:'Puki Ben David',
         rate: 5,
         specialty:'Strategic Planner',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626523758/hp-hero/leo_photo_tvqzuq.jpg',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-business-man-png-47159_2_ytflui.png',
         bgColor:'#a57563'
 
       },
       {
         id:'4',
-        fullname:'Avshalom Kor',
+        fullname:'Shomit Bona-Suka',
         rate: 5,
         specialty:'Podcaster',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626524482/hp-hero/breaking_bad_hwhrxl.jpg',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
         bgColor:'black'
 
       },
       {
         id:'5',
-        fullname:'Steve Props',
+        fullname:'Jon Doe',
         rate: 5,
         specialty:'Mobile Aplication Freelancer',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626533012/hp-hero/dvir-yahalom_o9hbr0.jpg',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
         bgColor:'#86535c'
 
       }
@@ -167,15 +168,18 @@ export default {
     toExplorePage() {
       this.$router.push("/explore");
     },
+   
   },
   created() {
     this.currHero = this.demoHeros[0];
     this.styleObject.backgroundColor = this.demoHeros[0].bgColor;
+    this.styleObject.backgroundColor = this.currHero.bgColor;
+    eventBusService.$emit('bgColorChanged',this.currHero.bgColor);
     this.$store.dispatch({ type: "loadGigs" });
     this.heroInterval= setInterval(() => {
-     // this.$refs.imgContainer
       this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
       this.styleObject.backgroundColor = this.currHero.bgColor;
+      eventBusService.$emit('bgColorChanged',this.currHero.bgColor);
     }, 7000);
   },
   destroyed() {

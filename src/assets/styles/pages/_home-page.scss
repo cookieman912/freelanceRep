@@ -7,30 +7,14 @@
     }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 3s;
-}
-
-.fade-enter,
-.fade-leave-to
-/* .fade-leave-active below version 2.1.8 */
-
-{
-    opacity: 0;
-}
-// .home-page-top-container{
-//     padding-top: 5rem;
-// }
 .home-page-top {
     display: flex;
     justify-content: space-between;
     gap: 40px;
 }
 
-.home-page-image-container {
-    animation: fadeIn 3s;
-    //    transition: opacity 0.3s ease-in-out;
+.home-page-top-container {
+    //animation: fadeIn 1s;
 }
 
 .home-page-search {
