@@ -23,7 +23,7 @@
           
             <img @click="toggleMenu"
               class="avatar"
-              :src="require(`../assets/images/users/${imageName}`)"
+              :src="loggedInUser.imgUrl"
               alt="avatar"
             />
        

@@ -1,12 +1,24 @@
 <template>
   <div class="gig-preview">
-    <!-- <img src="../assets/images/gigs/design.jpg" alt="" /> -->
-    <!-- <p><span>img:</span> {{ gig.imgUrls }}</p> -->
-    <router-link :to="'/explore/' + gig._id">
+    <img src="../assets/images/gigs/design.jpg" alt="" /> 
+    
+
+ <router-link v-if="isGigCloudinary" :to="'/explore/' + gig._id">
+      <img :src="gig.imgUrls[0]" />
+    </router-link>
+
+    <router-link v-else :to="'/explore/' + gig._id">
       <img :src="require(`../assets/images/${gigImgUrl}`)" />
     </router-link>
+
+
     <figure class="gig-preview-seller-info">
-      <img
+<img v-if="isSellerCloudinary"
+        class="seller-propile-img"
+        :src="gig.seller.imgUrl"
+      />
+
+      <img v-else
         class="seller-propile-img"
         :src="require(`../assets/images/${sellerImgUrl}`)"
       />
@@ -74,6 +86,15 @@ export default {
     sellerImgUrl() {
       return this.gig.seller.imgUrl.substring(21);
     },
+    isGigCloudinary(){
+      return (this.gig.imgUrls[0].includes('cloud'))
+      
+    },
+
+     isSellerCloudinary(){
+      return (this.gig.seller.imgUrl.includes('cloud'))
+      
+    }
   },
 };
 </script>
