@@ -1,11 +1,15 @@
 .app-header {
     width: 100%;
     border-bottom: 1px solid #e4e5e7;
-    // position: fixed;
     background-color: $white;
     // z-index: 5;
+    
+    // .home-page + & {
+    //     position: fixed;
+    //     width: 100%;
+    // }
 
-    & .nav-header {
+    .nav-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -13,62 +17,67 @@
         width: $main-layout;
         padding: 0 2rem;
         margin: auto;
-        & .logo>a {
-            position: relative;
-            bottom: 0.35rem;
-            text-decoration: none;
-            color: $flc;
-            font-size: 2rem;
+        .logo {
+            a {
+                position: relative;
+                bottom: 0.35rem;
+                text-decoration: none;
+                color: $flc;
+                font-size: 2rem;
+                span {
+                    color: $fgc;
+                    font-size: 3rem;
+                }
+            }
         }
-        & .logo>a span {
-            color: $fgc;
-            font-size: 3rem;
+        .navigation{
+            a {
+                text-decoration: none;
+                padding-inline-start: 1.5rem;
+                color: $ftc;
+                font-weight: 600;
+                transition: 0.35s ease;
+                &:hover {
+                    color: $fgc;
+                }
+            }
+            span {
+                text-decoration: none;
+                padding-inline-start: 1.5rem;
+                color: $ftc;
+                font-weight: 600;
+                transition: 0.35s ease;
+                &:hover {
+                    color: $fgc;
+                    cursor: pointer;
+                }
+            }
+            button {
+               background-color: white;
+               border: none;
+               padding-inline-start: 1.5rem;
+               color: $ftc;
+               font-weight: 600;
+               font-size: 1rem;
+                &:hover {
+                    cursor: pointer;
+                    color: $fgc;
+                    transition: 0.35s ease;
+                }
+                .header-join {
+                    border: 1.5px solid $fgc;
+                    border-radius: 5px;
+                    padding: 0.25rem 1.5rem;
+                    transition: 0.35s ease;
+                    &:hover {
+                        color: white;
+                        background-color: #02a75a;
+                    }
+                }
+            }
         }
-        & .navigation>a {
-            text-decoration: none;
-            padding-inline-start: 1.5rem;
-            color: $ftc;
-            font-weight: 600;
-            transition: 0.35s ease;
-        }
-        & .navigation>span {
-            text-decoration: none;
-            padding-inline-start: 1.5rem;
-            color: $ftc;
-            font-weight: 600;
-            transition: 0.35s ease;
-        }
-        & .navigation>span:hover {
-            color: $fgc;
-            cursor: pointer;
-        }
-        & .navigation>a:hover {
-            color: $fgc;
-        }
-        & .navigation>button .header-join {
-            border: 1.5px solid $fgc;
-            border-radius: 5px;
-            padding: 0.25rem 1.5rem;
-            transition: 0.35s ease;
-        }
-        & .navigation>button .header-join:hover {
-            color: white;
-            background-color: #02a75a;
-        }
-        & .navigation>button {
-            background-color: white;
-            border: none;
-            padding-inline-start: 1.5rem;
-            color: $ftc;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        & .navigation>button:hover {
-            cursor: pointer;
-            color: $fgc;
-            transition: 0.35s ease;
-        }
-        & .user-control {
+            
+        .user-control {
             a {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;

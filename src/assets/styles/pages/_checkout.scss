@@ -1,0 +1,38 @@
+.checkout-page{
+    margin: 0 auto;
+    .package-container{
+        width: 51.666rem;
+        padding: 0.75rem;
+        .package-gig-details{
+            display: flex;
+            justify-content: space-between;
+            .package-info-container{
+                display: flex;
+            }
+            h3 {
+                padding-bottom: 0.3125rem;
+                 position: relative;
+                bottom: 0.25rem;
+            }
+            .el-rate {
+                padding-top: 0.3125rem;
+            }
+            div.more-package-info > button {
+                position: relative;
+                top: 1rem;
+                background-color: transparent;
+                border: none;
+                color: $fgc;
+            }
+        }
+    }
+        .img-container {
+            margin-right: 0.5rem;
+            width: 150px;
+            height: 92.6167px;
+            img {
+                object-fit: cover;
+            }
+        }
+
+}

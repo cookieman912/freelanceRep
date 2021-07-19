@@ -2,7 +2,7 @@ import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service.js'
 const USER_KEY = 'userDB'
-
+    ;
 const defaultUsers = require('../../data/user.json')
 
 
@@ -21,8 +21,7 @@ export const userService = {
     getById,
     remove,
     update,
-    getLoggedinUser,
-    increaseScore
+    getLoggedinUser
 }
 
 window.userService = userService

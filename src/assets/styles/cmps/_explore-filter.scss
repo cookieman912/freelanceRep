@@ -4,7 +4,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
 
-    & .explore-choose {
+    .explore-choose {
         border: 1.5px solid $fbc;
         display: flex;
         justify-content: space-between;

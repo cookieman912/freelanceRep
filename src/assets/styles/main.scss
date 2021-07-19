@@ -1,10 +1,11 @@
+// setup
+@import './setup/_variables';
+@import './setup//mixins';
+
 //basics
 @import './basics/base';
 @import './basics/layout';
 @import './basics/buttons';
-// setup
-@import './setup/_variables';
-@import './setup//mixins';
 
 //pages
 @import './pages/explore';
@@ -12,6 +13,8 @@
 @import './pages/user-details';
 @import './pages/gig-details';
 @import './pages/become-seller';
+@import './pages/checkout';
+
 //components
 @import './cmps/app-header';
 @import './cmps/log-in-modal';

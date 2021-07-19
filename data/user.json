@@ -6,10 +6,17 @@
             "profileImg": "../src/assets/images/users/yori.jpg",
             "username": "yoriri",
             "password": "123",
+            "Member since": 1626633586722,
+            "savedGigs": [],
+            "savedSellers": [],
             "isAdmin": false,
             "seller": {
-                "specialty": "Bar owner",
-                "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
+                "specialty": "website development",
+                "SellerInfo": "Hello there! I’m Yori Yorovich and I'm a professional video editor and cinematic video creator. I have 5 years' experience in After Effects and I'm very passionate about my work. I believe in providing Professional work as soon as possible.  Please check my service and Feel Free To Contact Me anytime.........",
+                "location": "United States",
+                "socialLinks": {
+                    "facebook": "https://www.facebook.com/yori.yorovich"
+                },
                 "reviewsId": [
                     "r101",
                     "r102",
@@ -34,10 +41,17 @@
             "imgUrl": "../src/assets/images/users/tamar.jpg",
             "username": "tamariri",
             "password": "123",
+            "Member since": 1626633586722,
+            "savedGigs": [],
+            "savedSellers": [],
             "isAdmin": false,
             "seller": {
                 "specialty": "graphic design",
-                "SellerInfo": "Big batata, soft at edges, can be used for a great veg soup",
+                "SellerInfo": "Hi, Meet me... Mehshan Here! Working in the field of Graphic designing for more than 5 years. A good observer and thinker who always try to be creative in producing unique ideas. I have a strong believe in producing High Quality Work instead of More Quantity.",
+                "location": "Israel",
+                "socialLinks": {
+                    "facebook": "https://www.facebook.com/yori.yorovich"
+                },
                 "reviewsId": [
                     "r107",
                     "r108",
