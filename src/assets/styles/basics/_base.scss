@@ -22,7 +22,7 @@
   img {
       width: 100%;
   }
-
+  
   h1,
   h2,
   h3,
@@ -33,8 +33,11 @@
   }
   
   button,
-  input,
   textarea,
   a {
       cursor: pointer;
+  }
+  
+  input {
+      cursor: text;
   }

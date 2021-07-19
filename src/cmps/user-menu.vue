@@ -3,12 +3,9 @@
   
     <ul>
       <li v-if="user.seller">
-        <router-link to="/becomeSeller" @click.native="clear"
+        <router-link to="/backOffice" @click.native="clear"
           >back-office</router-link
         >
-      </li>
-      <li v-else>
-       
       </li>
   <li>
         <router-link to="/user/user._id" @click.native="clear"
@@ -54,7 +51,7 @@ export default {
 
     clear(){
         this.toggleMenu();
-      
+        this.$emit('clear')
     }
   },
 };

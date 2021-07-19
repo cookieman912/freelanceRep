@@ -7,6 +7,7 @@ import becomeSeller from './pages/become-seller.vue'
 import loginSignup from './pages/login-signup.vue'
 import userDetails from './pages/user-details.vue'
 import checkout from './pages/checkout.vue'
+import backOffice from './pages/back-office.vue'
 
 
 Vue.use(Router)
@@ -55,6 +56,11 @@ export const router = new Router({
             path: '/checkout/:gigId',
             name: 'checkout',
             component: checkout
+        },
+        {
+            path: '/backOffice',
+            name: 'back-office',
+            component: backOffice
         }
     ]
 })

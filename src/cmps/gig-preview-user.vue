@@ -1,8 +1,16 @@
 <template>
   <div class="gig-preview">
-    <!-- <img src="../assets/images/gigs/design.jpg" alt="" /> -->
-    <!-- <p><span>img:</span> {{ gig.imgUrls }}</p> -->
-    <img :src="require(`../assets/images/gigs/${imgUrl}`)" />
+
+
+
+ <router-link v-if="isGigCloudinary" :to="'/explore/' + gig._id">
+      <img :src="gig.imgUrls[0]" />
+    </router-link>
+
+    <router-link v-else :to="'/explore/' + gig._id">
+      <img :src="require(`../assets/images/${gigImgUrl}`)" />
+    </router-link>
+
     <p><span>name:</span> {{ gig.title }}</p>
     <p><span>type:</span> {{ gig.description }}</p>
     <router-link :to="'/explore/' + gig._id">view</router-link>
@@ -29,11 +37,23 @@ export default {
     imgUrl() {
       return this.gig.imgUrls[0].substring(26);
     },
+         isGigCloudinary(){
+      console.log(this.gig.imgUrls[0].includes('cloud'))
+      return (this.gig.imgUrls[0].includes('cloud'))
+      
+    },
+
+     isSellerCloudinary(){
+       console.log(this.gig.seller.imgUrl.includes('cloud'))
+      return (this.gig.seller.imgUrl.includes('cloud'))
+      
+    }
   },
   methods:{
     deleteClicked(_id){
  eventBusService.$emit('remove-gig',_id)
     }
   },
+ 
 };
 </script>
