@@ -21,7 +21,7 @@
           >
           <router-link v-else to="/becomeSeller" @click.native="clearSearch"
             >Become a seller</router-link
-          >
+          > 
         </template>
         <router-link :to="'/user/' + loggedInUser._id" v-if="loggedInUser">{{
           loggedInUser.fullname
