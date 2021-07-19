@@ -1,5 +1,5 @@
 <template>
-  <div class="gig-preview">
+  <div class="gig-preview" v-bind:style="styleObject">
     <!-- <img src="../assets/images/gigs/design.jpg" alt="" /> -->
     <!-- <p><span>img:</span> {{ gig.imgUrls }}</p> -->
     <router-link :to="'/explore/' + gig._id">
@@ -54,6 +54,11 @@ export default {
   },
   data() {
     return {
+      styleObject:{
+        maxWidth: null,
+        borderRadius: null,
+        height:null
+      },
       img: null,
     };
   },
@@ -74,6 +79,13 @@ export default {
     sellerImgUrl() {
       return this.gig.seller.imgUrl.substring(21);
     },
+  },
+  created(){
+   if(this.$route.name === 'home'){
+     this.styleObject.maxWidth ='239px';
+     this.styleObject.borderRadius ='4px';
+     this.styleObject.height = '345px';
+   }
   },
 };
 </script>

@@ -83,15 +83,15 @@ export default {
         fullname:'Haim Moshe',
         rate: 4.8,
         specialty:'Full Stack Developer',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-5286073_2_rujldt.png',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
         colorSet:{backgroundColor:'#d1aa8b',color:'white'}
       },
       {
         id:'3',
-        fullname:'Puki Ben David',
+        fullname:'Puka Bat David',
         rate: 4.7,
         specialty:'Strategic Planner',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-business-man-png-47159_2_ytflui.png',
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705830/hp-hero/pngfind.com-ladies-suit-png-248538_2_ljes8n.png',
         colorSet:{backgroundColor:'#a57563',color:'white'}
 
       },
