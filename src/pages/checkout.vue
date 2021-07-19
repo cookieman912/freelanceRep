@@ -1,41 +1,55 @@
 <template>
-  <main class="checkout-page">
-    <div v-if="this.gig" class="package-container">
-      <h1>Yout Package</h1>
-      <div class="package-gig-details">
-        <div class="package-info-container">
-          <div class="img-container">
-            <img :src="require(`../assets/images/${gigImgUrl}`)" />
-          </div>
-          <div>
-            <h3>{{ gig.title }}</h3>
-            <el-rate
-              v-model="sellerRate"
-              disabled
-              show-score
-              text-color="#ff9900"
-              score-template="{value}"
-            >
-              <span> ({{ gig.reviews.length }} Reviews)</span>
-            </el-rate>
-            <div class="more-package-info">
-              <button>View what's included</button>
+  <section v-if="gig" class="checkout-page">
+    <main>
+      <div class="package-container">
+        <h2>Yout Package</h2>
+        <div class="package-gig-details">
+          <div class="package-info-container">
+            <div class="img-container">
+              <img :src="require(`../assets/images/${gigImgUrl}`)" />
+            </div>
+            <div>
+              <h3>{{ gig.title }}</h3>
+              <el-rate
+                v-model="sellerRate"
+                disabled
+                show-score
+                text-color="#ff9900"
+                score-template="{value}"
+              >
+                <span> ({{ gig.reviews.length }} Reviews)</span>
+              </el-rate>
+              <div class="more-package-info">
+                <button @click="include">
+                  View what's included
+                  <span :class="arrowDirection"></span>
+                </button>
+              </div>
             </div>
           </div>
+          <div class="package-gig-price">$ {{ gig.price }}</div>
         </div>
-        <div class="package-gig-price">$ {{ gig.price }}</div>
+        <div v-if="isInclude" class="package-include">
+          {{ gig.description }}
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <checkout-box :gig="gig" />
+  </section>
 </template>
 
 <script>
 import { gigService } from "../services/gig.service.js";
+import checkoutBox from "../cmps/checkout-box.vue";
 export default {
+  components: {
+    checkoutBox,
+  },
   data() {
     return {
       gig: null,
       sellerRate: null,
+      isInclude: false,
     };
   },
   methods: {
@@ -46,10 +60,19 @@ export default {
       });
       return sumRate / this.gig.reviews.length;
     },
+    include() {
+      this.isInclude = !this.isInclude;
+    },
   },
   computed: {
     gigImgUrl() {
       return this.gig.imgUrls[0].substring(21);
+    },
+    arrowDirection() {
+      if (this.isInclude) {
+        return { "el-icon-arrow-up": true };
+      }
+      return { "el-icon-arrow-down": true };
     },
   },
   async created() {

@@ -1,3 +1,36 @@
+.gig-details-navbar {
+    border-bottom: 1px solid $fbc;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    background-color: #fff;
+    z-index: 20;
+    .gig-details-nav {
+        width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        height: 53px;
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+            align-items: center;
+            height: 53px;
+            color: $ftc;
+            margin-inline-end: 2rem;
+            text-decoration: none;
+            &.gig-details-section-active {
+                span {
+                    color: black;
+                    position: relative;
+                    top: 0.125rem;
+                }
+                border-bottom: 0.25rem solid $fgc;
+            }
+        }
+    }
+}
+
 .gig-details-page {
     margin: 0 auto;
     max-width: 1304px;

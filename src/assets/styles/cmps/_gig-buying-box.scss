@@ -19,6 +19,16 @@
         }
         ul {
             padding-bottom: 0.75rem;
+            li {
+                list-style: none;
+            }
+            .el-icon-check {
+                position: relative;
+                top: 2px;
+                color: $fgc;
+                font-size: 1.1rem;
+                font-weight: 900;
+            }
         }
 
         button {
