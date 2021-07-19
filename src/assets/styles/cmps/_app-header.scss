@@ -8,6 +8,7 @@
         display: flex;
         align-items: center;
         position: relative;
+        color: white;
     }
     & .nav-header {
         display: flex;
@@ -69,11 +70,11 @@
             font-weight: 600;
             font-size: 1rem;
         }
-        .navigation{
+        .navigation {
             a {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
-                color: $ftc;
+                color: white;
                 font-weight: 600;
                 transition: 0.35s ease;
                 &:hover {
@@ -83,7 +84,7 @@
             span {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
-                color: $ftc;
+                color: white;
                 font-weight: 600;
                 transition: 0.35s ease;
                 &:hover {
@@ -92,12 +93,12 @@
                 }
             }
             button {
-               background-color: white;
-               border: none;
-               padding-inline-start: 1.5rem;
-               color: $ftc;
-               font-weight: 600;
-               font-size: 1rem;
+                background-color: white;
+                border: none;
+                padding-inline-start: 1.5rem;
+                color: white;
+                font-weight: 600;
+                font-size: 1rem;
                 &:hover {
                     cursor: pointer;
                     color: $fgc;
@@ -115,7 +116,6 @@
                 }
             }
         }
-            
         .user-control {
             a {
                 text-decoration: none;
@@ -129,7 +129,33 @@
         .avatar {
             height: 40px;
             border-radius: 50%;
+            width: 40px;
             background-color: transparent;
+            margin-left: 5px
+        }
+        .avatar-menu {
+            span {
+                text-decoration: none;
+                padding-inline-start: 1.5rem;
+                color: $ftc;
+                font-weight: 600;
+                transition: 0.35s ease;
+                &:hover {
+                    color: $fgc;
+                    cursor: pointer;
+                }
+            }
+            a {
+                text-decoration: none;
+                padding-inline-start: 1.5rem;
+                color: $ftc;
+                font-weight: 600;
+                transition: 0.35s ease;
+                &:hover {
+                    color: $fgc;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
