@@ -21,7 +21,7 @@ export const userService = {
     getById,
     remove,
     update,
-    getLoggedinUser
+    getLoggedinUser,
 }
 
 window.userService = userService

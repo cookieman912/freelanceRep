@@ -12,43 +12,49 @@ import checkout from './pages/checkout.vue'
 Vue.use(Router)
 
 export const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: home
+    mode: 'history',
+    base: process.env.BASE_URL,
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
     },
-    {
-      path: '/explore',
-      name: 'explore',
-      component: explorePage
-    },
-    {
-      path: '/explore/:gigId',
-      name: 'gig-details',
-      component: gigDetails
-    },
-    {
-      path: '/becomeSeller',
-      name: 'becomeSeller',
-      component: becomeSeller
-    },
-    {
-      path: '/login',
-      name: 'loginSignup',
-      component: loginSignup
-    },
-    {
-      path: '/user/:id',
-      name: 'user-details',
-      component: userDetails
-    },
-    {
-      path: '/checkout/:gigId',
-      name: 'checkout',
-      component: checkout
-    }
-  ]
+    routes: [{
+            path: '/',
+            name: 'home',
+            component: home
+        },
+        {
+            path: '/explore',
+            name: 'explore',
+            component: explorePage
+        },
+        {
+            path: '/explore/:gigId',
+            name: 'gig-details',
+            component: gigDetails
+        },
+        {
+            path: '/becomeSeller',
+            name: 'becomeSeller',
+            component: becomeSeller
+        },
+        {
+            path: '/login',
+            name: 'loginSignup',
+            component: loginSignup
+        },
+        {
+            path: '/user/:id',
+            name: 'user-details',
+            component: userDetails
+        },
+        {
+            path: '/checkout/:gigId',
+            name: 'checkout',
+            component: checkout
+        }
+    ]
 })

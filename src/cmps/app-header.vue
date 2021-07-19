@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header">
+  <header class="app-header" v-bind:style="styleObject">
     <nav class="nav-header">
       <div class="logo">
         <router-link to="/" @click.native="clearSearch"
@@ -12,26 +12,37 @@
         <router-link to="/explore" @click.native="clearSearch"
           >Explore</router-link
         >
+
         <template v-if="loggedInUser" class="user-control">
           <router-link
-            v-if="loggedInUser.seller"
+            v-if="!isUserSeller"
             to="/becomeSeller"
             @click.native="clearSearch"
-            >To Dashboard</router-link
-          >
-          <router-link v-else to="/becomeSeller" @click.native="clearSearch"
             >Become a seller</router-link
           >
-        </template>
-        <router-link :to="'/user/' + loggedInUser._id" v-if="loggedInUser">{{
-          loggedInUser.fullname
-        }}</router-link>
+          <button @click="toggleMenu">
+            <img
+              class="avatar"
+              :src="require(`../assets/images/users/${imageName}`)"
+              alt="avatar"
+            />
+          </button>
 
-        <button v-else @click="toggleLogin">Sign In</button>
-        <span v-if="loggedInUser" @click="signout">sign out</span>
-        <button v-else @click="toggleSignup">
-          <span class="header-join">Join</span>
-        </button>
+          <user-menu @clear="clearSearch" :user="loggedInUser" />
+        </template>
+        <template v-else>
+          <button
+            class="header-signin"
+            @click="toggleLogin"
+            v-bind:style="styleObject"
+          >
+            Sign In
+          </button>
+          <!-- <span class="header-signout" v-if="loggedInUser" @click="signout" v-bind:style="styleObject">sign out</span> -->
+          <button @click="toggleSignup" v-bind:style="styleObject">
+            <span class="header-join">Join</span>
+          </button>
+        </template>
       </div>
     </nav>
   </header>
@@ -39,12 +50,17 @@
 <script>
 import { eventBusService } from "../services/event-bus.service.js";
 import appHeaderSearch from "./app-header-search.vue";
+import userMenu from "./user-menu.vue";
 export default {
   components: {
     appHeaderSearch,
+    userMenu,
   },
   data() {
     return {
+      styleObject: {
+        backgroundColor: null,
+      },
       filterBy: {
         txt: "",
       },
@@ -66,18 +82,21 @@ export default {
     serachBar() {
       return this.$route.path !== "/";
     },
+    imageName() {
+      return this.$store.getters.loggedinUser.imgUrl.substring(27);
+    },
   },
   methods: {
+    toggleMenu() {
+      eventBusService.$emit("toggle-menu");
+    },
     toggleLogin() {
       eventBusService.$emit("toggle-login");
     },
     toggleSignup() {
       eventBusService.$emit("toggle-signup");
     },
-    async signout() {
-      await this.$store.dispatch({ type: "logout" });
-      this.$router.push("/");
-    },
+
     async filter(filterBy) {
       this.filterBy = filterBy;
       try {
@@ -98,8 +117,18 @@ export default {
         throw err;
       }
     },
+    handleScroll(event) {
+      console.log("scrolling");
+    },
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+    eventBusService.$on("bgColorChanged", (data) => {
+      this.styleObject.backgroundColor = data;
+    });
   },
   destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
     this.clearSearch();
   },
 };
