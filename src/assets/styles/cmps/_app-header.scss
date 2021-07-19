@@ -67,17 +67,11 @@
                     border-radius: 5px;
                     padding: 0.25rem 1.5rem;
                     transition: 0.35s ease;
-                }
-            }
-            >button .header-join {
-                border: 1.5px solid $fgc;
-                border-radius: 5px;
-                padding: 0.25rem 1.5rem;
-                transition: 0.35s ease;
-                color: $fgc;
-                &:hover {
-                    color: $white;
-                    background-color: #02a75a;
+                    color: $fgc;
+                    &:hover {
+                        color: $white;
+                        background-color: #02a75a;
+                    }
                 }
             }
         }
