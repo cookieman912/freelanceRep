@@ -23,7 +23,7 @@
         :src="require(`../assets/images/${sellerImgUrl}`)"
       />
       <p>{{ gig.seller.fullname }}</p>
-    </figure>
+    </figure> 
     <div class="gig-preview-gig-info">
       <router-link :to="'/explore/' + gig._id">
         <p class="gig-preview-desc">
@@ -106,6 +106,7 @@ export default {
      this.styleObject.maxWidth ='239px';
      this.styleObject.borderRadius ='4px';
      this.styleObject.height = '345px';
+     //
    }
   },
 };
