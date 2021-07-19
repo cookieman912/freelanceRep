@@ -1,6 +1,6 @@
 <template>
   <div class="gig-preview">
-    <img src="../assets/images/gigs/design.jpg" alt="" /> 
+    
     
 
  <router-link v-if="isGigCloudinary" :to="'/explore/' + gig._id">
