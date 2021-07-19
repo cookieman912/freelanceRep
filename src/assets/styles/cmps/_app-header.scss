@@ -8,7 +8,6 @@
         display: flex;
         align-items: center;
         position: relative;
-        color: white;
     }
     & .nav-header {
         display: flex;
@@ -74,7 +73,7 @@
             a {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
-                color: white;
+                color: $ftc;
                 font-weight: 600;
                 transition: 0.35s ease;
                 &:hover {
@@ -84,7 +83,7 @@
             span {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
-                color: white;
+                color: ;
                 font-weight: 600;
                 transition: 0.35s ease;
                 &:hover {
