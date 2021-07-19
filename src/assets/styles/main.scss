@@ -5,7 +5,6 @@
 // setup
 @import './setup/_variables';
 @import './setup//mixins';
-
 //pages
 @import './pages/explore';
 @import './pages/home-page';
@@ -25,3 +24,4 @@
 @import './cmps/hp-category-preview';
 @import './cmps/hp-hero-image-preview';
 @import './cmps/gig-reviews';
+@import './cmps/user-menu';

@@ -16,7 +16,9 @@ export function toggleLogin(num, type = 'toggle') {
 export function toggleSignup(num, type = 'toggle') {
     eventBusService.$emit('toggle-signup', { num, type });
 }
-
+export function toggleMenu(num, type = 'toggle') {
+    eventBusService.$emit('toggle-menu', { num, type });
+}
 export function removeGig(_id, type = 'remove') {
     eventBusService.$emit('remove-gig', { _id, type })
 }

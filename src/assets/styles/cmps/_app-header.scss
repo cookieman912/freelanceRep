@@ -4,6 +4,11 @@
     // position: fixed;
     //  background-color: $white;
     // z-index: 5;
+    .navigation {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
     & .nav-header {
         display: flex;
         align-items: center;
@@ -14,7 +19,6 @@
         margin: auto;
         font-weight: 900;
         & .logo>a {
-            position: relative;
             bottom: 0.35rem;
             text-decoration: none;
             color: $white;
@@ -79,6 +83,11 @@
                 transition: 0.35s ease;
                 display: inline;
             }
+        }
+        .avatar {
+            height: 40px;
+            border-radius: 50%;
+            background-color: transparent;
         }
     }
 }

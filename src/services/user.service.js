@@ -22,7 +22,6 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    // increaseScore
 }
 
 window.userService = userService
