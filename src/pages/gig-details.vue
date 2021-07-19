@@ -8,7 +8,14 @@
       </div>
       <h2>{{ gig.title }}</h2>
       <figure class="gig-details-seller-info">
+        <!-- seller picture -->
         <img
+          v-if="isSellerCloudinary"
+          class="sellerPropileImg"
+          :src="gig.seller.imgUrl"
+        />
+        <img
+          v-else
           class="sellerPropileImg"
           :src="require(`../assets/images/${sellerImgUrl}`)"
         />
@@ -23,10 +30,15 @@
         </el-rate>
         <span> (number of reviews)</span>
       </figure>
-      <!-- <img :src="require(`../assets/images/gigs/${imgUrl}`)" /> -->
+    
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="item in 4" :key="item">
-          <img :src="require(`../assets/images/${gigImgUrl}`)" />
+          <span>{{ item }}</span>
+            <img
+        v-if="isGigCloudinary"
+        :src="gig.imgUrls[0]"
+      />
+          <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />
         </el-carousel-item>
       </el-carousel>
       <div class="gig-details-description">
@@ -36,7 +48,11 @@
       <div class="gig-details-about-seller">
         <h2>About this seller</h2>
         <figure class="gig-details-seller-info">
-          <img
+           <img v-if="isSellerCloudinary"
+            class="sellerPropileImg"
+            :src="gig.seller.imgUrl"
+          />
+          <img v-else
             class="sellerPropileImg"
             :src="require(`../assets/images/${sellerImgUrl}`)"
           />
@@ -95,6 +111,14 @@ export default {
     },
     sellerImgUrl() {
       return this.gig.seller.imgUrl.substring(21);
+    },
+
+    isGigCloudinary() {
+      return this.gig.imgUrls[0].includes("cloud");
+    },
+
+    isSellerCloudinary() {
+      return this.gig.seller.imgUrl.includes("cloud");
     },
   },
 };

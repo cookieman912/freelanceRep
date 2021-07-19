@@ -20,13 +20,13 @@
             @click.native="clearSearch"
             >Become a seller</router-link
           >
-          <button @click="toggleMenu">
-            <img
+          
+            <img @click="toggleMenu"
               class="avatar"
-              :src="require(`../assets/images/users/${imageName}`)"
+              :src="loggedInUser.imgUrl"
               alt="avatar"
             />
-          </button>
+       
 
           <user-menu @clear="clearSearch" :user="loggedInUser" />
         </template>

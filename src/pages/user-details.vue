@@ -13,13 +13,9 @@
             @dragleave="isDragOver = false"
             :class="{ drag: isDragOver }"
           >
-            <img
-              v-if="!isDragOver"
-              src="https://www.lifewire.com/thmb/P856-0hi4lmA2xinYWyaEpRIckw=/1920x1326/filters:no_upscale():max_bytes(150000):strip_icc()/cloud-upload-a30f385a928e44e199a62210d578375a.jpg"
-              alt=""
-            />
+   
 
-            <h3 v-else>Drop image here</h3>
+            <h3> Drop image here</h3>
           </label>
 
           <!-- HIDDEN INPUT -->
@@ -41,15 +37,9 @@
       </div>
       <template class="avatar">
         <img
-          v-if="imgNotDefault"
+          
           class="profile-pic"
           :src="this.user.imgUrl"
-          alt="profile pic"
-        />
-        <img
-          v-else
-          class="profile-pic"
-          :src="require(`../assets/images/users/${defaultImageName}`)"
           alt="profile pic"
         />
       </template>
@@ -102,21 +92,7 @@ export default {
       return this.$route.params.id;
     },
 
-    defaultImageName() {
-      return this.$store.getters.loggedinUser.imgUrl.substring(27);
-    },
-    imageName() {
-      return this.$store.getters.loggedinUser.imgUrl.substring(27);
-    },
-    imgNotDefault() {
-      if (
-        this.$store.getters.loggedinUser.imgUrl !=
-        "../src/assets/images/users/default.png"
-      )
-        return true;
-      else return false;
-    },
-
+   
     mounted() {},
   },
 
