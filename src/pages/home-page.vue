@@ -65,6 +65,7 @@ export default {
   data() {
     return {
       styleObject:{
+        color: null,
         backgroundColor: null
       },
       heroInterval:null,
@@ -75,24 +76,23 @@ export default {
         rate: 4.5,
         specialty:'Graphic designer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634929/hp-hero/pngfind.com-business-woman-png-1612489_2_kn1y2b.png',
-        bgColor:'#494949',
+        colorSet:{backgroundColor:'#494949',color:'white'},
       },
       {
         id:'2',
         fullname:'Haim Moshe',
         rate: 4.8,
         specialty:'Full Stack Developer',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-5286073_2_rujldt.png',
-        bgColor:'#d1aa8b'
-
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
+        colorSet:{backgroundColor:'#d1aa8b',color:'white'}
       },
       {
         id:'3',
-        fullname:'Puki Ben David',
+        fullname:'Puka Bat David',
         rate: 4.7,
         specialty:'Strategic Planner',
-        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-business-man-png-47159_2_ytflui.png',
-        bgColor:'#a57563'
+        imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705830/hp-hero/pngfind.com-ladies-suit-png-248538_2_ljes8n.png',
+        colorSet:{backgroundColor:'#a57563',color:'white'}
 
       },
       {
@@ -101,7 +101,7 @@ export default {
         rate: 5,
         specialty:'Podcaster',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
-        bgColor:'black'
+        colorSet:{backgroundColor:'black',color:'white'}
 
       },
       {
@@ -110,8 +110,7 @@ export default {
         rate: 4.6,
         specialty:'Mobile Aplication Freelancer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
-        bgColor:'#86535c'
-
+        colorSet:{backgroundColor:'#86535c',color:'white'}
       }
       ],
       demoCategories: [
@@ -176,17 +175,20 @@ export default {
   },
   created() {
     this.currHero = this.demoHeros[0];
-    this.styleObject.backgroundColor = this.demoHeros[0].bgColor;
-    this.styleObject.backgroundColor = this.currHero.bgColor;
-    eventBusService.$emit('bgColorChanged',this.currHero.bgColor);
+    this.styleObject.backgroundColor = this.demoHeros[0].colorSet.backgroundColor;
+    this.styleObject.color = this.demoHeros[0].colorSet.color;
+    // this.styleObject.backgroundColor = this.currHero.backgroundColor;
+    eventBusService.$emit('headerColorChange',this.currHero.colorSet);
     this.$store.dispatch({ type: "loadGigs" });
     this.heroInterval= setInterval(() => {
       this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
-      this.styleObject.backgroundColor = this.currHero.bgColor;
-      eventBusService.$emit('bgColorChanged',this.currHero.bgColor);
+      this.styleObject.backgroundColor = this.currHero.colorSet.backgroundColor;
+      this.styleObject.color = this.currHero.colorSet.color;
+      eventBusService.$emit('headerColorChange',this.currHero.colorSet);
     }, 7000);
   },
   destroyed() {
+    eventBusService.$emit('headerColorChange','white');
     clearInterval(this.heroInterval);
   },
 };

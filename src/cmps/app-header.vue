@@ -1,4 +1,5 @@
 <template>
+  <!-- <header class="app-header"> -->
   <header class="app-header" v-bind:style="styleObject">
     <nav class="nav-header">
       <div class="logo">
@@ -8,9 +9,8 @@
       </div>
       <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
-        <router-link to="/" @click.native="clearSearch">Home</router-link>
-        <router-link to="/explore" @click.native="clearSearch"
-          >Explore</router-link
+        <router-link to="/" @click.native="clearSearch" v-bind:style="styleObject">Home</router-link>
+        <router-link to="/explore" @click.native="clearSearch" v-bind:style="styleObject">Explore</router-link
         >
 
         <template v-if="loggedInUser" class="user-control">
@@ -31,16 +31,13 @@
           <user-menu @clear="clearSearch" :user="loggedInUser" />
         </template>
         <template v-else>
-          <button
-            class="header-signin"
-            @click="toggleLogin"
-            v-bind:style="styleObject"
-          >
-            Sign In
-          </button>
+          <button class="header-signin" @click="toggleLogin" v-bind:style="styleObject">Sign In</button>
+          <!-- <button class="header-signin" @click="toggleLogin" v-bind:style="styleObject">Sign In</button> -->
+            
           <!-- <span class="header-signout" v-if="loggedInUser" @click="signout" v-bind:style="styleObject">sign out</span> -->
+          <!-- <button @click="toggleSignup" v-bind:style="styleObject"> -->
           <button @click="toggleSignup" v-bind:style="styleObject">
-            <span class="header-join">Join</span>
+            <span class="header-join" v-bind:style="styleObject">Join</span>
           </button>
         </template>
       </div>
@@ -59,6 +56,7 @@ export default {
   data() {
     return {
       styleObject: {
+        color:null,
         backgroundColor: null,
       },
       filterBy: {
@@ -117,18 +115,25 @@ export default {
         throw err;
       }
     },
-    handleScroll(event) {
-      console.log("scrolling");
-    },
+    clearHeader(){
+      this.styleObject.backgroundColor = 'white';
+    }
+    // handleScroll(event) {
+    //   console.log("scrolling");
+    // },
   },
   created() {
-    window.addEventListener("scroll", this.handleScroll);
-    eventBusService.$on("bgColorChanged", (data) => {
-      this.styleObject.backgroundColor = data;
-    });
+    //window.addEventListener("scroll", this.handleScroll);
+    // if(this.$route.name === "home"){
+     eventBusService.$on("headerColorChange", (data) => {
+       this.styleObject = data;
+     });
+    // }
   },
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
+     eventBusService.$off("headerColorChange");
+   //this.styleObject.backgroundColor = 'white';
+    //window.removeEventListener("scroll", this.handleScroll);
     this.clearSearch();
   },
 };
