@@ -10,7 +10,7 @@
           </header>
           <form class="home-page-search-container">
             <div class="home-page-search-bar-container">
-              <hp-search-bar />
+              <hp-search-bar @filter="filter"/>
             </div>
           </form>
           <hp-tag-buttons />
@@ -64,6 +64,9 @@ export default {
   },
   data() {
     return {
+      filterBy: {
+        txt:""
+      },
       // style object for the header via eventbus
       styleObject:{
         color: null,
@@ -173,6 +176,16 @@ export default {
     toExplorePage() {
       this.$router.push("/explore");
     },
+    async filter(filterBy){
+      this.filterBy = filterBy;
+      try{
+        this.$store.commit({type:"setFilter", filterBy});
+      }
+      catch (err){
+        console.log('Cannot load gigs',err);
+        throw err;
+      }
+    }
    
   },
   created() {
