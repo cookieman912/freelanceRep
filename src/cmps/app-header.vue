@@ -32,10 +32,6 @@
         </template>
         <template v-else>
           <button class="header-signin" @click="toggleLogin" v-bind:style="styleObject">Sign In</button>
-          <!-- <button class="header-signin" @click="toggleLogin" v-bind:style="styleObject">Sign In</button> -->
-            
-          <!-- <span class="header-signout" v-if="loggedInUser" @click="signout" v-bind:style="styleObject">sign out</span> -->
-          <!-- <button @click="toggleSignup" v-bind:style="styleObject"> -->
           <button @click="toggleSignup" v-bind:style="styleObject">
             <span class="header-join" v-bind:style="styleObject">Join</span>
           </button>
@@ -55,10 +51,12 @@ export default {
   },
   data() {
     return {
+      // Dynamic styling for buttons on homepage route
       styleObject: {
         color:null,
         backgroundColor: null,
       },
+      // Dynamic styling for header on homepage route
       styleObject2: {
         color:null,
         backgroundColor: null,
@@ -123,25 +121,17 @@ export default {
     clearHeader(){
       this.styleObject.backgroundColor = 'white';
     }
-    // handleScroll(event) {
-    //   console.log("scrolling");
-    // },
   },
   created() {
-    //window.addEventListener("scroll", this.handleScroll);
-    // if(this.$route.name === "home"){
+  // Gets styling params from homepage hero demo data
      eventBusService.$on("headerChange", (data) => {
-       console.log('data',data)
        this.styleObject2 = data;
        this.styleObject.color = data.color;
        this.styleObject.backgroundColor = data.backgroundColor; 
      });
-    // }
   },
   destroyed() {
      eventBusService.$off("headerChange");
-   //this.styleObject.backgroundColor = 'white';
-    //window.removeEventListener("scroll", this.handleScroll);
     this.clearSearch();
   },
 };
