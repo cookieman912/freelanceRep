@@ -2,12 +2,25 @@
   <div>
     <div class="gig-details-navbar">
       <nav class="gig-details-nav">
-        <a href="#overview" :class="{ 'gig-details-section-active': true }">
+        <a
+          href="#overview"
+          :class="{ 'gig-details-section-active': navOverview }"
+        >
           <span>Overview</span>
         </a>
-        <a href="#description"><span>Description</span></a>
-        <a href="#about-the-seller"><span>About The Seller</span> </a>
-        <a href="#reviews"><span>Reviews</span></a>
+        <a
+          href="#description"
+          :class="{ 'gig-details-section-active': navDescription }"
+          ><span>Description</span></a
+        >
+        <a
+          href="#about-the-seller"
+          :class="{ 'gig-details-section-active': navAboutTheSeller }"
+          ><span>About The Seller</span>
+        </a>
+        <a href="#reviews" :class="{ 'gig-details-section-active': navReviews }"
+          ><span>Reviews</span></a
+        >
       </nav>
     </div>
 
@@ -18,7 +31,9 @@
             <small>{{ gig.tags[0] }}</small>
           </button>
         </div>
-        <h2>{{ gig.title }}</h2>
+        <h2 ref="overview" @click.stop="pageNavigationClass" id="overview">
+          {{ gig.title }}
+        </h2>
         <figure class="gig-details-seller-info">
           <!-- seller picture -->
           <img
@@ -50,11 +65,21 @@
           </el-carousel-item>
         </el-carousel>
 
-        <div id="description" class="gig-details-description">
+        <div
+          ref="description"
+          @click.stop="pageNavigationClass"
+          id="description"
+          class="gig-details-description"
+        >
           <h2>About this gig</h2>
           <p>{{ gig.description }}</p>
         </div>
-        <div id="about-the-seller" class="gig-details-about-seller">
+        <div
+          ref="aboutTheSeller"
+          @click.stop="pageNavigationClass"
+          id="about-the-seller"
+          class="gig-details-about-seller"
+        >
           <h2>About this seller</h2>
           <figure class="gig-details-seller-info">
             <img
@@ -80,7 +105,13 @@
           </figure>
         </div>
         <div class="gig-details-more-seller-info">more seller info</div>
-        <gig-reviews id="reviews" :reviews="gig.reviews" :gigId="gig._id" />
+        <gig-reviews
+          ref="reviews"
+          @click.stop="pageNavigationClass"
+          id="reviews"
+          :reviews="gig.reviews"
+          :gigId="gig._id"
+        />
         <router-link to="/explore/">Go back</router-link>
       </main>
       <aside class="gig-buying">
@@ -103,6 +134,10 @@ export default {
     return {
       gig: null,
       sellerRate: 3.7,
+      navOverview: true,
+      navDescription: false,
+      navAboutTheSeller: false,
+      navReviews: false,
     };
   },
   created() {
@@ -110,6 +145,10 @@ export default {
     gigService.getById(gigId).then((gig) => {
       this.gig = gig;
     });
+    document.addEventListener("scroll", this.pageNavigationClass);
+  },
+  destroyed() {
+    document.removeEventListener("scroll", this.pageNavigationClass);
   },
   computed: {
     gigImgUrl() {
@@ -129,6 +168,44 @@ export default {
   },
   methods: {
     addClassToNav() {},
+    pageNavigationClass() {
+      const overview = this.$refs.overview;
+      const description = this.$refs.description;
+      const aboutTheSeller = this.$refs.aboutTheSeller;
+      const reviews = this.$refs.reviews;
+      if (0 < overview.getBoundingClientRect().top) {
+        this.navOverview =
+          this.navDescription =
+          this.navAboutTheSeller =
+          this.navReviews =
+            false;
+        return (this.navOverview = true);
+      }
+      if (0 < description.getBoundingClientRect().top) {
+        this.navOverview =
+          this.navDescription =
+          this.navAboutTheSeller =
+          this.navReviews =
+            false;
+        return (this.navDescription = true);
+      }
+      if (0 < aboutTheSeller.getBoundingClientRect().top) {
+        this.navOverview =
+          this.navDescription =
+          this.navAboutTheSeller =
+          this.navReviews =
+            false;
+        return (this.navAboutTheSeller = true);
+      }
+      if (0 > aboutTheSeller.getBoundingClientRect().top) {
+        this.navOverview =
+          this.navDescription =
+          this.navAboutTheSeller =
+          this.navReviews =
+            false;
+        return (this.navReviews = true);
+      }
+    },
   },
 };
 </script>

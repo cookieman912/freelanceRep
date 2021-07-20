@@ -66,8 +66,6 @@ export default {
   //     }
   //   },
   // },
-  created() {
-    console.log("this.gigId", this.gigId);
-  },
+  created() {},
 };
 </script>

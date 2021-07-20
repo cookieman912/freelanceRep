@@ -31,7 +31,6 @@ function getById(gigId) {
     // return httpService.get(`gig/${gigId}`)
     return storageService.get(GIG_KEY, gigId)
         .then(gig => {
-            console.log(gig);
             return gig
         })
 }
