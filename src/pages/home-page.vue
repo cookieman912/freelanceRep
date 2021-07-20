@@ -22,7 +22,7 @@
     </div>
     <div class="home-page-bottom-container main-layout">
         <h1>Popular professional services</h1>
-        <hp-category-list :categories="getCategories"/>
+        <hp-category-list :categories="categories" @categoryBtnPressed="categoryBtnPressed"/>
         <div class="hp-buttom-header-container">
             <h1>Top rated Gigs</h1>
             <span>
@@ -64,6 +64,10 @@ export default {
   },
   data() {
     return {
+      lastDiff:null,
+      galleryItemsNumber:5,
+      catIdx:null,
+      categories:null,
       filterBy: {
         txt:""
       },
@@ -123,6 +127,7 @@ export default {
       // Demo data for categories gallery
       demoCategories: [
         {
+          
           id: "1",
           catName: "logo",
           txt: "Build your brand",
@@ -158,18 +163,65 @@ export default {
           title: "Plan your Business",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
         },
+
+        {
+          id: "6",
+          catName: "Cooking",
+          txt: "Cooking Recepies",
+          title: "Make the best food!",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1626790679/categories/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3_l6q9wc.jpg",
+        },
       ],
     };
   },
   computed: {
-    getCategories() {
-      return this.demoCategories;
+    getInitialIdx(){
+      return this.galleryItemsNumber -1;
     },
+    // getCategories() {
+    //   this.categories = JSON.parse(JSON.stringify(this.demoCategories));
+    //   this.categories.splice(0,categories.length-5);
+    //   console.log('categories in loading:',categories);
+
+
+    //   return categories;
+    // },
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
   },
   methods: {
+    categoryBtnPressed(diff){
+      if (this.lastDiff !== diff){
+        console.log('catidx before change',this.catIdx)
+        this.catIdx += diff*(this.galleryItemsNumber-1);
+        console.log('catidx after change',this.catIdx)
+      }
+       this.lastDiff = diff;
+      if (diff === 1){
+        if (this.catIdx === this.demoCategories.length -1) {
+          this.catIdx = 0
+        }
+        else{
+          this.catIdx++;
+        }
+
+        this.categories.push(this.demoCategories[this.catIdx]);
+        this.categories.splice(0,1);
+      }
+      if (diff === -1){
+        if (this.catIdx === 0) {
+          this.catIdx = this.demoCategories.length -1;
+        }
+        else {
+          this.catIdx--;
+        }
+        this.categories.splice(0,0,this.demoCategories[this.catIdx]);
+        this.categories.splice(this.categories.length-1,1);
+        console.log('this.categories after press left',this.categories);
+         
+      }
+    },
     toExplorePage() {
       this.$router.push("/explore");
     },
@@ -192,8 +244,7 @@ export default {
     this.styleObject.backgroundColor = this.demoHeros[0].styleSet.backgroundColor;
     this.styleObject.color = this.demoHeros[0].styleSet.color;
     this.styleObject.borderBottom = "none";
-    // Sending style params to the header becuase homepage has a different header style
-    // eventBusService.$emit('headerChange',this.styleObject);
+    // Sending style id to the header
     eventBusService.$emit('headerChange',this.demoHeros[0].id);
 
     this.$store.dispatch({ type: "loadGigs" });
@@ -204,6 +255,15 @@ export default {
       this.styleObject.color = this.currHero.styleSet.color;
       eventBusService.$emit('headerChange',this.currHero.id);
     }, 7000);
+    // Categories gallery section
+    this.catIdx = this.getInitialIdx;
+    this.lastDiff = 1;
+    this.categories = JSON.parse(JSON.stringify(this.demoCategories));
+    var newCategoryLng = this.categories.length - this.galleryItemsNumber;
+    this.categories.splice(this.categories.length - newCategoryLng ,newCategoryLng );
+    console.log('categories in loading:',this.categories);
+    console.log('initial idx',this.catIdx);
+
   },
   destroyed() {
     // clearing header to default styling params and clear hero image interval
