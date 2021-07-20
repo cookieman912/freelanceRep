@@ -191,7 +191,7 @@ export default {
       this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
       this.styleObject.color = this.currHero.styleSet.color;
       eventBusService.$emit('headerChange',this.styleObject);
-    }, 5000);
+    }, 7000);
   },
   destroyed() {
     // clearing header to default styling params and clear hero image interval
