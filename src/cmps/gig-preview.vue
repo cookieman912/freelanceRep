@@ -1,12 +1,24 @@
 <template>
   <div class="gig-preview" v-bind:style="styleObject">
-    <router-link v-if="isGigCloudinary" :to="'/explore/' + gig._id">
-      <img :src="gig.imgUrls[0]" />
-    </router-link>
+    <div v-if="isGigCloudinary" @click="routing">
+      <el-carousel :interval="5000" arrow="always">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <img v-if="isGigCloudinary" :src="gig.imgUrls[0]" />
+          <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />
+        </el-carousel-item>
+      </el-carousel>
+      <!-- <img :src="gig.imgUrls[0]" /> -->
+    </div>
 
-    <router-link v-else :to="'/explore/' + gig._id">
-      <img :src="require(`../assets/images/${gigImgUrl}`)" />
-    </router-link>
+    <div v-else @click="routing">
+      <el-carousel :interval="5000" :autoplay="false" arrow="always">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <img v-if="isGigCloudinary" :src="gig.imgUrls[0]" />
+          <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />
+        </el-carousel-item>
+      </el-carousel>
+      <!-- <img :src="require(`../assets/images/${gigImgUrl}`)" /> -->
+    </div>
 
     <figure class="gig-preview-seller-info">
       <img
@@ -80,6 +92,9 @@ export default {
         return;
       }
       like.style.fill = "red";
+    },
+    routing() {
+      this.$router.push("/explore/" + this.gig._id);
     },
   },
   computed: {

@@ -2,7 +2,7 @@
   <section v-if="gig" class="checkout-page">
     <main>
       <div class="package-container">
-        <h2>Yout Package</h2>
+        <h2>Your Package</h2>
         <div class="package-gig-details">
           <div class="package-info-container">
             <div class="img-container">
