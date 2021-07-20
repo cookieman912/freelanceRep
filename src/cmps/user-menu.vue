@@ -8,7 +8,7 @@
         >
       </li>
   <li>
-        <router-link to="/user/user._id" @click.native="clear"
+        <router-link :to="'/user/'+user._id" @click.native="clear"
           >profile</router-link
         >
       </li>

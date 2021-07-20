@@ -64,10 +64,13 @@ export default {
   },
   data() {
     return {
+      // style object for the header via eventbus
       styleObject:{
         color: null,
-        backgroundColor: null
+        backgroundColor: null,
+        borderBottom: null,
       },
+      // hero images demo data
       heroInterval:null,
       currHero:null,
       demoHeros:[{
@@ -76,7 +79,7 @@ export default {
         rate: 4.5,
         specialty:'Graphic designer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634929/hp-hero/pngfind.com-business-woman-png-1612489_2_kn1y2b.png',
-        colorSet:{backgroundColor:'#494949',color:'white'},
+        styleSet:{backgroundColor:'#494949',color:'white'},
       },
       {
         id:'2',
@@ -84,7 +87,7 @@ export default {
         rate: 4.8,
         specialty:'Full Stack Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
-        colorSet:{backgroundColor:'#d1aa8b',color:'white'}
+        styleSet:{backgroundColor:'#d1aa8b',color:'white'}
       },
       {
         id:'3',
@@ -92,7 +95,7 @@ export default {
         rate: 4.7,
         specialty:'Strategic Planner',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705830/hp-hero/pngfind.com-ladies-suit-png-248538_2_ljes8n.png',
-        colorSet:{backgroundColor:'#a57563',color:'white'}
+        styleSet:{backgroundColor:'#a57563',color:'white'}
 
       },
       {
@@ -101,7 +104,7 @@ export default {
         rate: 5,
         specialty:'Podcaster',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
-        colorSet:{backgroundColor:'black',color:'white'}
+        styleSet:{backgroundColor:'black',color:'white'}
 
       },
       {
@@ -110,9 +113,11 @@ export default {
         rate: 4.6,
         specialty:'Mobile Aplication Freelancer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
-        colorSet:{backgroundColor:'#86535c',color:'white'}
+        styleSet:{backgroundColor:'#86535c',color:'white'}
       }
       ],
+
+      // Demo data for categories gallery
       demoCategories: [
         {
           id: "1",
@@ -154,9 +159,6 @@ export default {
     };
   },
   methods: {
-    onScroll(){
-      console.log('hii')
-    }
   },
   computed: {
     getCategories() {
@@ -174,21 +176,26 @@ export default {
    
   },
   created() {
+    // Default hero for loading page
     this.currHero = this.demoHeros[0];
-    this.styleObject.backgroundColor = this.demoHeros[0].colorSet.backgroundColor;
-    this.styleObject.color = this.demoHeros[0].colorSet.color;
-    // this.styleObject.backgroundColor = this.currHero.backgroundColor;
-    eventBusService.$emit('headerColorChange',this.currHero.colorSet);
+    // styleObject gets the style params of the hero.
+    this.styleObject.backgroundColor = this.demoHeros[0].styleSet.backgroundColor;
+    this.styleObject.color = this.demoHeros[0].styleSet.color;
+    this.styleObject.borderBottom = "none";
+    // Sending style params to the header becuase homepage has a different header style
+    eventBusService.$emit('headerChange',this.styleObject);
     this.$store.dispatch({ type: "loadGigs" });
+    // Interval for new hero
     this.heroInterval= setInterval(() => {
       this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
-      this.styleObject.backgroundColor = this.currHero.colorSet.backgroundColor;
-      this.styleObject.color = this.currHero.colorSet.color;
-      eventBusService.$emit('headerColorChange',this.currHero.colorSet);
+      this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+      this.styleObject.color = this.currHero.styleSet.color;
+      eventBusService.$emit('headerChange',this.styleObject);
     }, 7000);
   },
   destroyed() {
-    eventBusService.$emit('headerColorChange','white');
+    // clearing header to default styling params and clear hero image interval
+    eventBusService.$emit('headerChange','white');
     clearInterval(this.heroInterval);
   },
 };

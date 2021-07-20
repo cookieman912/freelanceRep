@@ -1,148 +1,147 @@
 <template>
+  <div class="edit-seller">
+    <div class="seller-details">
+      <form @submit.prevent="updateSeller">
+        <div class="form-content">
+          <h1>Update</h1>
+          <div class="form-option">
+            <h3>Specialty</h3>
 
-    <div class="edit-seller">
-      <div class="seller-details">
-        <h1>update your info!</h1>
-        <form @submit.prevent="updateSeller">
-          <div class="form-content">
-            <div class="form-option">
-              <h3>what is your specialty?</h3>
-
-              <el-select v-model="user.seller.specialty">
-                <el-option value="graphic design">graphic design</el-option>
-                <el-option value="web development">web development</el-option>
-                <el-option value="voice acting">voice acting</el-option>
-                <el-option value="podcast expertise"
-                  >podcast expertise</el-option
-                >
-                <el-option value="translation">translation</el-option>
-              </el-select>
-            </div>
-            <div class="form-option">
-              <h3>tell us about yourself!</h3>
-
-              <el-input
-                type="textarea"
-                :autosize="{ minRows: 1, maxRows: 8 }"
-                v-model="user.seller.sellerInfo"
-              ></el-input>
-            </div>
+            <el-select class="form-input" v-model="userToEdit.seller.specialty">
+              <el-option value="Graphic design">Graphic design</el-option>
+              <el-option value="Web development">Web development</el-option>
+              <el-option value="Voice acting">Voice acting</el-option>
+              <el-option value="Podcast expertise">Podcast expertise</el-option>
+              <el-option value="Translation">Translation</el-option>
+            </el-select>
           </div>
-          <button>update</button>
+          <div class="form-option">
+            <h3>description</h3>
+
+            <el-input
+              class="form-input"
+              type="textarea"
+              :autosize="{ minRows: 5, maxRows: 5 }"
+              v-model="userToEdit.seller.sellerInfo"
+            ></el-input>
+          </div>
+        </div>
+        <button>Update</button>
+      </form>
+
+      <div class="user-gigs">
+        <button class="el-icon-caret-top" v-if="addGigActive" @click="toggleAddGig">
+        </button>
+        <button class="el-icon-caret-bottom " v-else @click="toggleAddGig"></button>
+
+        <form class="" @submit.prevent="addGig" v-if="addGigActive">
+          <div class="gig-inputs">
+            <el-input
+              class="title-input"
+              type="text"
+              placeholder="title"
+              v-model="gigToAdd.title"
+            />
+            <el-input
+              class="number-input"
+              type="number"
+              placeholder="price"
+              v-model="gigToAdd.price"
+            />
+
+            <el-input
+              class="delivery-input"
+              type="number"
+              placeholder="delivery days"
+              v-model="gigToAdd.deliveryDays"
+            />
+
+            <el-input
+              class="desc-input"
+              type="textarea"
+              autosize
+              placeholder="description"
+              v-model="gigToAdd.description"
+            >
+            </el-input>
+            <el-select
+              class="tag-input"
+              v-model="gigToAdd.tags"
+              multiple
+                
+              placeholder="tags"
+            >
+              <el-option style="margin-bottom:5px"
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+
+          <div class="img-upload-container">
+
+            <template v-if="!isLoading">
+              <!-- UPLOAD IMG -->
+              <label
+                for="imgUploader"
+                @drop.prevent="handleFile"
+                @dragover.prevent="isDragOver = true"
+                @dragleave="isDragOver = false"
+                :class="{ drag: isDragOver }"
+              >
+                <h3>Upload here</h3>
+              </label>
+
+              <!-- HIDDEN INPUT -->
+              <input
+                class="hidden"
+                type="file"
+                name="img-uploader"
+                id="imgUploader"
+                @change="handleFile"
+              />
+            </template>
+
+            <!-- LOADER -->
+            <img
+              class="loader"
+              v-else
+              src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
+              alt=""
+            />
+          </div>
+
+          <button>Add gig</button>
         </form>
 
-        <div class="user-gigs">
-          <button
-            class="toggle-button"
-            v-if="addGigActive"
-            @click="toggleAddGig"
-          >
-            -
-          </button>
-          <button class="toggle-button" v-else @click="toggleAddGig">+</button>
+        <h2>Your gigs</h2>
+        <gigs-list-user
+          @delete="removeGig(_id)"
+          :gigs="this.user.seller.gigs"
+        />
 
-          <form @submit.prevent="addGig" v-if="addGigActive">
-            <div class="gig-inputs">
-              <el-input
-                class="title-input"
-                type="text"
-                placeholder="title"
-                v-model="gigToAdd.title"
-              />
-              <el-input
-                class="number-input"
-                type="number"
-                placeholder="price"
-                v-model="gigToAdd.price"
-              />
-
-              <el-input
-                class="delivery-input"
-                type="number"
-                placeholder="delivery days"
-                v-model="gigToAdd.deliveryDays"
-              />
-
-              <el-input
-                class="desc-input"
-                type="textarea"
-                autosize
-                placeholder="description"
-                v-model="gigToAdd.description"
-              >
-              </el-input>
-              <el-select
-                class="tag-input"
-                v-model="gigToAdd.tags"
-                multiple
-                placeholder="tags"
-              >
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                >
-                </el-option>
-              </el-select>
-            </div>
-
-            <div class="img-upload-container">
-              <h1>upload images for your gig!</h1>
-
-              <template v-if="!isLoading">
-                <!-- UPLOAD IMG -->
-                <label
-                  for="imgUploader"
-                  @drop.prevent="handleFile"
-                  @dragover.prevent="isDragOver = true"
-                  @dragleave="isDragOver = false"
-                  :class="{ drag: isDragOver }"
-                >
-                  <h3>Upload here </h3>
-                </label>
-
-                <!-- HIDDEN INPUT -->
-                <input
-                  type="file"
-                  name="img-uploader"
-                  id="imgUploader"
-                  @change="handleFile"
-                />
-              </template>
-
-              <!-- LOADER -->
-              <img
-                class="loader"
-                v-else
-                src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
-                alt=""
-              />
-            </div>
-
-            <button>add gig!</button>
-          </form>
-
-          <h2>your gigs</h2>
-           <gigs-list-user
-            @delete="removeGig(_id)"
-            :gigs="this.user.seller.gigs"
-          /> 
-        </div>
+      
       </div>
+        <h2>Your orders</h2>
     </div>
+  </div>
 </template>
 
 <script>
+import orderTable from "../cmps/order-table.vue";
 import { eventBusService } from "../services/event-bus.service";
 import { uploadImg } from "@/services/img-upload.service.js";
 import gigsListUser from "../cmps/gigs-list-user.vue";
 export default {
- components: {
+  components: {
     gigsListUser,
+    orderTable,
   },
 
-data() {
+  data() {
     return {
       sellerDetails: {
         specialty: null,
@@ -156,33 +155,34 @@ data() {
         tags: [],
         deliveryDays: null,
         seller: {},
-        imgUrls:[],
+        imgUrls: [],
       },
       isLoading: false,
       isDragOver: false,
       options: [
         {
-          value: "graphic design",
-          label: "graphic design",
+          value: "Graphic design",
+          label: "Graphic design",
         },
         {
-          value: "web development",
-          label: "web development",
+          value: "Web development",
+          label: "Web development",
         },
         {
-          value: "voice acting",
-          label: "voice acting",
+          value: "Voice acting",
+          label: "Voice acting",
         },
         {
-          value: "podcast expertise",
-          label: "podcast expertise",
+          value: "Podcast expertise",
+          label: "Podcast expertise",
         },
         {
-          value: "translation",
-          label: "translation",
+          value: "Translation",
+          label: "Translation",
         },
       ],
       value: "",
+      userToEdit: JSON.parse(JSON.stringify(this.$store.getters.loggedinUser)),
     };
   },
 
@@ -204,13 +204,12 @@ data() {
 
   methods: {
     async updateSeller() {
-      const userToSend = this.user;
+      const userToSend = this.userToEdit;
       try {
         await this.$store.dispatch({
           type: "becomeSeller",
           userToUpdate: userToSend,
         });
-        this.user = this.$store.getters.loggedinUser;
       } catch (err) {
         throw err;
       }
@@ -239,7 +238,7 @@ data() {
         miniGig.title = this.gigToAdd.title;
         miniGig.imgUrls = this.gigToAdd.imgUrls;
         miniGig.description = this.gigToAdd.description;
-        const userToUpdate = JSON.parse(JSON.stringify(this.user));
+        const userToUpdate = this.userToEdit;
 
         userToUpdate.seller.gigs.push(miniGig);
 
@@ -261,7 +260,7 @@ data() {
     async removeGig(_id) {
       try {
         const idx = this.user.seller.gigs.findIndex((gig) => gig._id === _id);
-        const userToUpdate = JSON.parse(JSON.stringify(this.user));
+        const userToUpdate = this.userToEdituserToEdit;
         userToUpdate.seller.gigs.splice(idx, 1);
         await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
         await this.$store.dispatch({ type: "removeGig", gigId: _id });
