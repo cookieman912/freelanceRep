@@ -11,8 +11,12 @@ export const gigStore = {
         }
     },
     getters: {
+        filterTxtToShow(state) {
+            return state.filterBy.txt
+        },
         gigs(state) { return state.gigs },
         gigsToShow(state) {
+            //console.log('filterBy', state.filterBy.txt);
             // let gigsToShow = state.gigs.filter(gig => +gig.price >= state.filterBy.price)
             //     .filter(gig => gig.category === state.filterBy.category || state.filterBy.category === '')
             let gigsToShow = state.gigs

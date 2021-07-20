@@ -17,14 +17,18 @@
 .hp-hero-details-container {
     position: absolute;
     z-index: 1;
-    left: 60%;
-    top: 80%;
+    left: 70%;
+    top: 85%;
     & .hp-image-preview-hero-text {
         p,
         span {
+            font-family: Nunito_Sans_regular;
             display: inline-block;
             color: $white;
             width: 400px;
+        }
+        b {
+            font-family: Nunito_Sans;
         }
     }
 }

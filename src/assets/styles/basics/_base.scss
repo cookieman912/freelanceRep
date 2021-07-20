@@ -5,6 +5,11 @@
       src: url(../fonts/Nunito_Sans/NunitoSans-Bold.ttf);
   }
   
+  @font-face {
+      font-family: Nunito_Sans_regular;
+      src: url(../fonts/Nunito_Sans/NunitoSans-Regular.ttf);
+  }
+  
   * {
       box-sizing: border-box;
   }
