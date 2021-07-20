@@ -1,9 +1,9 @@
 <template>
   <!-- <header class="app-header"> -->
-  <header class="app-header" v-bind:style="styleObject">
+  <header class="app-header" v-bind:style="styleObject2">
     <nav class="nav-header">
       <div class="logo">
-        <router-link to="/" @click.native="clearSearch"
+        <router-link to="/" @click.native="clearSearch" v-bind:style="styleObject"
           >freelance<span>.</span></router-link
         >
       </div>
@@ -58,6 +58,11 @@ export default {
       styleObject: {
         color:null,
         backgroundColor: null,
+      },
+      styleObject2: {
+        color:null,
+        backgroundColor: null,
+        borderBottom:null
       },
       filterBy: {
         txt: "",
@@ -125,13 +130,16 @@ export default {
   created() {
     //window.addEventListener("scroll", this.handleScroll);
     // if(this.$route.name === "home"){
-     eventBusService.$on("headerColorChange", (data) => {
-       this.styleObject = data;
+     eventBusService.$on("headerChange", (data) => {
+       console.log('data',data)
+       this.styleObject2 = data;
+       this.styleObject.color = data.color;
+       this.styleObject.backgroundColor = data.backgroundColor; 
      });
     // }
   },
   destroyed() {
-     eventBusService.$off("headerColorChange");
+     eventBusService.$off("headerChange");
    //this.styleObject.backgroundColor = 'white';
     //window.removeEventListener("scroll", this.handleScroll);
     this.clearSearch();
