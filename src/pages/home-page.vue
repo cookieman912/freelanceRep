@@ -103,7 +103,7 @@ export default {
       },
       {
         id:'4',
-        fullname:'Shomit Bona-Suka',
+        fullname:'Shlomit Bona-Suka',
         rate: 5,
         specialty:'Podcaster',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
