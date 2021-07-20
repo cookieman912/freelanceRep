@@ -1,5 +1,6 @@
 <template>
   <div class="edit-seller">
+    
     <div class="seller-details">
       <form @submit.prevent="updateSeller">
         <div class="form-content">
@@ -81,11 +82,11 @@
             </el-select>
           </div>
 
-          <div class="img-upload-container">
+         <div class="img-upload-container">
 
             <template v-if="!isLoading">
-              <!-- UPLOAD IMG -->
-              <label
+               UPLOAD IMG 
+               <label
                 for="imgUploader"
                 @drop.prevent="handleFile"
                 @dragover.prevent="isDragOver = true"
@@ -95,7 +96,7 @@
                 <h3>Upload here</h3>
               </label>
 
-              <!-- HIDDEN INPUT -->
+         >
               <input
                 class="hidden"
                 type="file"
@@ -105,7 +106,7 @@
               />
             </template>
 
-            <!-- LOADER -->
+            
             <img
               class="loader"
               v-else

@@ -1,6 +1,6 @@
 <template>
   <main class="become-seller-container">
-
+<h1></h1>
     <div class="become-seller">
       <h1>become seller!</h1>
 
