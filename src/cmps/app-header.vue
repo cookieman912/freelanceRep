@@ -24,13 +24,13 @@
             @click.native="clearSearch"
             >Become a seller</router-link
           >
-          
+
             <img @click="toggleMenu"
               class="avatar"
               :src="loggedInUser.imgUrl"
               alt="avatar"
             />
-       
+
 
           <user-menu @clear="clearSearch" :user="loggedInUser" />
         </template>
@@ -58,7 +58,9 @@ export default {
   },
   data() {
     return {
-      homePageColorSetClass:'home-page-header3',
+      // homePageColorSetClass:'home-page-header3',
+      homePageColorSetClass:'',
+
       // Dynamic styling for buttons on homepage route
       styleObject: {
         color:null,
@@ -133,9 +135,15 @@ export default {
   created() {
   // Gets styling params from homepage hero demo data
      eventBusService.$on("headerChange", (data) => {
-       this.styleObject2 = data;
-       this.styleObject.color = data.color;
-       this.styleObject.backgroundColor = data.backgroundColor; 
+       if (data===''){
+         this.homePageColorSetClass = data;
+       }
+       else{
+         this.homePageColorSetClass = `home-page-header${data}`;
+       }
+      //  this.styleObject2 = data;
+      //  this.styleObject.color = data.color;
+      //  this.styleObject.backgroundColor = data.backgroundColor;
      });
   },
   destroyed() {

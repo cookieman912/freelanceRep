@@ -183,19 +183,21 @@ export default {
     this.styleObject.color = this.demoHeros[0].styleSet.color;
     this.styleObject.borderBottom = "none";
     // Sending style params to the header becuase homepage has a different header style
-    eventBusService.$emit('headerChange',this.styleObject);
+    // eventBusService.$emit('headerChange',this.styleObject);
+    eventBusService.$emit('headerChange',this.demoHeros[0].id);
+
     this.$store.dispatch({ type: "loadGigs" });
     // Interval for new hero
     this.heroInterval= setInterval(() => {
       this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
       this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
       this.styleObject.color = this.currHero.styleSet.color;
-      eventBusService.$emit('headerChange',this.styleObject);
+      eventBusService.$emit('headerChange',this.currHero.id);
     }, 7000);
   },
   destroyed() {
     // clearing header to default styling params and clear hero image interval
-    eventBusService.$emit('headerChange','white');
+    eventBusService.$emit('headerChange','');
     clearInterval(this.heroInterval);
   },
 };
