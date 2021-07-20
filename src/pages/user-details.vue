@@ -2,7 +2,7 @@
   <main class="user-details">
     <section class="user-details-container" v-if="user">
       <div class="img-upload-container">
-        <h1>Let's Upload Some Images!</h1>
+ 
 
         <template v-if="!isLoading">
           <!-- UPLOAD IMG -->
@@ -15,7 +15,14 @@
           >
    
 
-            <h3> Drop image here</h3>
+              <template class="avatar">
+        <img
+          
+          class="profile-pic"
+          :src="this.user.imgUrl"
+          alt="profile pic"
+        />
+      </template>
           </label>
 
           <!-- HIDDEN INPUT -->
@@ -35,15 +42,10 @@
           alt=""
         />
       </div>
-      <template class="avatar">
-        <img
-          
-          class="profile-pic"
-          :src="this.user.imgUrl"
-          alt="profile pic"
-        />
-      </template>
-      <h1>hello {{ user.fullname }}</h1>
+   
+      <h1>Hello {{ user.fullname }}</h1>
+
+      <P>Member since {{memberSince}} </P>
 
       <form @submit.prevent="updateUser">
         <h2>edit profile</h2>
@@ -64,12 +66,16 @@
 </template>
 
 <script>
+
+var moment = require('moment'); // require
+moment().format();
 import { uploadImg } from "@/services/img-upload.service.js";
 export default {
   watch: {
     userId: {
       handler() {
         this.$store.dispatch({ type: "loadAndWatchUser", userId: this.userId });
+        // console.log(this.userToEdit.createdAt)
       },
       immediate: true,
     },
@@ -88,9 +94,10 @@ export default {
     userToEdit() {
       return JSON.parse(JSON.stringify(this.$store.getters.loggedinUser));
     },
-    userId() {
-      return this.$route.params.id;
-    },
+   memberSince(){
+      return moment().format("MMM Do YY");              
+   },
+
 
    
     mounted() {},
@@ -128,26 +135,5 @@ export default {
 </script>
 
 <style>
-.loader {
-  height: 150px;
-}
 
-label img {
-  height: 100px;
-  cursor: pointer;
-  transition: height 0.6s;
-}
-
-input {
-  width: 0;
-  height: 0;
-}
-.drag {
-  color: grey;
-  display: inline-block;
-  padding: 30px 5px;
-  width: 220px;
-  border: 1px dashed gray;
-  border-radius: 8px;
-}
 </style>

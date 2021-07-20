@@ -1,7 +1,6 @@
 // setup
 @import './setup/_variables';
 @import './setup//mixins';
-
 //basics
 @import './basics/base';
 @import './basics/layout';
@@ -16,7 +15,7 @@
 @import './pages/gig-details';
 @import './pages/become-seller';
 @import './pages/checkout';
-
+@import './pages/back-office';
 //components
 @import './cmps/app-header';
 @import './cmps/log-in-modal';

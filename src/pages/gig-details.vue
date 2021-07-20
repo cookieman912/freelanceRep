@@ -57,7 +57,11 @@
         <div id="about-the-seller" class="gig-details-about-seller">
           <h2>About this seller</h2>
           <figure class="gig-details-seller-info">
-            <img
+             <img v-if="isSellerCloudinary"
+              class="sellerPropileImg"
+              :src="gig.seller.imgUrl"
+            />
+            <img v-else
               class="sellerPropileImg"
               :src="require(`../assets/images/${sellerImgUrl}`)"
             />
