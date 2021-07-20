@@ -161,8 +161,6 @@ export default {
       ],
     };
   },
-  methods: {
-  },
   computed: {
     getCategories() {
       return this.demoCategories;
@@ -170,7 +168,6 @@ export default {
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
-    
   },
   methods: {
     toExplorePage() {
