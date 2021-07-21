@@ -1,7 +1,7 @@
 <template>
     <section class="hp-category-preview">
-        <li class="home-page-category-image-wrapper">
-            <div class="home-page-category-text-container">
+        <li v-if="cat" class="home-page-category-image-wrapper">
+            <div  class="home-page-category-text-container">
                 <h4>{{cat.txt}}</h4>
                 <h2>{{cat.title}}</h2>
             </div>
@@ -18,6 +18,9 @@ export default {
   },
   data() {
       return {
+          data:{
+              show:true
+          }
           
       }
   },

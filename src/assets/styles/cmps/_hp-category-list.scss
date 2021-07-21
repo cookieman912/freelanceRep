@@ -1,11 +1,86 @@
-.home-page-category-list {
-    display: flex;
-    padding: 0;
-    flex-wrap: wrap;
+// @keyframes fadeIn {
+//     0% {
+//         opacity: 0;
+//     }
+//     100% {
+//         opacity: 1;
+//     }
+// }
+.category-left-enter-active {
+    animation: leftInAnimation 0.2s ease-in-out;
+}
+
+;
+.category-left-leave-active {
+    animation: leftOutAnimation 0.2s ease-in-out;
+}
+
+.category-right-enter-active {
+    animation: rightInAnimation 0.2s ease-in-out;
+}
+
+;
+.category-right-leave-active {
+    animation: righttOutAnimation 0.2s ease-in-out;
+}
+
+;
+@keyframes leftInAnimation {
+    from {
+        transform: translateX(100%);
+        //` opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        //opacity: 0;
+    }
+}
+
+@keyframes leftOutAnimation {
+    from {
+        transform: translateX(0);
+        //opacity: 0;
+    }
+    to {
+        transform: translateX(-100%);
+        //opacity: 1;
+    }
+}
+
+@keyframes rightInAnimation {
+    from {
+        transform: translateX(-100%);
+        //` opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        //opacity: 0;
+    }
+}
+
+@keyframes rightOutAnimation {
+    from {
+        transform: translateX(0);
+        //opacity: 0;
+    }
+    to {
+        transform: translateX(+100%);
+        //opacity: 1;
+    }
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+
+{
+    opacity: 0;
+}
+
+.hp-category-list {
     position: relative;
-    list-style-type: none;
-    justify-content: space-between;
     & .home-page-category-before-btn {
+        overflow: visible;
         background-color: $white;
         position: absolute;
         z-index: 4;
@@ -20,6 +95,7 @@
         box-shadow: 0px 14px 29px -1px rgba(0, 0, 0, 0.23);
     }
     & .home-page-category-next-btn {
+        overflow: visible;
         background-color: $white;
         position: absolute;
         z-index: 4;
@@ -33,4 +109,14 @@
         border-radius: 30px;
         box-shadow: 0px 14px 29px -1px rgba(0, 0, 0, 0.23);
     }
+}
+
+.home-page-category-list {
+    // animation: fadeIn 3s;
+    display: flex;
+    overflow: hidden;
+    padding: 0;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-between;
 }
