@@ -1,22 +1,15 @@
 <template>
-  <!-- <header class="app-header"> -->
-  <!-- <header class="app-header" v-bind:style="styleObject2"> -->
+ 
   <header class="app-header" :class="[homePageColorSetClass]">
     <nav class="nav-header">
       <div class="logo" :class="[homePageColorSetClass]">
-        <!-- <router-link to="/" @click.native="clearSearch" v-bind:style="styleObject"
-          >freelance<span>.</span></router-link
-        > -->
+     
         <router-link to="/" @click.native="clearSearch">freelance<span>.</span></router-link>
       </div>
       <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
         <router-link to="/" @click.native="clearSearch" class="header-nav-a" :class="[homePageColorSetClass]">Home</router-link>
-        <!-- <router-link to="/" @click.native="clearSearch" v-bind:style="styleObject">Home</router-link> -->
         <router-link to="/explore" @click.native="clearSearch" class="header-nav-a" :class="[homePageColorSetClass]">Explore</router-link>
-        <!-- <router-link to="/explore" @click.native="clearSearch" v-bind:style="styleObject">Explore</router-link> -->
-
-
         <template v-if="loggedInUser" class="user-control">
           <router-link class="header-nav-a" :class="[homePageColorSetClass]"
             v-if="!isUserSeller"
@@ -24,22 +17,16 @@
             @click.native="clearSearch"
             >Become a seller</router-link
           >
-
             <img @click="toggleMenu"
               class="avatar"
               :src="loggedInUser.imgUrl"
               alt="avatar"
             />
-
-
           <user-menu @clear="clearSearch" :user="loggedInUser" />
         </template>
         <template v-else>
           <button class="header-signin" @click="toggleLogin" :class="[homePageColorSetClass]">Sign In</button>
-          <!-- <button class="header-signin" @click="toggleLogin" v-bind:style="styleObject">Sign In</button> -->
-          <!-- <button @click="toggleSignup" v-bind:style="styleObject"> -->
           <button @click="toggleSignup">
-            <!-- <span class="header-join" v-bind:style="styleObject">Join</span> -->
             <span class="header-join "  :class="[homePageColorSetClass]">Join</span>
           </button>
         </template>
@@ -58,20 +45,9 @@ export default {
   },
   data() {
     return {
-      // homePageColorSetClass:'home-page-header3',
+      // home page styling
       homePageColorSetClass:'',
-
-      // Dynamic styling for buttons on homepage route
-      styleObject: {
-        color:null,
-        backgroundColor: null,
-      },
-      // Dynamic styling for header on homepage route
-      styleObject2: {
-        color:null,
-        backgroundColor: null,
-        borderBottom:null
-      },
+      // filter
       filterBy: {
         txt: "",
       },
@@ -128,23 +104,26 @@ export default {
         throw err;
       }
     },
-    clearHeader(){
-      this.styleObject.backgroundColor = 'white';
-    }
-  },
-  created() {
-  // Gets styling params from homepage hero demo data
-     eventBusService.$on("headerChange", (data) => {
+      ///////////////////////////////////
+     /// styles from homepage section //
+    ///////////////////////////////////
+    syncHeaderVsHeroStyle(){
+      eventBusService.$on("headerChange", (data) => {
+        // If there is no data from home page - do not add styling classes
        if (data===''){
          this.homePageColorSetClass = data;
        }
+       // set styling classes
        else{
          this.homePageColorSetClass = `home-page-header${data}`;
        }
-      //  this.styleObject2 = data;
-      //  this.styleObject.color = data.color;
-      //  this.styleObject.backgroundColor = data.backgroundColor;
      });
+    },
+  },
+  created() {
+    this.syncHeaderVsHeroStyle();
+  // Gets styling class id from homepage hero demo data and set it
+     
   },
   destroyed() {
      eventBusService.$off("headerChange");
