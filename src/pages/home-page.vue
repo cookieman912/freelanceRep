@@ -13,7 +13,7 @@
               <hp-search-bar @filter="filter"/>
             </div>
           </form>
-          <hp-tag-buttons />
+          <hp-tag-buttons @catChoice="setCatFilter" />
         </main>
         <div class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
@@ -68,7 +68,8 @@ export default {
      galleryItemsCount:5,
       categories:null,
       filterBy: {
-        txt:""
+        txt:'',
+        tags:''
       },
       // style object for the header via eventbus
       styleObject:{
@@ -227,6 +228,13 @@ export default {
 
     toExplorePage() {
       this.$router.push("/explore");
+    },
+
+    setCatFilter(catFilter){
+      this.filterBy.tags = catFilter;
+      console.log('filterby',this.filterBy)
+      this.filter(this.filterBy);
+      //TODO: need to keep working on this...
     },
     async filter(filterBy){
       this.filterBy = filterBy;
