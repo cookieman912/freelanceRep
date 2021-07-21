@@ -30,9 +30,16 @@
       </form>
 
       <div class="user-gigs">
-        <button class="el-icon-caret-top" v-if="addGigActive" @click="toggleAddGig">
-        </button>
-        <button class="el-icon-caret-bottom " v-else @click="toggleAddGig"></button>
+        <button
+          class="el-icon-caret-top gig-add-button"
+          v-if="addGigActive"
+          @click="toggleAddGig"
+        ></button>
+        <button
+          class="el-icon-caret-bottom gig-add-button"
+          v-else
+          @click="toggleAddGig"
+        ></button>
 
         <form class="" @submit.prevent="addGig" v-if="addGigActive">
           <div class="gig-inputs">
@@ -68,10 +75,10 @@
               class="tag-input"
               v-model="gigToAdd.tags"
               multiple
-                
               placeholder="tags"
             >
-              <el-option style="margin-bottom:5px"
+              <el-option
+                style="margin-bottom: 5px"
                 v-for="item in options"
                 :key="item.value"
                 :label="item.label"
@@ -82,20 +89,22 @@
           </div>
 
           <div class="img-upload-container">
-
             <template v-if="!isLoading">
-              <!-- UPLOAD IMG -->
-              <label
+          
+              <label class=img-upload
                 for="imgUploader"
                 @drop.prevent="handleFile"
                 @dragover.prevent="isDragOver = true"
                 @dragleave="isDragOver = false"
                 :class="{ drag: isDragOver }"
               >
-                <h3>Upload here</h3>
+              <div class="upload-call">
+                <h3>Upload images</h3>
+                <p class="el-icon-upload"></p>
+                </div>
               </label>
 
-              <!-- HIDDEN INPUT -->
+              
               <input
                 class="hidden"
                 type="file"
@@ -105,13 +114,17 @@
               />
             </template>
 
-            <!-- LOADER -->
             <img
               class="loader"
               v-else
               src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
               alt=""
             />
+          </div>
+
+          
+          <div class="img-upload-list" >
+          <img class="img-upload-preview" v-for="imgUrl in imgList" :key="imgUrl" :src="imgUrl" alt="">
           </div>
 
           <button>Add gig</button>
@@ -122,10 +135,8 @@
           @delete="removeGig(_id)"
           :gigs="this.user.seller.gigs"
         />
-
-      
       </div>
-        <h2>Your orders</h2>
+      <h2>Your orders</h2>
     </div>
   </div>
 </template>
@@ -200,6 +211,9 @@ export default {
     user() {
       return this.$store.getters.loggedinUser;
     },
+    imgList(){
+      return this.gigToAdd.imgUrls
+    }
   },
 
   methods: {
@@ -225,9 +239,14 @@ export default {
         this.gigToAdd.seller._id = this.user._id;
         this.gigToAdd.seller.fullname = this.user.fullname;
         this.gigToAdd.seller.imgUrl = this.user.imgUrl;
+
         this.gigToAdd.reviews = [];
         //linking user to gig
 
+        if (!this.gigToAdd.imgUrls || this.gigToAdd.imgUrls.length === 0)
+          this.gigToAdd.imgUrls = [
+            "https://res.cloudinary.com/cookiecloud/image/upload/v1626858802/hxsjfiiaireuyulffzhy.jpg",
+          ];
         this.gigToAdd = await this.$store.dispatch({
           type: "addGig",
           gig: this.gigToAdd,
@@ -237,7 +256,7 @@ export default {
         miniGig._id = this.gigToAdd._id;
         miniGig.title = this.gigToAdd.title;
         miniGig.imgUrls = this.gigToAdd.imgUrls;
-        miniGig.description = this.gigToAdd.description;
+
         const userToUpdate = this.userToEdit;
 
         userToUpdate.seller.gigs.push(miniGig);
@@ -260,7 +279,9 @@ export default {
     async removeGig(_id) {
       try {
         const idx = this.user.seller.gigs.findIndex((gig) => gig._id === _id);
-        const userToUpdate = this.userToEdituserToEdit;
+        const userToUpdate = this.userToEdit;
+
+        console.log(userToUpdate);
         userToUpdate.seller.gigs.splice(idx, 1);
         await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
         await this.$store.dispatch({ type: "removeGig", gigId: _id });

@@ -71,16 +71,7 @@ export const userStore = {
                 throw err
             }
         },
-        async loadUsers({ commit }) {
-            // TODO: loading
-            try {
-                const users = await userService.getUsers();
-                commit({ type: 'setUsers', users })
-            } catch (err) {
-                console.log('userStore: Error in loadUsers', err)
-                throw err
-            }
-        },
+
 
 
         async loadAndWatchUser({ commit }, { userId }) {
@@ -119,6 +110,7 @@ export const userStore = {
         async becomeSeller({ commit }, { userToUpdate }) {
             try {
                 let user = await userService.update(userToUpdate);
+                console.log(user)
                 commit({ type: 'setLoggedinUser', user })
 
             } catch (err) {

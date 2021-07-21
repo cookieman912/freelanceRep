@@ -1,5 +1,6 @@
 <template>
   <main class="user-details">
+    <p>{{user}}</p>
     <section class="user-details-container" v-if="user">
       <div class="img-upload-container">
  
@@ -71,15 +72,6 @@ var moment = require('moment'); // require
 moment().format();
 import { uploadImg } from "@/services/img-upload.service.js";
 export default {
-  watch: {
-    userId: {
-      handler() {
-        this.$store.dispatch({ type: "loadAndWatchUser", userId: this.userId });
-        // console.log(this.userToEdit.createdAt)
-      },
-      immediate: true,
-    },
-  },
   data() {
     return {
       isLoading: false,
@@ -95,7 +87,7 @@ export default {
       return JSON.parse(JSON.stringify(this.$store.getters.loggedinUser));
     },
    memberSince(){
-      return moment().format("MMM Do YY");              
+      return moment(this.createdAt).format("MMM Do YY");              
    },
 
 

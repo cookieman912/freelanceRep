@@ -4,7 +4,6 @@ import home from './pages/home-page.vue'
 import explorePage from './pages/explore.vue'
 import gigDetails from './pages/gig-details.vue'
 import becomeSeller from './pages/become-seller.vue'
-import loginSignup from './pages/login-signup.vue'
 import userDetails from './pages/user-details.vue'
 import checkout from './pages/checkout.vue'
 import backOffice from './pages/back-office.vue'
@@ -41,11 +40,6 @@ export const router = new Router({
             path: '/becomeSeller',
             name: 'becomeSeller',
             component: becomeSeller
-        },
-        {
-            path: '/login',
-            name: 'loginSignup',
-            component: loginSignup
         },
         {
             path: '/user/:id',

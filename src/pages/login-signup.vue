@@ -74,9 +74,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
   },
-  created() {
-    this.loadUsers()
-  },
+
   methods: {
     async doLogin() {
       if (!this.loginCred.username) {
@@ -104,9 +102,7 @@ export default {
       this.$router.push('/')
       
     },
-    loadUsers() {
-      this.$store.dispatch({ type: "loadUsers" });
-    },
+ 
     async removeUser(userId) {
       try {
         await this.$store.dispatch({ type: "removeUser", userId })

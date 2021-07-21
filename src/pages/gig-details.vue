@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>{{gig}}</p>
     <div class="gig-details-navbar">
       <nav class="gig-details-nav">
         <a
@@ -164,7 +165,7 @@ export default {
     };
   },
   async created() {
-    this.$store.dispatch({ type: "loadUsers" });
+    // this.$store.dispatch({ type: "loadUsers" });
 
     const { gigId } = this.$route.params;
     const gig = await gigService.getById(gigId);
@@ -174,10 +175,8 @@ export default {
     const user = await userService.getById(userId);
     this.user = user;
     const date = new Date(user.memberSince)
-      .toLocaleString()
-      .substring(0, 11)
-      .split(",");
-    this.userMemberSince = date[0];
+     
+    this.userMemberSince = date;
 
     document.addEventListener("scroll", this.pageNavigationClass);
   },
@@ -206,6 +205,7 @@ export default {
   methods: {
     pageNavigationClass() {
       const overview = this.$refs.overview;
+      console.log(overview)
       const description = this.$refs.description;
       const aboutTheSeller = this.$refs.aboutTheSeller;
       const reviews = this.$refs.reviews;
