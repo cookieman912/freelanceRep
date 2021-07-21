@@ -12,7 +12,7 @@
     </svg>
     <input
       class="header-search-bar"
-      placeholder='Try: "building moblie app"'
+      :placeholder="'Try: Building a mobile app'"
       autocomplete="off"
       v-model="filterBy.txt"
     />
@@ -28,14 +28,24 @@ export default {
     return {
       filterBy: {
         txt: "",
+        //txt: this.getFilter,
       },
     };
+  },
+  computed:{
+    getFilterTxt(){
+      console.log(this.$store.getters.filterToShow);
+      return this.$store.getters.filterTxtToShow ? this.$store.getters.filterTxtToShow  : '';
+    },
   },
   methods: {
     filter() {
       this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
     },
   },
+  created(){
+    this.filterBy.txt = this.getFilterTxt;
+  }
 };
 </script>
 

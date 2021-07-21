@@ -24,7 +24,7 @@
       </nav>
     </div>
 
-    <section v-if="gig" class="gig-details-page">
+    <section v-if="user" class="gig-details-page">
       <main>
         <div class="gig-details-small">
           <button class="category">
@@ -82,19 +82,20 @@
         >
           <h2>About this seller</h2>
           <figure class="gig-details-seller-info">
-             <img v-if="isSellerCloudinary"
+            <img
+              v-if="isSellerCloudinary"
               class="sellerPropileImg"
               :src="gig.seller.imgUrl"
             />
-            <img v-else
+            <img
+              v-else
               class="sellerPropileImg"
               :src="require(`../assets/images/${sellerImgUrl}`)"
             />
             <div class="seller-name-description">
               <h5>{{ gig.seller.fullname }}</h5>
               <p>
-                seller desciptionseller desciptionseller desciptionseller
-                desciptionseller desciptionseller desciption
+                {{ user.seller.specialty }}
               </p>
               <el-rate
                 v-model="sellerRate"
@@ -108,7 +109,23 @@
             </div>
           </figure>
         </div>
-        <div class="gig-details-more-seller-info">more seller info</div>
+        <div class="gig-details-more-seller-info">
+          <div>
+            <div>
+              <p>from</p>
+              <h3>{{ user.seller.location }}</h3>
+            </div>
+            <div>
+              <p>Member Since</p>
+              <h3>
+                {{ userMemberSince }}
+              </h3>
+            </div>
+          </div>
+          <p>
+            {{ user.seller.sellerInfo }}
+          </p>
+        </div>
         <gig-reviews
           ref="reviews"
           @click.stop="pageNavigationClass"
@@ -116,7 +133,6 @@
           :reviews="gig.reviews"
           :gigId="gig._id"
         />
-        <router-link to="/explore/">Go back</router-link>
       </main>
       <aside class="gig-buying">
         <gig-buying-box :gig="gig" />
@@ -127,6 +143,7 @@
 
 <script>
 import { gigService } from "../services/gig.service.js";
+import { userService } from "../services/user.service.js";
 import gigBuyingBox from "../cmps/gig-buying-box.vue";
 import gigReviews from "../cmps/gig-reviews.vue";
 export default {
@@ -136,6 +153,8 @@ export default {
   },
   data() {
     return {
+      user: null,
+      userMemberSince: null,
       gig: null,
       sellerRate: 3.7,
       navOverview: true,
@@ -144,17 +163,31 @@ export default {
       navReviews: false,
     };
   },
-  created() {
+  async created() {
+    this.$store.dispatch({ type: "loadUsers" });
+
     const { gigId } = this.$route.params;
-    gigService.getById(gigId).then((gig) => {
-      this.gig = gig;
-    });
+    const gig = await gigService.getById(gigId);
+    this.gig = gig;
+
+    const userId = this.gig.seller._id;
+    const user = await userService.getById(userId);
+    this.user = user;
+    const date = new Date(user.memberSince)
+      .toLocaleString()
+      .substring(0, 11)
+      .split(",");
+    this.userMemberSince = date[0];
+
     document.addEventListener("scroll", this.pageNavigationClass);
   },
   destroyed() {
     document.removeEventListener("scroll", this.pageNavigationClass);
   },
   computed: {
+    getUsers() {
+      return this.$store.getters.users;
+    },
     gigImgUrl() {
       return this.gig.imgUrls[0].substring(21);
     },
@@ -171,7 +204,6 @@ export default {
     },
   },
   methods: {
-    addClassToNav() {},
     pageNavigationClass() {
       const overview = this.$refs.overview;
       console.log(overview)
@@ -202,7 +234,10 @@ export default {
             false;
         return (this.navAboutTheSeller = true);
       }
-      if (0 > aboutTheSeller.getBoundingClientRect().top) {
+      if (
+        0 > aboutTheSeller.getBoundingClientRect().top ||
+        0 < reviews.getBoundingClientRect().top
+      ) {
         this.navOverview =
           this.navDescription =
           this.navAboutTheSeller =

@@ -112,10 +112,26 @@
         }
     }
     .gig-details-more-seller-info{
-        height: 27rem;
-        // width: 50.1rem;
         padding: 1.5rem;
         border: 1.5px solid $fbc;
         border-radius: 5px;
+        >div {
+            display: flex;
+            // justify-content: space-between;
+            padding-bottom: 1rem;
+            border-bottom: 1.5px solid $fbc;
+            div {
+                width: 50%;
+                p {
+                    color: $ftc;
+                    padding-bottom: 0.25rem;
+                }
+                text-align: left;
+            }
+        }
+        > p {
+            padding-top: 1rem;
+            color: $ftc;
+        }
     }
 }
