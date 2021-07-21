@@ -52,7 +52,6 @@ async function getById(userId) {
 }
 
 function remove(userId) {
-<<<<<<< HEAD
     // return storageService.remove(USER_KEY, userId)
     return httpService.delete(`user/${userId}`)
 }
@@ -61,16 +60,6 @@ async function update(user) {
     // await storageService.put(USER_KEY, user)
     user = await httpService.put(`user/${user._id}`, user)
         // Handle case in which admin updates other user's details
-=======
-    return storageService.remove(USER_KEY, userId)
-    // return httpService.delete(`user/${userId}`)
-}
-
-async function update(user) {
-    await storageService.put(USER_KEY, user)
-    // user = await httpService.put(`user/${user._id}`, user)
-    // Handle case in which admin updates other user's details
->>>>>>> 2149d597b1f1009ff7dada8e147634af17d5c63d
     if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
     return user;
 }
@@ -99,26 +88,15 @@ async function signup(userCred) {
     userCred.fullname = userCred.username;
     userCred.imgUrl = "https://res.cloudinary.com/cookiecloud/image/upload/v1626702838/defaultUser.png"
     userCred.createdAt = Date.now();
-<<<<<<< HEAD
     // const user = await storageService.post(USER_KEY, userCred)
     const user = await httpService.post('auth/signup', userCred)
         // socketService.emit('set-user-socket', user._id);
-=======
-    const user = await storageService.post(USER_KEY, userCred)
-    // const user = await httpService.post('auth/signup', userCred)
-    // socketService.emit('set-user-socket', user._id);
->>>>>>> 2149d597b1f1009ff7dada8e147634af17d5c63d
     return _saveLocalUser(user)
 }
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-<<<<<<< HEAD
         // socketService.emit('unset-user-socket');
     return await httpService.post('auth/logout')
-=======
-    // socketService.emit('unset-user-socket');
-    // return await httpService.post('auth/logout')
->>>>>>> 2149d597b1f1009ff7dada8e147634af17d5c63d
 }
 
 
