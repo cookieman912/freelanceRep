@@ -48,6 +48,9 @@
     form * {
         margin-bottom: 10px;
     }
+    form :last-child{
+        margin-bottom: 0px;
+    }
     .seller-details {
         margin: auto;
         .toggle-button {
@@ -67,10 +70,41 @@
     }
     .user-gigs {
         border: 2px solid $fbc;
-        button {
+        .gig-add-button {
             width: 50px;
             height: 30px;
             margin-top: 8px;
+        }
+
+        .img-upload{
+           .upload-call{ border: 2px dashed $fgc;
+            background-color: #fff;
+            border-radius: 1.5rem;
+               font-size: 2rem;
+               color:$ftc;
+               margin-top: 0px;
+               padding: 5px;
+         }
+  
+        }
+
+        .img-upload-list{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2rem;
+            align-content: center;
+            width: 90%;
+          .img-upload-preview{
+           object-fit: cover;
+            height: 100px;
+           margin-bottom: 1rem;
+           
+          }
+        }
+        .upload-call:hover {
+            cursor:pointer;
+            color: $fgc;
+           
         }
         .gigs-list {
             // background-color: black;

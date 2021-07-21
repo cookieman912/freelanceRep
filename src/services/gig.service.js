@@ -1,5 +1,5 @@
 import { storageService } from './async-storage.service.js'
-// import { httpService } from './http-service.js'
+import { httpService } from './http.service.js'
 // import axios from 'axios'
 const defaultGigs = require('../../data/gig.json')
 
@@ -14,25 +14,33 @@ export const gigService = {
 }
 
 
-function query(filterBy) {
+async function query(filterBy) {
 
-    // return httpService.get('gig', filterBy)
-    return storageService.query(GIG_KEY, filterBy)
-        .then(gigs => {
-            if (!gigs.length) {
-                storageService.postMany(GIG_KEY, defaultGigs)
-                return defaultGigs
-            }
-            return gigs;
-        })
+    const gigs=await httpService.get('gig', filterBy)
+    try{
+        return gigs
+    }
+   catch(err){
+    console.log(gigs)
+    throw err
+   }
+ 
+    // return storageService.query(GIG_KEY, filterBy)
+    //     .then(gigs => {
+    //         if (!gigs.length) {
+    //             storageService.postMany(GIG_KEY, defaultGigs)
+    //             return defaultGigs
+    //         }
+    //         return gigs;
+    //     })
 }
 
 function getById(gigId) {
-    // return httpService.get(`gig/${gigId}`)
-    return storageService.get(GIG_KEY, gigId)
-        .then(gig => {
-            return gig
-        })
+    return httpService.get(`gig/${gigId}`)
+    // return storageService.get(GIG_KEY, gigId)
+    //     .then(gig => {
+    //         return gig
+    //     })
 }
 
 function remove(gigId) {
@@ -45,14 +53,14 @@ function remove(gigId) {
 function save(gig) {
 
     if (gig._id) {
-        return storageService.put(GIG_KEY, gig)
-            .then(gig => { return gig })
-        // return httpService.put(`gig`, gig)
+    //     return storageService.put(GIG_KEY, gig)
+    //         .then(gig => { return gig })
+        return httpService.put(`gig`, gig)
     } else {
 
-        return storageService.post(GIG_KEY, gig)
-            .then(gig => { return gig })
-        // return httpService.post(`gig`, gig)
+        // return storageService.post(GIG_KEY, gig)
+        //     .then(gig => { return gig })
+        return httpService.post(`gig`, gig)
     }
 }
 // function addReview(gigId, review) {

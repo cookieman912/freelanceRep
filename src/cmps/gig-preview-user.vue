@@ -14,7 +14,7 @@
     <p><span>name:</span> {{ gig.title }}</p>
     <p><span>type:</span> {{ gig.description }}</p>
     <router-link :to="'/explore/' + gig._id">view</router-link>
-        <button @click="deleteClicked(gig._id)">delete</button>
+        <button class="el-icon-delete" @click="deleteClicked(gig._id)"></button>
   </div>
 </template>
 

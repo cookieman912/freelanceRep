@@ -174,6 +174,7 @@ export default {
     addClassToNav() {},
     pageNavigationClass() {
       const overview = this.$refs.overview;
+      console.log(overview)
       const description = this.$refs.description;
       const aboutTheSeller = this.$refs.aboutTheSeller;
       const reviews = this.$refs.reviews;
