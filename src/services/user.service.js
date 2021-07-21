@@ -32,21 +32,21 @@ window.userService = userService
 // userService.signup({ fullname: 'Muki G', username: 'muki', password: '123', score: 100 })
 
 function getUsers() {
-    // return httpService.get(`user`)
+    return httpService.get(`user`)
     // return storageService.query('user')
-    return storageService.query(USER_KEY)
-        .then(users => {
-            if (!users.length) {
-                storageService.postMany(USER_KEY, defaultUsers)
-                return defaultUsers
-            }
-            return users;
-        })
+    // return storageService.query(USER_KEY)
+    //     .then(users => {
+    //         if (!users.length) {
+    //             storageService.postMany(USER_KEY, defaultUsers)
+    //             return defaultUsers
+    //         }
+    //         return users;
+    //     })
 }
 
 async function getById(userId) {
-    const user = await storageService.get(USER_KEY, userId)
-    // const user = await httpService.get(`user/${userId}`)
+    // const user = await storageService.get(USER_KEY, userId)
+    const user = await httpService.get(`user/${userId}`)
     // gWatchedUser = user;
     return user;
 }
