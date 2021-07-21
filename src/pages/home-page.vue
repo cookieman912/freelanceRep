@@ -64,9 +64,8 @@ export default {
   },
   data() {
     return {
-     // lastDiff:null,
+      // category gallery 
      galleryItemsCount:5,
-     // catIdx:null,
       categories:null,
       filterBy: {
         txt:""
@@ -175,18 +174,6 @@ export default {
     };
   },
   computed: {
-    // getInitialIdx(){
-    //   return this.galleryItemsNumber -1;
-    
-    // },
-    // getCategories() {
-    //   this.categories = JSON.parse(JSON.stringify(this.demoCategories));
-    //   this.categories.splice(0,categories.length-5);
-    //   console.log('categories in loading:',categories);
-
-
-    //   return categories;
-    // },
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
@@ -199,42 +186,45 @@ export default {
     this.categories.splice(this.categories.length - newCategoryLng ,newCategoryLng );
     },
 
-    categoryBtnPressed(diff){},
-    //   // is the last pressed button was not with the same direction
-    //   if (this.lastDiff !== diff){
-    //     if ( this.catIdx + diff*(this.galleryItemsNumber-1) < 0 || this.catIdx + diff*(this.galleryItemsNumber-1)  > this.demoCategories.length -1){
-          
-    //     }
-    //     this.catIdx += diff*(this.galleryItemsNumber-1);
-    //     console.log('changed direction. now idx is:',this.catIdx)
-    //   }
-    //    this.lastDiff = diff;
-    //    // if gallery forward:
-    //   if (diff === 1){
-    //     if (this.catIdx === this.demoCategories.length -1) {
-    //       this.catIdx = 0
-    //     }
-    //     else{
-    //       this.catIdx++;
-    //     }
+    categoryBtnPressed(diff){
+      console.log('Id of the first item in categories: ',this.categories[0].id);
+      console.log('Id of the last item in categories: ',this.categories[this.categories.length-1].id);
+      // This moves the carousel forward by adding item to the last and removing the first
+      // case pressed forward button
+      if (diff === 1){
+        // get demo catIndex
+        var demoCatIdx = this.demoCategories.findIndex((cat)=> cat.id === this.categories[this.categories.length-1].id )
+        console.log(demoCatIdx);
+        // if it's the last item in demoCategories - Push the first item / otherwise push the next item from demoCategories to categories
+        if (demoCatIdx === this.demoCategories.length-1){
+        this.categories.push(this.demoCategories[0])
+        }
+        else{
+          this.categories.push(this.demoCategories[demoCatIdx+1])
+        }
+        // remove the first item in categories
+        this.categories.splice(0,1);
+      }
+      // In case carouselle is backwards
+      else{
+        // find the idx of the category in demoCategories that is the same as the first element in categories.
+        var demoCatIdx = this.demoCategories.findIndex((cat)=>cat.id === this.categories[0].id);
+        // If its the first element in demoCategories - Push the last element in demoCategories to categories.
+        var idxToPush;
+        if (!demoCatIdx){
+          idxToPush = this.demoCategories.length-1;
+          }
+        // else - push the prev. item in demoCategories to categories,
+        else{
+          idxToPush = demoCatIdx -1;
+        }
+        // add the category at the start
+        this.categories.splice(0,0,this.demoCategories[idxToPush]);
+        // remove category at the end
+        this.categories.splice(this.categories.length-1,1);
+      }
+    },
 
-    //     this.categories.push(this.demoCategories[this.catIdx]);
-    //     this.categories.splice(0,1);
-    //   }
-    //   if (diff === -1){
-    //     if (this.catIdx === 0) {
-    //       this.catIdx = this.demoCategories.length -1;
-    //     }
-    //     else {
-    //       this.catIdx--;
-    //     }
-    //     this.categories.splice(0,0,this.demoCategories[this.catIdx]);
-    //     this.categories.splice(this.categories.length-1,1);
-    //     console.log('this.categories after press left',this.categories);
-         
-    //   }
-    //     console.log('idx after: ',this.catIdx);
-    // },
     toExplorePage() {
       this.$router.push("/explore");
     },
@@ -269,6 +259,7 @@ export default {
     startHeroInterval(){
       this.heroInterval= setInterval(() => {
         this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+        // set home-page top section dynamic styles per hero
         this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
         this.styleObject.color = this.currHero.styleSet.color;
         eventBusService.$emit('headerChange',this.currHero.id);
