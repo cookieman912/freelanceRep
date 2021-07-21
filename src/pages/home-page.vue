@@ -64,9 +64,9 @@ export default {
   },
   data() {
     return {
-      lastDiff:null,
-      galleryItemsNumber:5,
-      catIdx:null,
+     // lastDiff:null,
+     galleryItemsCount:5,
+     // catIdx:null,
       categories:null,
       filterBy: {
         txt:""
@@ -175,9 +175,10 @@ export default {
     };
   },
   computed: {
-    getInitialIdx(){
-      return this.galleryItemsNumber -1;
-    },
+    // getInitialIdx(){
+    //   return this.galleryItemsNumber -1;
+    
+    // },
     // getCategories() {
     //   this.categories = JSON.parse(JSON.stringify(this.demoCategories));
     //   this.categories.splice(0,categories.length-5);
@@ -191,37 +192,49 @@ export default {
     },
   },
   methods: {
-    categoryBtnPressed(diff){
-      if (this.lastDiff !== diff){
-        console.log('catidx before change',this.catIdx)
-        this.catIdx += diff*(this.galleryItemsNumber-1);
-        console.log('catidx after change',this.catIdx)
-      }
-       this.lastDiff = diff;
-      if (diff === 1){
-        if (this.catIdx === this.demoCategories.length -1) {
-          this.catIdx = 0
-        }
-        else{
-          this.catIdx++;
-        }
-
-        this.categories.push(this.demoCategories[this.catIdx]);
-        this.categories.splice(0,1);
-      }
-      if (diff === -1){
-        if (this.catIdx === 0) {
-          this.catIdx = this.demoCategories.length -1;
-        }
-        else {
-          this.catIdx--;
-        }
-        this.categories.splice(0,0,this.demoCategories[this.catIdx]);
-        this.categories.splice(this.categories.length-1,1);
-        console.log('this.categories after press left',this.categories);
-         
-      }
+    // Set initial categories according to item number.
+    initCategories(){
+      this.categories = JSON.parse(JSON.stringify(this.demoCategories));
+    var newCategoryLng = this.categories.length - this.galleryItemsCount;
+    this.categories.splice(this.categories.length - newCategoryLng ,newCategoryLng );
     },
+
+    categoryBtnPressed(diff){},
+    //   // is the last pressed button was not with the same direction
+    //   if (this.lastDiff !== diff){
+    //     if ( this.catIdx + diff*(this.galleryItemsNumber-1) < 0 || this.catIdx + diff*(this.galleryItemsNumber-1)  > this.demoCategories.length -1){
+          
+    //     }
+    //     this.catIdx += diff*(this.galleryItemsNumber-1);
+    //     console.log('changed direction. now idx is:',this.catIdx)
+    //   }
+    //    this.lastDiff = diff;
+    //    // if gallery forward:
+    //   if (diff === 1){
+    //     if (this.catIdx === this.demoCategories.length -1) {
+    //       this.catIdx = 0
+    //     }
+    //     else{
+    //       this.catIdx++;
+    //     }
+
+    //     this.categories.push(this.demoCategories[this.catIdx]);
+    //     this.categories.splice(0,1);
+    //   }
+    //   if (diff === -1){
+    //     if (this.catIdx === 0) {
+    //       this.catIdx = this.demoCategories.length -1;
+    //     }
+    //     else {
+    //       this.catIdx--;
+    //     }
+    //     this.categories.splice(0,0,this.demoCategories[this.catIdx]);
+    //     this.categories.splice(this.categories.length-1,1);
+    //     console.log('this.categories after press left',this.categories);
+         
+    //   }
+    //     console.log('idx after: ',this.catIdx);
+    // },
     toExplorePage() {
       this.$router.push("/explore");
     },
@@ -234,36 +247,43 @@ export default {
         console.log('Cannot load gigs',err);
         throw err;
       }
-    }
+    },
+      // Default hero for loading page
+    loadDefaultHero(){
+      this.currHero = this.demoHeros[0];
+    },
+      // styleObject gets the style params of the hero.
+    styleDefaultHero(){
+      this.styleObject.backgroundColor = this.demoHeros[0].styleSet.backgroundColor;
+      this.styleObject.color = this.demoHeros[0].styleSet.color;
+      this.styleObject.borderBottom = "none";
+    },
+      // Sending style id to the header
+    sendStyleToHeader(){
+      eventBusService.$emit('headerChange',this.demoHeros[0].id);
+    },
+    loadGigs(){
+      this.$store.dispatch({ type: "loadGigs" });
+    },
+    // Interval for new hero
+    startHeroInterval(){
+      this.heroInterval= setInterval(() => {
+        this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+        this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+        this.styleObject.color = this.currHero.styleSet.color;
+        eventBusService.$emit('headerChange',this.currHero.id);
+      }, 7000);
+
+    },
    
   },
   created() {
-    // Default hero for loading page
-    this.currHero = this.demoHeros[0];
-    // styleObject gets the style params of the hero.
-    this.styleObject.backgroundColor = this.demoHeros[0].styleSet.backgroundColor;
-    this.styleObject.color = this.demoHeros[0].styleSet.color;
-    this.styleObject.borderBottom = "none";
-    // Sending style id to the header
-    eventBusService.$emit('headerChange',this.demoHeros[0].id);
-
-    this.$store.dispatch({ type: "loadGigs" });
-    // Interval for new hero
-    this.heroInterval= setInterval(() => {
-      this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
-      this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
-      this.styleObject.color = this.currHero.styleSet.color;
-      eventBusService.$emit('headerChange',this.currHero.id);
-    }, 7000);
-    // Categories gallery section
-    this.catIdx = this.getInitialIdx;
-    this.lastDiff = 1;
-    this.categories = JSON.parse(JSON.stringify(this.demoCategories));
-    var newCategoryLng = this.categories.length - this.galleryItemsNumber;
-    this.categories.splice(this.categories.length - newCategoryLng ,newCategoryLng );
-    console.log('categories in loading:',this.categories);
-    console.log('initial idx',this.catIdx);
-
+    this.loadDefaultHero();
+    this.styleDefaultHero();
+    this.sendStyleToHeader();
+    this.loadGigs();
+    this.startHeroInterval();
+    this.initCategories();
   },
   destroyed() {
     // clearing header to default styling params and clear hero image interval
