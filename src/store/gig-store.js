@@ -8,6 +8,7 @@ export const gigStore = {
             txt: '',
             price: 0,
             category: '',
+            tags:''
         }
     },
     getters: {
