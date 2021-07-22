@@ -1,9 +1,15 @@
 <template>
   <div class="edit-seller">
-    <div class="seller-details">
-      <form @submit.prevent="updateSeller">
+    <div class="seller-details ">
+     
+      <form @submit.prevent="updateSeller" >
+          <img
+          class="profile-pic"
+          :src="this.user.imgUrl"
+          alt="profile pic"
+        />
         <div class="form-content">
-          <h1>Update</h1>
+          
           <div class="form-option">
             <h3>Specialty</h3>
 
@@ -38,7 +44,7 @@
         </div>
         <button>Update</button>
       </form>
-
+ </div>
       <div class="user-gigs">
         <button
           class="el-icon-caret-top gig-add-button"
@@ -171,9 +177,9 @@
       </div>
       <h2>Your orders</h2>
       <!-- <p>{{this.user.seller.orders}}</p> -->
-      <!-- <order-table :orders="this.user.seller.orders"/> -->
-      <h1>Under Construction</h1>
-    </div>
+      <order-table :orders="this.user.seller.orders" @updateOrders="updateOrders"/>
+      <!-- <h1>Under Construction</h1> -->
+   
   </div>
 </template>
 
@@ -276,6 +282,11 @@ export default {
       }
     },
 
+    updateOrders(orders){
+     this.userToEdit.seller.orders=orders;
+     this.$store.dispatch({type:'updateUser',user:this.userToEdit})
+    },
+
     toggleAddGig() {
       this.addGigActive = !this.addGigActive;
     },
@@ -317,8 +328,7 @@ export default {
           seller: {},
           packages:['','','']
         };
-
-        await this.$store.dispatch({ type: "addOrder", user: userToUpdate });
+        await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
       } catch (err) {
         console.log("error!", err);
         throw err;
@@ -331,7 +341,7 @@ export default {
 
         console.log(userToUpdate);
         userToUpdate.seller.gigs.splice(idx, 1);
-        await this.$store.dispatch({ type: "addOrder", user: userToUpdate });
+        await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
         await this.$store.dispatch({ type: "removeGig", gigId: _id });
       } catch (err) {
         console.log(err);
