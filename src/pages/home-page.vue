@@ -95,7 +95,7 @@ export default {
         id:'2',
         fullname:'Haim Moshe',
         rate: 4.8,
-        specialty:'Full Stack Developer',
+        specialty:'Web Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
         styleSet:{backgroundColor:'#d1aa8b',color:'white'}
       },
@@ -121,7 +121,7 @@ export default {
         id:'5',
         fullname:'Jon Doe',
         rate: 4.6,
-        specialty:'Mobile Aplication Freelancer',
+        specialty:'Mobile Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
         styleSet:{backgroundColor:'#86535c',color:'white'}
       }
