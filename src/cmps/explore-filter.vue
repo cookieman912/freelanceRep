@@ -8,12 +8,13 @@
           :class="{ active: categoryModal }"
         >
           <ul>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
+            <li @click="catValFilter('graphic design')">Graphic Design</li>
+            <li @click="catValFilter('web development')">Web Development</li>
+            <li @click="catValFilter('voice acting')">Voice Acting</li>
+            <li @click="catValFilter('podcast expertise')">
+              Podcast Expertise
+            </li>
+            <li @click="catValFilter('translation')">Translation</li>
           </ul>
         </div>
       </div>
@@ -29,6 +30,7 @@
               <label for="max">Max.</label>
               <input id="max" placeholder="Maximum Price" type="text" />
             </div>
+            <!-- v-model="filterBy.price.max"v-model="filterBy.price.min" -->
           </div>
           <div>
             <button>Clear All</button>
@@ -40,12 +42,19 @@
         Rate<span class="el-icon-arrow-down"></span>
         <div class="choose-modal rate-modal" :class="{ active: rateModal }">
           <ul>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
+            <li @click="rateValFilter(4)">
+              Above 4<span class="el-icon-star-on"></span>
+            </li>
+            <li @click="rateValFilter(3)">
+              Above 3<span class="el-icon-star-on"></span>
+            </li>
+            <li @click="rateValFilter(2)">
+              Above 2<span class="el-icon-star-on"></span>
+            </li>
+            <li @click="rateValFilter(1)">
+              Above 1<span class="el-icon-star-on"></span>
+            </li>
+            <li @click="rateValFilter">Any</li>
           </ul>
         </div>
       </div>
@@ -57,9 +66,15 @@
 export default {
   data() {
     return {
-      category: "",
-      price: null,
-      rate: null,
+      filterBy: {
+        txt: "",
+        tags: "",
+        price: {
+          min: null,
+          max: null,
+        },
+        rate: null,
+      },
       categoryModal: false,
       priceModal: false,
       rateModal: false,
@@ -82,6 +97,39 @@ export default {
           break;
       }
     },
+    // getFilterTxt() {
+    //   console.log(this.$store.getters.filterToShow);
+    //   return this.$store.getters.filterTxtToShow
+    //     ? this.$store.getters.filterTxtToShow
+    //     : "";
+    // },
+    filter() {
+      this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
+    },
+    catValFilter(val) {
+      console.log("val", val);
+      this.filterBy.category = val;
+      console.log("this.category", this.filterBy);
+    },
+    priceValFilter(val) {
+      console.log("val", val);
+      this.filterBy.category = val;
+      console.log("this.category", this.filterBy);
+    },
+    rateValFilter(val) {
+      console.log("val", val);
+      this.filterBy.rate = val;
+      console.log("this.rate", this.filterBy);
+    },
+  },
+  computed: {
+    getFilter() {
+      console.log(this.$store.getters.filterToShow);
+      return this.$store.getters.filterToShow;
+    },
+  },
+  created() {
+    this.filterBy = this.getFilter;
   },
 };
 </script>

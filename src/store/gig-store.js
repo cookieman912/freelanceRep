@@ -6,8 +6,12 @@ export const gigStore = {
         gigs: [],
         filterBy: {
             txt: '',
-            price: 0,
-            category: '',
+            price: {
+                min: 0,
+                max: Infinity
+            },
+            tags: '',
+            rate: null
         }
     },
     getters: {
@@ -16,10 +20,12 @@ export const gigStore = {
         },
         gigs(state) { return state.gigs },
         gigsToShow(state) {
-            //console.log('filterBy', state.filterBy.txt);
-            // let gigsToShow = state.gigs.filter(gig => +gig.price >= state.filterBy.price)
-            //     .filter(gig => gig.category === state.filterBy.category || state.filterBy.category === '')
+            console.log('filterBy', state.filterBy);
             let gigsToShow = state.gigs
+            // let gigsToShow = state.gigs.filter(gig => (+gig.price >= state.filterBy.price.min && +gig.price <= state.filterBy.price.max) 
+                                                    // || !state.filterBy.price.min || !state.filterBy.price.max)
+                // .filter(gig => gig.tags === state.filterBy.tags || state.filterBy.tags === '')
+                // .filter(gig => gig.rate >= state.filterBy.rate)
             let regex = new RegExp(state.filterBy.txt, 'i')
             return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
         },
@@ -67,10 +73,7 @@ export const gigStore = {
         async loadGigs(context) {
             try {
                 const gigs = await gigService.query();
-                console.log(' in store')
-                console.log(gigs)
                 context.commit({ type: 'setGigs', gigs })
-
             } catch (err) {
                 console.log('gigStore: Error in loadGigs', err)
                 throw err

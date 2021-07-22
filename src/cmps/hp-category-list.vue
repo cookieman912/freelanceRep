@@ -1,12 +1,14 @@
 <template>
     <section class="hp-category-list">
-        <ul class="home-page-category-list">
           <button class="home-page-category-before-btn" @click.prevent="catBtnClicked(-1)">&#60;</button>
+        <ul class="home-page-category-list">
           <li v-for="cat in categories" :key="cat.id">
-            <hp-category-preview :cat="cat"/>
+            <transition :name="direction" mode="in-out">ל
+              <hp-category-preview class="carousel-slide" v-if="see" :cat="cat"/>
+            </transition>
           </li>
-          <button class="home-page-category-next-btn" @click.prevent="catBtnClicked(1)">&#62;</button>
         </ul>
+          <button class="home-page-category-next-btn" @click.prevent="catBtnClicked(1)">&#62;</button>
     </section>
 </template>
 <script>
@@ -19,12 +21,18 @@ export default {
   },
   data() {
       return {
+        direction:'left',
+        see:true
           
       }
-    return {};
   },
   methods: {
     catBtnClicked(diff){
+      diff === 1 ? this.direction ='right' : this.direction = 'left';
+      this.see=!this.see;
+      setTimeout(() => {
+        this.see=!this.see;
+      }, 1);
       this.$emit('categoryBtnPressed', diff);
     }
   },

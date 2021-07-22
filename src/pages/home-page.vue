@@ -13,7 +13,7 @@
               <hp-search-bar @filter="filter"/>
             </div>
           </form>
-          <hp-tag-buttons />
+          <hp-tag-buttons @catChoice="setCatFilter" />
         </main>
         <div class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
@@ -36,13 +36,15 @@
             <button @click.prevent="toExplorePage">See all</button>
           </span>
         </div>
+        <template v-if="isLoading">
         <gigs-list :gigs="getGigs" />
-        <div class="hp-buttom-header-container">
-          <h1>Discover Business</h1>
-          <span>
-            <button @click.prevent="toExplorePage">See all</button>
-          </span>
-        </div>
+          <div class="hp-buttom-header-container">
+            <h1>Discover Business</h1>
+            <span>
+              <button @click.prevent="toExplorePage">See all</button>
+            </span>
+          </div>
+        </template>
         <gigs-list :gigs="getGigs" />
     </div>
   </div>
@@ -64,12 +66,13 @@ export default {
   },
   data() {
     return {
-      lastDiff:null,
-      galleryItemsNumber:5,
-      catIdx:null,
+      isLoading:false, // loading gigs
+      // category gallery 
+     galleryItemsCount:5,
       categories:null,
       filterBy: {
-        txt:""
+        txt:'',
+        tags:''
       },
       // style object for the header via eventbus
       styleObject:{
@@ -175,55 +178,66 @@ export default {
     };
   },
   computed: {
-    getInitialIdx(){
-      return this.galleryItemsNumber -1;
-    },
-    // getCategories() {
-    //   this.categories = JSON.parse(JSON.stringify(this.demoCategories));
-    //   this.categories.splice(0,categories.length-5);
-    //   console.log('categories in loading:',categories);
-
-
-    //   return categories;
-    // },
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
   },
   methods: {
+    // Set initial categories according to item number.
+    initCategories(){
+      this.categories = JSON.parse(JSON.stringify(this.demoCategories));
+    var newCategoryLng = this.categories.length - this.galleryItemsCount;
+    this.categories.splice(this.categories.length - newCategoryLng ,newCategoryLng );
+    },
+
     categoryBtnPressed(diff){
-      if (this.lastDiff !== diff){
-        console.log('catidx before change',this.catIdx)
-        this.catIdx += diff*(this.galleryItemsNumber-1);
-        console.log('catidx after change',this.catIdx)
-      }
-       this.lastDiff = diff;
+      console.log('Id of the first item in categories: ',this.categories[0].id);
+      console.log('Id of the last item in categories: ',this.categories[this.categories.length-1].id);
+      // This moves the carousel forward by adding item to the last and removing the first
+      // case pressed forward button
       if (diff === 1){
-        if (this.catIdx === this.demoCategories.length -1) {
-          this.catIdx = 0
+        // get demo catIndex
+        var demoCatIdx = this.demoCategories.findIndex((cat)=> cat.id === this.categories[this.categories.length-1].id )
+        console.log(demoCatIdx);
+        // if it's the last item in demoCategories - Push the first item / otherwise push the next item from demoCategories to categories
+        if (demoCatIdx === this.demoCategories.length-1){
+        this.categories.push(this.demoCategories[0])
         }
         else{
-          this.catIdx++;
+          this.categories.push(this.demoCategories[demoCatIdx+1])
         }
-
-        this.categories.push(this.demoCategories[this.catIdx]);
+        // remove the first item in categories
         this.categories.splice(0,1);
       }
-      if (diff === -1){
-        if (this.catIdx === 0) {
-          this.catIdx = this.demoCategories.length -1;
+      // In case carouselle is backwards
+      else{
+        // find the idx of the category in demoCategories that is the same as the first element in categories.
+        var demoCatIdx = this.demoCategories.findIndex((cat)=>cat.id === this.categories[0].id);
+        // If its the first element in demoCategories - Push the last element in demoCategories to categories.
+        var idxToPush;
+        if (!demoCatIdx){
+          idxToPush = this.demoCategories.length-1;
+          }
+        // else - push the prev. item in demoCategories to categories,
+        else{
+          idxToPush = demoCatIdx -1;
         }
-        else {
-          this.catIdx--;
-        }
-        this.categories.splice(0,0,this.demoCategories[this.catIdx]);
+        // add the category at the start
+        this.categories.splice(0,0,this.demoCategories[idxToPush]);
+        // remove category at the end
         this.categories.splice(this.categories.length-1,1);
-        console.log('this.categories after press left',this.categories);
-         
       }
     },
+
     toExplorePage() {
       this.$router.push("/explore");
+    },
+
+    setCatFilter(catFilter){
+      this.filterBy.tags = catFilter;
+      console.log('filterby',this.filterBy)
+      this.filter(this.filterBy);
+      //TODO: need to keep working on this...
     },
     async filter(filterBy){
       this.filterBy = filterBy;
@@ -234,36 +248,46 @@ export default {
         console.log('Cannot load gigs',err);
         throw err;
       }
-    }
+    },
+      // Default hero for loading page
+    loadDefaultHero(){
+      this.currHero = this.demoHeros[0];
+    },
+      // styleObject gets the style params of the hero.
+    styleDefaultHero(){
+      this.styleObject.backgroundColor = this.demoHeros[0].styleSet.backgroundColor;
+      this.styleObject.color = this.demoHeros[0].styleSet.color;
+      this.styleObject.borderBottom = "none";
+    },
+      // Sending style id to the header
+    sendStyleToHeader(){
+      eventBusService.$emit('headerChange',this.demoHeros[0].id);
+    },
+     async loadGigs(){
+       this.$store.dispatch({type:'loadGigs'})
+        .then(()=>this.isLoading = false)
+      //this.$store.dispatch({ type: "loadGigs" });
+    },
+    // Interval for new hero
+    startHeroInterval(){
+      this.heroInterval= setInterval(() => {
+        this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+        // set home-page top section dynamic styles per hero
+        this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+        this.styleObject.color = this.currHero.styleSet.color;
+        eventBusService.$emit('headerChange',this.currHero.id);
+      }, 7000);
+
+    },
    
   },
   created() {
-    // Default hero for loading page
-    this.currHero = this.demoHeros[0];
-    // styleObject gets the style params of the hero.
-    this.styleObject.backgroundColor = this.demoHeros[0].styleSet.backgroundColor;
-    this.styleObject.color = this.demoHeros[0].styleSet.color;
-    this.styleObject.borderBottom = "none";
-    // Sending style id to the header
-    eventBusService.$emit('headerChange',this.demoHeros[0].id);
-
-    this.$store.dispatch({ type: "loadGigs" });
-    // Interval for new hero
-    this.heroInterval= setInterval(() => {
-      this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
-      this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
-      this.styleObject.color = this.currHero.styleSet.color;
-      eventBusService.$emit('headerChange',this.currHero.id);
-    }, 7000);
-    // Categories gallery section
-    this.catIdx = this.getInitialIdx;
-    this.lastDiff = 1;
-    this.categories = JSON.parse(JSON.stringify(this.demoCategories));
-    var newCategoryLng = this.categories.length - this.galleryItemsNumber;
-    this.categories.splice(this.categories.length - newCategoryLng ,newCategoryLng );
-    console.log('categories in loading:',this.categories);
-    console.log('initial idx',this.catIdx);
-
+    this.loadDefaultHero();
+    this.styleDefaultHero();
+    this.sendStyleToHeader();
+    this.loadGigs();
+    this.startHeroInterval();
+    this.initCategories();
   },
   destroyed() {
     // clearing header to default styling params and clear hero image interval
