@@ -1,160 +1,27 @@
 .edit-seller {
+  text-align: center;
+width:$main-layout;
+    display: grid;
+
+
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr 0.7fr ;
+  .seller-details{
+    //   grid-area:0/0/1/1;
+  }
+
+
+  .user-gigs{
+//  grid-area:0/1/1/2;
+  }   
   
-    text-align: center;
-    display: flex;
-    width: $main-layout;
-    margin: auto;
-    background-color: rgb(250, 250, 250);
-    form {
-        width: 600px;
-        // height: 600px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: auto;
-        justify-content: space-between;
-        border: 1px solid $fbc;
-        margin-bottom: 10px;
-       
-        .form-content {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            .form-option {
-                text-align: left;
-                display: flex;
-                flex-direction: row; 
-                justify-content: space-evenly;       
-                align-items: center;
-                border-top: 2px solid $fbc;
-                margin-bottom: 10px;
-                input{
-                    width: 40%;
-                    text-align: center;
-                    margin: center;
-                }
-                textarea  {
-                    width: 50%;
+  .table-container{
 
-                 
-                }
-            }
+    // grid-area:1/1/2/2 ;
 
-        
-        }
-    }
-    button {
-        width: 300px;
-        padding: 8px 12px;
-        background-color: $fgc;
-        color: white;
-        font-size: 1.2em;
-        border: none;
-        border-radius: 0.2em
-    }
-    button:hover {
-        background-color: #19b16a;
-        cursor: pointer;
-    }
-    form * {
-        margin-bottom: 10px;
-    }
-    form :last-child{
-        margin-bottom: 0px;
-    }
-    .seller-details {
-        margin: auto;
-        .toggle-button {
-            width: 40px;
-            padding: 8px 12px;
-            background-color: $fgc;
-            color: white;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 0.2em;
-            margin-bottom: 10px;
-        }
-        .toggle-button:hover {
-            background-color: #19b16a;
-            cursor: pointer;
-        }
-    }
-    .user-gigs {
-        border: 2px solid $fbc;
-        .gig-add-button {
-            width: 50px;
-            height: 30px;
-            margin-top: 8px;
-        }
-
-        .img-upload{
-           .upload-call{ border: 2px dashed $fgc;
-            background-color: #fff;
-            border-radius: 1.5rem;
-               font-size: 2rem;
-               color:$ftc;
-               margin-top: 0px;
-               padding: 5px;
-         }
+  }
   
-        }
-
-        .img-upload-list{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 2rem;
-            align-content: center;
-            width: 90%;
-          .img-upload-preview{
-           object-fit: cover;
-            height: 100px;
-           margin-bottom: 1rem;
-           
-          }
-        }
-        .upload-call:hover {
-            cursor:pointer;
-            color: $fgc;
-           
-        }
-        .gigs-list {
-            // background-color: black;
-            .gig-preview {
-                a {
-                    font-size: 1.2rem;
-                    color: #19b16a
-                }
-                a:hover {
-                    text-decoration: underline
-                }
-            }
-        }
-        .gig-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: auto auto auto;
-            .title-input {
-                grid-area: 1/1/1/2;
-            }
-            .number-input {
-                grid-area: 1/2/1/3;
-            }
-            .delivery-input {
-                grid-area: 1/3/1/4;
-            }
-            .desc-input {
-                grid-area: 2/1/2/4;
-            }
-            .tag-input {
-                grid-area: 3/1/3/4;
-            }
-        }
-        .gigs-list {
-            border-top: 1px solid $fbc
-        }
-    }
-    .hidden{
+  .hidden{
         display: none !important;
     }
 }

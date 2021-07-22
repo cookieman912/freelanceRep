@@ -1,5 +1,8 @@
-  // <template>
+   <template>
+<div class="table-container">
+  <h2>Your Orders</h2>
   <table class="order-table">
+    
     <tr>
       <td>Order from:</td>
       <td>Order for:</td>
@@ -17,6 +20,7 @@
          <td v-else>accepted!</td>
     </tr>
   </table>
+  </div>
 </template>
 
   <script>

@@ -3,13 +3,13 @@
     <div class="seller-details ">
      
       <form @submit.prevent="updateSeller" >
-          <img
+             <img
           class="profile-pic"
           :src="this.user.imgUrl"
           alt="profile pic"
         />
         <div class="form-content">
-          
+       
           <div class="form-option">
             <h3>Specialty</h3>
 
@@ -175,7 +175,7 @@
           :gigs="this.user.seller.gigs"
         />
       </div>
-      <h2>Your orders</h2>
+     
       <!-- <p>{{this.user.seller.orders}}</p> -->
       <order-table :orders="this.user.seller.orders" @updateOrders="updateOrders"/>
       <!-- <h1>Under Construction</h1> -->
