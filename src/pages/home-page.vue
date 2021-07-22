@@ -121,7 +121,7 @@ export default {
         id:'5',
         fullname:'Jon Doe',
         rate: 4.6,
-        specialty:'Mobile Developer',
+        specialty:'Mobile Developerז',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
         styleSet:{backgroundColor:'#86535c',color:'white'}
       }
@@ -132,7 +132,7 @@ export default {
         {
           
           id: "1",
-          catName: "logo",
+          catName: "Logo",
           txt: "Build your brand",
           title: "Logo Design",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/Elegant-CA-letter-logo-4_kh7yqc.jpg",
@@ -140,7 +140,7 @@ export default {
         },
         {
           id: "2",
-          catName: "mobile",
+          catName: "Mobile",
           txt: "Build your mobile site",
           title: "Mobile Builders",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/test-driven-development-t_yr6mzs.jpg",
@@ -161,7 +161,7 @@ export default {
         },
         {
           id: "5",
-          catName: "business",
+          catName: "Business",
           txt: "Business Plan",
           title: "Plan your Business",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
@@ -169,7 +169,7 @@ export default {
 
         {
           id: "6",
-          catName: "cooking",
+          catName: "Cooking",
           txt: "Cooking Recepies",
           title: "Make the best food!",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626790679/categories/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3_l6q9wc.jpg",

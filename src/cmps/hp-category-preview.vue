@@ -26,6 +26,7 @@ export default {
   },
   methods: {
       emitCatName(catName){
+          console.log(catName)
           this.$emit('catName',catName);
           this.toExplorePage();
       },
