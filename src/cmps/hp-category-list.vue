@@ -4,7 +4,7 @@
         <ul class="home-page-category-list">
           <li v-for="cat in categories" :key="cat.id">
             <transition :name="direction" mode="in-out">
-              <hp-category-preview v-if="see" :cat="cat"/>
+              <hp-category-preview class="carousel-slide" v-if="see" :cat="cat"/>
             </transition>
           </li>
         </ul>
