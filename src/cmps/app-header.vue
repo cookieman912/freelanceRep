@@ -4,7 +4,7 @@
     <nav class="nav-header">
       <div class="logo" :class="[homePageColorSetClass]">
      
-        <router-link to="/" @click.native="clearSearch">freelance<span>.</span></router-link>
+        <router-link to="/" @click.native="clearSearch">Freelance<span>.</span></router-link>
       </div>
       <app-header-search v-if="serachBar" @filter="filter" />
       <div class="navigation">
