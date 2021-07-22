@@ -20,14 +20,26 @@ export const gigStore = {
         },
         gigs(state) { return state.gigs },
         gigsToShow(state) {
-            console.log('filterBy', state.filterBy);
+            // console.log('filterBy', state.filterBy);
             let gigsToShow = state.gigs
-            // let gigsToShow = state.gigs.filter(gig => (+gig.price >= state.filterBy.price.min && +gig.price <= state.filterBy.price.max) 
-                                                    // || !state.filterBy.price.min || !state.filterBy.price.max)
+                // let gigsToShow = state.gigs.filter(gig => (+gig.price >= state.filterBy.price.min && +gig.price <= state.filterBy.price.max) 
+                // || !state.filterBy.price.min || !state.filterBy.price.max)
                 // .filter(gig => gig.tags === state.filterBy.tags || state.filterBy.tags === '')
                 // .filter(gig => gig.rate >= state.filterBy.rate)
+
             let regex = new RegExp(state.filterBy.txt, 'i')
-            return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+            console.log(gigsToShow);
+            // return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+            let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
+            filtered = filtered.filter(gig => {
+                console.log('gig', gig);
+                const { tags } = gig
+                return tags.find(tag => tag === state.filterBy.tags);
+
+            })
+            return filtered;
+
+
         },
     },
     mutations: {
@@ -46,6 +58,7 @@ export const gigStore = {
         },
         setFilter(state, { filterBy }) {
             state.filterBy = filterBy
+            console.log('this.filteby in gigstore', state.filterBy);
         },
     },
     actions: {

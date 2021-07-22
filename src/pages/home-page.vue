@@ -233,14 +233,18 @@ export default {
       this.$router.push("/explore");
     },
 
+    /// Categories 
+    ///////////////
+    
+
     setCatFilter(catFilter){
       this.filterBy.tags = catFilter;
-      console.log('filterby',this.filterBy)
       this.filter(this.filterBy);
       //TODO: need to keep working on this...
     },
     async filter(filterBy){
       this.filterBy = filterBy;
+      //console.log('filterby',this.filterBy)
       try{
         this.$store.commit({type:"setFilter", filterBy});
       }
