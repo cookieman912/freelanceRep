@@ -20,6 +20,12 @@
             <option value="Podcast expertise">
               Podcast Expertise
             </option>
+            <option value="Logo">
+              Logo
+            </option>
+            <option value="Business plan">
+              Bussines Plan
+            </option>
           </select>
           <!-- <ul>
             <li @click="catValFilter('graphic design')">Graphic Design</li>

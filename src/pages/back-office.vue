@@ -97,19 +97,19 @@
               </el-option>
             </el-select>
 
-              <el-input
+              <el-input maxlength="25" show-word-limit
               class="package1-input"
               type="text"
               placeholder="Package 1 includes"
               v-model="gigToAdd.packages[0]"
             />
-              <el-input
+              <el-input maxlength="25" show-word-limit
               class="package2-input"
               type="text"
               placeholder="Package 2 includes"
               v-model="gigToAdd.packages[1]"
             />
-              <el-input
+              <el-input maxlength="25" show-word-limit
               class="package3-input"
               type="text"
               placeholder="Package 3 includes"
@@ -170,7 +170,9 @@
         />
       </div>
       <h2>Your orders</h2>
-      <order-table />
+      <!-- <p>{{this.user.seller.orders}}</p> -->
+      <!-- <order-table :orders="this.user.seller.orders"/> -->
+      <h1>Under Construction</h1>
     </div>
   </div>
 </template>
@@ -224,9 +226,18 @@ export default {
           label: "Podcast expertise",
         },
         {
-          value: "Translation",
-          label: "Translation",
+          value: "Logo",
+          label: "Logo",
         },
+          {
+          value: "Cooking",
+          label: "Cooking",
+        },
+          {
+          value: "Business Plan",
+          label: "Business Plan",
+        },
+         
       ],
       value: "",
       userToEdit: JSON.parse(JSON.stringify(this.$store.getters.loggedinUser)),
@@ -307,7 +318,7 @@ export default {
           packages:['','','']
         };
 
-        await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
+        await this.$store.dispatch({ type: "addOrder", user: userToUpdate });
       } catch (err) {
         console.log("error!", err);
         throw err;
@@ -320,7 +331,7 @@ export default {
 
         console.log(userToUpdate);
         userToUpdate.seller.gigs.splice(idx, 1);
-        await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
+        await this.$store.dispatch({ type: "addOrder", user: userToUpdate });
         await this.$store.dispatch({ type: "removeGig", gigId: _id });
       } catch (err) {
         console.log(err);

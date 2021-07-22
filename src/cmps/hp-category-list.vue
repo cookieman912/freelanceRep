@@ -4,7 +4,7 @@
         <ul class="home-page-category-list">
           <li v-for="cat in categories" :key="cat.id">
             <transition :name="direction" mode="in-out">ל
-              <hp-category-preview class="carousel-slide" v-if="see" :cat="cat"/>
+              <hp-category-preview class="carousel-slide" v-if="see" @catName="emitCatName()" :cat="cat"/>
             </transition>
           </li>
         </ul>
@@ -34,6 +34,9 @@ export default {
         this.see=!this.see;
       }, 1);
       this.$emit('categoryBtnPressed', diff);
+    },
+    emitCatName(catName){
+      this.$emit('catName',catName);
     }
   },
   computed: {},

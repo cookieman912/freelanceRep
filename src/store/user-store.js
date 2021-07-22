@@ -107,6 +107,15 @@ export const userStore = {
             }
 
         },
+        async addOrder({ commit }, { user }) {
+            try {
+                user = await userService.update(user);
+            } catch (err) {
+                console.log('userStore: Error in updateUser', err)
+                throw err
+            }
+
+        },
         async becomeSeller({ commit }, { userToUpdate }) {
             try {
                 let user = await userService.update(userToUpdate);

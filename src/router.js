@@ -7,6 +7,7 @@ import becomeSeller from './pages/become-seller.vue'
 import userDetails from './pages/user-details.vue'
 import checkout from './pages/checkout.vue'
 import backOffice from './pages/back-office.vue'
+import transactionDone from './pages/transaction-done.vue'
 
 
 Vue.use(Router)
@@ -55,6 +56,11 @@ export const router = new Router({
             path: '/backOffice',
             name: 'back-office',
             component: backOffice
+        },
+        {
+            path: '/end',
+            name: 'transaction-done',
+            component: transactionDone
         }
     ]
 })
