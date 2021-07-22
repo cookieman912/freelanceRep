@@ -22,7 +22,7 @@
     </div>
     <div class="home-page-bottom-container main-layout">
         <h1>Popular professional services</h1>
-        <hp-category-list :categories="categories" @categoryBtnPressed="categoryBtnPressed"/>
+        <hp-category-list :categories="categories" @categoryBtnPressed="categoryBtnPressed" @catName="setCatFilter"/>
         <div class="hp-buttom-header-container">
             <h1>Top rated Gigs</h1>
             <span>
@@ -147,21 +147,21 @@ export default {
         },
         {
           id: "3",
-          catName: "fullstack",
+          catName: "Web development",
           txt: "learn web development",
           title: "Fullstack Course",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/ONLC-2017-4-637x350_sgkf3v.png",
         },
         {
           id: "4",
-          catName: "podcast",
+          catName: "Podcast expertise",
           txt: "Podcast your ideas",
           title: "Podcast Experts",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/podcast-DAWs_zczltb.jpg",
         },
         {
           id: "5",
-          catName: "Business",
+          catName: "business",
           txt: "Business Plan",
           title: "Plan your Business",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
@@ -169,7 +169,7 @@ export default {
 
         {
           id: "6",
-          catName: "Cooking",
+          catName: "cooking",
           txt: "Cooking Recepies",
           title: "Make the best food!",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626790679/categories/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3_l6q9wc.jpg",
@@ -191,8 +191,6 @@ export default {
     },
 
     categoryBtnPressed(diff){
-      console.log('Id of the first item in categories: ',this.categories[0].id);
-      console.log('Id of the last item in categories: ',this.categories[this.categories.length-1].id);
       // This moves the carousel forward by adding item to the last and removing the first
       // case pressed forward button
       if (diff === 1){
@@ -232,19 +230,14 @@ export default {
     toExplorePage() {
       this.$router.push("/explore");
     },
-
-    /// Categories 
-    ///////////////
-    
-
+     /// Categories ///
     setCatFilter(catFilter){
       this.filterBy.tags = catFilter;
       this.filter(this.filterBy);
-      //TODO: need to keep working on this...
+      console.log('hp catFilter',this.filterBy);
     },
     async filter(filterBy){
       this.filterBy = filterBy;
-      //console.log('filterby',this.filterBy)
       try{
         this.$store.commit({type:"setFilter", filterBy});
       }
