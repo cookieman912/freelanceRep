@@ -10,9 +10,9 @@
     </p>
     <p>What's Included</p>
     <ul>
-      <li><span class="el-icon-check"></span>&nbsp;package include 1</li>
-      <li><span class="el-icon-check"></span>&nbsp;package include 2</li>
-      <li><span class="el-icon-check"></span>&nbsp;package include 3</li>
+      <li><span class="el-icon-check"></span>&nbsp;{{gig.packages[0]}}</li>
+      <li><span class="el-icon-check"></span>&nbsp;{{gig.packages[1]}}</li>
+      <li><span class="el-icon-check"></span>&nbsp;{{gig.packages[2]}}</li>
     </ul>
     <p></p>
     <router-link :to="'/checkout/' + gig._id">

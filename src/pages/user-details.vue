@@ -1,6 +1,6 @@
 <template>
   <main class="user-details">
-    <p>{{user}}</p>
+  
     <section class="user-details-container" v-if="user">
       <div class="img-upload-container">
  
@@ -39,7 +39,7 @@
         <img
           class="loader"
           v-else
-          src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
+          src="https://motiongraphicsphoebe.files.wordpress.com/2018/10/8ee212dac057d412972e0c8cc164deee.gif?w=545&h=409"
           alt=""
         />
       </div>

@@ -5,8 +5,9 @@
         <h2>Your Package</h2>
         <div class="package-gig-details">
           <div class="package-info-container">
-            <div class="img-container">
-              <img :src="require(`../assets/images/${gigImgUrl}`)" />
+            <div  class="img-container">
+                 <img v-if="isGigCloudinary" :src="gig.imgUrls[0]" />
+              <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />
             </div>
             <div>
               <h3>{{ gig.title }}</h3>
@@ -73,6 +74,9 @@ export default {
         return { "el-icon-arrow-up": true };
       }
       return { "el-icon-arrow-down": true };
+    },
+    isGigCloudinary(){
+      return this.gig.imgUrls[0].includes('cloudinary')
     },
   },
   async created() {

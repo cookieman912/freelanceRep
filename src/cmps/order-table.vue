@@ -1,5 +1,12 @@
 <template>
-  <p>i am a table</p>
+<table>
+<tr>
+  <td>order from:</td>
+  <td> order for:</td>
+  <td> days to deliver</td>
+</tr>
+
+</table>
 </template>
 
 <script>

@@ -32,6 +32,7 @@
 }
 
 .gig-details-page {
+ 
     margin: 0 auto;
     max-width: 1304px;
     padding: 2rem;
@@ -50,6 +51,7 @@
     & main {
         flex-basis: 57.42%;
         margin-inline-end: 9.15%;
+        // max-width: 710px;
     }
     & .gig-buying{
         flex-basis: 33.6%;
@@ -88,7 +90,7 @@
     }
 
     .el-carousel__container{
-        //     width: 712px;
+            max-width: 712px;
         height:427px;
     }
     .el-carousel__item img {
