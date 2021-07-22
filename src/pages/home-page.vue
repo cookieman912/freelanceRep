@@ -29,7 +29,7 @@
               <button @click.prevent="toExplorePage">See all</button>
             </span>
         </div>
-        <gigs-list :gigs="gigsToShow"/>
+        <gigs-list :gigs="getGigs"/>
         <div class="hp-buttom-header-container">
           <h1>Discover Web development</h1>
           <span>
