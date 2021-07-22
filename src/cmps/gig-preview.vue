@@ -1,7 +1,7 @@
 <template>
   <div class="gig-preview" v-bind:style="styleObject">
-    <div v-if="isGigCloudinary" @click="routing">
-      <el-carousel :interval="5000" arrow="always">
+    <div v-if="isGigCloudinary"  @click="routing">
+      <el-carousel :interval="5000" :autoplay="false" arrow="always">
         <el-carousel-item v-for="item in 4" :key="item">
           <img v-if="isGigCloudinary" :src="gig.imgUrls[0]" />
           <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />

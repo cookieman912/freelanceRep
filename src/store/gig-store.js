@@ -8,24 +8,29 @@ export const gigStore = {
             txt: '',
             price: {
                 min: 0,
-                max: Infinity
+                max: 1000000
             },
             tags: '',
-            rate: null
+            rate: 0
         }
     },
     getters: {
         filterTxtToShow(state) {
             return state.filterBy.txt
         },
+        filterToShow(state) {
+            return state.filterBy
+        },
         gigs(state) { return state.gigs },
         gigsToShow(state) {
+            console.log('store gigs', state.gigs)
             console.log('filterBy', state.filterBy);
-            let gigsToShow = state.gigs
-            // let gigsToShow = state.gigs.filter(gig => (+gig.price >= state.filterBy.price.min && +gig.price <= state.filterBy.price.max) 
+            // let gigsToShow = state.gigs
+            let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
+                .filter(gig => (+gig.price <= +state.filterBy.price.max))
+                .filter(gig => gig.tags === state.filterBy.tags || state.filterBy.tags === '')
+                .filter(gig => +gig.rate >= +state.filterBy.rate)
                                                     // || !state.filterBy.price.min || !state.filterBy.price.max)
-                // .filter(gig => gig.tags === state.filterBy.tags || state.filterBy.tags === '')
-                // .filter(gig => gig.rate >= state.filterBy.rate)
             let regex = new RegExp(state.filterBy.txt, 'i')
             return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
         },
