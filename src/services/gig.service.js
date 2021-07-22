@@ -18,7 +18,6 @@ async function query(filterBy) {
 
     const gigs = await httpService.get('gig', filterBy)
     try {
-        console.log('gigs in service', gigs)
         return gigs
     } catch (err) {
         console.log(gigs)

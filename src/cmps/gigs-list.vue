@@ -24,7 +24,6 @@ export default {
   methods: {},
   computed: {},
   created() {
-    console.log(this.$route.name)
     if(this.$route.name === 'home'){
      this.styleObject.gridTemplateColumns ='repeat(5, 1fr)';
    }

@@ -6,6 +6,8 @@ import './assets/styles/main.scss'
 import './registerServiceWorker'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+var moment = require('moment'); // require
+moment().format();
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
