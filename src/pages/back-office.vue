@@ -234,8 +234,8 @@ export default {
           label: "Cooking",
         },
           {
-          value: "Business Plan",
-          label: "Business Plan",
+          value: "Business plan",
+          label: "Business plan",
         },
          
       ],
