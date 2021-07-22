@@ -29,15 +29,15 @@
               <button @click.prevent="toExplorePage">See all</button>
             </span>
         </div>
-        <gigs-list :gigs="getGigs" />
+        <gigs-list :gigs="gigsToShow"/>
         <div class="hp-buttom-header-container">
           <h1>Discover Web development</h1>
           <span>
             <button @click.prevent="toExplorePage">See all</button>
           </span>
         </div>
-        <template v-if="isLoading">
-        <gigs-list :gigs="getGigs" />
+        <template>
+        <gigs-list :gigs="webGigsToShow" />
           <div class="hp-buttom-header-container">
             <h1>Discover Business</h1>
             <span>
@@ -45,7 +45,7 @@
             </span>
           </div>
         </template>
-        <gigs-list :gigs="getGigs" />
+        <gigs-list :gigs="businessGigsToShow" />
     </div>
   </div>
 </template>
@@ -178,6 +178,16 @@ export default {
     };
   },
   computed: {
+    //TODO: to be continued
+    // topRatedGigsToShow(){
+    //   return this.$store.getters.topRatedGigsToShow;
+    // },    
+    businessGigsToShow(){
+      return this.$store.getters.businessGigsToShow;
+    },
+    webGigsToShow(){
+      return this.$store.getters.webGigsToShow;
+    },
     getGigs() {
       return this.$store.getters.gigsToShow;
     },
