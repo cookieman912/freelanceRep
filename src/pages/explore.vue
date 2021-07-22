@@ -1,7 +1,7 @@
 <template>
   <main class="explore" v-if="gigs">
-    <h2>Results for "logo"</h2>
-    <h2>Category name</h2>
+    <h2 >Results for "{{ searchTxt}}"</h2>
+    <h2>{{searchTags}}</h2>
     <filter-by @filter="filter" />
     <gigs-list :gigs="getGigs" />
     <!-- <p>{{gigs}}</p> -->
@@ -18,14 +18,19 @@ export default {
   },
   data() {
     return {
-      gigs: []
+      gigs: [],
+      searchTxt: '',
+      searchTags: ''
     };
   },
   methods: {
     async filter(filterBy) {
-      this.filterBy = filterBy;
       try {
-        this.$store.commit({ type: "setFilter", filterBy: this.filterBy });
+        this.searchTxt = filterBy.txt
+        this.searchTags = filterBy.tags
+        console.log(this.searchTxt);
+        this.$store.commit({ type: "setFilter", filterBy });
+        await this.$store.dispatch("loadGigs")
         console.log("filterBy", this.filterBy);
       } catch (err) {
         console.log("cannot load gigs", err);
@@ -38,9 +43,15 @@ export default {
       this.gigs = this.$store.getters.gigsToShow
       return this.$store.getters.gigsToShow;
     },
+
   },
-  created() {
-    this.$store.dispatch({ type: "loadGigs" });
+  async created() {
+    try {
+      this.$store.dispatch({ type: "loadGigs" });
+    } catch (err) {
+      console.log("cannot load gigs", err);
+      throw err;
+    }
   },
   destroyed() {},
 };
