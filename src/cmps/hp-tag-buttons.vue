@@ -1,7 +1,8 @@
 <template>
     <section class="hp-tag-buttons">
         <div class="home-page-tag-buttons">Popular:
-            <button @click.prevent="chosenTag('website')">Web Design</button>
+         <!-- TODO: ask how to shortcut it -->
+            <button @click.prevent="chosenTag('Web development')">Web Design</button>
             <button @click.prevent="chosenTag('business')">Business Plan</button>
             <button @click.prevent="chosenTag('sound')">Podcast</button>
             <button @click.prevent="chosenTag('cooking')">Cooking Recepies</button>
@@ -12,6 +13,7 @@
 export default{
     methods:{
         chosenTag(choice){
+            console.log(choice);
             this.tag = choice;
             this.$emit('catChoice',choice);
         }
