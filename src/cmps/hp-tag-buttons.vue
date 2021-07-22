@@ -3,9 +3,9 @@
         <div class="home-page-tag-buttons">Popular:
          <!-- TODO: ask how to shortcut it -->
             <button @click.prevent="chosenTag('Web development')">Web Design</button>
-            <button @click.prevent="chosenTag('Business plan')">Business Plan</button>
+            <button @click.prevent="chosenTag('Business Plan')">Business Plan</button>
             <button @click.prevent="chosenTag('Podcast expertise')">Podcast</button>
-            <button @click.prevent="chosenTag('cooking')">Cooking Recepies</button>
+            <button @click.prevent="chosenTag('Cooking')">Cooking Recepies</button>
         </div>
     </section>
 </template>
