@@ -23,16 +23,27 @@ export const gigStore = {
         },
         gigs(state) { return state.gigs },
         gigsToShow(state) {
-            console.log('store gigs', state.gigs)
-            console.log('filterBy', state.filterBy);
+            // console.log('store gigs', state.gigs)
+            // console.log('filterBy', state.filterBy);
+            // console.log('filterByTags', state.gigs[0].tags[0]);
             // let gigsToShow = state.gigs
-            let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
-                .filter(gig => (+gig.price <= +state.filterBy.price.max))
-                .filter(gig => gig.tags === state.filterBy.tags || state.filterBy.tags === '')
-                .filter(gig => +gig.rate >= +state.filterBy.rate)
-                                                    // || !state.filterBy.price.min || !state.filterBy.price.max)
+            // console.log('filterBy1', gigsToShow);
+            // console.log('filterBy.tags', state.gigs[0].tags[0]);
+            // console.log('state.filterBy.tags', state.filterBy.tags||'sd');
             let regex = new RegExp(state.filterBy.txt, 'i')
-            return gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+
+            let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
+                            .filter(gig => (+gig.price <= +state.filterBy.price.max))
+                            .filter(gig => (+gig.rate >= +state.filterBy.rate || !state.filterBy.price.min || !state.filterBy.price.max))
+            let filtered =gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
+            if (state.filterBy.tags) {
+                filtered = filtered.filter(gig => {
+                    const { tags } = gig
+                    return tags.find(tag => tag === state.filterBy.tags);
+                })
+            }
+            console.log(filtered);
+            return filtered;
         },
     },
     mutations: {

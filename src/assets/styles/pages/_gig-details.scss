@@ -32,7 +32,7 @@
 }
 
 .gig-details-page {
- 
+    scroll-behavior: smooth;
     margin: 0 auto;
     max-width: 1304px;
     padding: 2rem;
@@ -60,6 +60,7 @@
         padding-bottom: 0.75rem;
     }
     main h2 {
+        scroll-margin-top: 53px;
         padding-bottom: 0.75rem;
     }
     // .el-carousel__item{
@@ -80,6 +81,7 @@
         }
     }
     & .gig-details-description{
+        scroll-margin-top: 60px;
         border-bottom: 1.5px solid $fbc;
         & h2 {
             padding-top: 0.75rem;
