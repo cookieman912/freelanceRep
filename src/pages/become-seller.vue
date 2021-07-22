@@ -1,6 +1,6 @@
 <template>
   <main class="become-seller-container">
-<h1></h1>
+    <h1></h1>
     <div class="become-seller">
       <h1>Become seller!</h1>
 
@@ -13,6 +13,10 @@
           <el-option value="voice acting">voice acting</el-option>
           <el-option value="podcast expertise">podcast expertise</el-option>
           <el-option value="translation">translation</el-option>
+          <el-option value="Logo">Logo</el-option>
+          <el-option value="cooking">cooking</el-option>
+          <el-option value="Busieness management">Busieness management</el-option>
+          
         </el-select>
         <h3>Tell us about yourself!</h3>
 
@@ -22,8 +26,8 @@
           cols="30"
           rows="10"
         ></el-input>
-<h3>Where are you from?</h3>
-            <el-input
+        <h3>Where are you from?</h3>
+        <el-input
           type="text"
           v-model="sellerDetails.location"
           cols="30"
@@ -74,15 +78,11 @@ export default {
     };
   },
 
-
-
   computed: {
-       user() {
+    user() {
       return this.$store.getters.loggedinUser;
     },
   },
-
-
 
   methods: {
     async becomeSeller() {
@@ -96,15 +96,11 @@ export default {
           type: "becomeSeller",
           userToUpdate: userToSend,
         });
-            this.$router.push("/backOffice");
+        this.$router.push("/backOffice");
       } catch (err) {
         throw err;
       }
     },
-
-   
-
-
   },
 };
 </script>

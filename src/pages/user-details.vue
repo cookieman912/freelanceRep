@@ -1,6 +1,5 @@
 <template>
   <main class="user-details">
-  
     <section class="user-details-container" v-if="user">
       <div class="img-upload-container">
  
@@ -121,6 +120,7 @@ export default {
 
       this.userToEdit.imgUrl = res.url;
       this.updateUser();
+    
     },
   },
 };
