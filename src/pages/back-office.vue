@@ -137,6 +137,7 @@
         />
       </div>
       <h2>Your orders</h2>
+      <order-table/>
     </div>
   </div>
 </template>
