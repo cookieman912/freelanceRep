@@ -3,7 +3,7 @@
           <button class="home-page-category-before-btn" @click.prevent="catBtnClicked(-1)">&#60;</button>
         <ul class="home-page-category-list">
           <li v-for="cat in categories" :key="cat.id">
-            <transition :name="direction" mode="in-out">
+            <transition :name="direction" mode="in-out">ל
               <hp-category-preview class="carousel-slide" v-if="see" :cat="cat"/>
             </transition>
           </li>
