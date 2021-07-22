@@ -25,6 +25,16 @@
               v-model="userToEdit.seller.sellerInfo"
             ></el-input>
           </div>
+          <div class="form-option">
+            <h3>Where are you from?</h3>
+            <el-input
+              type="text"
+              v-model="userToEdit.seller.location"
+              cols="30"
+              rows="10"
+            ></el-input>
+
+          </div>
         </div>
         <button>Update</button>
       </form>
@@ -86,25 +96,43 @@
               >
               </el-option>
             </el-select>
+
+              <el-input
+              class="package1-input"
+              type="text"
+              placeholder="Package 1 includes"
+              v-model="gigToAdd.packages[0]"
+            />
+              <el-input
+              class="package2-input"
+              type="text"
+              placeholder="Package 2 includes"
+              v-model="gigToAdd.packages[1]"
+            />
+              <el-input
+              class="package3-input"
+              type="text"
+              placeholder="Package 3 includes"
+              v-model="gigToAdd.packages[2]"
+            />
           </div>
 
           <div class="img-upload-container">
             <template v-if="!isLoading">
-          
-              <label class=img-upload
+              <label
+                class="img-upload"
                 for="imgUploader"
                 @drop.prevent="handleFile"
                 @dragover.prevent="isDragOver = true"
                 @dragleave="isDragOver = false"
                 :class="{ drag: isDragOver }"
               >
-              <div class="upload-call">
-                <h3>Upload images</h3>
-                <p class="el-icon-upload"></p>
+                <div class="upload-call">
+                  <h3>Upload images</h3>
+                  <p class="el-icon-upload"></p>
                 </div>
               </label>
 
-              
               <input
                 class="hidden"
                 type="file"
@@ -117,14 +145,19 @@
             <img
               class="loader"
               v-else
-              src="https://i.pinimg.com/originals/65/ba/48/65ba488626025cff82f091336fbf94bb.gif"
+              src="https://motiongraphicsphoebe.files.wordpress.com/2018/10/8ee212dac057d412972e0c8cc164deee.gif?w=545&h=409"
               alt=""
             />
           </div>
 
-          
-          <div class="img-upload-list" >
-          <img class="img-upload-preview" v-for="imgUrl in imgList" :key="imgUrl" :src="imgUrl" alt="">
+          <div class="img-upload-list">
+            <img
+              class="img-upload-preview"
+              v-for="imgUrl in imgList"
+              :key="imgUrl"
+              :src="imgUrl"
+              alt=""
+            />
           </div>
 
           <button>Add gig</button>
@@ -137,7 +170,7 @@
         />
       </div>
       <h2>Your orders</h2>
-      <order-table/>
+      <order-table />
     </div>
   </div>
 </template>
@@ -158,6 +191,7 @@ export default {
       sellerDetails: {
         specialty: null,
         sellerInfo: "",
+        location:"",
       },
       addGigActive: false,
       gigToAdd: {
@@ -168,6 +202,7 @@ export default {
         deliveryDays: null,
         seller: {},
         imgUrls: [],
+        packages:['','','']
       },
       isLoading: false,
       isDragOver: false,
@@ -212,9 +247,9 @@ export default {
     user() {
       return this.$store.getters.loggedinUser;
     },
-    imgList(){
-      return this.gigToAdd.imgUrls
-    }
+    imgList() {
+      return this.gigToAdd.imgUrls;
+    },
   },
 
   methods: {
@@ -269,6 +304,7 @@ export default {
           tags: [],
           deliveryDays: null,
           seller: {},
+          packages:['','','']
         };
 
         await this.$store.dispatch({ type: "updateUser", user: userToUpdate });

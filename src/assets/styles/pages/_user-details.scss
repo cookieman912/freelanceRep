@@ -2,9 +2,11 @@
     width: 100px;
     border-radius: 50%;
     object-fit: cover;
+    margin-top: 10px;
 }
 
 .avatar {
+
     border-radius: 50%;
     object-fit: cover;
 }
@@ -27,6 +29,7 @@
         text-align: center;
         .loader {
             height: 150px;
+            width: auto;
         }
         label img {
             height: 100px;

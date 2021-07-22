@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{gig}}</p>
+    
     <div class="gig-details-navbar">
       <nav class="gig-details-nav">
         <a
@@ -142,7 +142,10 @@
   </div>
 </template>
 
+
 <script>
+var moment = require('moment'); // require
+moment().format();
 import { gigService } from "../services/gig.service.js";
 import { userService } from "../services/user.service.js";
 import gigBuyingBox from "../cmps/gig-buying-box.vue";
@@ -155,7 +158,6 @@ export default {
   data() {
     return {
       user: null,
-      userMemberSince: null,
       gig: null,
       sellerRate: 3.7,
       navOverview: true,
@@ -174,9 +176,8 @@ export default {
     const userId = this.gig.seller._id;
     const user = await userService.getById(userId);
     this.user = user;
-    const date = new Date(user.memberSince)
-     
-    this.userMemberSince = date;
+    const date = new Date(user.createdAt)
+  
 
     document.addEventListener("scroll", this.pageNavigationClass);
   },
@@ -201,6 +202,10 @@ export default {
     isSellerCloudinary() {
       return this.gig.seller.imgUrl.includes("cloud");
     },
+
+    userMemberSince(){
+      return moment(this.createdAt).format("MMM Do YY");  
+    }
   },
   methods: {
     pageNavigationClass() {

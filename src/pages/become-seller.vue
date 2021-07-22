@@ -2,10 +2,10 @@
   <main class="become-seller-container">
 <h1></h1>
     <div class="become-seller">
-      <h1>become seller!</h1>
+      <h1>Become seller!</h1>
 
       <form @submit.prevent="becomeSeller">
-        <h3>what is your specialty?</h3>
+        <h3>What is your specialty?</h3>
 
         <el-select v-model="sellerDetails.specialty" placeholder="choose">
           <el-option value="graphic design">graphic design</el-option>
@@ -14,11 +14,18 @@
           <el-option value="podcast expertise">podcast expertise</el-option>
           <el-option value="translation">translation</el-option>
         </el-select>
-        <h3>tell us about yourself!</h3>
+        <h3>Tell us about yourself!</h3>
 
         <el-input
           type="textarea"
           v-model="sellerDetails.sellerInfo"
+          cols="30"
+          rows="10"
+        ></el-input>
+<h3>Where are you from?</h3>
+            <el-input
+          type="text"
+          v-model="sellerDetails.location"
           cols="30"
           rows="10"
         ></el-input>
@@ -36,17 +43,9 @@ export default {
       sellerDetails: {
         specialty: null,
         sellerInfo: "",
+        location: "",
       },
       addGigActive: false,
-      gigToAdd: {
-        title: "",
-        description: "",
-        price: null,
-        tags: [],
-        deliveryDays: null,
-        seller: {},
-        imgUrls:[],
-      },
       isLoading: false,
       isDragOver: false,
       options: [
