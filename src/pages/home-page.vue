@@ -36,13 +36,15 @@
             <button @click.prevent="toExplorePage">See all</button>
           </span>
         </div>
+        <template v-if="isLoading">
         <gigs-list :gigs="getGigs" />
-        <div class="hp-buttom-header-container">
-          <h1>Discover Business</h1>
-          <span>
-            <button @click.prevent="toExplorePage">See all</button>
-          </span>
-        </div>
+          <div class="hp-buttom-header-container">
+            <h1>Discover Business</h1>
+            <span>
+              <button @click.prevent="toExplorePage">See all</button>
+            </span>
+          </div>
+        </template>
         <gigs-list :gigs="getGigs" />
     </div>
   </div>
@@ -64,6 +66,7 @@ export default {
   },
   data() {
     return {
+      isLoading:false, // loading gigs
       // category gallery 
      galleryItemsCount:5,
       categories:null,
@@ -260,8 +263,10 @@ export default {
     sendStyleToHeader(){
       eventBusService.$emit('headerChange',this.demoHeros[0].id);
     },
-    loadGigs(){
-      this.$store.dispatch({ type: "loadGigs" });
+     async loadGigs(){
+       this.$store.dispatch({type:'loadGigs'})
+        .then(()=>this.isLoading = false)
+      //this.$store.dispatch({ type: "loadGigs" });
     },
     // Interval for new hero
     startHeroInterval(){

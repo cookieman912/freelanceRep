@@ -8,7 +8,7 @@ export const gigStore = {
             txt: '',
             price: 0,
             category: '',
-            tags:''
+            tags: ''
         }
     },
     getters: {
@@ -69,9 +69,8 @@ export const gigStore = {
             try {
                 const gigs = await gigService.query();
                 console.log(' in store')
-                console.log(gigs)
+                console.log('gigs from loadGigs in store', gigs)
                 context.commit({ type: 'setGigs', gigs })
-
             } catch (err) {
                 console.log('gigStore: Error in loadGigs', err)
                 throw err
