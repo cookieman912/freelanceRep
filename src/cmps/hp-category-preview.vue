@@ -1,6 +1,6 @@
 <template>
     <section class="hp-category-preview">
-        <li v-if="cat" class="home-page-category-image-wrapper">
+        <li v-if="cat" class="home-page-category-image-wrapper" @click="emitCatName(cat.catName)">
             <div  class="home-page-category-text-container">
                 <h4>{{cat.txt}}</h4>
                 <h2>{{cat.title}}</h2>
@@ -24,7 +24,15 @@ export default {
           
       }
   },
-  methods: {},
+  methods: {
+      emitCatName(catName){
+          this.$emit('catName',catName);
+          this.toExplorePage();
+      },
+       toExplorePage() {
+      this.$router.push("/explore");
+    }
+  },
   computed: {},
   created() {},
   destroyed() {},

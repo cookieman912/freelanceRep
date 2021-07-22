@@ -48,8 +48,14 @@ export default {
       // home page styling
       homePageColorSetClass:'',
       // filter
-      filterBy: {
+     filterBy: {
         txt: "",
+        tags: "",
+        price: {
+          min: null,
+          max: null,
+        },
+        rate: null,
       },
     };
   },
@@ -87,8 +93,8 @@ export default {
     async filter(filterBy) {
       this.filterBy = filterBy;
       try {
-        this.$store.commit({ type: "setFilter", filterBy });
-        console.log("filterBy", filterBy);
+        this.$store.commit({ type: "setFilter", filterBy: this.filterBy });
+        console.log("filterBy", this.filterBy);
       } catch (err) {
         console.log("cannot load gigs", err);
         throw err;

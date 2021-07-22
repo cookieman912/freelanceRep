@@ -14,10 +14,10 @@
       class="header-search-bar"
       :placeholder="'Try: Building a mobile app'"
       autocomplete="off"
-      v-model="filterBy.txt"
+      v-model="filterByCopy.txt"
     />
     <router-link to="/explore">
-      <button @click="filter">Search</button>
+      <button @click.self="filter">Search</button>
     </router-link>
   </section>
 </template>
@@ -26,25 +26,24 @@
 export default {
   data() {
     return {
-      filterBy: {
-        txt: "",
-        //txt: this.getFilter,
-      },
+
     };
   },
   computed:{
-    getFilterTxt(){
-      console.log(this.$store.getters.filterToShow);
-      return this.$store.getters.filterTxtToShow ? this.$store.getters.filterTxtToShow  : '';
+    // getFilterTxt(){
+    //   console.log(this.$store.getters.filtertxtToShow);
+    //   return this.$store.getters.filterTxtToShow ? this.$store.getters.filterTxtToShow  : '';
+    // },
+    filterByCopy(){
+      return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
     },
   },
   methods: {
     filter() {
-      this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
+      this.$emit("filter", JSON.parse(JSON.stringify(this.filterByCopy)));
     },
   },
   created(){
-    this.filterBy.txt = this.getFilterTxt;
   }
 };
 </script>
