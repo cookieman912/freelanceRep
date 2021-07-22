@@ -22,6 +22,35 @@ export const gigStore = {
             return state.filterBy
         },
         gigs(state) { return state.gigs },
+
+        topRatedGigsToShow(state) {
+            let gigsToShow = state.gigs
+            let filtered = gigsToShow.filter(gig => {
+                gig.reviews[0] >= 4.5
+            })
+            return filtered;
+        },
+
+
+        businessGigsToShow(state) {
+            let gigsToShow = state.gigs
+            let filtered = gigsToShow.filter(gig => {
+                const { tags } = gig
+                return tags.find(tag => tag === 'Business plan');
+            })
+            return filtered;
+        },
+
+
+        webGigsToShow(state) {
+            let gigsToShow = state.gigs
+            let filtered = gigsToShow.filter(gig => {
+                const { tags } = gig
+                return tags.find(tag => tag === 'Web development');
+            })
+            return filtered;
+        },
+
         gigsToShow(state) {
             let regex = new RegExp(state.filterBy.txt, 'i')
 
@@ -46,7 +75,6 @@ export const gigStore = {
             state.gigs = gigs;
         },
         addGig(state, { gig }) {
-
             state.gigs.push(gig)
         },
         // addReview(state, { review }) {
@@ -64,7 +92,7 @@ export const gigStore = {
             try {
                 gig = await gigService.save(gig)
                 context.commit({ type: 'addGig', gig })
-                    // context.dispatch({type: 'increaseScore'})
+                   
                 return gig;
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)

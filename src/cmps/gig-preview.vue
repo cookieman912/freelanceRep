@@ -43,6 +43,7 @@
       <p class="el-icon-star-on">
         <span v-if="gig.reviews[0]">{{ gig.reviews[0].rate }}</span>
         <span v-else>n/a</span>
+        <span class="gig-review-num">({{gig.reviews.length}})</span>
       </p>
     </div>
     <div class="gig-save-and-price">

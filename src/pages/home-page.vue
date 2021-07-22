@@ -29,15 +29,15 @@
               <button @click.prevent="toExplorePage">See all</button>
             </span>
         </div>
-        <gigs-list :gigs="getGigs" />
+        <gigs-list :gigs="getGigs"/>
         <div class="hp-buttom-header-container">
           <h1>Discover Web development</h1>
           <span>
             <button @click.prevent="toExplorePage">See all</button>
           </span>
         </div>
-        <template v-if="isLoading">
-        <gigs-list :gigs="getGigs" />
+        <template>
+        <gigs-list :gigs="webGigsToShow" />
           <div class="hp-buttom-header-container">
             <h1>Discover Business</h1>
             <span>
@@ -45,7 +45,7 @@
             </span>
           </div>
         </template>
-        <gigs-list :gigs="getGigs" />
+        <gigs-list :gigs="businessGigsToShow" />
     </div>
   </div>
 </template>
@@ -95,7 +95,7 @@ export default {
         id:'2',
         fullname:'Haim Moshe',
         rate: 4.8,
-        specialty:'Full Stack Developer',
+        specialty:'Web Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
         styleSet:{backgroundColor:'#d1aa8b',color:'white'}
       },
@@ -121,7 +121,7 @@ export default {
         id:'5',
         fullname:'Jon Doe',
         rate: 4.6,
-        specialty:'Mobile Aplication Freelancer',
+        specialty:'Mobile Developerז',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
         styleSet:{backgroundColor:'#86535c',color:'white'}
       }
@@ -132,7 +132,7 @@ export default {
         {
           
           id: "1",
-          catName: "logo",
+          catName: "Logo",
           txt: "Build your brand",
           title: "Logo Design",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/Elegant-CA-letter-logo-4_kh7yqc.jpg",
@@ -140,7 +140,7 @@ export default {
         },
         {
           id: "2",
-          catName: "mobile",
+          catName: "Mobile",
           txt: "Build your mobile site",
           title: "Mobile Builders",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/test-driven-development-t_yr6mzs.jpg",
@@ -161,7 +161,7 @@ export default {
         },
         {
           id: "5",
-          catName: "business",
+          catName: "Business",
           txt: "Business Plan",
           title: "Plan your Business",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
@@ -169,7 +169,7 @@ export default {
 
         {
           id: "6",
-          catName: "cooking",
+          catName: "Cooking",
           txt: "Cooking Recepies",
           title: "Make the best food!",
           url: "https://res.cloudinary.com/urigross/image/upload/v1626790679/categories/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3_l6q9wc.jpg",
@@ -178,6 +178,16 @@ export default {
     };
   },
   computed: {
+    //TODO: to be continued
+    // topRatedGigsToShow(){
+    //   return this.$store.getters.topRatedGigsToShow;
+    // },    
+    businessGigsToShow(){
+      return this.$store.getters.businessGigsToShow;
+    },
+    webGigsToShow(){
+      return this.$store.getters.webGigsToShow;
+    },
     getGigs() {
       return this.$store.getters.gigsToShow;
     },

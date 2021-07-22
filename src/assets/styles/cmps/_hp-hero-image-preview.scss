@@ -1,6 +1,7 @@
 .hp-hero-image-list {
     position: relative;
     & img {
+        filter: brightness(95%);
         margin-block-end: -5px;
     }
 }

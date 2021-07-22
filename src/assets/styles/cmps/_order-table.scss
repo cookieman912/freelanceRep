@@ -1,0 +1,42 @@
+.order-table{
+    margin: auto;
+    width: 100%;
+    border: 2px solid $fbc;
+    border-collapse: collapse;
+   margin-bottom: 40px;
+ color: $ftc;
+ tr:first-child{
+    color: black;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+
+    tr{
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        border-bottom: 2px solid $fbc;
+        
+        td{
+            align-content: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-right:2px solid $fbc;
+            padding-bottom: 10px;
+            button{margin-top: 0.7rem;
+                width: 40px;
+                height: 1.4rem;
+                margin-right:5px ;
+                font-size:0.8rem
+            
+            }
+
+        }
+        td:first-child{
+            text-align: left;
+        }
+          
+        
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2;}
+}
