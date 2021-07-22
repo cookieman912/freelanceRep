@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>{{gig}}</p>
     <div class="gig-details-navbar">
       <nav class="gig-details-nav">
         <a
@@ -205,7 +204,6 @@ export default {
   methods: {
     pageNavigationClass() {
       const overview = this.$refs.overview;
-      console.log(overview)
       const description = this.$refs.description;
       const aboutTheSeller = this.$refs.aboutTheSeller;
       const reviews = this.$refs.reviews;
