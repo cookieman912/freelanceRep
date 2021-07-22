@@ -45,6 +45,10 @@
     }
     & p {
         margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     }
     .gig-preview-desc {
         transition: 0.35s ease;
