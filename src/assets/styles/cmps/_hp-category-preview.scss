@@ -7,7 +7,8 @@
     //transition: opacity .3s ease-in-out;
     & img {
         border-radius: 4px;
-        max-width: 239px;
+        // max-width: 239px;
+        width: 239px;
         object-fit: cover;
         height: 345px;
         cursor: pointer;

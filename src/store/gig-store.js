@@ -86,7 +86,7 @@ export const gigStore = {
             try {
                 gig = await gigService.save(gig)
                 context.commit({ type: 'addGig', gig })
-                   
+
                 return gig;
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)
