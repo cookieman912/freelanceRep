@@ -13,7 +13,7 @@
               <hp-search-bar @filter="filter"/>
             </div>
           </form>
-          <hp-tag-buttons @catChoice="setCatFilter" />
+          <hp-tag-buttons @catChoice="filter" />
         </main>
         <div class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
@@ -211,7 +211,6 @@ export default {
       if (diff === 1){
         // get demo catIndex
         var demoCatIdx = this.demoCategories.findIndex((cat)=> cat.id === this.categories[this.categories.length-1].id )
-        console.log(demoCatIdx);
         // if it's the last item in demoCategories - Push the first item / otherwise push the next item from demoCategories to categories
         if (demoCatIdx === this.demoCategories.length-1){
         this.categories.push(this.demoCategories[0])
@@ -249,10 +248,8 @@ export default {
     setCatFilter(catFilter){
       this.filterBy.tags = catFilter;
       this.filter(this.filterBy);
-      console.log('hp catFilter',this.filterBy);
     },
     async filter(filterBy){
-      console.log(filterBy);
       this.filterBy = filterBy;
       try{
         this.$store.commit({type:"setFilter", filterBy});

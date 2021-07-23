@@ -11,13 +11,25 @@
 </template>
 <script>
 export default{
+    computed: {
+        filterByCopy(){
+            return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
+            },
+    },
+    
     methods:{
-        chosenTag(choice){
-//            console.log(choice);
-            this.tag = choice;
-            this.$emit('catChoice',choice);
-            this.toExplorePage();
-        },
+        chosenTag(tag) {
+            var filter = this.filterByCopy;
+            filter.tags=tag;           
+      this.$emit("catChoice", JSON.parse(JSON.stringify(filter)));
+      this.toExplorePage();
+    },
+
+    // chosenTag(choice){
+    //         this.tag = choice;
+    //         this.$emit('catChoice',choice);
+    //         this.toExplorePage();
+    //     },
     toExplorePage() {
       this.$router.push("/explore");
     }

@@ -36,27 +36,6 @@ export default {
         throw err;
       }
     },
-  // async setGigStoreFilter(){
-  //   try{
-  //   var filter = {
-  //           txt: '',
-  //           price: {
-  //               min: 0,
-  //               max: Infinity
-  //           },
-  //           tags: [],
-  //           rate: 0,
-  //           sortBy: ''
-  //       };
-
-  //       this.$store.commit({ type: "setFilter", filter });
-  //       await this.$store.dispatch("loadGigs");
-  //       console.log("filterBy", filterBy);
-  //     } catch (err) {
-  //       console.log("cannot load gigs", err);
-  //       throw err;
-  //     }
-  // },
   filterByCopy(){
       return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
     },
