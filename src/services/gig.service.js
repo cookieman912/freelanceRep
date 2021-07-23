@@ -10,7 +10,7 @@ export const gigService = {
     remove,
     save,
     getEmptyReview,
-    // addReview
+    addReview
 }
 
 
@@ -62,13 +62,13 @@ function save(gig) {
         return httpService.post(`gig`, gig)
     }
 }
-// function addReview(gigId, review) {
+function addReview(gigId, review) {
 
-//     getById(gigId).then((gig) => {
-//         gig.reviews.push(review)
-//     })
-//     return gig
-// }
+    getById(gigId).then((gig) => {
+        gig.reviews.push(review)
+    })
+    return gig
+}
 
 function getEmptyReview() {
     return {

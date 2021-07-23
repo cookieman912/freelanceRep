@@ -8,16 +8,27 @@ export const gigStore = {
             txt: '',
             price: {
                 min: 0,
-                max: 1000000
+                max: Infinity
             },
             tags: [],
-            rate: 0
+            rate: 0,
+            sortBy: ''
+        },
+        addReview: {
+            txt: '',
+            by: {
+                fullname: ''
+            },
+            rate: null
         }
     },
     getters: {
         // filterTxtToShow(state) {
         //     return state.filterBy.txt
         // },
+        reviewToShow(state) {
+            return state.addReview
+        },
         filterToShow(state) {
             return state.filterBy
         },
@@ -53,9 +64,11 @@ export const gigStore = {
 
         gigsToShow(state) {
             let regex = new RegExp(state.filterBy.txt, 'i')
-
+            let maxPrice = state.filterBy.price.max
+            if (!state.filterBy.price.max) maxPrice = Infinity; 
+            console.log('max price ',state.filterBy.price.max);
             let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
-                            .filter(gig => (+gig.price <= +state.filterBy.price.max))
+                            .filter(gig => (+gig.price <= +maxPrice))
             let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
             if (state.filterBy.rate) {
                 filtered = filtered.filter(gig => +gig.rate >= +state.filterBy.rate)
@@ -63,7 +76,8 @@ export const gigStore = {
             if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
                     const { tags } = gig
-                    console.log(tags);
+                    // console.log('tags', filterBy.tags);
+                    console.log('tags', tags);
                     return tags.find(tag => tag === state.filterBy.tags);
                 })
             }
@@ -75,16 +89,19 @@ export const gigStore = {
             state.gigs = gigs;
         },
         addGig(state, { gig }) {
-            state.gigs.push(gig)
+            // state.gigs.push(gig)
         },
-        // addReview(state, { review }) {
-        //     state.gigs.push(gigs)
-        // },
+        addReview(state, { review }) {
+            state.gigs.push(gigs)
+        },
         removeGig(state, { gigId }) {
             state.gigs = state.gigs.filter(gig => gig._id !== gigId)
         },
         setFilter(state, { filterBy }) {
             state.filterBy = filterBy
+        },
+        setReview(state, { review }) {
+            state.addReview = review
         },
     },
     actions: {
@@ -99,16 +116,18 @@ export const gigStore = {
                 throw err
             }
         },
-        // async addReview(context, { review }, { gigId }) {
-        //     try {
-        //         await gigService.addReview(gigId, review)
-        //         // context.commit({ type: 'addReview', review })
-        //         // return gig;
-        //     } catch (err) {
-        //         console.log('gigStore: Error in addGig', err)
-        //         throw err
-        //     }
-        // },
+        async addReview(context, { gigId }, { review }) {
+            try {
+                console.log(gigId);
+                console.log(review);
+                review = await gigService.addReview(gigId, review)
+                context.commit({ type: 'addReview', review })
+                return gig;
+            } catch (err) {
+                console.log('gigStore: Error in addReview', err)
+                throw err
+            }
+        },
         async loadGigs(context) {
             try {
                 console.log('loadgigs(store)',context.state.filterBy);

@@ -1,6 +1,6 @@
 <template>
   <main class="explore" v-if="gigs">
-    <h2 >Results for "{{ searchTxt}}"</h2>
+    <h2 v-if="searchTxt" >Results for " {{ searchTxt }} "</h2>
     <h2>{{searchTags}}</h2>
     <filter-by @filter="filter" />
     <gigs-list :gigs="getGigs" />
@@ -28,10 +28,9 @@ export default {
       try {
         this.searchTxt = filterBy.txt
         this.searchTags = filterBy.tags
-        console.log(this.searchTxt);
         this.$store.commit({ type: "setFilter", filterBy });
         await this.$store.dispatch("loadGigs")
-        console.log("filterBy", this.filterBy);
+        console.log("filterBy", filterBy);
       } catch (err) {
         console.log("cannot load gigs", err);
         throw err;

@@ -1,79 +1,55 @@
 <template>
-  <section>
-    <div class="explore-filter">
-      <!-- <el-select v-model="tagsVal" collapse-tags @change="filter"
-        style="margin-left: 20px;"
-        multiple placeholder="Select">
+  <section class="explore-filter">
+    <div>
+      <el-select v-model="filterByCopy.tags" clearable
+        placeholder="Select"
+        @click="closeModal"
+        @change="filter">
         <el-option class="explore-choose"
-          v-for="item in options"
+          v-for="item in tagsOptions"
           :key="item.value"
           :label="item.label"
           :value="item.value">
         </el-option>
-      </el-select> -->
-      <div class="explore-choose" @click="openModal(1)">
-        Category<span class="el-icon-arrow-down"></span>
-        <!-- <div
-          class="choose-modal category-modal"
-          :class="{ active: categoryModal }"
-        > -->
-        <select v-model="filterByCopy.tags"  @change="filter">
-            <option value="Graphic design">
-              Graphic Design
-            </option>
-            <option value="Web development">
-              Web Development
-            </option>
-            <option value="Voice acting">
-              Voice Acting
-            </option>
-            <option value="Podcast expertise">
-              Podcast Expertise
-            </option>
-            <option value="Logo">
-              Logo
-            </option>
-            <option value="Business Plan">
-              Bussines Plan
-            </option>
-               <option value="Cooking">
-              Cooking
-            </option>
-          </select>
-          <!-- <ul>
-            <li @click="catValFilter('graphic design')">Graphic Design</li>
-            <li @click="catValFilter('web development')">Web Development</li>
-            <li @click="catValFilter('voice acting')">Voice Acting</li>
-            <li @click="catValFilter('podcast expertise')">
-              Podcast Expertise
-            </li>
-            <li @click="catValFilter('translation')">Translation</li>
-          </ul> -->
-        </div>
-      <!-- </div> -->
-      <div class="explore-choose" @click="openModal(2)">
+      </el-select>
+      
+      <div class="explore-choose" @click.self="toggleModal">
         Price<span class="el-icon-arrow-down"></span>
         <div class="choose-modal price-modal" :class="{ active: priceModal }">
           <div>
             <div>
               <label for="min">Min.</label>
-              <input id="min" placeholder="Minimum Price" type="text" />
+              <input id="min" placeholder="Minimum Price" 
+              v-model="filterByCopy.price.min" type="text" />
             </div>
             <div>
               <label for="max">Max.</label>
-              <input id="max" placeholder="Maximum Price" type="text" />
+              <input id="max" placeholder="Maximum Price" 
+              v-model="filterByCopy.price.max" type="text" />
             </div>
             <!-- v-model="filterBy.price.max"v-model="filterBy.price.min" -->
           </div>
           <div>
             <button>Clear All</button>
-            <button>Apply</button>
+            <button @click="filter" >Apply</button>
           </div>
         </div>
       </div>
-      <div class="explore-choose" @click="openModal(3)">
+
+      <el-select v-model="filterByCopy.rate" clearable
+        placeholder="Select"
+        @click="closeModal"
+        @change="filter">
+        <el-option class="explore-choose"
+          v-for="item in rateOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+      <!-- <div class="explore-choose" @click="openModal(3)">
         Rate<span class="el-icon-arrow-down"></span>
-        <!-- <div class="choose-modal rate-modal" :class="{ active: rateModal }"> -->
+        <div class="choose-modal rate-modal" :class="{ active: rateModal }">
           
           <select v-model="filterByCopy.rate"  @change="filter">
             <option value="4">
@@ -90,7 +66,20 @@
             </option>
             <option value="">Any</option>
           </select>
-      </div>
+      </div> -->
+    </div>
+    <div>
+      <el-select v-model="filterByCopy.sortBy"
+        placeholder="Select"
+        @click="closeModal"
+        @change="filter">
+        <el-option class="explore-choose"
+          v-for="item in sortBy"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
     </div>
   </section>
 </template>
@@ -99,7 +88,7 @@
 export default {
   data() {
     return {
-      options: [
+      tagsOptions: [
         {
           value: 'Graphic design',
           label: 'Graphic design'
@@ -123,34 +112,48 @@ export default {
         {
           value: 'Cooking',
           label: 'Cooking'
-        }
-        ],
-        tagsVal: [],
-      categoryModal: false,
+        },{
+          value: '',
+          label: 'Category'
+        }],
+         rateOptions: [
+        {
+          value: 1,
+          label: 'Above 4'
+        }, {
+          value: 2,
+          label: 'Above 3'
+        }, {
+          value: 3,
+          label: 'Above 2'
+        }, {
+          value: 4,
+          label: 'Above 1'
+        }, {
+          value: '',
+          label: 'Any'
+        }],
+        sortBy: [
+        {
+          value: 'HIGH',
+          label: 'High to Low'
+        }, {
+          value: 'LOW',
+          label: 'Low to High'
+        }, {
+          value: '',
+          label: 'Sort By'
+        }],
       priceModal: false,
-      rateModal: false,
     };
   },
   methods: {
-    openModal(num) {
-      switch (num) {
-        case 1:
-          this.priceModal = this.rateModal = false;
-          this.categoryModal = !this.categoryModal;
-          break;
-        case 2:
-          this.categoryModal = this.rateModal = false;
+    toggleModal(){
           this.priceModal = !this.priceModal;
-          break;
-        case 3:
-          this.categoryModal = this.priceModal = false;
-          this.rateModal = !this.rateModal;
-          break;
-      }
     },
-    filterByCopy(){
-      console.log(this.$store.getters.filterToShow);
-      return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
+    closeModal(){
+      console.log('closemodal');
+      this.priceModal = false;
     },
     // getFilterTxt() {
     //   console.log(this.$store.getters.filterToShow);
@@ -158,12 +161,9 @@ export default {
     //     ? this.$store.getters.filterTxtToShow
     //     : "";
     // },
-    // filter() {
-    //   this.$emit("filter", JSON.parse(JSON.stringify(this.filterBy)));
-    // },
     filter() {
-      console.log('check', this.filterByCopy);
       this.$emit("filter", JSON.parse(JSON.stringify(this.filterByCopy)));
+      this.priceModal = false;
     },
     catValFilter(val) {
       console.log("val", val);
@@ -182,6 +182,10 @@ export default {
     },
   },
   computed: {
+    filterByCopy(){
+      console.log('tags',this.$store.getters.filterToShow.tags);
+      return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
+    },
     // getFilter() {
     //   console.log(this.$store.getters.filterToShow);
     //   return this.$store.getters.filterToShow;

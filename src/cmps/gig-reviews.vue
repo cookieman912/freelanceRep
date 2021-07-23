@@ -15,9 +15,9 @@
         <p class="review-txt">{{ review.txt }}</p>
       </div>
     </article>
-    <!-- <div class="add-review">
+    <div class="add-review">
       <form @submit.prevent="addReview">
-        <input type="text" placeholder="Full Name" v-model="review.fullname" />
+        <input type="text" placeholder="Full Name" v-model="review.by.fullname" />
         <textarea
           name=""
           placeholder="Tell us what do you think... "
@@ -26,11 +26,11 @@
         </textarea>
         <div class="block">
           <span class="demonstration">Rate:</span>
-          <el-rate v-model="review.rate" @click.native="print"></el-rate>
+          <el-rate v-model="review.rate"></el-rate>
         </div>
         <button @submit.prevent="addReview">Send</button>
       </form>
-    </div> -->
+    </div>
   </section>
 </template>
 
@@ -42,30 +42,35 @@ export default {
   },
   data() {
     return {
-      // review: {
-      //   fullname: "",
-      //   txt: "",
-      //   rate: null,
-      // },
-    };
+      review: {
+            txt: '',
+            by: {
+                fullname: ''
+            },
+            rate: null
+        }
+    }
   },
-  // methods: {
-  //   print() {
-  //     console.log("rateValue", this.review);
-  //   },
-  //   addReview() {
-  //     try {
-  //       this.$store.dispatch({
-  //         type: "addReview",
-  //         review: this.review,
-  //         gigId: this.gigId,
-  //       });
-  //     } catch (err) {
-  //       console.log("error!", err);
-  //       throw err;
-  //     }
-  //   },
-  // },
+  methods: {
+  addReview() {
+    console.log(this.review);
+      this.$emit("review", JSON.parse(JSON.stringify(this.review)));
+    },
+    // addReview() {
+    //   try {
+    //     this.$store.dispatch({
+    //       type: "addReview",
+    //       review: this.review,
+    //       gigId: this.gigId,
+    //     });
+    //   } catch (err) {
+    //     console.log("error!", err);
+    //     throw err;
+    //   }
+    // },
+  },
+  computed: {
+  },
   created() {},
 };
 </script>

@@ -10,6 +10,7 @@
     </p>
     <p>What's Included</p>
     <ul>
+      <!-- <include :include="gig.packages" :key="gig._id" v-for="wer in gig.packages" /> -->
       <li><span class="el-icon-check"></span>&nbsp;{{gig.packages[0]}}</li>
       <li><span class="el-icon-check"></span>&nbsp;{{gig.packages[1]}}</li>
       <li><span class="el-icon-check"></span>&nbsp;{{gig.packages[2]}}</li>
@@ -22,7 +23,13 @@
 </template>
 
 <script>
+import include from './packageInclude.vue'
 export default {
-  props: ["gig"],
+  props:{
+    gig: Object
+  },
+  components:{
+    include
+  }
 };
 </script>

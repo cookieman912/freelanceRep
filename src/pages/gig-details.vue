@@ -92,7 +92,7 @@
               v-else
               class="sellerPropileImg"
               :src="require(`../assets/images/${sellerImgUrl}`)"
-            />
+            />review
             <div class="seller-name-description">
               <h5>{{ gig.seller.fullname }}</h5>
               <p>
@@ -128,6 +128,7 @@
           </p>
         </div>
         <gig-reviews
+          @review="review"
           ref="reviews"
           @click.stop="pageNavigationClass"
           id="reviews"
@@ -208,6 +209,15 @@ export default {
     }
   },
   methods: {
+    async review(review) {
+      try {
+        console.log('revirew(details)', review);
+        this.$store.dispatch({ type: "addReview", gigId: this.gig_id, review });
+      } catch (err) {
+        console.log("cannot add review", err);
+        throw err;
+      }
+    },
     pageNavigationClass() {
       const overview = this.$refs.overview;
       const description = this.$refs.description;
