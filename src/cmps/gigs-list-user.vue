@@ -1,6 +1,8 @@
 <template>
-  <section class="gigs-list">
-    <gig-preview-user v-for="gig in gigs" :gig="gig" :key="gig._id" />
+  <section class="gigs-list-user">
+        <button class="add-button el-icon-plus"></button>
+    <gig-preview-user v-for="gig in gigs" :gig="gig" :key="gig._id"/>
+
    
   </section>
 </template>

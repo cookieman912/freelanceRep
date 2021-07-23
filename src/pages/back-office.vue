@@ -1,52 +1,41 @@
 <template>
   <div class="edit-seller">
-    <div class="seller-details ">
-     
-      <form @submit.prevent="updateSeller" >
-             <img
-          class="profile-pic"
-          :src="this.user.imgUrl"
-          alt="profile pic"
-        />
+    <div class="seller-details">
+      <form @submit.prevent="updateSeller">
+        <img class="profile-pic" :src="this.user.imgUrl" alt="profile pic" />
+        <h3>{{ user.fullname }}</h3>
         <div class="form-content">
-       
           <div class="form-option">
-            <h3>Specialty</h3>
+            <h3>Specialty:</h3>
 
-            <el-select class="form-input" v-model="userToEdit.seller.specialty">
-              <el-option value="Graphic design">Graphic design</el-option>
-              <el-option value="Web development">Web development</el-option>
-              <el-option value="Voice acting">Voice acting</el-option>
-              <el-option value="Podcast expertise">Podcast expertise</el-option>
-              <el-option value="Translation">Translation</el-option>
-            </el-select>
+            <select class="form-input" v-model="userToEdit.seller.specialty">
+              <option value="Graphic design">Graphic design</option>
+              <option value="Web development">Web development</option>
+              <option value="Voice acting">Voice acting</option>
+              <option value="Podcast expertise">Podcast expertise</option>
+              <option value="Translation">Translation</option>
+            </select>
           </div>
           <div class="form-option">
-            <h3>description</h3>
+            <h3>Description:</h3>
 
             <el-input
               class="form-input"
               type="textarea"
-              :autosize="{ minRows: 5, maxRows: 5 }"
+              :autosize="{ minRows: 1, maxRows: 10 }"
               v-model="userToEdit.seller.sellerInfo"
             ></el-input>
           </div>
           <div class="form-option">
-            <h3>Where are you from?</h3>
-            <el-input
-              type="text"
-              v-model="userToEdit.seller.location"
-              cols="30"
-              rows="10"
-            ></el-input>
-
+            <h3>Location:</h3>
+            <input class="form input" v-model="userToEdit.seller.location" />
           </div>
         </div>
         <button>Update</button>
       </form>
- </div>
-      <div class="user-gigs">
-        <button
+    </div>
+    <div class="user-gigs">
+      <!-- <button
           class="el-icon-caret-top gig-add-button"
           v-if="addGigActive"
           @click="toggleAddGig"
@@ -167,19 +156,19 @@
           </div>
 
           <button>Add gig</button>
-        </form>
-
+        </form> -->
+      <div class="gigs-container">
         <h2>Your gigs</h2>
         <gigs-list-user
           @delete="removeGig(_id)"
           :gigs="this.user.seller.gigs"
         />
       </div>
-     
-      <!-- <p>{{this.user.seller.orders}}</p> -->
-      <order-table :orders="this.user.seller.orders" @updateOrders="updateOrders"/>
-      <!-- <h1>Under Construction</h1> -->
-   
+    </div>
+
+    <!-- <p>{{this.user.seller.orders}}</p> -->
+    <order-table :orders="this.user.seller.orders" @updateOrders="updateOrders"/>
+    <!-- <h1>Under Construction</h1> -->
   </div>
 </template>
 
@@ -199,7 +188,7 @@ export default {
       sellerDetails: {
         specialty: null,
         sellerInfo: "",
-        location:"",
+        location: "",
       },
       addGigActive: false,
       gigToAdd: {
@@ -210,7 +199,7 @@ export default {
         deliveryDays: null,
         seller: {},
         imgUrls: [],
-        packages:['','','']
+        packages: ["", "", ""],
       },
       isLoading: false,
       isDragOver: false,
@@ -235,15 +224,14 @@ export default {
           value: "Logo",
           label: "Logo",
         },
-          {
+        {
           value: "Cooking",
           label: "Cooking",
         },
-          {
+        {
           value: "Business plan",
           label: "Business plan",
         },
-         
       ],
       value: "",
       userToEdit: JSON.parse(JSON.stringify(this.$store.getters.loggedinUser)),
@@ -282,9 +270,9 @@ export default {
       }
     },
 
-    updateOrders(orders){
-     this.userToEdit.seller.orders=orders;
-     this.$store.dispatch({type:'updateUser',user:this.userToEdit})
+    updateOrders(orders) {
+      this.userToEdit.seller.orders = orders;
+      this.$store.dispatch({ type: "updateUser", user: this.userToEdit });
     },
 
     toggleAddGig() {
@@ -326,7 +314,7 @@ export default {
           tags: [],
           deliveryDays: null,
           seller: {},
-          packages:['','','']
+          packages: ["", "", ""],
         };
         await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
       } catch (err) {
