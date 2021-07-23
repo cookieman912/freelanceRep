@@ -183,6 +183,7 @@ export default {
   },
   computed: {
     filterByCopy(){
+      console.log('filterrrrrrrrrrr....', JSON.parse(JSON.stringify(this.$store.getters.filterToShow)))
       console.log('tags',this.$store.getters.filterToShow.tags);
       return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
     },

@@ -72,7 +72,12 @@ export default {
       categories:null,
       filterBy: {
         txt:'',
-        tags:''
+        tags:'',
+        price: {
+          min: null,
+          max: null,
+        },
+        rate: null,
       },
       // style object for the header via eventbus
       styleObject:{
@@ -247,6 +252,7 @@ export default {
       console.log('hp catFilter',this.filterBy);
     },
     async filter(filterBy){
+      console.log(filterBy);
       this.filterBy = filterBy;
       try{
         this.$store.commit({type:"setFilter", filterBy});
