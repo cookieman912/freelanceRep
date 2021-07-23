@@ -1,6 +1,16 @@
 <template>
   <section>
     <div class="explore-filter">
+      <!-- <el-select v-model="tagsVal" collapse-tags @change="filter"
+        style="margin-left: 20px;"
+        multiple placeholder="Select">
+        <el-option class="explore-choose"
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select> -->
       <div class="explore-choose" @click="openModal(1)">
         Category<span class="el-icon-arrow-down"></span>
         <!-- <div
@@ -39,8 +49,8 @@
             </li>
             <li @click="catValFilter('translation')">Translation</li>
           </ul> -->
-        <!-- </div> -->
-      </div>
+        </div>
+      <!-- </div> -->
       <div class="explore-choose" @click="openModal(2)">
         Price<span class="el-icon-arrow-down"></span>
         <div class="choose-modal price-modal" :class="{ active: priceModal }">
@@ -89,6 +99,33 @@
 export default {
   data() {
     return {
+      options: [
+        {
+          value: 'Graphic design',
+          label: 'Graphic design'
+        }, {
+          value: 'Web development',
+          label: 'Web development'
+        }, {
+          value: 'Voice acting',
+          label: 'Voice acting'
+        }, {
+          value: 'Podcast expertise',
+          label: 'Podcast expertise'
+        }, {
+          value: 'Logo',
+          label: 'Logo'
+        },
+        {
+          value: 'Business Plan',
+          label: 'Business Plan'
+        },
+        {
+          value: 'Cooking',
+          label: 'Cooking'
+        }
+        ],
+        tagsVal: [],
       categoryModal: false,
       priceModal: false,
       rateModal: false,
@@ -110,6 +147,10 @@ export default {
           this.rateModal = !this.rateModal;
           break;
       }
+    },
+    filterByCopy(){
+      console.log(this.$store.getters.filterToShow);
+      return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
     },
     // getFilterTxt() {
     //   console.log(this.$store.getters.filterToShow);
@@ -145,9 +186,7 @@ export default {
     //   console.log(this.$store.getters.filterToShow);
     //   return this.$store.getters.filterToShow;
     // },
-    filterByCopy(){
-      return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
-    },
+    
   },
   created() {
     this.filterBy = this.getFilter;

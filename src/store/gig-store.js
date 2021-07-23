@@ -10,14 +10,14 @@ export const gigStore = {
                 min: 0,
                 max: 1000000
             },
-            tags: '',
+            tags: [],
             rate: 0
         }
     },
     getters: {
-        filterTxtToShow(state) {
-            return state.filterBy.txt
-        },
+        // filterTxtToShow(state) {
+        //     return state.filterBy.txt
+        // },
         filterToShow(state) {
             return state.filterBy
         },
@@ -53,11 +53,17 @@ export const gigStore = {
 
         gigsToShow(state) {
             let regex = new RegExp(state.filterBy.txt, 'i')
-            let gigsToShow = state.gigs
+
+            let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
+                            .filter(gig => (+gig.price <= +state.filterBy.price.max))
             let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
-            if (state.filterBy.tags) {
+            if (state.filterBy.rate) {
+                filtered = filtered.filter(gig => +gig.rate >= +state.filterBy.rate)
+            }
+            if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
                     const { tags } = gig
+                    console.log(tags);
                     return tags.find(tag => tag === state.filterBy.tags);
                 })
             }
@@ -105,8 +111,10 @@ export const gigStore = {
         // },
         async loadGigs(context) {
             try {
-                const gigs = await gigService.query();
+                console.log('loadgigs(store)',context.state.filterBy);
+                const gigs = await gigService.query(context.state.filterBy);
                 context.commit({ type: 'setGigs', gigs })
+                return gigs
             } catch (err) {
                 console.log('gigStore: Error in loadGigs', err)
                 throw err

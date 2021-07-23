@@ -17,7 +17,7 @@
             top: 0.25rem;
         }
         .choose-modal {
-            display: none;
+            // display: none;
             border: 1.5px solid $fbc;
             border-radius: 5px;
             position: absolute;
@@ -26,6 +26,12 @@
             z-index: 11;
             min-width: min-content;
             background-color: white;
+            select {
+                option {
+
+                    width: 100rem;
+                }
+            }
             ul {
                 margin: 0;
                 padding: 0rem;

@@ -4,3 +4,13 @@
     grid-gap: 2rem;
     margin-bottom: 1rem;
 }
+
+.gigs-list-user {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+    margin-bottom: 1rem;
+    border-top:2px solid $fbc;
+    padding-top:10px;
+    margin-top: 20px;
+}

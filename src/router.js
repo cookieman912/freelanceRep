@@ -10,6 +10,7 @@ import backOffice from './pages/back-office.vue'
 import transactionDone from './pages/transaction-done.vue'
 
 
+
 Vue.use(Router)
 
 export const router = new Router({
