@@ -1,5 +1,5 @@
 <template>
-  <section @click="clickOutsideModal" class="add-gig" ref="addGig">
+  <!-- <section @click="clickOutsideModal" class="add-gig hidden" ref="addGig">
     <main>
       <h1>Create Gig</h1>
       <form class @submit.prevent="addGig">
@@ -136,7 +136,8 @@
         <button>Add gig</button>
       </form>
     </main>
-  </section>
+  </section> -->
+  <h1></h1>
 </template>
 
 <script>
