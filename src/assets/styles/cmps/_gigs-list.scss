@@ -18,3 +18,31 @@
 .gigs-list-hp {
     grid-template-columns: repeat(5, 1fr);
 }
+
+@media (max-width: 1200px) {
+    .gigs-list-hp {
+        grid-template-columns: auto auto auto auto;
+        background-color: red;
+    }
+}
+
+@media (max-width: 1050px) {
+    .gigs-list-hp {
+        grid-template-columns: auto auto auto;
+        background-color: blue;
+    }
+}
+
+@media (max-width: 900px) {
+    .gigs-list-hp {
+        grid-template-columns: auto auto;
+        background-color: yellow;
+    }
+}
+
+@media (max-width: 600px) {
+    .gigs-list-hp {
+        grid-template-columns: auto;
+        background-color: white;
+    }
+}
