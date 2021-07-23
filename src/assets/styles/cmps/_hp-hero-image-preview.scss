@@ -3,6 +3,8 @@
     & img {
         filter: brightness(95%);
         margin-block-end: -5px;
+        height: 600px;
+        width: 600px;
     }
 }
 
@@ -23,4 +25,9 @@
             font-family: Nunito_Sans;
         }
     }
+}
+
+.hp-hero-rate {
+    margin-top: 15px;
+    margin-bottom: -16px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="gig-preview">
+  <div class="gig-preview seller-preview">
 
 
 
@@ -13,8 +13,10 @@
 
     <p> {{ gig.title }}</p>
     <p>{{ gig.description }}</p>
+    <div class="gig-actions">
     <router-link :to="'/explore/' + gig._id">view</router-link>
-        <button class="el-icon-delete" @click="deleteClicked(gig._id)"></button>
+        <span  @click="deleteClicked(gig._id)">remove</span>
+        </div>
   </div>
 </template>
 

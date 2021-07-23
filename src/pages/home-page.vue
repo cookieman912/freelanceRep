@@ -4,9 +4,9 @@
       <div class="home-page-top main-layout">
         <main class="home-page-search">
           <header class="header">
-            <h1>
+            <h2>
               <span>You need a <i>freelance</i> in a free world</span>
-            </h1>
+            </h2>
           </header>
           <form class="home-page-search-container">
             <div class="home-page-search-bar-container">
@@ -21,25 +21,25 @@
       </div>
     </div>
     <div class="home-page-bottom-container main-layout">
-        <h1>Popular professional services</h1>
+        <h2 class="hp-popular-services-header">Popular professional services</h2>
         <hp-category-list :categories="categories" @categoryBtnPressed="categoryBtnPressed" @catName="setCatFilter"/>
-        <div class="hp-buttom-header-container">
-            <h1>Top rated Gigs</h1>
+        <div class="hp-bottom-header-container">
+            <h2 class="hp-top-rated-gigs-header">Top rated Gigs</h2>
             <span>
               <button @click.prevent="toExplorePage">See all</button>
             </span>
         </div>
         <gigs-list :gigs="getGigs"/>
-        <div class="hp-buttom-header-container">
-          <h1>Discover Web development</h1>
+        <div class="hp-bottom-header-container">
+          <h2 class="hp-discover-web-header">Discover Web development</h2>
           <span>
             <button @click.prevent="toExplorePage">See all</button>
           </span>
         </div>
         <template>
         <gigs-list :gigs="webGigsToShow" />
-          <div class="hp-buttom-header-container">
-            <h1>Discover Business</h1>
+          <div class="hp-bottom-header-container">
+            <h2 class="hp-discover-business-header">Discover Business</h2>
             <span>
               <button @click.prevent="toExplorePage">See all</button>
             </span>
@@ -85,7 +85,7 @@ export default {
       currHero:null,
       demoHeros:[{
         id:'1',
-        fullname:'Keren Lazer',
+        fullname:'Keren',
         rate: 4.5,
         specialty:'Graphic designer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634929/hp-hero/pngfind.com-business-woman-png-1612489_2_kn1y2b.png',
@@ -93,7 +93,7 @@ export default {
       },
       {
         id:'2',
-        fullname:'Haim Moshe',
+        fullname:'Haim',
         rate: 4.8,
         specialty:'Web Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
@@ -101,7 +101,7 @@ export default {
       },
       {
         id:'3',
-        fullname:'Puka Bat David',
+        fullname:'Puka',
         rate: 4.7,
         specialty:'Strategic Planner',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705830/hp-hero/pngfind.com-ladies-suit-png-248538_2_ljes8n.png',
@@ -110,7 +110,7 @@ export default {
       },
       {
         id:'4',
-        fullname:'Shlomit Bona-Suka',
+        fullname:'Shlomit',
         rate: 5,
         specialty:'Podcaster',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
@@ -119,7 +119,7 @@ export default {
       },
       {
         id:'5',
-        fullname:'Jon Doe',
+        fullname:'John',
         rate: 4.6,
         specialty:'Mobile Developerז',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
@@ -178,10 +178,9 @@ export default {
     };
   },
   computed: {
-    //TODO: to be continued
-    // topRatedGigsToShow(){
-    //   return this.$store.getters.topRatedGigsToShow;
-    // },    
+    topRatedGigsToShow(){
+      return this.$store.getters.topRatedGigsToShow;
+    },    
     businessGigsToShow(){
       return this.$store.getters.businessGigsToShow;
     },
@@ -192,6 +191,7 @@ export default {
       return this.$store.getters.gigsToShow;
     },
   },
+  // Gallery methods for Popular professional services
   methods: {
     // Set initial categories according to item number.
     initCategories(){
@@ -240,7 +240,7 @@ export default {
     toExplorePage() {
       this.$router.push("/explore");
     },
-     /// Categories ///
+     /// Categories by buttons function ///
     setCatFilter(catFilter){
       this.filterBy.tags = catFilter;
       this.filter(this.filterBy);
@@ -256,6 +256,8 @@ export default {
         throw err;
       }
     },
+
+    // Hero top section methods
       // Default hero for loading page
     loadDefaultHero(){
       this.currHero = this.demoHeros[0];

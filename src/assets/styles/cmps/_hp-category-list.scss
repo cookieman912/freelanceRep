@@ -90,6 +90,7 @@
         overflow: visible;
         background-color: $white;
         position: absolute;
+        margin-block-start: 23px;
         z-index: 4;
         top: 40%;
         left: -1.8%;
@@ -123,7 +124,8 @@
     display: flex;
     overflow: hidden;
     padding: 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 34px;
     list-style-type: none;
     justify-content: space-between;
 }

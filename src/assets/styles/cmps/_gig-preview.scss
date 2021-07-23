@@ -103,3 +103,43 @@
 .gig-review-num {
     color: $fsc;
 }
+
+
+.add-button{
+    border:none;
+    background-color: $fgc;
+    color:white;
+    border-radius:50%;
+    width:150px;
+    height: 150px;
+    margin: auto;
+    font-size: 4rem;
+}
+
+.add-button:hover{
+    background-color: #1ba766;
+    
+}
+.seller-preview{
+    .gig-actions{
+        display: flex;
+        justify-content: space-evenly;
+        a{
+            color:$fgc;
+            font-size: 1.2rem
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+        span{
+            color:rgb(250, 57, 57);
+            font-size: 1.2rem
+        }
+        span:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+    }
+}

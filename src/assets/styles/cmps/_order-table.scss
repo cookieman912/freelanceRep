@@ -16,6 +16,7 @@ tr:nth-child(even){background-color: #f2f2f2;}
         border-bottom: 2px solid $fbc;
         
         td{
+            padding:  0px 10px 0px;
             align-content: center;
             white-space: nowrap;
             overflow: hidden;
@@ -33,6 +34,31 @@ tr:nth-child(even){background-color: #f2f2f2;}
         }
         td:first-child{
             text-align: left;
+        }
+        td:last-child{
+            display: flex;
+            flex-direction: column;
+       
+        }
+        td .options{
+            display: flex;
+            // flex-wrap: wrap;
+            justify-content: space-evenly;
+            span{
+                font-size: 0.85em
+            }
+            span:first-child{
+                color: $fgc
+            }
+
+            span:hover{
+                text-decoration: underline;
+                cursor: pointer;
+            }
+
+            span:last-child{
+                color: rgb(250, 57, 57);
+            }
         }
           
         
