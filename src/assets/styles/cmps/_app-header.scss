@@ -20,6 +20,16 @@
         // uri added
         // background-color: inherit;
         // end of uri add
+        .hamburger-menu{
+            display: none;
+            div {
+                width: 3rem;
+                height: 0.3rem;
+                margin: 0.5rem;
+                border-radius: 5px;
+                background-color: $ftc;
+            }
+        }
         .logo>a {
             bottom: 0.35rem;
             text-decoration: none;
@@ -39,7 +49,7 @@
             //uri added:
             background-color: inherit;
             //end uri added.
-            >a {
+            .nav-home-explore>a {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
                 // uri edited: color and hover color passed to a single class "header-nav-btn"
@@ -49,11 +59,14 @@
                 // &:hover {
                 //     color: $fgc;
                 // }
+                &:first-child{
+                    padding-inline-start: 0;
+                }
             }
             >span {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
-                color: $white;
+                color: white;
                 font-weight: 600;
                 //transition: 0.35s ease;
                 &:hover {
@@ -133,6 +146,77 @@
             }
         }
     }
+    .app-header-search2 {
+        display: none;
+    }
+}
+@media (max-width: 1400px) {
+    .app-header {
+        .nav-header {
+            width: auto;
+            padding: 0 2rem;
+        }
+    }
+}
+@media (max-width: 850px) {
+    .app-header {
+        .nav-header {
+            .hamburger-menu{
+                display: block;
+            }
+            width: auto;
+            padding: 0 2rem;
+            .nav-home-explore{
+                // width: 100rem;
+                display: none;
+            }
+        }
+        .app-header-search2 {
+            display: flex;
+        }
+    }
+    .app-header-search1 {
+        display: none;
+    }
+}
+@media (max-width: 500px) {
+    .app-header {
+        .nav-header {
+            .hamburger-menu{
+                display: block;
+                div { 
+                }
+            }
+        }
+    }
+}
+.side-menu{
+    width: 100%;
+    display: flex;
+    transform: translateX(-100%);
+    position: absolute;
+    z-index: 25;
+    transition: 0.2s;
+    .side-menu-nav{
+        height: 100rem;
+        background-color: white;
+        padding-left: 2rem;
+        padding-bottom: 1rem;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        > a {
+            text-decoration: none;
+            color: $ftc;
+            font-weight: 900;
+            padding-top: 1rem;
+        }
+    }
+    >div {
+        height: 100rem;
+        width: calc(100% - 300px);
+        background-color: rgba(68, 68, 68, 0.514);
+    }    
 }
 
 .header-signin {
@@ -166,31 +250,31 @@
 .home-page-header1 {
     background-color: #494949;
     color: white;
-    border: $white;
+    border: white;
 }
 
 .home-page-header2 {
     background-Color: #d1aa8b;
     color: white;
-    border: $white;
+    border: white;
 }
 
 .home-page-header3 {
     background-Color: #a57563;
-    border: $white;
+    border: white;
     color: white;
 }
 
 .home-page-header4 {
     background-Color: black;
     color: white;
-    border: $white;
+    border: white;
 }
 
 .home-page-header5 {
     background-Color: #86535c;
     color: white;
-    border: $white;
+    border: white;
 }
 
 // .header-join,

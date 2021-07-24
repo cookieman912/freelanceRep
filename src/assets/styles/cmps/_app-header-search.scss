@@ -1,10 +1,10 @@
 .header-search {
     position: relative;
     color: $ftc;
-    color: blue;
+    // color: blue;
     svg {
         opacity: 0.5;
-        color: blue;
+        // color: blue;
         position: absolute;
         top: 30%;
         left: 3%;
@@ -33,5 +33,24 @@
         height: 2.125rem;
         width: 5.0625rem;
         padding-block-start: 3px;
+    }
+}
+.app-header-search2 {
+    display: block;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    svg {
+        top: 0.6rem;
+        left:3rem;
+    }
+    input {
+        &.header-search-bar {
+            width: calc(100% - 5.0625rem);
+        }
+    }
+    button { 
+        position: relative;
+        bottom: 0.02rem;
     }
 }
