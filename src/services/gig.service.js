@@ -43,14 +43,15 @@ function getById(gigId) {
 }
 
 function remove(gigId) {
-    // return httpService.delete(`gig/${gigId}`)
-    return storageService.remove(GIG_KEY, gigId)
-        .then(gigs => { console.log(gigs) })
+    return httpService.delete(`gig/${gigId}`)
+    console.log('removing...',gigId)
+    // return storageService.remove(GIG_KEY, gigId)
+    //     .then(gigs => { console.log(gigs) })
 }
 
 
 function save(gig) {
-
+console.log(gig)
     if (gig._id) {
         //     return storageService.put(GIG_KEY, gig)
         //         .then(gig => { return gig })

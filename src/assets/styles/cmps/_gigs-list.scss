@@ -41,4 +41,21 @@
     .gigs-list-hp {
         grid-template-columns: auto;
     }
+    // padding-top:10px;
+    // border-top:2px solid $fbc;
+}
+
+@media(max-width:850px) {
+    .user-gigs {
+        width: 100%;
+        .gigs-container {
+            width: 100%;
+            .gigs-list-user {
+                width: 100%;
+                .seller-preview {
+                    width: 100%
+                }
+            }
+        }
+    }
 }

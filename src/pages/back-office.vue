@@ -22,7 +22,7 @@
             <el-input
               class="form-input"
               type="textarea"
-              :autosize="{ minRows: 1, maxRows: 10 }"
+              :autosize="{ minRows: 1, maxRows: 3 }"
               v-model="userToEdit.seller.sellerInfo"
             ></el-input>
           </div>
@@ -124,7 +124,7 @@ export default {
         const idx = this.user.seller.gigs.findIndex((gig) => gig._id === _id);
         const userToUpdate = this.userToEdit;
 
-        console.log(userToUpdate);
+        console.log('in remoove');
         userToUpdate.seller.gigs.splice(idx, 1);
         await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
         await this.$store.dispatch({ type: "removeGig", gigId: _id });
