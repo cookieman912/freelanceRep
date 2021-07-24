@@ -36,39 +36,26 @@
             display: flex;
             align-items: center;
             position: relative;
-            //uri added:
             background-color: inherit;
-            //end uri added.
             >a {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
-                // uri edited: color and hover color passed to a single class "header-nav-btn"
-                //color: $ftc;
                 font-weight: 600;
-                //transition: 0.35s ease;
-                // &:hover {
-                //     color: $fgc;
-                // }
             }
             >span {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
                 color: $white;
                 font-weight: 600;
-                //transition: 0.35s ease;
                 &:hover {
                     color: $fgc;
                     cursor: pointer;
                 }
             }
             button {
-                // uri edite
                 background-color: inherit;
-                // background-color: white;
-                // end of edit
                 border: none;
                 padding-inline-start: 1.5rem;
-                //color: $ftc;
                 font-weight: 600;
                 font-size: 1rem;
                 &:hover {
@@ -80,8 +67,6 @@
                     border: 1.5px solid $fgc;
                     border-radius: 5px;
                     padding: 0.25rem 1.5rem;
-                    //transition: 0.35s ease;
-                    //color: $fgc;
                     &:hover {
                         color: $white;
                         background-color: #02a75a;
@@ -94,8 +79,6 @@
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
                 color: inherit;
-                //uri edited
-                // end of uri edit
                 font-weight: 600;
                 transition: 0.35s ease;
                 display: inline;
@@ -192,8 +175,3 @@
     color: white;
     border: $white;
 }
-
-// .header-join,
-// .header-signout {
-//     color: $white;
-// }

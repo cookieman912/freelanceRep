@@ -1,78 +1,124 @@
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.home-page-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.home-page {
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-.home-page-top-container {
-    // animation: fadeIn 2s;
-}
-
-.home-page-search {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    max-width: 615px;
-    & header {
-        & h2 span {
-            font-size: 48px;
-            line-height: 56px;
-            color: $white;
-            width: 617px;
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
         }
     }
-    & .home-page-search-container {
+    
+    .home-page-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    
+    .home-page {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+    .home-page-top-container {
+        // animation: fadeIn 2s;
+    }
+    
+    .home-page-search {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        max-width: 615px;
+        & .home-page-search-bar-container {
+            margin-top: 20px;
+        }
+    }
+    
+    .home-page-bottom-container {
+        h2 {
+            display: flex;
+            flex-direction: column;
+            color: $flc;
+            font-size: 32px;
+        }
+        & .hp-bottom-header-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding-bottom: 16px;
+            button {
+                @include btnWhiteTrans($c: $white, $bc: $fgc);
+                background-color: $fgc;
+                margin-block-end: 6px;
+                width: 65px;
+            }
+        }
+    }
+    
+    .hp-popular-services-header {
+        margin-top: 186px;
+    }
+    
+    .hp-top-rated-gigs-header,
+    .hp-discover-web-header,
+    .hp-discover-business-header {
+        margin-top: 129px;
+    }
+    
+    .slogan {
+        font-size: 48px;
+        line-height: 56px;
+        color: $white;
+        width: 617px;
+    }
+    
+    .home-page-search-container {
         display: flex;
         width: 650px;
     }
-    & .home-page-search-bar-container {
-        margin-top: 20px;
-    }
-}
-
-.home-page-bottom-container {
-    h2 {
-        display: flex;
-        flex-direction: column;
-        color: $flc;
-        font-size: 32px;
-        //margin-top: 186px;
-    }
-    & .hp-bottom-header-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: space-between;
-        padding-bottom: 16px;
-        button {
-            @include btnWhiteTrans($c: $white, $bc: $fgc);
-            background-color: $fgc;
-            margin-block-end: 6px;
+    
+    @media (max-width: 1160px) {
+        .home-page-search-container {
+            width: 560px;
         }
     }
-}
-
-.hp-popular-services-header {
-    margin-top: 186px;
-}
-
-.hp-top-rated-gigs-header,
-.hp-discover-web-header,
-.hp-discover-business-header {
-    margin-top: 129px;
-}
+    
+    @media (max-width: 900px) {
+        .home-page-top {
+            flex-direction: column;
+            padding: 0 95px;
+        }
+        .home-page-search {
+            max-width: 690px;
+        }
+        .home-page-search-container {
+            width: 100%;
+        }
+        .home-page-image-container {
+            display: none;
+        }
+        .slogan,
+        .hp-header {
+            width: 100%;
+            min-width: 397px;
+            overflow-wrap: break-word;
+            font-size: 40px;
+            line-height: 48px;
+        }
+        .home-page-search-container {
+            flex-direction: column;
+            max-width: 690px;
+            min-width: 327px;
+            margin-top: -12px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .home-page-top {
+            padding: 0 24px;
+        }
+        .slogan,
+        .hp-header {
+            font-size: 32px;
+        }
+    }

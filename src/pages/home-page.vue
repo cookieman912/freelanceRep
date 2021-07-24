@@ -3,9 +3,9 @@
     <div class="home-page-top-container" v-bind:style="styleObject">
       <div class="home-page-top main-layout">
         <main class="home-page-search">
-          <header class="header">
+          <header class="hp-header">
             <h2>
-              <span>You need a <i>freelance</i> in a free world</span>
+              <span class="slogan">You need a <i>freelance</i> in a free world</span>
             </h2>
           </header>
           <form class="home-page-search-container">
