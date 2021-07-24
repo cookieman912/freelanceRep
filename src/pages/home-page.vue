@@ -3,9 +3,9 @@
     <div class="home-page-top-container" v-bind:style="styleObject">
       <div class="home-page-top main-layout">
         <main class="home-page-search">
-          <header class="header">
+          <header class="hp-header">
             <h2>
-              <span>You need a <i>freelance</i> in a free world</span>
+              <span class="slogan">You need a <i>freelance</i> in a free world</span>
             </h2>
           </header>
           <form class="home-page-search-container">
@@ -13,7 +13,7 @@
               <hp-search-bar @filter="filter"/>
             </div>
           </form>
-          <hp-tag-buttons @catChoice="setCatFilter" />
+          <hp-tag-buttons @catChoice="filter" />
         </main>
         <div class="home-page-image-container">
           <hp-hero-image-preview :hero="currHero"/>
@@ -72,7 +72,12 @@ export default {
       categories:null,
       filterBy: {
         txt:'',
-        tags:''
+        tags:'',
+        price: {
+          min: null,
+          max: null,
+        },
+        rate: null,
       },
       // style object for the header via eventbus
       styleObject:{
@@ -206,7 +211,6 @@ export default {
       if (diff === 1){
         // get demo catIndex
         var demoCatIdx = this.demoCategories.findIndex((cat)=> cat.id === this.categories[this.categories.length-1].id )
-        console.log(demoCatIdx);
         // if it's the last item in demoCategories - Push the first item / otherwise push the next item from demoCategories to categories
         if (demoCatIdx === this.demoCategories.length-1){
         this.categories.push(this.demoCategories[0])
@@ -244,7 +248,6 @@ export default {
     setCatFilter(catFilter){
       this.filterBy.tags = catFilter;
       this.filter(this.filterBy);
-      console.log('hp catFilter',this.filterBy);
     },
     async filter(filterBy){
       this.filterBy = filterBy;

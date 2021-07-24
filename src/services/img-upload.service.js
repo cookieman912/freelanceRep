@@ -15,8 +15,6 @@ export const uploadImg = async(file) => {
     // Building the request body
     FORM_DATA.append('file', file)
     FORM_DATA.append('upload_preset', UPLOAD_PRESET)
-    console.log(UPLOAD_URL)
-    console.log(FORM_DATA)
         // Sending a post method request to Cloudniarys' API
     try {
         const res = await axios.post(UPLOAD_URL, FORM_DATA)

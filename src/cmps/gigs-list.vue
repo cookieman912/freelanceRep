@@ -1,5 +1,5 @@
 <template>
-    <section class="gigs-list" v-bind:style="styleObject">
+    <section class="gigs-list" :class="[gigsListHp]">
         <gig-preview v-for="gig in gigs" :gig="gig" :key="gig._id" />
     </section>
 </template>
@@ -16,19 +16,16 @@ export default {
     },
     data() {
         return {
-            styleObject: {
-                gridTemplateColumns: null,
-            },
+            gigsListHp: "",
         };
     },
     methods: {},
     computed: {},
     created() {
         if (this.$route.name === "home") {
-            this.styleObject.gridTemplateColumns = "repeat(5, 1fr)";
+            this.gigsListHp = "gigs-list-hp";
         }
     },
-    destroyed() {},
 };
 </script>
 

@@ -65,10 +65,10 @@ export const gigStore = {
         gigsToShow(state) {
             let regex = new RegExp(state.filterBy.txt, 'i')
             let maxPrice = state.filterBy.price.max
-            if (!state.filterBy.price.max) maxPrice = Infinity; 
-            console.log('max price ',state.filterBy.price.max);
+            if (!state.filterBy.price.max) maxPrice = Infinity;
+            console.log('max price ', state.filterBy.price.max);
             let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
-                            .filter(gig => (+gig.price <= +maxPrice))
+                .filter(gig => (+gig.price <= +maxPrice))
             let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
             if (state.filterBy.rate) {
                 filtered = filtered.filter(gig => +gig.rate >= +state.filterBy.rate)
@@ -76,8 +76,6 @@ export const gigStore = {
             if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
                     const { tags } = gig
-                    // console.log('tags', filterBy.tags);
-                    console.log('tags', tags);
                     return tags.find(tag => tag === state.filterBy.tags);
                 })
             }
@@ -130,7 +128,7 @@ export const gigStore = {
         },
         async loadGigs(context) {
             try {
-                console.log('loadgigs(store)',context.state.filterBy);
+                console.log('loadgigs(store)', context.state.filterBy);
                 const gigs = await gigService.query(context.state.filterBy);
                 context.commit({ type: 'setGigs', gigs })
                 return gigs

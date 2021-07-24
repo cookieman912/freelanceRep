@@ -19,3 +19,9 @@
         background-color: $white;
     }
 }
+
+@media (max-width: 900px) {
+    .home-page-tag-buttons {
+        display: none;
+    }
+}

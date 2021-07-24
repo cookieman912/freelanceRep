@@ -90,9 +90,9 @@
         overflow: visible;
         background-color: $white;
         position: absolute;
-        margin-block-start: 23px;
+        // margin-block-start: 23px;
         z-index: 4;
-        top: 40%;
+        top: 36%;
         left: -1.8%;
         width: 48px;
         height: 48px;
@@ -107,7 +107,7 @@
         background-color: $white;
         position: absolute;
         z-index: 4;
-        top: 40%;
+        top: 36%;
         right: -1.8%;
         width: 48px;
         height: 48px;
@@ -129,3 +129,10 @@
     list-style-type: none;
     justify-content: space-between;
 }
+
+// @media (max-width: 1060px) {
+//     .home-page-category-list {
+//         max-width: 980px;
+//         min-width: 721px;
+//     }
+// }

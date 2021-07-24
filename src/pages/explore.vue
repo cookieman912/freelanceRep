@@ -42,6 +42,14 @@ export default {
             this.gigs = this.$store.getters.gigsToShow;
             return this.$store.getters.gigsToShow;
         },
+        filterByCopy() {
+            return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
+        },
+        setGigStoreFilter() {
+            var filter = this.filterByCopy();
+            filter.txt = "";
+            this.filter(filter);
+        },
     },
     async created() {
         try {
@@ -51,6 +59,8 @@ export default {
             throw err;
         }
     },
-    destroyed() {},
+    destroyed() {
+        this.setGigStoreFilter();
+    },
 };
 </script>

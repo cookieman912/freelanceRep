@@ -1,5 +1,5 @@
 <template>
-  <!-- <section @click="clickOutsideModal" class="add-gig hidden" ref="addGig">
+  <section @click="clickOutsideModal" class="add-gig hidden" ref="addGig">
     <main>
       <h1>Create Gig</h1>
       <form class @submit.prevent="addGig">
@@ -64,31 +64,36 @@
           </el-option>
         </el-select>
  </div>
+
+ <div class="gig-input">
+     <p>Feature:</p>
         <el-input
           maxlength="25"
           show-word-limit
           class="package1-input"
           type="text"
-          placeholder="Package 1 includes"
+          placeholder="Feature"
           v-model="gigToAdd.packages[0]"
         />
+        <p>Feature:</p>
         <el-input
           maxlength="25"
           show-word-limit
           class="package2-input"
           type="text"
-          placeholder="Package 2 includes"
+          placeholder="Feature"
           v-model="gigToAdd.packages[1]"
         />
+        <p>Feature:</p>
         <el-input
           maxlength="25"
           show-word-limit
           class="package3-input"
           type="text"
-          placeholder="Package 3 includes"
+          placeholder="Feature"
           v-model="gigToAdd.packages[2]"
         />
-        
+        </div>
 
         <div class="img-upload-container">
           <template v-if="!isLoading">
@@ -136,8 +141,8 @@
         <button>Add gig</button>
       </form>
     </main>
-  </section> -->
-  <h1></h1>
+  </section>
+  
 </template>
 
 <script>
@@ -152,7 +157,7 @@ export default {
         location: "",
       },
       userToEdit: JSON.parse(JSON.stringify(this.$store.getters.loggedinUser)),
-      isHidden: false,
+      isHidden: true,
       gigToAdd: {
         title: "",
         description: "",
@@ -224,6 +229,7 @@ export default {
         });
 
         const miniGig = {};
+        console.log('creating minigig')
         miniGig._id = this.gigToAdd._id;
         miniGig.title = this.gigToAdd.title;
         miniGig.imgUrls = this.gigToAdd.imgUrls;
@@ -240,7 +246,8 @@ export default {
           seller: {},
           packages: ["", "", ""],
         };
-        await this.$store.dispatch({ type: "updateUser", user: userToUpdate });
+         this.$store.dispatch({ type: "updateUser", user: userToUpdate });
+        this.toggleCreate();
       } catch (err) {
         console.log("error!", err);
         throw err;

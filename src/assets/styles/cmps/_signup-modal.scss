@@ -95,3 +95,19 @@
         display: none;
     }
 }
+
+@media (max-width: 500px) {
+    .signup {
+       
+        .signup-container    {
+            width: 100vw;
+            height: 100vh;
+            top: 0px;
+            justify-content: flex-start;
+            form{
+                justify-content: space-evenly;
+            }
+        }
+       
+    }
+}
