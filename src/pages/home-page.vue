@@ -285,9 +285,9 @@ export default {
     startHeroInterval(){
       this.heroInterval= setInterval(() => {
         if (this.mobileScreenWidth){
-          this.styleObject.backgroundColor = 'white';
+          this.styleObject.backgroundColor = '#023a15';
           this.styleObject.color = 'grey';
-          eventBusService.$emit('headerChange','');
+          eventBusService.$emit('headerChange','#023a15');
         } else{
           this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
           this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
@@ -305,7 +305,7 @@ export default {
       console.log(e.target.innerWidth);
       if (e.target.innerWidth < 900) {
         this.mobileScreenWidth = true;
-        this.styleObject.backgroundColor = 'white';
+        this.styleObject.backgroundColor = '#023a15';
           this.styleObject.color = 'grey';
           eventBusService.$emit('headerChange','');
         }
