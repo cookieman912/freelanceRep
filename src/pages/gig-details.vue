@@ -179,7 +179,6 @@ export default {
     async created() {
         // this.$store.dispatch({ type: "loadUsers" });
 
-<<<<<<< HEAD
     const { gigId } = this.$route.params;
     const gig = await gigService.getById(gigId);
     this.gig = gig;
@@ -194,19 +193,6 @@ export default {
     this.user = user;
     const date = new Date(user.createdAt)
   
-=======
-        const { gigId } = this.$route.params;
-        const gig = await gigService.getById(gigId);
-        this.gig = gig;
-        this.sellerRate =
-            this.gig.reviews.reduce((acc, review) => {
-                return acc + review.rate;
-            }, 0) / this.gig.reviews.length;
-        const userId = this.gig.seller._id;
-        const user = await userService.getById(userId);
-        this.user = user;
-        const date = new Date(user.createdAt);
->>>>>>> 7250665365e5376a65689fd72f7e5e08c76339d0
 
         document.addEventListener("scroll", this.pageNavigationClass);
     },

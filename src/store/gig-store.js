@@ -71,7 +71,6 @@ export const gigStore = {
                 .filter(gig => (+gig.price <= +maxPrice));
             let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
             if (state.filterBy.rate) {
-<<<<<<< HEAD
                 
                 filtered = filtered.filter(gig => {
                    if(gig.reviews.length===0)
@@ -82,9 +81,6 @@ export const gigStore = {
                     },
                     0
                   )/this.gig.reviews.length>= state.filterBy.rate})
-=======
-                filtered = filtered.filter(gig => +gig.rate >= +state.filterBy.rate);
->>>>>>> 7250665365e5376a65689fd72f7e5e08c76339d0
             }
             if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
