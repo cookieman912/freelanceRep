@@ -1,6 +1,6 @@
 <template>
   <div class="gig-preview" v-bind:style="styleObject">
-    <div v-if="isGigCloudinary"  @click="routing">
+    <div v-if="isGigCloudinary" @click="routing">
       <el-carousel :interval="5000" :autoplay="false" arrow="always">
         <el-carousel-item v-for="item in 4" :key="item">
           <img v-if="isGigCloudinary" :src="gig.imgUrls[0]" />
@@ -41,9 +41,9 @@
         </p>
       </router-link>
       <p class="el-icon-star-on">
-        <span v-if="gig.reviews[0]">{{ gig.reviews[0].rate }}</span>
+        <span v-if="gig.reviews[0]">{{ gigPreviewAvg }}</span>
         <span v-else>n/a</span>
-        <span class="gig-review-num">({{gig.reviews.length}})</span>
+        <span class="gig-review-num">({{ gig.reviews.length }})</span>
       </p>
     </div>
     <div class="gig-save-and-price">
@@ -111,6 +111,13 @@ export default {
 
     isSellerCloudinary() {
       return this.gig.seller.imgUrl.includes("cloud");
+    },
+    gigPreviewAvg() {
+      return (
+        (this.gig.reviews.reduce((acc, review) => {
+          return acc + review.rate;
+        }, 0) / this.gig.reviews.length).toFixed(1)
+      );
     },
   },
   created() {

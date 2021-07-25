@@ -174,12 +174,12 @@ export default {
     const { gigId } = this.$route.params;
     const gig = await gigService.getById(gigId);
     this.gig = gig;
-    this.sellerRate= this.gig.reviews.reduce(
+    this.sellerRate= parseInt((this.gig.reviews.reduce(
       (acc, review)=> {
         return acc+ review.rate
       },
       0
-    )/this.gig.reviews.length
+    )/this.gig.reviews.length).toFixed(1))
     const userId = this.gig.seller._id;
     const user = await userService.getById(userId);
     this.user = user;

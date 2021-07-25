@@ -75,7 +75,12 @@ export const gigStore = {
                 filtered = filtered.filter(gig => {
                    if(gig.reviews.length===0)
                    return false;
-                   return gig.reviews[0].rate >= state.filterBy.rate})
+                   return  this.gig.reviews.reduce(
+                    (acc, review)=> {
+                      return acc+ review.rate
+                    },
+                    0
+                  )/this.gig.reviews.length>= state.filterBy.rate})
             }
             if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
