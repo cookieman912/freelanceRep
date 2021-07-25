@@ -55,6 +55,11 @@
                     padding-inline-start: 0;
                 }
             }
+            >a {
+                text-decoration: none;
+                padding-inline-start: 1.5rem;
+                font-weight: 600;
+            }
             >span {
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
@@ -182,13 +187,14 @@
     transition: 0.2s;
     .side-menu-nav{
         height: 100rem;
-        background-color: white;
+        background-color: white !important;
         padding-left: 2rem;
         padding-bottom: 1rem;
         width: 300px;
         display: flex;
         flex-direction: column;
         > a {
+            background-color: white !important;
             text-decoration: none;
             color: $ftc;
             font-weight: 900;
