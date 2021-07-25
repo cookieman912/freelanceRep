@@ -7,8 +7,8 @@
         <template v-if="!isLoading">
           <!-- UPLOAD IMG -->
           <label
-            for="imgUploader"
-            @drop.prevent="handleFile"
+            for="imgUploader-profile"
+            @drop.prevent="handleFileUser"
             @dragover.prevent="isDragOver = true"
             @dragleave="isDragOver = false"
             :class="{ drag: isDragOver }"
@@ -29,8 +29,8 @@
           <input
             type="file"
             name="img-uploader"
-            id="imgUploader"
-            @change="handleFile"
+            id="imgUploader-profile"
+            @change="handleFileUser"
           />
         </template>
 
@@ -105,7 +105,8 @@ export default {
       }
     },
 
-    handleFile(ev) {
+    handleFileUser(ev) {
+      console.log('handling file')
       let file;
       if (ev.type === "change") file = ev.target.files[0];
       else if (ev.type === "drop") file = ev.dataTransfer.files[0];
@@ -119,6 +120,7 @@ export default {
       this.isLoading = false;
 
       this.userToEdit.imgUrl = res.url;
+      console.log(this.userToEdit)
       this.updateUser();
     
     },
