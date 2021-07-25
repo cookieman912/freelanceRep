@@ -56,7 +56,7 @@
                 <template class="nav-propile-join">
                     <template v-if="loggedInUser" class="user-control">
                         <router-link
-                            class="header-nav-a become-seller"
+                            class="header-nav-a"
                             :class="[homePageColorSetClass]"
                             v-if="!isUserSeller"
                             to="/becomeSeller"
