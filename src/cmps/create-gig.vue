@@ -100,7 +100,7 @@
             <label
               class="img-upload"
               for="imgUploader"
-              @drop.prevent="handleFile"
+              @drop.prevent="handleFileGig"
               @dragover.prevent="isDragOver = true"
               @dragleave="isDragOver = false"
               :class="{ drag: isDragOver }"
@@ -116,7 +116,7 @@
               type="file"
               name="img-uploader"
               id="imgUploader"
-              @change="handleFile"
+              @change="handleFileGig"
             />
           </template>
 
@@ -262,7 +262,8 @@ export default {
     clickOutsideModal(event) {
       if (event.target.classList.value === "add-gig") this.toggleCreate();
     },
-    handleFile(ev) {
+    handleFileGig(ev) {
+      console.log('adding gig photo')
       let file;
       if (ev.type === "change") file = ev.target.files[0];
       else if (ev.type === "drop") file = ev.dataTransfer.files[0];
