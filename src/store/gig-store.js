@@ -71,7 +71,6 @@ export const gigStore = {
                 .filter(gig => (+gig.price <= +maxPrice));
             let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
             if (state.filterBy.rate) {
-<<<<<<< HEAD
                 filtered = filtered.filter(gig => +gig.rate >= +state.filterBy.rate);
             }
             if (state.filterBy.tags.length) {
