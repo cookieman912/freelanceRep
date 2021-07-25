@@ -20,7 +20,7 @@
         // uri added
         // background-color: inherit;
         // end of uri add
-        .hamburger-menu{
+        .hamburger-menu {
             display: none;
             div {
                 width: 3rem;
@@ -51,7 +51,7 @@
                 text-decoration: none;
                 padding-inline-start: 1.5rem;
                 font-weight: 600;
-                &:first-child{
+                &:first-child {
                     padding-inline-start: 0;
                 }
             }
@@ -138,6 +138,7 @@
         display: none;
     }
 }
+
 @media (max-width: 1400px) {
     .app-header {
         .nav-header {
@@ -146,15 +147,16 @@
         }
     }
 }
+
 @media (max-width: 850px) {
     .app-header {
         .nav-header {
-            .hamburger-menu{
+            .hamburger-menu {
                 display: block;
             }
             width: auto;
             padding: 0 2rem;
-            .nav-home-explore{
+            .nav-home-explore {
                 // width: 100rem;
                 display: none;
             }
@@ -167,25 +169,26 @@
         display: none;
     }
 }
+
 @media (max-width: 500px) {
     .app-header {
         .nav-header {
-            .hamburger-menu{
+            .hamburger-menu {
                 display: block;
-                div { 
-                }
+                div {}
             }
         }
     }
 }
-.side-menu{
+
+.side-menu {
     width: 100%;
     display: flex;
     transform: translateX(-100%);
     position: absolute;
     z-index: 25;
     transition: 0.2s;
-    .side-menu-nav{
+    .side-menu-nav {
         height: 100rem;
         background-color: white !important;
         padding-left: 2rem;
@@ -205,7 +208,7 @@
         height: 100rem;
         width: calc(100% - 300px);
         background-color: rgba(68, 68, 68, 0.514);
-    }    
+    }
 }
 
 .header-signin {

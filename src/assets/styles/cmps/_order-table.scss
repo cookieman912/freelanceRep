@@ -52,8 +52,12 @@
                 span {
                     font-size: 0.85em;
                 }
-                span:first-child {
+                span:last-child {
                     color: $fgc;
+                    margin-right:10px
+                } 
+                span:first-child {
+                    color: rgb(250, 57, 57);
                 }
 
                 span:hover {
@@ -61,9 +65,7 @@
                     cursor: pointer;
                 }
 
-                span:last-child {
-                    color: rgb(250, 57, 57);
-                }
+               
             }
         }
 
@@ -90,8 +92,15 @@
 @media (max-width: 850px) {
     .table-container {
         .order-table {
-         
-     
+         tr{
+             td{
+                span:last-child {
+                    color: $fgc;
+                    margin-left:10px
+                } 
+             }
+         }
+          
 
         }
     }
