@@ -56,7 +56,7 @@
             score-template="{value}"
           >
           </el-rate>
-          <span> (number of reviews)</span>
+          <span> {{gig.reviews.length}}</span>
         </figure>
 
         <el-carousel :interval="5000" :autoplay="false" arrow="always">
@@ -160,7 +160,7 @@ export default {
     return {
       user: null,
       gig: null,
-      sellerRate: 3.7,
+      sellerRate: null,
       navOverview: true,
       navDescription: false,
       navAboutTheSeller: false,
@@ -170,10 +170,16 @@ export default {
   async created() {
     // this.$store.dispatch({ type: "loadUsers" });
 
+
     const { gigId } = this.$route.params;
     const gig = await gigService.getById(gigId);
     this.gig = gig;
-
+    this.sellerRate= this.gig.reviews.reduce(
+      (acc, review)=> {
+        return acc+ review.rate
+      },
+      0
+    )/this.gig.reviews.length
     const userId = this.gig.seller._id;
     const user = await userService.getById(userId);
     this.user = user;
@@ -211,8 +217,8 @@ export default {
   methods: {
     async review(review) {
       try {
-        console.log('revirew(details)', review);
-        this.$store.dispatch({ type: "addReview", gigId: this.gig_id, review });
+        this.gig.reviews.push(review)
+        this.$store.dispatch({ type: "addGig", gig:this.gig});
       } catch (err) {
         console.log("cannot add review", err);
         throw err;

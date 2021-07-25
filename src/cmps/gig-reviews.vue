@@ -1,6 +1,5 @@
 <template>
-<h1>placeholder</h1>
-  <!-- <section class="gig-review">
+  <section class="gig-review">
     <p class="review-container-header">
       <span>{{ reviews.length }} </span><span>Reviews</span>
     </p>
@@ -32,7 +31,7 @@
         <button @submit.prevent="addReview">Send</button>
       </form>
     </div>
-  </section> -->
+  </section>
 </template>
 
 <script>
