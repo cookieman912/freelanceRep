@@ -66,6 +66,7 @@ export default {
   },
   data() {
     return {
+      mobileScreenWidth:false,
       isLoading:false, // loading gigs
       // category gallery 
      galleryItemsCount:5,
@@ -283,16 +284,40 @@ export default {
     // Interval for new hero
     startHeroInterval(){
       this.heroInterval= setInterval(() => {
-        this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
-        // set home-page top section dynamic styles per hero
-        this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+        if (this.mobileScreenWidth){
+          this.styleObject.backgroundColor = 'white';
+          this.styleObject.color = 'grey';
+          eventBusService.$emit('headerChange','');
+        } else{
+          this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+          this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+          // set home-page top section dynamic styles per hero
         this.styleObject.color = this.currHero.styleSet.color;
+        eventBusService.$emit('headerChange',this.currHero.id);
+        
+
+        }
         eventBusService.$emit('headerChange',this.currHero.id);
       }, 7000);
 
     },
     myEventHandler(e) {
-      console.log(e);
+      console.log(e.target.innerWidth);
+      if (e.target.innerWidth < 900) {
+        this.mobileScreenWidth = true;
+        this.styleObject.backgroundColor = 'white';
+          this.styleObject.color = 'grey';
+          eventBusService.$emit('headerChange','');
+        }
+        else{
+          this.mobileScreenWidth = false;
+           // this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+          this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+          // set home-page top section dynamic styles per hero
+        this.styleObject.color = this.currHero.styleSet.color;
+        eventBusService.$emit('headerChange',this.currHero.id);
+        }
+      
     // your code for handling resize...
     // this.size = window.innerWidth;
     //  return this.size;
