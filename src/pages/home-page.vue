@@ -286,18 +286,16 @@ export default {
       this.heroInterval= setInterval(() => {
         if (this.mobileScreenWidth){
           this.styleObject.backgroundColor = '#023a15';
-          this.styleObject.color = 'grey';
-          eventBusService.$emit('headerChange','#023a15');
+          this.styleObject.color = 'white';
+          eventBusService.$emit('headerChange',''); // white header 
         } else{
           this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
           this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
           // set home-page top section dynamic styles per hero
         this.styleObject.color = this.currHero.styleSet.color;
-        eventBusService.$emit('headerChange',this.currHero.id);
-        
-
+        eventBusService.$emit('headerChange',this.currHero.id);     
         }
-        eventBusService.$emit('headerChange',this.currHero.id);
+       // eventBusService.$emit('headerChange',this.currHero.id);
       }, 7000);
 
     },
@@ -307,7 +305,7 @@ export default {
         this.mobileScreenWidth = true;
         this.styleObject.backgroundColor = '#023a15';
           this.styleObject.color = 'grey';
-          eventBusService.$emit('headerChange','');
+          eventBusService.$emit('headerChange',''); // white background
         }
         else{
           this.mobileScreenWidth = false;
@@ -338,7 +336,7 @@ export default {
   destroyed() {
       window.removeEventListener("resize", this.myEventHandler);
     // clearing header to default styling params and clear hero image interval
-    eventBusService.$emit('headerChange','');
+    eventBusService.$emit('headerChange',''); // white background
     clearInterval(this.heroInterval);
   },
 };
