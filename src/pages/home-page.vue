@@ -291,9 +291,18 @@ export default {
       }, 7000);
 
     },
+    myEventHandler(e) {
+      console.log(e);
+    // your code for handling resize...
+    // this.size = window.innerWidth;
+    //  return this.size;
+  }
    
   },
   created() {
+    // listen to window resize
+      window.addEventListener("resize", this.myEventHandler);
+
     this.loadDefaultHero();
     this.styleDefaultHero();
     this.sendStyleToHeader();
@@ -302,6 +311,7 @@ export default {
     this.initCategories();
   },
   destroyed() {
+      window.removeEventListener("resize", this.myEventHandler);
     // clearing header to default styling params and clear hero image interval
     eventBusService.$emit('headerChange','');
     clearInterval(this.heroInterval);

@@ -46,7 +46,7 @@ export default {
             return JSON.parse(JSON.stringify(this.$store.getters.filterToShow));
         },
         setGigStoreFilter() {
-            var filter = this.filterByCopy();
+            var filter = this.filterByCopy;
             filter.txt = "";
             this.filter(filter);
         },
@@ -60,7 +60,7 @@ export default {
         }
     },
     destroyed() {
-        this.setGigStoreFilter();
+        this.setGigStoreFilter;
     },
 };
 </script>
