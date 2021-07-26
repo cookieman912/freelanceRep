@@ -47,6 +47,7 @@
 }
 
 .home-page-bottom-container {
+    margin-top: 56px;
     h2 {
         display: flex;
         flex-direction: column;
@@ -63,19 +64,23 @@
             @include btnWhiteTrans($c: $white, $bc: $fgc);
             background-color: $fgc;
             margin-block-end: 6px;
-            width: 65px;
+            width: 74px;
+            font-size: 16px;
         }
     }
 }
 
 .hp-popular-services-header {
-    margin-top: 186px;
+    margin-top: 90px;
 }
 
 .hp-top-rated-gigs-header,
-.hp-discover-web-header,
 .hp-discover-business-header {
-    margin-top: 129px;
+    margin-top: 55px;
+}
+
+.hp-discover-web-header {
+    margin-top: 74px;
 }
 
 .slogan {

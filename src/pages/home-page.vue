@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="getGigs" class="home-page">
+    <div v-if="gigsToShow" class="home-page">
       <div v-for="hero in demoHeros"  :key="hero.id" class="home-page-top-container" :style="{ color: currHero.styleSet.color, backgroundColor: currHero.styleSet.backgroundColor }">
         <div v-if="hero.fullname === currHero.fullname" class="home-page-top main-layout">
           <!-- image section -->
@@ -45,7 +45,7 @@
                 <button @click.prevent="toExplorePage">See all</button>
               </span>
           </div>
-          <gigs-list :gigs="getGigs"/>
+          <gigs-list :gigs="topRatedGigsToShow"/>
           <div class="hp-bottom-header-container">
             <h2 class="hp-discover-web-header">Discover Web development</h2>
             <span>
@@ -117,7 +117,7 @@ export default {
       },
       {
         id:'2',
-        fullname:'haim',
+        fullname:'danielle',
         rate: 4.8,
         specialty:'Web Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
@@ -125,7 +125,7 @@ export default {
       },
       {
         id:'3',
-        fullname:'puka',
+        fullname:'venessa',
         rate: 4.7,
         specialty:'Strategic Planner',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705830/hp-hero/pngfind.com-ladies-suit-png-248538_2_ljes8n.png',
@@ -134,7 +134,7 @@ export default {
       },
       {
         id:'4',
-        fullname:'shlomit',
+        fullname:'june',
         rate: 5,
         specialty:'Podcaster',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
@@ -202,16 +202,22 @@ export default {
     };
   },
   computed: {
-    topRatedGigsToShow(){
-      return this.$store.getters.topRatedGigsToShow;
-    },    
     businessGigsToShow(){
       return this.$store.getters.businessGigsToShow;
     },
     webGigsToShow(){
       return this.$store.getters.webGigsToShow;
     },
-    getGigs() {
+    topRatedGigsToShow(){
+      var modTopRatedGigs = this.gigsToShow;
+      var topGigsLng = modTopRatedGigs.length;
+      if (topGigsLng > 10){
+        modTopRatedGigs.splice(10, topGigsLng - 10);
+        return modTopRatedGigs;
+      }
+    },    
+
+    gigsToShow() {
       return this.$store.getters.gigsToShow;
     },
   },
@@ -344,7 +350,7 @@ export default {
     this.sendStyleToHeader();
     this.loadGigs();
     //Hero continues Invervals and Styling
-    this.startHeroInterval();
+   // this.startHeroInterval();
     this.initCategories();
   },
   destroyed() {

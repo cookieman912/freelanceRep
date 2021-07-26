@@ -1,5 +1,4 @@
 .home-page-tag-buttons {
-    font-size: 14px;
     line-height: 27px;
     font-weight: 600;
     color: $white;
@@ -12,6 +11,7 @@
     button {
         transition: 0.35s ease;
         @include btnWhiteTrans;
+        font-size: 14px;
     }
     button:hover {
         color: $flc;
