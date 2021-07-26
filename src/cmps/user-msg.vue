@@ -1,6 +1,6 @@
 <template>
   <div v-if="alive" class="alert" :class="alertClass">
-    {{ msg.txt }}
+   <h1>{{ msg }}</h1> 
   </div>
 </template>
 
@@ -11,6 +11,7 @@ import { eventBusService, SHOW_MSG } from "../services/event-bus.service.js";
 export default {
   created() {
     eventBusService.$on(SHOW_MSG, (msg) => {
+      console.log('in show msg',msg)
       this.msg = msg;
       var delay = msg.delay || 2000;
       this.alive = true;

@@ -1,10 +1,12 @@
 <template>
   <div id="app">
 
+
+     <user-msg />
     <login-modal />
     <sign-up-modal />
     <create-gig/>
-    <user-msg />
+    
     <app-header />
     <router-view />
   </div>
