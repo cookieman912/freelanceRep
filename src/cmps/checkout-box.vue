@@ -54,14 +54,23 @@ export default {
       const gigSeller= await userService.getById(this.gig.seller._id)
       try{gigSeller.seller.orders.push(orderToAdd)
          await this.$store.dispatch({type:'addOrder',user:gigSeller})
-        eventBusService.$emit('show-msg','Order has been successfully made')
-         this.$router.push('/')
+        this.openMessage();
+      
       }
       catch(err){
         console.log('error!',err)
         throw err
       }
     },
+
+    openMessage(){
+         this.$message({
+          message: 'Transaction complete!',
+          type: 'success',
+          offset: 123,
+        });
+    }
+    ,
     makeId(length = 7) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
