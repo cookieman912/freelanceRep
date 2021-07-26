@@ -1,6 +1,36 @@
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    // 50% {
+    //     opacity: 1;
+    // }
+    100% {
+        opacity: 0;
+    }
+}
+
 .hp-hero-image-list {
     position: relative;
-    & img {
+    // opacity: 1;
+    animation: fadeInOut 5s ease;
+    // animation: fadeOut 3s ease;
+    img {
         filter: brightness(95%);
         margin-block-end: -5px;
         height: 600px;
@@ -9,9 +39,10 @@
 }
 
 .hp-hero-details-container {
+    width: max-content;
     position: absolute;
     z-index: 1;
-    left: 60%;
+    right: 0;
     top: 85%;
     & .hp-image-preview-hero-text {
         p,
@@ -19,10 +50,13 @@
             font-family: Nunito_Sans_regular;
             display: inline-block;
             color: $white;
-            width: 400px;
+            // width: 400px;
         }
         b {
             font-family: Nunito_Sans;
+        }
+        p {
+            text-transform: capitalize;
         }
     }
 }
