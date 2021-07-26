@@ -59,7 +59,7 @@ export default {
       this.gig.reviews.forEach((review) => {
         return (sumRate += review.rate);
       });
-      return sumRate / this.gig.reviews.length;
+      return parseInt(sumRate / this.gig.reviews.length).toFixed(1);
     },
     include() {
       this.isInclude = !this.isInclude;
