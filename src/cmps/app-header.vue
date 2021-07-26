@@ -2,6 +2,23 @@
     <header class="app-header" :class="[homePageColorSetClass]">
         <div ref="sideMenu" class="side-menu">
             <nav @click="closeMenu" class="side-menu-nav">
+                <template v-if="loggedInUser">
+                    <img
+                        @click="toggleMenu"
+                        class="avatar"
+                        :src="loggedInUser.imgUrl"
+                        alt="avatar"
+                    />
+                    <router-link
+                        raf="becomeSeller"
+                        class="header-nav-a"
+                        :class="[homePageColorSetClass]"
+                        v-if="!isUserSeller"
+                        to="/becomeSeller"
+                        @click.native="clearSearch"
+                        >Become a seller</router-link
+                    >
+                </template>
                 <router-link
                     to="/"
                     @click.native="clearSearch"

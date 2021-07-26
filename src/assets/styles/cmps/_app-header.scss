@@ -143,14 +143,23 @@
     .app-header {
         .nav-header {
             width: auto;
-            padding: 0 2rem;
+            // padding: 0 2rem;
         }
     }
 }
 
 @media (max-width: 850px) {
+    .navigation {
+        >.header-nav-a {
+            display: none;
+        }
+    }
     .app-header {
         .nav-header {
+            padding: 0 0.5rem !important;
+            .avatar {
+                display: none;
+            }
             .hamburger-menu {
                 display: block;
             }
@@ -163,10 +172,18 @@
         }
         .app-header-search2 {
             display: flex;
+            padding: 0 0.5rem;
         }
     }
     .app-header-search1 {
         display: none;
+    }
+    .avatar {
+        height: 40px;
+        border-radius: 50%;
+        width: 40px;
+        background-color: transparent;
+        margin-left: 0;
     }
 }
 
@@ -191,6 +208,7 @@
     .side-menu-nav {
         height: 100rem;
         background-color: white !important;
+        padding-top: 1.5rem;
         padding-left: 2rem;
         padding-bottom: 1rem;
         width: 300px;

@@ -80,6 +80,9 @@
                     id="description"
                     class="gig-details-description"
                 >
+                    <aside class="gig-buying-2">
+                        <gig-buying-box :gig="gig" />
+                    </aside>
                     <h2>About this gig</h2>
                     <p>{{ gig.description }}</p>
                 </div>
@@ -179,20 +182,20 @@ export default {
     async created() {
         // this.$store.dispatch({ type: "loadUsers" });
 
-    const { gigId } = this.$route.params;
-    const gig = await gigService.getById(gigId);
-    this.gig = gig;
-    this.sellerRate= parseInt((this.gig.reviews.reduce(
-      (acc, review)=> {
-        return acc+ review.rate
-      },
-      0
-    )/this.gig.reviews.length).toFixed(1))
-    const userId = this.gig.seller._id;
-    const user = await userService.getById(userId);
-    this.user = user;
-    const date = new Date(user.createdAt)
-  
+        const { gigId } = this.$route.params;
+        const gig = await gigService.getById(gigId);
+        this.gig = gig;
+        this.sellerRate = parseInt(
+            (
+                this.gig.reviews.reduce((acc, review) => {
+                    return acc + review.rate;
+                }, 0) / this.gig.reviews.length
+            ).toFixed(1)
+        );
+        const userId = this.gig.seller._id;
+        const user = await userService.getById(userId);
+        this.user = user;
+        const date = new Date(user.createdAt);
 
         document.addEventListener("scroll", this.pageNavigationClass);
     },

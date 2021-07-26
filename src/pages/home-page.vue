@@ -1,7 +1,8 @@
 <template>
-  <div v-if="getGigs" class="home-page">
-    <div class="home-page-top-container" v-bind:style="styleObject">
-      <div class="home-page-top main-layout">
+  <div>
+    <div v-if="getGigs" class="home-page">
+    <div v-for="hero in demoHeros"  :key="hero.id" class="home-page-top-container" :style="{ color: currHero.styleSet.color, backgroundColor: currHero.styleSet.backgroundColor }">
+      <div v-if="hero.fullname === currHero.fullname" class="home-page-top main-layout">
         <main class="home-page-search">
           <header class="hp-header">
             <h2>
@@ -16,7 +17,19 @@
           <hp-tag-buttons @catChoice="filter" />
         </main>
         <div class="home-page-image-container">
-          <hp-hero-image-preview :hero="currHero"/>
+          <template>
+            <section>
+              <div class="hp-hero-image-list" >
+                <img class="hero-image" :src="hero.imgUrl" width="600px">
+                <div class="hp-hero-details-container">
+                    <el-rate class="hp-hero-rate" v-model="hero.rate" disabled text-color="#ff9900"></el-rate>
+                    <div class="hp-image-preview-hero-text">
+                    <p>{{hero.fullname}}, <b>{{hero.specialty}}</b></p>
+                    </div>
+                </div>
+              </div>
+            </section>
+          </template>
         </div>
       </div>
     </div>
@@ -47,6 +60,7 @@
         </template>
         <gigs-list :gigs="businessGigsToShow" />
     </div>
+  </div>
   </div>
 </template>
 <script>
@@ -87,11 +101,12 @@ export default {
         borderBottom: null,
       },
       // hero images demo data
+      idx:0,
       heroInterval:null,
       currHero:null,
       demoHeros:[{
         id:'1',
-        fullname:'Keren',
+        fullname:'keren',
         rate: 4.5,
         specialty:'Graphic designer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634929/hp-hero/pngfind.com-business-woman-png-1612489_2_kn1y2b.png',
@@ -99,7 +114,7 @@ export default {
       },
       {
         id:'2',
-        fullname:'Haim',
+        fullname:'haim',
         rate: 4.8,
         specialty:'Web Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png',
@@ -107,7 +122,7 @@ export default {
       },
       {
         id:'3',
-        fullname:'Puka',
+        fullname:'puka',
         rate: 4.7,
         specialty:'Strategic Planner',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626705830/hp-hero/pngfind.com-ladies-suit-png-248538_2_ljes8n.png',
@@ -116,7 +131,7 @@ export default {
       },
       {
         id:'4',
-        fullname:'Shlomit',
+        fullname:'shlomit',
         rate: 5,
         specialty:'Podcaster',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngfind.com-woman-png-547411_2_sx13da.png',
@@ -125,9 +140,9 @@ export default {
       },
       {
         id:'5',
-        fullname:'John',
+        fullname:'john',
         rate: 4.6,
-        specialty:'Mobile Developerז',
+        specialty:'Mobile Developer',
         imgUrl:'https://res.cloudinary.com/urigross/image/upload/v1626634928/hp-hero/pngaaa.com-1274196_2_pcd11d.png',
         styleSet:{backgroundColor:'#86535c',color:'white'}
       }
@@ -163,14 +178,14 @@ export default {
           catName: "Podcast expertise",
           txt: "Podcast your ideas",
           title: "Podcast Experts",
-          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/podcast-DAWs_zczltb.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/v1627223782/categories/0_aJoB4ffIunEoT1db_bknksx.jpg",
         },
         {
           id: "5",
           catName: "Business",
           txt: "Business Plan",
           title: "Plan your Business",
-          url: "https://res.cloudinary.com/urigross/image/upload/v1626521677/categories/https___blogs-images.forbes.com_forbesfinancecouncil_files_2018_07_pexels-photo-990818-3-1200x730_guamp5.jpg",
+          url: "https://res.cloudinary.com/urigross/image/upload/a_180/v1627223374/categories/nice-business-desk-black-background_24972-1179_ygur64.jpg",
         },
 
         {
@@ -264,7 +279,8 @@ export default {
     // Hero top section methods
       // Default hero for loading page
     loadDefaultHero(){
-      this.currHero = this.demoHeros[0];
+      this.currHero = this.demoHeros[this.idx];
+      this.idx++;
     },
       // styleObject gets the style params of the hero.
     styleDefaultHero(){
@@ -279,7 +295,6 @@ export default {
      async loadGigs(){
        this.$store.dispatch({type:'loadGigs'})
         .then(()=>this.isLoading = false)
-      //this.$store.dispatch({ type: "loadGigs" });
     },
     // Interval for new hero
     startHeroInterval(){
@@ -289,18 +304,18 @@ export default {
           this.styleObject.color = 'white';
           eventBusService.$emit('headerChange',''); // white header 
         } else{
-          this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
+          this.currHero = this.demoHeros[this.idx];
+          this.idx === this.demoHeros.length -1 ? this.idx = 0 : this.idx++;
           this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
           // set home-page top section dynamic styles per hero
         this.styleObject.color = this.currHero.styleSet.color;
         eventBusService.$emit('headerChange',this.currHero.id);     
         }
-       // eventBusService.$emit('headerChange',this.currHero.id);
-      }, 7000);
+      }, 4900);
 
     },
+    // makes immidiate changes to dom hero and header when toggling from mobile / desktop screen width
     myEventHandler(e) {
-      console.log(e.target.innerWidth);
       if (e.target.innerWidth < 900) {
         this.mobileScreenWidth = true;
         this.styleObject.backgroundColor = '#023a15';
@@ -309,27 +324,23 @@ export default {
         }
         else{
           this.mobileScreenWidth = false;
-           // this.currHero = this.demoHeros[Math.floor(Math.random()*this.demoHeros.length)];
           this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
           // set home-page top section dynamic styles per hero
         this.styleObject.color = this.currHero.styleSet.color;
         eventBusService.$emit('headerChange',this.currHero.id);
         }
-      
-    // your code for handling resize...
-    // this.size = window.innerWidth;
-    //  return this.size;
   }
    
   },
   created() {
     // listen to window resize
-      window.addEventListener("resize", this.myEventHandler);
-
+    window.addEventListener("resize", this.myEventHandler);
+    // Hero Image first Interval
     this.loadDefaultHero();
     this.styleDefaultHero();
     this.sendStyleToHeader();
     this.loadGigs();
+    //Hero continues Invervals and Styling
     this.startHeroInterval();
     this.initCategories();
   },
