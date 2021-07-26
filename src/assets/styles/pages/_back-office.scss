@@ -1,4 +1,15 @@
 .edit-seller {
+
+  p { 
+    margin: auto 0px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: $ftc
+}
   text-align: center;
   background-color: rgba(250, 250, 250, 0.911);
   border: 2px solid $fbc;
@@ -13,11 +24,12 @@
   flex-wrap: wrap;
   .seller-details {
     margin-top: 20px;
+    height: fit-content;
 
     img {
       height: 100px;
     }
-    height: 534px;
+    // height: 534px;
     grid-area: 0/0/1/1;
     border: 2px solid $fbc;
     // min-height: 520px;
@@ -32,9 +44,11 @@
       margin-top: 15px;
     }
     form {
+      .form-content{padding: 0px 10px 0px;}
       .form-option {
         margin-top: 25px;
         padding-top: 25px;
+        // padding:25px 10px 25px;
         display: flex;
 
         h3 {
@@ -45,7 +59,7 @@
         }
         // justify-content: space-between;
 
-        border-top: 2px solid $fbc;
+        border-top: 1px solid $fbc;
         select {
           border: 1px solid $fbc;
           width: 50%;
@@ -101,6 +115,9 @@
         background-color: #1baa67;
       }
     }
+  }
+  .form-option:last-child{
+    margin-bottom: 20px;
   }
 
   .user-gigs {

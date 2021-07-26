@@ -1,7 +1,5 @@
 <template>
-
   <aside class="checkout-box">
-
     <h4>Summary</h4>
     <div class="cb-seller-price">
       <span>subtutal</span> <span>${{ gig.price }}</span>
@@ -22,8 +20,8 @@
 </template>
 
 <script>
-import { userService } from '../services/user.service';
-import {eventBusService}from '../services/event-bus.service'
+import { userService } from "../services/user.service";
+import { eventBusService } from "../services/event-bus.service";
 export default {
   props: ["gig"],
   computed: {
@@ -34,51 +32,64 @@ export default {
       const days = this.gig.deliveryDays > 1 ? "Days" : "Day";
       return days;
     },
-    
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
   },
-  methods:{
-   async checkout(){
-      const orderToAdd={
+  methods: {
+    async checkout() {
+      if(!this.loggedinUser){
+        this.openWarning();
+        return
+      }
+      const orderToAdd = {
         id: this.makeId(),
         buyer: this.$store.getters.loggedinUser.fullname,
         price: this.gig.price,
-        createdAt:new Date(),
-        gig:{
-         _id:this.gig._id,
-         name:this.gig.title,
-         deliveryTime: this.gig.deliveryTime,
+        createdAt: new Date(),
+        gig: {
+          _id: this.gig._id,
+          name: this.gig.title,
+          deliveryTime: this.gig.deliveryTime,
         },
-        status: 'pending'
-
-      }
-      const gigSeller= await userService.getById(this.gig.seller._id)
-      try{gigSeller.seller.orders.push(orderToAdd)
-         await this.$store.dispatch({type:'addOrder',user:gigSeller})
+        status: "pending",
+      };
+      const gigSeller = await userService.getById(this.gig.seller._id);
+      try {
+        console.log("in condition");
+        gigSeller.seller.orders.push(orderToAdd);
+        await this.$store.dispatch({ type: "addOrder", user: gigSeller });
         this.openMessage();
-      
-      }
-      catch(err){
-        console.log('error!',err)
-        throw err
+      } catch (err) {
+        console.log("in catch");
+
+        throw err;
       }
     },
 
-    openMessage(){
-         this.$message({
-          message: 'Transaction complete!',
-          type: 'success',
-          offset: 123,
-        });
-    }
-    ,
+    openMessage() {
+      this.$message({
+        message: "Transaction complete!",
+        type: "success",
+        offset: 123,
+      });
+    },
+    openWarning() {
+      this.$message({
+        message: "You need to be logged in order to buy a gig!",
+        type: "warning",
+        offset: 123,
+      });
+    },
     makeId(length = 7) {
-    var txt = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < length; i++) {
+      var txt = "";
+      var possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return txt;
-}
-  }
+      }
+      return txt;
+    },
+  },
 };
 </script>

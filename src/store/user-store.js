@@ -24,7 +24,7 @@ export const userStore = {
     mutations: {
         setLoggedinUser(state, { user }) {
 
-            state.loggedinUser = (user) ? {...user } : null;
+            state.loggedinUser = (user) ? { ...user } : null;
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
@@ -110,6 +110,7 @@ export const userStore = {
         },
         async addOrder({ commit }, { user }) {
             try {
+
                 user = await userService.update(user);
             } catch (err) {
                 console.log('userStore: Error in updateUser', err)

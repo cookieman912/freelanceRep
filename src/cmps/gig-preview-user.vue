@@ -14,8 +14,9 @@
     <p> {{ gig.title }}</p>
     <p>{{ gig.description }}</p>
     <div class="gig-actions">
-    <router-link :to="'/explore/' + gig._id">view</router-link>
-        <span  @click="deleteClicked(gig._id)">remove</span>
+ 
+        <span  @click="deleteClicked(gig._id)">Remove</span>
+           <router-link :to="'/explore/' + gig._id">View</router-link>
         </div>
   </div>
 </template>
