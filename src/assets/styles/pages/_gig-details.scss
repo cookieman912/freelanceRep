@@ -6,7 +6,7 @@
     background-color: #fff;
     z-index: 20;
     .gig-details-nav {
-        width: 1400px;
+        width: 100%;
         margin: 0 auto;
         padding: 0 2rem;
         height: 53px;
@@ -44,7 +44,6 @@
             color: #4a73e8;
         }
     }
-
     p {
         margin: 0;
     }
@@ -72,6 +71,12 @@
         padding-bottom:  0.75rem;
         display: flex;
         align-items: center;
+        .el-rate__text {
+            position: relative;
+            top: 0.1rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
         & .sellerPropileImg {
             width: 2rem;
             height: 2rem;
@@ -92,11 +97,13 @@
     }
 
     .el-carousel__container{
-            max-width: 712px;
-        height:427px;
+        // max-width: 712px;
+        min-height:427px;
     }
-    .el-carousel__item img {
-        width: 100%;
+    .el-carousel__item {
+        >img {
+            width: 100%;
+        }
     }
 
     
@@ -136,6 +143,67 @@
         > p {
             padding-top: 1rem;
             color: $ftc;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .gig-details-page {
+        .el-carousel__container{
+            // max-width: 712px;
+            min-height:300px;
+        }
+        .el-carousel__item {
+            >img {
+                width: 100%;
+            }
+        }
+    }
+}
+@media (max-width: 900px) {
+    .gig-buying{
+        display: none;
+    }
+    .gig-buying-2 {
+        margin-top: 0.5rem;
+        display: block;
+    }
+    .gig-details-page {
+        display: grid;
+        grid-template-columns: 1fr;
+        main {
+            width: 100%;
+            // margin-inline-end: 9.15%;
+            // max-width: 710px;
+        }   
+    }
+    .gig-details-page {
+        padding: 0 0.5rem;
+        .el-carousel__container{
+            // max-width: 712px;
+            max-height:427px;
+        }
+    }
+    .gig-details-navbar {
+        .gig-details-nav { 
+            padding: 0 0.5rem;
+            >a {
+                margin-inline-end: 0.5rem;
+            }
+        } 
+    }
+}
+
+@media (max-width: 500px) {
+    .gig-details-page {
+        .el-carousel__container{
+            min-height:300px;
+        }
+        .el-carousel__item {
+            >img {
+                width: 100%;
+                min-height:300px;
+                object-fit: cover;
+            }
         }
     }
 }

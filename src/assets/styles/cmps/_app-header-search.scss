@@ -54,3 +54,11 @@
         bottom: 0.02rem;
     }
 }
+@media (max-width: 850px) {
+    .app-header-search2 {
+        svg {
+            top: 0.6rem;
+            left:1.5rem;
+        }
+    }
+}
