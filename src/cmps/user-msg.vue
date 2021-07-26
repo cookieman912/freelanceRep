@@ -15,10 +15,7 @@ export default {
     //   this.msg = msg;
     //   var delay = msg.delay || 2000000;
     //   this.alive = true;
-    this.$message({
-          message: 'Congrats, this is a success message.',
-          type: 'success'
-        });
+ 
       setTimeout(() => {
         this.alive = false;
       }, delay);
