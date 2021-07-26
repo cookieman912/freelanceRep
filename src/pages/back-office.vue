@@ -8,30 +8,32 @@
           <div class="form-option">
             <h3>Specialty:</h3>
 
-            <select class="form-input" v-model="userToEdit.seller.specialty">
+              <p>{{userToEdit.seller.specialty}}</p>
+            <!-- <select class="form-input" v-model="userToEdit.seller.specialty">
               <option value="Graphic design">Graphic design</option>
               <option value="Web development">Web development</option>
               <option value="Voice acting">Voice acting</option>
               <option value="Podcast expertise">Podcast expertise</option>
-              <option value="Translation">Translation</option>
-            </select>
+              <option value="Translation">Translation</option> -->
+            <!-- </select> -->
           </div>
           <div class="form-option">
             <h3>Description:</h3>
-
-            <el-input
+<p>{{userToEdit.seller.sellerInfo}}</p>
+            <!-- <el-input
               class="form-input"
               type="textarea"
               :autosize="{ minRows: 1, maxRows: 3 }"
               v-model="userToEdit.seller.sellerInfo"
-            ></el-input>
+            ></el-input> -->
           </div>
           <div class="form-option">
             <h3>Location:</h3>
-            <input class="form input" v-model="userToEdit.seller.location" />
+            <p>{{userToEdit.seller.location}}</p>
+            <!-- <input class="form input" v-model="userToEdit.seller.location" /> -->
           </div>
         </div>
-        <button>Update</button>
+        <!-- <button>Update</button> -->
       </form>
     </div>
     <div class="user-gigs">
