@@ -1,7 +1,8 @@
 <template>
   <section class="gigs-list-user">
-        <button @click="openCreateGig" class="add-button el-icon-plus"></button>
+    
     <gig-preview-user v-for="gig in gigs" :gig="gig" :key="gig._id"/>
+        <button @click="openCreateGig" class="add-button el-icon-plus"></button>
 
    
   </section>

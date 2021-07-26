@@ -1,4 +1,5 @@
 .edit-seller {
+
   p { 
     margin: auto 0px auto;
     white-space: nowrap;
@@ -6,6 +7,7 @@
     text-overflow: ellipsis;
     max-width: 300px;
     margin-left: 5px;
+    margin-right: 5px;
     color: $ftc
 }
   text-align: center;
@@ -22,6 +24,7 @@
   flex-wrap: wrap;
   .seller-details {
     margin-top: 20px;
+    height: fit-content;
 
     img {
       height: 100px;
@@ -41,9 +44,11 @@
       margin-top: 15px;
     }
     form {
+      .form-content{padding: 0px 10px 0px;}
       .form-option {
         margin-top: 25px;
         padding-top: 25px;
+        // padding:25px 10px 25px;
         display: flex;
 
         h3 {
@@ -54,7 +59,7 @@
         }
         // justify-content: space-between;
 
-        border-top: 2px solid $fbc;
+        border-top: 1px solid $fbc;
         select {
           border: 1px solid $fbc;
           width: 50%;
