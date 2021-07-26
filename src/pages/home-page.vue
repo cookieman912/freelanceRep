@@ -1,66 +1,69 @@
 <template>
   <div>
     <div v-if="getGigs" class="home-page">
-    <div v-for="hero in demoHeros"  :key="hero.id" class="home-page-top-container" :style="{ color: currHero.styleSet.color, backgroundColor: currHero.styleSet.backgroundColor }">
-      <div v-if="hero.fullname === currHero.fullname" class="home-page-top main-layout">
-        <main class="home-page-search">
-          <header class="hp-header">
-            <h2>
-              <span class="slogan">You need a <i>freelance</i> in a free world</span>
-            </h2>
-          </header>
-          <form class="home-page-search-container">
-            <div class="home-page-search-bar-container">
-              <hp-search-bar @filter="filter"/>
-            </div>
-          </form>
-          <hp-tag-buttons @catChoice="filter" />
-        </main>
-        <div class="home-page-image-container">
-          <template>
-            <section>
-              <div class="hp-hero-image-list" >
-                <img class="hero-image" :src="hero.imgUrl" width="600px">
-                <div class="hp-hero-details-container">
-                    <el-rate class="hp-hero-rate" v-model="hero.rate" disabled text-color="#ff9900"></el-rate>
-                    <div class="hp-image-preview-hero-text">
-                    <p>{{hero.fullname}}, <b>{{hero.specialty}}</b></p>
-                    </div>
+      <div v-for="hero in demoHeros"  :key="hero.id" class="home-page-top-container" :style="{ color: currHero.styleSet.color, backgroundColor: currHero.styleSet.backgroundColor }">
+        <div v-if="hero.fullname === currHero.fullname" class="home-page-top main-layout">
+          <!-- image section -->
+          <div class="home-page-image-container">
+            <template>
+              <section>
+                <div class="hp-hero-image-list" >
+                  <img class="hero-image" :src="hero.imgUrl" width="600px">
+                  <div class="hp-hero-details-container">
+                      <el-rate class="hp-hero-rate" v-model="hero.rate" disabled text-color="#ff9900"></el-rate>
+                      <div class="hp-image-preview-hero-text">
+                      <p>{{hero.fullname}}, <b>{{hero.specialty}}</b></p>
+                      </div>
+                  </div>
                 </div>
-              </div>
-            </section>
-          </template>
+              </section>
+            </template>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="home-page-bottom-container main-layout">
-        <h2 class="hp-popular-services-header">Popular professional services</h2>
-        <hp-category-list :categories="categories" @categoryBtnPressed="categoryBtnPressed" @catName="setCatFilter"/>
-        <div class="hp-bottom-header-container">
-            <h2 class="hp-top-rated-gigs-header">Top rated Gigs</h2>
-            <span>
-              <button @click.prevent="toExplorePage">See all</button>
-            </span>
-        </div>
-        <gigs-list :gigs="getGigs"/>
-        <div class="hp-bottom-header-container">
-          <h2 class="hp-discover-web-header">Discover Web development</h2>
-          <span>
-            <button @click.prevent="toExplorePage">See all</button>
-          </span>
-        </div>
-        <template>
-        <gigs-list :gigs="webGigsToShow" />
+      <!-- search section -->
+      <main class="home-page-search">
+        <header class="hp-header">
+          <h2>
+            <span class="slogan">You need a <i>freelance</i> in a free world</span>
+          </h2>
+        </header>
+        <form class="home-page-search-container">
+          <div class="home-page-search-bar-container">
+            <hp-search-bar @filter="filter"/>
+          </div>
+        </form>
+        <hp-tag-buttons @catChoice="filter" />
+      </main>
+          <!-- botton page section -->
+      <div class="home-page-bottom-container main-layout">
+          <h2 class="hp-popular-services-header">Popular professional services</h2>
+          <hp-category-list :categories="categories" @categoryBtnPressed="categoryBtnPressed" @catName="setCatFilter"/>
           <div class="hp-bottom-header-container">
-            <h2 class="hp-discover-business-header">Discover Business</h2>
+              <h2 class="hp-top-rated-gigs-header">Top rated Gigs</h2>
+              <span>
+                <button @click.prevent="toExplorePage">See all</button>
+              </span>
+          </div>
+          <gigs-list :gigs="getGigs"/>
+          <div class="hp-bottom-header-container">
+            <h2 class="hp-discover-web-header">Discover Web development</h2>
             <span>
               <button @click.prevent="toExplorePage">See all</button>
             </span>
           </div>
-        </template>
-        <gigs-list :gigs="businessGigsToShow" />
+          <template>
+          <gigs-list :gigs="webGigsToShow" />
+            <div class="hp-bottom-header-container">
+              <h2 class="hp-discover-business-header">Discover Business</h2>
+              <span>
+                <button @click.prevent="toExplorePage">See all</button>
+              </span>
+            </div>
+          </template>
+          <gigs-list :gigs="businessGigsToShow" />
+      </div>
     </div>
-  </div>
   </div>
 </template>
 <script>

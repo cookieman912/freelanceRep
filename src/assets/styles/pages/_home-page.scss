@@ -15,12 +15,13 @@
 
 .home-page-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 40px;
     animation: fadeInOut 4.9s;
 }
 
 .home-page {
+    position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -28,8 +29,14 @@
 // .home-page-top-container {
 //     animation: fadeInOut 5s;
 // }
+.home-page-image-container {}
+
 .home-page-search {
     display: flex;
+    position: absolute;
+    left: 319px;
+    top: 0;
+    margin-top: 143px;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
