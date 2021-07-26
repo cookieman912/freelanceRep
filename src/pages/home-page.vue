@@ -350,7 +350,7 @@ export default {
     this.sendStyleToHeader();
     this.loadGigs();
     //Hero continues Invervals and Styling
-   // this.startHeroInterval();
+    this.startHeroInterval();
     this.initCategories();
   },
   destroyed() {
