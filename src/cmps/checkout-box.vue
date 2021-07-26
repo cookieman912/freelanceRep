@@ -23,6 +23,7 @@
 
 <script>
 import { userService } from '../services/user.service';
+import {eventBusService}from '../services/event-bus.service'
 export default {
   props: ["gig"],
   computed: {
@@ -53,7 +54,8 @@ export default {
       const gigSeller= await userService.getById(this.gig.seller._id)
       try{gigSeller.seller.orders.push(orderToAdd)
          await this.$store.dispatch({type:'addOrder',user:gigSeller})
-         this.$router.push('/end')
+        eventBusService.$emit('show-msg','Order has been successfully made')
+         this.$router.push('/')
       }
       catch(err){
         console.log('error!',err)

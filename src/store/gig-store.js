@@ -63,25 +63,29 @@ export const gigStore = {
         },
 
         gigsToShow(state) {
+            console.log('in show')
             let regex = new RegExp(state.filterBy.txt, 'i');
             let maxPrice = state.filterBy.price.max;
             if (!state.filterBy.price.max) maxPrice = Infinity;
             console.log('max price ', state.filterBy.price.max);
             let gigsToShow = state.gigs.filter(gig => (+gig.price >= +state.filterBy.price.min))
                 .filter(gig => (+gig.price <= +maxPrice));
+              
             let filtered = gigsToShow.filter(gig => regex.test(gig.title) || regex.test(gig.description));
             if (state.filterBy.rate) {
-                
                 filtered = filtered.filter(gig => {
                    if(gig.reviews.length===0)
                    return false;
-                   return  this.gig.reviews.reduce(
+                   console.log('in condition')
+                   return  gig.reviews.reduce(  
                     (acc, review)=> {
                       return acc+ review.rate
                     },
                     0
-                  )/this.gig.reviews.length>= state.filterBy.rate})
+                  )/this.gig.reviews.length >= state.filterBy.rate})
             }
+            console.log('filter')
+            console.log(filtered)
             if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
                     const { tags } = gig;

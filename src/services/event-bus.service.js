@@ -6,6 +6,7 @@ export const eventBusService = new Vue();
 
 // Supported types: success, danger
 export function showMsg(txt, type = 'success') {
+    console.log('in show msg')
     eventBusService.$emit(SHOW_MSG, { txt, type });
 }
 
