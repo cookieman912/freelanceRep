@@ -24,6 +24,7 @@
 <script>
 import { userService } from "../services/user.service";
 import { eventBusService } from "../services/event-bus.service";
+import { socketService } from "../services/socket.service";
 export default {
     props: ["gig"],
     computed: {
@@ -51,6 +52,7 @@ export default {
                 createdAt: new Date(),
                 gig: {
                     _id: this.gig._id,
+                    price: this.gig.price,
                     name: this.gig.title,
                     deliveryTime: this.gig.deliveryTime,
                 },
@@ -58,7 +60,6 @@ export default {
             };
             const gigSeller = await userService.getById(this.gig.seller._id);
             try {
-                console.log("in condition");
                 gigSeller.seller.orders.push(orderToAdd);
                 await this.$store.dispatch({
                     type: "addOrder",

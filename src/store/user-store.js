@@ -44,6 +44,7 @@ export const userStore = {
             try {
 
                 const user = await userService.login(userCred);
+                // socketService.emit("user-topic", loggedInUser._id);
                 commit({ type: 'setLoggedinUser', user })
                 return user;
             } catch (err) {
@@ -100,7 +101,8 @@ export const userStore = {
         async updateUser({ commit }, { user }) {
             try {
                 user = await userService.update(user);
-                console.log(user)
+             
+            
                 commit({ type: 'setLoggedinUser', user })
             } catch (err) {
                 console.log('userStore: Error in updateUser', err)
@@ -109,9 +111,20 @@ export const userStore = {
 
         },
         async addOrder({ commit }, { user }) {
+            
             try {
-
+                
                 user = await userService.update(user);
+                // socketService.on(SOCKET_EVENT_USER_UPDATED, user)
+                // socketService.off(SOCKET_EVENT_USER_UPDATED)
+                // socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
+                //     commit({type:'setLoggedinUser',user})
+                // })
+                // socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
+                //     commit({ type: 'setWatchedUser', user })
+                // })
+                // socketService.on()
+                socketService.emit('user-updated',user)
             } catch (err) {
                 console.log('userStore: Error in updateUser', err)
                 throw err
