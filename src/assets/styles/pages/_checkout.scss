@@ -1,4 +1,5 @@
 .checkout-page{
+    overflow-x: hidden;
     width: 1240px;
     margin: 0 auto;
     display: flex;
@@ -52,24 +53,26 @@
 @media (max-width: 850px){
     .checkout-page{
         width: 100%;
-        flex-direction: column;    
-        .package-gig-details{ 
-            .package-container{ 
-                width: 100%;
-                .h3 {
-                    display: none;
-                    width: 100%;
+        flex-direction: column;
+        .package-container{
+            width: 100%;
+            h2 {
+                width: max-content;
+            }
+            .package-gig-details{
+                .package-info-container{
+                        width: 410px;
+                    }
                     h3 {
-                        width: 100%;
+                        width: 10rem;
+                    }
+                    .el-rate {
+                        width: max-content;
+                    }
+                    .package-gig-price {
+                        display: none;
                     }
                 }
-                .el-rate {
-                    width: min-content;
-                }
-                .package-gig-price {
-                    display: none;
-                }
             }
-        }    
+        }
     }
-}
