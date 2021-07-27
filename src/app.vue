@@ -20,6 +20,8 @@ import signUpModal from "./cmps/sign-up-modal.vue";
 import createGig from './cmps/create-gig.vue'
 
 export default {
+
+
   components: {
     appHeader,
     userMsg,

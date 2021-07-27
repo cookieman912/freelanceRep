@@ -17,10 +17,10 @@
         <td v-if="order.status === 'pending'">
           Pending
           <div class="options">
-            <span  @click="handleOrder('reject', order.id)">Reject</span>
+            <span @click="handleOrder('reject', order.id)">Reject</span>
 
-            <span @click="handleOrder('accept', order.id)">Accept</span></div
-          >
+            <span @click="handleOrder('accept', order.id)">Accept</span>
+          </div>
         </td>
         <td v-else>accepted!</td>
       </tr>
@@ -29,12 +29,28 @@
 </template>
 
   <script>
+import { socketService } from "../services/socket.service";
 var moment = require("moment"); // require
 moment().format();
 export default {
   props: ["orders"],
 
-  computed: {},
+  created() {
+    socketService.on("user-updated", (data) => {
+     this.orders=data.seller.orders
+    });
+
+    
+  },
+
+  destroyed() {
+  },
+
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
+  },
   methods: {
     deliveryDate(order) {
       return moment(this.createdAt).format("MMM Do YY");
