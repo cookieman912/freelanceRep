@@ -11,6 +11,7 @@
             ></path>
         </svg>
         <input
+            @keyup.enter="filter"
             class="header-search-bar"
             :placeholder="'Try: Building a mobile app'"
             autocomplete="off"

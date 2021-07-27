@@ -22,7 +22,7 @@
                 display: flex;
             }
             h3 {
-                width: 500px;
+                width: max-content;
                 padding-bottom: 0.3125rem;
                 position: relative;
                 bottom: 0.35rem;
@@ -48,5 +48,28 @@
                 object-fit: cover;
             }
         }
-
+}
+@media (max-width: 850px){
+    .checkout-page{
+        width: 100%;
+        flex-direction: column;    
+        .package-gig-details{ 
+            .package-container{ 
+                width: 100%;
+                .h3 {
+                    display: none;
+                    width: 100%;
+                    h3 {
+                        width: 100%;
+                    }
+                }
+                .el-rate {
+                    width: min-content;
+                }
+                .package-gig-price {
+                    display: none;
+                }
+            }
+        }    
+    }
 }

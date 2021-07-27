@@ -6,7 +6,22 @@
     >div {
         margin: 1rem 0;
         display: flex;
+        .el-select {
+            max-width: 11rem;
+            margin-right: 1rem;
+            ::placeholder {
+                // font-weight: 900;
+                color: black;
+                // font-size: 1.5em;
+            }
+            .el-input__inner:focus{
+                border-color: $fbc;
+                outline: $fbc;
+            }
+        }
         .explore-choose {
+            color: #797979;
+            font-weight: 900;
             border: 1.5px solid $fbc;
             display: flex;
             justify-content: space-between;
@@ -30,10 +45,9 @@
                 z-index: 11;
                 min-width: min-content;
                 background-color: white;
-                select {
-                    option {
-    
-                        width: 100rem;
+                sele.el-select-dropdown__item .selected {
+                    span {
+                        color: $fgc !important;
                     }
                 }
                 ul {
@@ -141,4 +155,19 @@
     }
 
     
+}
+
+.el-scrollbar {
+    ul {
+        li {
+            &.el-select-dropdown__item.selected {
+                color: $fgc !important;
+            }
+        }
+    }
+}
+.el-select-dropdown__item .selected {
+    span {
+        color: $fgc !important;
+    }
 }
