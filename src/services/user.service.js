@@ -59,7 +59,7 @@ function remove(userId) {
 async function update(user) {
     // await storageService.put(USER_KEY, user)
     user = await httpService.put(`user/${user._id}`, user)
-        // Handle case in which admin updates other user's details
+    // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
     return user;
 }
@@ -75,12 +75,22 @@ async function login(userCred) {
     // } catch (err) {
     //     throw err
     // }
+    try {
+        console.log('in login')
 
-    const user = await httpService.post('auth/login', userCred)
-       try{    if (user) return _saveLocalUser(user)}
-       catch(err){
-           throw err
-       } // socketService.emit('login', user._id);
+        const user = await httpService.post('auth/login', userCred)
+        if (user) {
+          const savedUser=_saveLocalUser(user)
+            console.log(savedUser._id)
+            socketService.emit('set-user-socket', savedUser._id)
+            
+            console.log('emmitted to socket')
+            return savedUser
+        }
+    }
+    catch (err) {
+        throw err
+    } // socketService.emit('login', user._id);
 
 }
 async function signup(userCred) {
@@ -90,12 +100,12 @@ async function signup(userCred) {
     userCred.createdAt = Date.now();
     // const user = await storageService.post(USER_KEY, userCred)
     const user = await httpService.post('auth/signup', userCred)
-        // socketService.emit('set-user-socket', user._id);
+    socketService.emit('set-user-socket', user._id);
     return _saveLocalUser(user)
 }
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-        // socketService.emit('unset-user-socket');
+    socketService.emit('unset-user-socket');
     return await httpService.post('auth/logout')
 }
 
@@ -127,7 +137,8 @@ function getLoggedinUser() {
 // This is relevant when backend is connected
 (async () => {
     var user = getLoggedinUser()
-    if (user) socketService.emit('set-user-socket', user._id)
+    if (user) console.log('user is in!')
+    socketService.emit('set-user-socket', user._id)
 })();
 
 function _saveLocalUser(user) {

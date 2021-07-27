@@ -73,6 +73,7 @@ import hpCategoryList from "../cmps/hp-category-list.vue";
 import gigsList from "../cmps/gigs-list.vue";
 import hpHeroImagePreview from "../cmps/hp-hero-image-preview.vue"
 import { eventBusService } from "../services/event-bus.service.js";
+import { socketService } from '../services/socket.service';
 export default {
   components: {
     hpSearchBar,
@@ -352,6 +353,11 @@ export default {
     //Hero continues Invervals and Styling
     this.startHeroInterval();
     this.initCategories();
+    socketService.setup()
+    socketService.on('test',() => {
+      console.log('please work!');
+    })
+    socketService.emit('user')
   },
   destroyed() {
       window.removeEventListener("resize", this.myEventHandler);
