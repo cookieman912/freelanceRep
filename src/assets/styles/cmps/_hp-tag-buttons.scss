@@ -12,6 +12,7 @@
         transition: 0.35s ease;
         @include btnWhiteTrans;
         font-size: 14px;
+        z-index: 1;
     }
     button:hover {
         color: $flc;
@@ -23,5 +24,7 @@
 @media (max-width: 900px) {
     .home-page-tag-buttons {
         display: none;
+        
     }
+    
 }

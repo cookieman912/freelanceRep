@@ -43,7 +43,7 @@
 
 .hp-header {
     h2 {
-        width: 617px;
+        width: 484px;
     }
 }
 
@@ -103,12 +103,24 @@
     .home-page-search-container {
         width: 560px;
     }
+    .slogan{
+        font-size: 40px;
+    }
+
+    .hp-header {
+        h2 {
+            width: 400px;
+        }
+    }
+    
 }
 
 @media (max-width: 900px) {
     .home-page-top {
         flex-direction: column;
         padding: 0 95px;
+        height: 335px;
+        
     }
     .home-page-search {
         max-width: 690px;
@@ -126,6 +138,7 @@
         overflow-wrap: break-word;
         font-size: 40px;
         line-height: 48px;
+        margin-top: 149px;
     }
     .home-page-search-container {
         flex-direction: column;
@@ -135,12 +148,25 @@
     }
 }
 
+@media (max-width: 720px){
+    .home-page-top{
+        height: 384px;
+    }
+}
+
 @media (max-width: 600px) {
     .home-page-top {
         padding: 0 24px;
+        height: 278px;
     }
     .slogan,
     .hp-header {
+        // min-width: 514px;
         font-size: 32px;
+        margin-top: 213px;
     }
+    .home-page-search {
+        // padding: 0;
+    }
+
 }
