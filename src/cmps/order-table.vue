@@ -1,6 +1,7 @@
    <template>
   <div class="table-container">
     <h2>Your Orders</h2>
+    <dashboard/>
     <table class="order-table">
       <tr>
         <td>Order from:</td>
@@ -30,25 +31,42 @@
 
   <script>
 import { socketService } from "../services/socket.service";
+import dashboard from './dashboard.vue';
 var moment = require("moment"); // require
 moment().format();
+
 export default {
+  components: { dashboard },
   props: ["orders"],
 
-  created() {
-    socketService.on("user-updated", (data) => {
-     this.orders=data.seller.orders
-    });
+ 
 
-    
-  },
+  // created() {
+  //   socketService.on("user-updated", (data) => {
+  //     this.orders = data.seller.orders;
+  //   });
+  // },
 
-  destroyed() {
-  },
+  destroyed() {},
 
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser;
+    },
+    pendingStatus() {
+      return this.orders.reduce((acc, order) => {
+        if (order.status === "pending") {
+          return acc++;
+        }
+      }, 0);
+    },
+
+    acceptedStatus() {
+      return this.orders.reduce((acc, order) => {
+        if (order.status != "pending") {
+          return acc++;
+        }
+      }, 0);
     },
   },
   methods: {
@@ -67,6 +85,7 @@ export default {
       this.$emit("updateOrders", this.orders);
     },
   },
+
 };
 </script>
 

@@ -114,14 +114,11 @@ export const gigStore = {
 
                 return gig;
             } catch (err) {
-                console.log('gigStore: Error in addGig', err);
                 throw err;
             }
         },
         async addReview(context, { gigId }, { review }) {
             try {
-                console.log(gigId);
-                console.log(review);
                 review = await gigService.addReview(gigId, review);
                 context.commit({ type: 'addReview', review });
                 return gig;
