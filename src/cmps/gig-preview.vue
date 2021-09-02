@@ -1,5 +1,5 @@
 <template>
-  <div class="gig-preview" v-bind:style="styleObject">
+  <div class="gig-preview" :class="gigPreviewHp">
     <div v-if="isGigCloudinary" @click="routing">
       <el-carousel :interval="5000" :autoplay="false" arrow="always">
         <el-carousel-item v-for="item in 4" :key="item">
@@ -7,7 +7,6 @@
           <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />
         </el-carousel-item>
       </el-carousel>
-      <!-- <img :src="gig.imgUrls[0]" /> -->
     </div>
 
     <div v-else @click="routing">
@@ -17,7 +16,6 @@
           <img v-else :src="require(`../assets/images/${gigImgUrl}`)" />
         </el-carousel-item>
       </el-carousel>
-      <!-- <img :src="require(`../assets/images/${gigImgUrl}`)" /> -->
     </div>
 
     <figure class="gig-preview-seller-info">
@@ -77,11 +75,7 @@ export default {
   },
   data() {
     return {
-      styleObject: {
-        maxWidth: null,
-        borderRadius: null,
-        height: null,
-      },
+      gigPreviewHp:"",
       img: null,
     };
   },
@@ -122,10 +116,7 @@ export default {
   },
   created() {
     if (this.$route.name === "home") {
-      this.styleObject.maxWidth = "239px";
-      this.styleObject.borderRadius = "4px";
-      this.styleObject.height = "345px";
-      //
+      this.gigPreviewHp="gig-preview-hp";
     }
   },
 };
