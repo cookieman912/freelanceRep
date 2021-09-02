@@ -70,7 +70,7 @@
                         >Explore</router-link
                     >
                 </div>
-                <template class="nav-propile-join">
+                <template class="nav-profile-join">
                     <template v-if="loggedInUser" class="user-control">
                         <router-link
                             class="header-nav-a"

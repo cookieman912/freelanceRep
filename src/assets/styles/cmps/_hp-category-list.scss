@@ -93,7 +93,6 @@
         // margin-block-start: 23px;
         z-index: 4;
         top: 36%;
-        left: -1.8%;
         width: 48px;
         height: 48px;
         text-align: center;
@@ -108,7 +107,6 @@
         position: absolute;
         z-index: 4;
         top: 36%;
-        right: -1.8%;
         width: 48px;
         height: 48px;
         text-align: center;
@@ -136,3 +134,22 @@
 //         min-width: 721px;
 //     }
 // }
+
+@media (max-width: 1400px){
+    .home-page-category-before-btn{
+        left: -1.8%;
+    }
+    .home-page-category-next-btn{
+        right: -8.8%;
+    }
+}
+
+
+@media (max-width: 400px){
+    .home-page-category-before-btn{
+        left: -8.8%;
+    }
+    .home-page-category-next-btn{
+        right: -8.8%;
+    }
+}

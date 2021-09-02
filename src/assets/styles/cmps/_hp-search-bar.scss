@@ -54,7 +54,7 @@
     .home-page-search-bar {
         width: 100%;
         min-width: 327px;
-        max-width: 690px;
+        max-width:none;
     }
     .hp-search-bar {
         display: flex;
@@ -68,8 +68,7 @@
     }
     .hp-search-bar input {
         margin-bottom: 13px;
-        min-width: 327px;
-        max-width: 690px;
+        min-width: 60vw;
         border-radius: 4px;
         width: 100%;
     }
@@ -79,4 +78,13 @@
         margin-left: 16px;
         top: 8%;
     }
+}
+
+@media (max-width:400px){
+    .hp-search-bar{
+        input{
+        }
+        
+    }
+    
 }
