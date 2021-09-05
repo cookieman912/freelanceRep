@@ -1,6 +1,7 @@
 <template>
   <section @click="clickOutsideModal" class="add-gig hidden" ref="addGig">
     <main>
+      <p>hey{{loggedInUser}}</p>
       <h1>Create Gig</h1>
       <form class @submit.prevent="addGig">
         <div class="gig-input">
@@ -23,76 +24,74 @@
             />
           </div>
           <div class="gig-input">
-          <p>Delivery Days</p>
-          <el-input
-            class="delivery-input"
-            type="number"
-            placeholder="delivery days"
-            v-model="gigToAdd.deliveryDays"
-          />
+            <p>Delivery Days</p>
+            <el-input
+              class="delivery-input"
+              type="number"
+              placeholder="delivery days"
+              v-model="gigToAdd.deliveryDays"
+            />
           </div>
         </div>
-<div class="gig-input">
-    <p>Description</p>
-        <el-input
-          class="desc-input"
-          type="textarea"
-          autosize
-          placeholder="description"
-          v-model="gigToAdd.description"
-        >
-       
-        </el-input>
-         </div>
-
-         <div class="gig-input">
-             <p>Tags</p>
-        <el-select
-          class="tag-input"
-          v-model="gigToAdd.tags"
-          multiple
-          placeholder="tags"
-        >
-       
-          <el-option
-            style="margin-bottom: 5px"
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+        <div class="gig-input">
+          <p>Description</p>
+          <el-input
+            class="desc-input"
+            type="textarea"
+            autosize
+            placeholder="description"
+            v-model="gigToAdd.description"
           >
-          </el-option>
-        </el-select>
- </div>
+          </el-input>
+        </div>
 
- <div class="gig-input">
-     <p>Feature:</p>
-        <el-input
-          maxlength="25"
-          show-word-limit
-          class="package1-input"
-          type="text"
-          placeholder="Feature"
-          v-model="gigToAdd.packages[0]"
-        />
-        <p>Feature:</p>
-        <el-input
-          maxlength="25"
-          show-word-limit
-          class="package2-input"
-          type="text"
-          placeholder="Feature"
-          v-model="gigToAdd.packages[1]"
-        />
-        <p>Feature:</p>
-        <el-input
-          maxlength="25"
-          show-word-limit
-          class="package3-input"
-          type="text"
-          placeholder="Feature"
-          v-model="gigToAdd.packages[2]"
-        />
+        <div class="gig-input">
+          <p>Tags</p>
+          <el-select
+            class="tag-input"
+            v-model="gigToAdd.tags"
+            multiple
+            placeholder="tags"
+          >
+            <el-option
+              style="margin-bottom: 5px"
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+
+        <div class="gig-input">
+          <p>Feature:</p>
+          <el-input
+            maxlength="25"
+            show-word-limit
+            class="package1-input"
+            type="text"
+            placeholder="Feature"
+            v-model="gigToAdd.packages[0]"
+          />
+          <p>Feature:</p>
+          <el-input
+            maxlength="25"
+            show-word-limit
+            class="package2-input"
+            type="text"
+            placeholder="Feature"
+            v-model="gigToAdd.packages[1]"
+          />
+          <p>Feature:</p>
+          <el-input
+            maxlength="25"
+            show-word-limit
+            class="package3-input"
+            type="text"
+            placeholder="Feature"
+            v-model="gigToAdd.packages[2]"
+          />
         </div>
 
         <div class="img-upload-container">
@@ -142,13 +141,22 @@
       </form>
     </main>
   </section>
-  
 </template>
 
 <script>
 import { eventBusService } from "../services/event-bus.service.js";
 import { uploadImg } from "@/services/img-upload.service.js";
 export default {
+  computed: {
+    imgList() {
+      return this.gigToAdd.imgUrls;
+    },
+
+  //  loggedInUser() {
+  //     return this.$store.getters.loggedInUser;
+  //   },
+  },
+
   data() {
     return {
       sellerDetails: {
@@ -156,7 +164,6 @@ export default {
         sellerInfo: "",
         location: "",
       },
-      userToEdit: JSON.parse(JSON.stringify(this.$store.getters.loggedinUser)),
       isHidden: true,
       gigToAdd: {
         title: "",
@@ -208,14 +215,18 @@ export default {
   destroyed() {
     eventBusService.$off("open-create", this.toggleCreate);
   },
+
+
   methods: {
     async addGig() {
       try {
         //making gig ready for save
-        console.log('add gig start')
-        this.gigToAdd.seller._id = this.userToEdit._id;
-        this.gigToAdd.seller.fullname = this.userToEdit.fullname;
-        this.gigToAdd.seller.imgUrl = this.userToEdit.imgUrl;
+        console.log("add gig start");
+        const userToEdit= JSON.parse(JSON.stringify(this.$store.getters.loggedinUser))
+        console.log(userToEdit);
+        this.gigToAdd.seller._id = userToEdit._id;
+        this.gigToAdd.seller.fullname = userToEdit.fullname;
+        this.gigToAdd.seller.imgUrl = userToEdit.imgUrl;
 
         this.gigToAdd.reviews = [];
         //linking user to gig
@@ -230,12 +241,13 @@ export default {
         });
 
         const miniGig = {};
-        console.log('creating minigig')
+        console.log("creating minigig");
         miniGig._id = this.gigToAdd._id;
         miniGig.title = this.gigToAdd.title;
         miniGig.imgUrls = this.gigToAdd.imgUrls;
 
-        const userToUpdate = this.userToEdit;
+        const userToUpdate = userToEdit;
+        console.log(userToUpdate)
         userToUpdate.seller.gigs.push(miniGig);
 
         this.gigToAdd = {
@@ -247,7 +259,7 @@ export default {
           seller: {},
           packages: ["", "", ""],
         };
-         this.$store.dispatch({ type: "updateUser", user: userToUpdate });
+        this.$store.dispatch({ type: "updateUser", user: userToUpdate });
         this.toggleCreate();
       } catch (err) {
         console.log("error!", err);
@@ -264,7 +276,7 @@ export default {
       if (event.target.classList.value === "add-gig") this.toggleCreate();
     },
     handleFileGig(ev) {
-      console.log('adding gig photo')
+      console.log("adding gig photo");
       let file;
       if (ev.type === "change") file = ev.target.files[0];
       else if (ev.type === "drop") file = ev.dataTransfer.files[0];
@@ -278,12 +290,6 @@ export default {
       this.isLoading = false;
       this.gigToAdd.imgUrls.push(res.url);
       console.log(this.gigToAdd);
-    },
-  },
-
-  computed: {
-    imgList() {
-      return this.gigToAdd.imgUrls;
     },
   },
 };
