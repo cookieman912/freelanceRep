@@ -75,7 +75,6 @@
                 .header-join {
                     border: 1.5px solid $fgc;
                     border-radius: 5px;
-                    padding: 0.25rem 1.5rem;
                     &:hover {
                         color: $white;
                         background-color: #02a75a;
@@ -130,13 +129,17 @@
     }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 3400px) {
     .app-header {
         .nav-header {
             width: auto;
             // padding: 0 2rem;
         }
     }
+    .header-join{
+        padding: 0.25rem 1.5rem;
+    }
+    
 }
 
 @media (max-width: 850px) {
@@ -186,6 +189,22 @@
                 div {}
             }
         }
+    }
+}
+
+@media (max-width: 420px){
+    .header-signin{
+        display: none;
+    }
+    .nav-header{
+        overflow-x: hidden;
+    }
+    .header-join{
+        padding: 0.25rem 1rem;
+    }
+
+    .app-header .nav-header .navigation button{
+        padding-left: 0.6em ;
     }
 }
 
@@ -288,4 +307,10 @@
     background-color: #fff;
     color: $ftc;
 
+}
+
+@media (max-width:400px){
+    .logo{
+        padding-inline-start: 0.8em;
+    }
 }

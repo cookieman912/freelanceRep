@@ -145,3 +145,35 @@
         
     }
 }
+
+.gig-preview-hp{
+    // max-width: 239px;
+    border-radius: 4px;
+    height: 345px;
+    width: 44vw;
+}
+
+@media (max-width: 3240px) {
+    .gig-preview-hp{
+        max-width: 240px;
+    }
+}
+
+@media (max-width: 800px) {
+    .gig-preview-hp{
+        max-width: 343px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .gig-preview-hp{
+        max-width: 520px;
+        width: 86vw;
+    }
+}
+
+
+
+
+

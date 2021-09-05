@@ -112,6 +112,11 @@
         height: 335px;
         
     }
+
+    .home-page-search-container{
+        max-width: 80vw;
+        min-width: 60vw;
+    }
     .home-page-search {
         max-width: 690px;
     }
@@ -159,4 +164,32 @@
         // padding: 0;
     }
 
+}
+
+
+@media (max-width: 400px) {
+    .home-page-search{
+        padding: 0;
+    }
+    .hp-header{
+        h2{
+            width: 300px;
+            margin-inline-start: 0.3em;
+        }
+    }
+    .home-page-search-container{
+        margin: -12px auto;
+        max-width: 92vw;
+        min-width: 60vw;
+    }
+    .slogan-header{
+        margin-block-end: 3px;
+    }
+    .home-page-bottom-container{
+        margin-top: -112px;
+        h2{
+            font-size: 28px;
+        }
+
+    }
 }

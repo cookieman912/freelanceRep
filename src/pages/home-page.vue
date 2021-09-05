@@ -47,7 +47,7 @@
             <!-- search section -->
             <main class="home-page-search">
                 <header class="hp-header">
-                    <h2>
+                    <h2 class="slogan-header">
                         <span class="slogan"
                             >You need a <i>freelance</i> in a free world</span
                         >
@@ -340,6 +340,7 @@ export default {
                 this.demoHeros[0].styleSet.backgroundColor;
             this.styleObject.color = this.demoHeros[0].styleSet.color;
             this.styleObject.borderBottom = "none";
+            console.log ('styleobject',this.styleObject);
         },
         // Sending style id to the header
         sendStyleToHeader() {
@@ -369,24 +370,25 @@ export default {
             }, 4900);
         },
         // makes immidiate changes to dom hero and header when toggling from mobile / desktop screen width
-        myEventHandler(e) {
-            if (e.target.innerWidth < 600) {
-                this.mobileMode=600;
+        setHpUnder600Px(){
+            this.mobileMode=600;
                 clearInterval(this.heroInterval);
-                // console.log('width under 600');
+                console.log('width under 600');
                 this.currHero.styleSet.backgroundColor = "#023a15";
                 this.currHero.styleSet.color = "#FFF";
                 eventBusService.$emit("headerChange","600");
-            }
-            
-            else if (e.target.innerWidth < 900) {
-                this.mobileMode = 900;
+        },
+        setHpUnder900Px(){
+            this.mobileMode = 900;
                 clearInterval(this.heroInterval);
-                // console.log('width under 900');
+                console.log('width under 900');
                 this.currHero.styleSet.backgroundColor = "#023a15";
                 this.currHero.styleSet.color = "#FFF";
-                eventBusService.$emit("headerChange", "900"); 
-            } else {
+                eventBusService.$emit("headerChange", "900");
+        },
+
+        setHpOver900px(){
+                console.log('width over 900');
                 if(this.mobileMode !== null){
                     this.mobileMode=null;
                     this.loadDefaultHero();
@@ -398,19 +400,33 @@ export default {
                 // set home-page top section dynamic styles per hero
                 this.styleObject.color = this.currHero.styleSet.color;
                 eventBusService.$emit("headerChange", this.currHero.id);
-            }
+            
+        },
+
+
+        myEventHandler(e) {
+            if (e.target.innerWidth < 600) this.setHpUnder600Px()
+            else if (e.target.innerWidth < 900) this.setHpUnder900Px() 
+            else this.setHpOver900px();
+        },
+        setClsWindowWidths(){
+            console.log('entered setWindowsWidths')
+            if (window.innerWidth < 600) this.setHpUnder600Px()
+            else if(window.innerWidth <900) this.setHpUnder900Px();
+            else this.setHpOver900px(); 
         },
     },
     created() {
         // listen to window resize
         window.addEventListener("resize", this.myEventHandler);
         // Hero Image first Interval
-        this.loadDefaultHero();
-        this.styleDefaultHero();
-        this.sendStyleToHeader();
+       this.loadDefaultHero();
+       this.styleDefaultHero();
+        //this.sendStyleToHeader();
         this.loadGigs();
         //Hero continues Invervals and Styling
-        this.startHeroInterval();
+       this.startHeroInterval();
+        this.setClsWindowWidths();
         this.initCategories();
         socketService.setup();
         socketService.on("test", () => {
