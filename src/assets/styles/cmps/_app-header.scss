@@ -1,12 +1,6 @@
 .app-header {
     width: 100%;
     border-bottom: 1px solid #e4e5e7;
-    // uri added
-    //background-color: inherit;
-    // end of uri add
-    // position: fixed;
-    //  background-color: $white;
-    // z-index: 5;
     .nav-header {
         display: flex;
         align-items: center;
@@ -17,9 +11,6 @@
         margin: auto;
         font-weight: 900;
         color: $fnc;
-        // uri added
-        // background-color: inherit;
-        // end of uri add
         .hamburger-menu {
             display: none;
             div {
@@ -261,10 +252,11 @@
     background-color: #494949;
     color: white;
     border: white;
+    // border:#093d10
 }
 
 .home-page-header2 {
-    background-Color: #d1aa8b;
+    background-Color: #093d10;
     color: white;
     border: white;
 }
@@ -285,4 +277,15 @@
     background-Color: #86535c;
     color: white;
     border: white;
+}
+// fiverr background search homepage mobile color
+.home-page-header900 {
+    background-Color: $fmc; 
+    color: white;
+    border: white;
+}
+.home-page-header600 {
+    background-color: #fff;
+    color: $ftc;
+
 }

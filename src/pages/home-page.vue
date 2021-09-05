@@ -121,7 +121,7 @@ export default {
     },
     data() {
         return {
-            mobileScreenWidth: false,
+            mobileMode:null,
             isLoading: false, // loading gigs
             // category gallery
             galleryItemsCount: 5,
@@ -160,7 +160,7 @@ export default {
                     rate: 4.8,
                     specialty: "Web Developer",
                     imgUrl: "https://res.cloudinary.com/urigross/image/upload/v1626705372/hp-hero/pngfind.com-business-man-png-1144946_2_yzvnhb.png",
-                    styleSet: { backgroundColor: "#d1aa8b", color: "white" },
+                    styleSet: { backgroundColor: "#093d10", color: "white" },
                 },
                 {
                     id: "3",
@@ -343,6 +343,7 @@ export default {
         },
         // Sending style id to the header
         sendStyleToHeader() {
+            // console.log('send style to header');
             eventBusService.$emit("headerChange", this.demoHeros[0].id);
         },
         async loadGigs() {
@@ -353,32 +354,45 @@ export default {
         // Interval for new hero
         startHeroInterval() {
             this.heroInterval = setInterval(() => {
-                if (this.mobileScreenWidth) {
-                    this.styleObject.backgroundColor = "#023a15";
-                    this.styleObject.color = "white";
-                    eventBusService.$emit("headerChange", ""); // white header
-                } else {
-                    this.currHero = this.demoHeros[this.idx];
-                    this.idx === this.demoHeros.length - 1
-                        ? (this.idx = 0)
-                        : this.idx++;
-                    this.styleObject.backgroundColor =
-                        this.currHero.styleSet.backgroundColor;
-                    // set home-page top section dynamic styles per hero
-                    this.styleObject.color = this.currHero.styleSet.color;
-                    eventBusService.$emit("headerChange", this.currHero.id);
-                }
+                    if (this.mobileMode === null ) {
+
+                        this.currHero = this.demoHeros[this.idx];
+                        this.idx === this.demoHeros.length - 1 ? (this.idx = 0) : this.idx++;
+                        this.styleObject.backgroundColor = this.currHero.styleSet.backgroundColor;
+                        // set home-page top section dynamic styles per hero
+                        this.styleObject.color = this.currHero.styleSet.color;
+                        eventBusService.$emit("headerChange", this.currHero.id);
+                    }
+                    else{
+                        this.currHero.styleSet.backgroundColor = "#023a15";
+                                        }
             }, 4900);
         },
         // makes immidiate changes to dom hero and header when toggling from mobile / desktop screen width
         myEventHandler(e) {
-            if (e.target.innerWidth < 900) {
-                this.mobileScreenWidth = true;
-                this.styleObject.backgroundColor = "#023a15";
-                this.styleObject.color = "grey";
-                eventBusService.$emit("headerChange", ""); // white background
+            if (e.target.innerWidth < 600) {
+                this.mobileMode=600;
+                clearInterval(this.heroInterval);
+                // console.log('width under 600');
+                this.currHero.styleSet.backgroundColor = "#023a15";
+                this.currHero.styleSet.color = "#FFF";
+                eventBusService.$emit("headerChange","600");
+            }
+            
+            else if (e.target.innerWidth < 900) {
+                this.mobileMode = 900;
+                clearInterval(this.heroInterval);
+                // console.log('width under 900');
+                this.currHero.styleSet.backgroundColor = "#023a15";
+                this.currHero.styleSet.color = "#FFF";
+                eventBusService.$emit("headerChange", "900"); 
             } else {
-                this.mobileScreenWidth = false;
+                if(this.mobileMode !== null){
+                    this.mobileMode=null;
+                    this.loadDefaultHero();
+                    this.styleDefaultHero();
+                    this.startHeroInterval();
+                }                
                 this.styleObject.backgroundColor =
                     this.currHero.styleSet.backgroundColor;
                 // set home-page top section dynamic styles per hero
@@ -400,7 +414,7 @@ export default {
         this.initCategories();
         socketService.setup();
         socketService.on("test", () => {
-            console.log("please work!");
+            // console.log("please work!");
         });
         socketService.emit("user");
     },
