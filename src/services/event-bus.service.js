@@ -26,5 +26,6 @@ export function openCreate(num, type = 'toggle') {
     eventBusService.$emit('open-create', { num, type });
 }
 export function removeGig(_id, type = 'remove') {
+    console.log('in remove')
     eventBusService.$emit('remove-gig', { _id, type })
 }

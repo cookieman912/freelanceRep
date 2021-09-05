@@ -1,7 +1,7 @@
    <template>
   <div class="table-container">
     <h2>Your Orders</h2>
-    <dashboard/>
+    <!-- <dashboard/> -->
     <table class="order-table">
       <tr>
         <td>Order from:</td>
@@ -31,21 +31,21 @@
 
   <script>
 import { socketService } from "../services/socket.service";
-import dashboard from './dashboard.vue';
+// import dashboard from './dashboard.vue';
 var moment = require("moment"); // require
 moment().format();
 
 export default {
-  components: { dashboard },
+  // components: { dashboard },
   props: ["orders"],
 
  
 
-  // created() {
-  //   socketService.on("user-updated", (data) => {
-  //     this.orders = data.seller.orders;
-  //   });
-  // },
+  created() {
+    socketService.on("user-updated", (data) => {
+      this.orders = data.seller.orders;
+    });
+  },
 
   destroyed() {},
 

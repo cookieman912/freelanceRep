@@ -101,6 +101,8 @@ export const userStore = {
         async updateUser({ commit }, { user }) {
             try {
                 user = await userService.update(user);
+                console.log('user updated')
+                console.log(user.seller.gigs)
              
             
                 commit({ type: 'setLoggedinUser', user })

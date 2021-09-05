@@ -78,7 +78,7 @@ export const gigStore = {
                     ) / this.gig.reviews.length >= state.filterBy.rate
                 })
             }
-         
+
             if (state.filterBy.tags.length) {
                 filtered = filtered.filter(gig => {
                     const { tags } = gig;
@@ -92,7 +92,10 @@ export const gigStore = {
         setGigs(state, { gigs }) {
             state.gigs = gigs;
         },
-       
+        addGig(state, { gig }) {
+            state.gigs.push(gig)
+        },
+
         addReview(state, { review }) {
             state.gigs.push(gigs);
         },

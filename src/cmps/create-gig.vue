@@ -212,6 +212,7 @@ export default {
     async addGig() {
       try {
         //making gig ready for save
+        console.log('add gig start')
         this.gigToAdd.seller._id = this.userToEdit._id;
         this.gigToAdd.seller.fullname = this.userToEdit.fullname;
         this.gigToAdd.seller.imgUrl = this.userToEdit.imgUrl;

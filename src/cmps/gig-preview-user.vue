@@ -54,6 +54,7 @@ export default {
   },
   methods:{
     deleteClicked(_id){
+      console.log('click')
  eventBusService.$emit('remove-gig',_id)
     }
   },
