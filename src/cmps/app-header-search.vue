@@ -13,7 +13,7 @@
         <input
             @keyup.enter="filter"
             class="header-search-bar"
-            :placeholder="'Try: Building a mobile app'"
+            :placeholder="'Try: logo'"
             autocomplete="off"
             v-model="filterByCopy.txt"
         />
