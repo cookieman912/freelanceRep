@@ -80,10 +80,10 @@ async function login(userCred) {
 
         const user = await httpService.post('auth/login', userCred)
         if (user) {
-          const savedUser=_saveLocalUser(user)
+            const savedUser = _saveLocalUser(user)
             console.log(savedUser._id)
             socketService.emit('set-user-socket', savedUser._id)
-            
+
             console.log('emmitted to socket')
             return savedUser
         }
@@ -137,8 +137,10 @@ function getLoggedinUser() {
 // This is relevant when backend is connected
 (async () => {
     var user = getLoggedinUser()
-    if (user) console.log('user is in!')
-    socketService.emit('set-user-socket', user._id)
+    if (user) {
+        console.log('user is in!')
+        socketService.emit('set-user-socket', user._id)
+    }
 })();
 
 function _saveLocalUser(user) {

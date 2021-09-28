@@ -152,9 +152,9 @@ export default {
       return this.gigToAdd.imgUrls;
     },
 
-  //  loggedInUser() {
-  //     return this.$store.getters.loggedInUser;
-  //   },
+   loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    },
   },
 
   data() {
