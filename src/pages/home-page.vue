@@ -340,7 +340,6 @@ export default {
                 this.demoHeros[0].styleSet.backgroundColor;
             this.styleObject.color = this.demoHeros[0].styleSet.color;
             this.styleObject.borderBottom = "none";
-            console.log ('styleobject',this.styleObject);
         },
         // Sending style id to the header
         sendStyleToHeader() {

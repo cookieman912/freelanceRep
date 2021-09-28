@@ -1,6 +1,5 @@
 import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
-// import axios from 'axios'
 const defaultGigs = require('../../data/gig.json')
 
 const GIG_KEY = "gigsDB"
@@ -12,10 +11,7 @@ export const gigService = {
     getEmptyReview,
     addReview
 }
-
-
 async function query(filterBy) {
-    console.log(filterBy);
     const gigs = await httpService.get('gig', filterBy)
     try {
         return gigs
@@ -33,7 +29,6 @@ async function query(filterBy) {
     //         return gigs;
     //     })
 }
-
 function getById(gigId) {
     return httpService.get(`gig/${gigId}`)
         // return storageService.get(GIG_KEY, gigId)
@@ -41,17 +36,12 @@ function getById(gigId) {
         //         return gig
         //     })
 }
-
 function remove(gigId) {
     return httpService.delete(`gig/${gigId}`)
-    console.log('removing...',gigId)
     // return storageService.remove(GIG_KEY, gigId)
     //     .then(gigs => { console.log(gigs) })
 }
-
-
 function save(gig) {
-console.log(gig)
     if (gig._id) {
         //     return storageService.put(GIG_KEY, gig)
         //         .then(gig => { return gig })
@@ -70,7 +60,6 @@ function addReview(gigId, review) {
     })
     return gig
 }
-
 function getEmptyReview() {
     return {
         id: utilService.makeId(),

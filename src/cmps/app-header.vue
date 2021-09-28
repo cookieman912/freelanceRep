@@ -218,7 +218,6 @@ export default {
             eventBusService.$on("headerChange", (data) => {
                 // If there is no data from home page - do not add styling classes
                 if (data === "") {
-                    console.log('class ',data);
                     this.homePageColorSetClass = data;
                 }
                 // set styling classes
