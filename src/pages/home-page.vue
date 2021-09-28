@@ -344,7 +344,6 @@ export default {
         },
         // Sending style id to the header
         sendStyleToHeader() {
-            // console.log('send style to header');
             eventBusService.$emit("headerChange", this.demoHeros[0].id);
         },
         async loadGigs() {
@@ -373,7 +372,6 @@ export default {
         setHpUnder600Px(){
             this.mobileMode=600;
                 clearInterval(this.heroInterval);
-                console.log('width under 600');
                 this.currHero.styleSet.backgroundColor = "#023a15";
                 this.currHero.styleSet.color = "#FFF";
                 eventBusService.$emit("headerChange","600");
@@ -381,14 +379,12 @@ export default {
         setHpUnder900Px(){
             this.mobileMode = 900;
                 clearInterval(this.heroInterval);
-                console.log('width under 900');
                 this.currHero.styleSet.backgroundColor = "#023a15";
                 this.currHero.styleSet.color = "#FFF";
                 eventBusService.$emit("headerChange", "900");
         },
 
         setHpOver900px(){
-                console.log('width over 900');
                 if(this.mobileMode !== null){
                     this.mobileMode=null;
                     this.loadDefaultHero();
@@ -410,7 +406,6 @@ export default {
             else this.setHpOver900px();
         },
         setClsWindowWidths(){
-            console.log('entered setWindowsWidths')
             if (window.innerWidth < 600) this.setHpUnder600Px()
             else if(window.innerWidth <900) this.setHpUnder900Px();
             else this.setHpOver900px(); 
@@ -430,7 +425,6 @@ export default {
         this.initCategories();
         socketService.setup();
         socketService.on("test", () => {
-            // console.log("please work!");
         });
         socketService.emit("user");
     },
